@@ -33,17 +33,27 @@
 	position: relative;
 	display: inline-flex;
 	justify-content: center;
-	box-shadow: 0 0 1px 1px black inset;
 	cursor: pointer;
 }
 
 .white-key {
+	box-shadow: 0 0 1px 1px black inset;
     border-radius: 0 0 5% 5%;
 }
 
+.white-key:hover {
+	box-shadow: 0 0 1px 2px black inset;
+}
+
 .black-key {
+	box-shadow: 0 0 1px 2px #555 inset;
 	z-index: 10;
     border-radius: 0 0 10% 10%;
+}
+
+.black-key:hover {
+	background-color: #333;
+	box-shadow: 0 0 1px 2px black inset;
 }
 
 /* Label */
