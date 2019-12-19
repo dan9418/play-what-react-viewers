@@ -48,7 +48,7 @@ function getKeyboardKeys(config, viewerWidth) {
     return keys;
 }
 
-export class Keyboard extends React.Component {
+export default class Keyboard extends React.Component {
 
     constructor(props) {
         super(props);
