@@ -43,7 +43,7 @@ const VOICING = {
 }
 
 export class FilterBy extends Strategies.FilterBy {
-    static voicing(note, viewerData, voicing = VOICING.barreMaj_A) {
+    static voicing(note, viewerData, voicing = VOICING.barreMaj_E) {
         if (!note || !note.interval) return false;
         return note.interval.id === voicing[viewerData.stringData.number - 1]
     }

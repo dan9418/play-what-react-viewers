@@ -2,6 +2,7 @@ import * as React from "react";
 import "./Fretboard.css";
 import { Fret } from "./Fret";
 import DEFAULT_PROPS from "./Fretboard.defaults";
+import { Theory } from 'play-what';
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
@@ -30,7 +31,7 @@ function getFrets(config) {
             viewerData.fretData = { number: j };
 
             let note = config.mapStrategy(index, config.keyCenter, config.concept);
-            note = config.noteFilter(note, viewerData) ? note : null;
+            note = config.noteFilter(note, viewerData) ? note : new Theory.NonfunctionalNote(index);
             let styles = config.colorFilter(note, viewerData) ? config.colorStrategy(note, viewerData) : {};
             let label = config.labelFilter(note, viewerData) ? config.labelStrategy(note, viewerData) : '';
             let action = config.actionFilter(note, viewerData) ? config.actionStrategy(note, viewerData) : () => null;
