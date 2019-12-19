@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./Keyboard.css";
 import { KeyboardKey, KeyboardKeyType } from "./KeyboardKey";
-import { DEFAULT_KEYBOARD_PROPS } from "./KeyboardDefaults";
+import DEFAULT_PROPS from "./Keyboard.defaults";
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -71,7 +71,7 @@ export class Keyboard extends React.Component {
     }
 
     render() {
-        let config = Object.assign({}, DEFAULT_KEYBOARD_PROPS, this.props);
+        let config = Object.assign({}, DEFAULT_PROPS, this.props);
         return (
             <div className='keyboard' ref={this.domNode}>
                 {getKeyboardKeys(config, this.state.width)}

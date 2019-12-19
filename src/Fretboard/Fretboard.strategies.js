@@ -1,6 +1,8 @@
 import { Theory, Strategies, Utils } from 'play-what';
 
-export const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
+/* Color */
+
+const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
     stringNumber: [
         Utils.COLORS.White,
         Utils.COLORS.Black
@@ -11,7 +13,7 @@ export const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
     ]
 };
 
-export class FretboardColorStrategies extends Strategies.Color {
+export class ColorBy extends Strategies.ColorBy {
     static stringNumber(note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.stringNumber) {
         return ColorUtils.continuous(viewerData.stringData.number, 1, viewerData.numStrings, scheme);
     }
@@ -20,7 +22,9 @@ export class FretboardColorStrategies extends Strategies.Color {
     }
 }
 
-export class FretboardLabelStrategies extends Strategies.Label {
+/* Label */
+
+export class LabelBy extends Strategies.LabelBy {
     static stringNumber(note, viewerData) {
         return viewerData.stringData.number;
     }
@@ -29,7 +33,9 @@ export class FretboardLabelStrategies extends Strategies.Label {
     }
 }
 
-export class FretboardFilterStrategies extends Strategies.Filter {
+/* Filter */
+
+export class FilterBy extends Strategies.FilterBy {
     static voicing(note, viewerData, voicing = []) {
         // TODO
     }

@@ -1,6 +1,8 @@
 import { Theory, Strategies, Utils } from 'play-what';
 
-export const DEFAULT_KEYBOARD_COLOR_SCHEMES = {
+/* Color */
+
+const DEFAULT_KEYBOARD_COLOR_SCHEMES = {
     keyNumber: [
         Utils.COLORS.White,
         Utils.COLORS.Black
@@ -11,7 +13,7 @@ export const DEFAULT_KEYBOARD_COLOR_SCHEMES = {
     ]
 };
 
-export class KeyboardColorStrategies extends Strategies.Color {
+export class ColorBy extends Strategies.ColorBy {
     static keyNumber(note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyNumber) {
         return ColorUtils.continuous(note.noteIndex - viewerData.keyLow, viewerData.minNote.noteIndex - viewerData.keyLow, viewerData.maxNote.noteIndex - viewerData.keyLow, scheme);
     }
@@ -20,7 +22,9 @@ export class KeyboardColorStrategies extends Strategies.Color {
     }
 }
 
-export class KeyboardLabelStrategies extends Strategies.Label {
+/* Label */
+
+export class LabelBy extends Strategies.LabelBy {
     static keyNumber(note, viewerData) {
         return note.noteIndex - viewerData.keyLow;
     }

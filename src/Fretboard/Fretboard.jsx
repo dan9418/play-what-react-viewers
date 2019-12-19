@@ -1,9 +1,9 @@
 import * as React from "react";
 import "./Fretboard.css";
 import { Fret } from "./Fret";
-import { DEFAULT_FRETBOARD_PROPS } from "./FretboardDefaults";
+import DEFAULT_PROPS from "./Fretboard.defaults";
 
-export const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
+const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
 function getFrets(config) {
     let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
@@ -56,8 +56,8 @@ function getFretRatios(numFrets) {
     return ratios;
 }
 
-export function Fretboard(props) {
-    let config = Object.assign({}, DEFAULT_FRETBOARD_PROPS, props);
+export default function Fretboard(props) {
+    let config = Object.assign({}, DEFAULT_PROPS, props);
     // Calculate fretboard dimensions
     let fretRatioStyle = getFretRatios(config.fretHigh - config.fretLow + 1).map((num) => { return num + 'fr' }).join(' ');
     let fretboardScaleStyles = {
