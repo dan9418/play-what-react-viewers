@@ -523,6 +523,17 @@ eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../.
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/RomanNumerals/RomanNumerals.css":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/RomanNumerals/RomanNumerals.css ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".roman-numerals {\\r\\n\\tpadding: 10px;\\r\\n}\\r\\n\\r\\n.interval-label {\\r\\n    display: inline-block;\\r\\n    height: 25px;\\r\\n    width: 25px;\\r\\n    line-height: 25px;\\r\\n    text-align: center;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    border-radius: 5px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/api.js":
 /*!*****************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/api.js ***!
@@ -689,15 +700,74 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Key
 
 /***/ }),
 
+/***/ "./src/RomanNumerals/RomanNumerals.css":
+/*!*********************************************!*\
+  !*** ./src/RomanNumerals/RomanNumerals.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./RomanNumerals.css */ \"./node_modules/css-loader/dist/cjs.js!./src/RomanNumerals/RomanNumerals.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.css?");
+
+/***/ }),
+
+/***/ "./src/RomanNumerals/RomanNumerals.defaults.js":
+/*!*****************************************************!*\
+  !*** ./src/RomanNumerals/RomanNumerals.defaults.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  concept: play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Presets.SCALE.Major,\n  colorStrategy: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_1__[\"ColorBy\"].degree,\n  actionStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"Strategies\"].ActionBy.none\n});\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.defaults.js?");
+
+/***/ }),
+
+/***/ "./src/RomanNumerals/RomanNumerals.jsx":
+/*!*********************************************!*\
+  !*** ./src/RomanNumerals/RomanNumerals.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return RomanNumerals; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.css */ \"./src/RomanNumerals/RomanNumerals.css\");\n/* harmony import */ var _RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n/* harmony import */ var _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RomanNumerals.defaults */ \"./src/RomanNumerals/RomanNumerals.defaults.js\");\n\n\n\n\n\n\nfunction IntervalLabel(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"interval-label\",\n    style: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__[\"ColorBy\"].degree({\n      interval: props.interval\n    })\n  }, props.interval.id);\n}\n\nfunction RomanNumerals(props) {\n  let config = Object.assign({}, _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_4__[\"default\"], props);\n  if (!config.concept || !(config.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.HeptatonicScale) && !(config.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.RomanNumeral)) return null;\n  let keyCenterIntervals = config.concept.intervals; //let relativeIntervals = props.romanNumeral.relativeIntervals;\n\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"roman-numerals\"\n  }, config.concept.name, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, keyCenterIntervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    key: i.id,\n    interval: i\n  }))));\n}\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.jsx?");
+
+/***/ }),
+
+/***/ "./src/RomanNumerals/RomanNumerals.strategies.js":
+/*!*******************************************************!*\
+  !*** ./src/RomanNumerals/RomanNumerals.strategies.js ***!
+  \*******************************************************/
+/*! exports provided: ColorBy */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ColorBy\", function() { return ColorBy; });\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n/* Color */\n\nconst DEFAULT_ROMAN_NUMERAL_COLOR_SCHEMES = {\n  quality: [play_what__WEBPACK_IMPORTED_MODULE_0__[\"Utils\"].COLORS.Red, play_what__WEBPACK_IMPORTED_MODULE_0__[\"Utils\"].COLORS.Orange, play_what__WEBPACK_IMPORTED_MODULE_0__[\"Utils\"].COLORS.Yellow, play_what__WEBPACK_IMPORTED_MODULE_0__[\"Utils\"].COLORS.Blue]\n};\nclass ColorBy extends play_what__WEBPACK_IMPORTED_MODULE_0__[\"Strategies\"].ColorBy {\n  static quality(note, viewerData, scheme = DEFAULT_ROMAN_NUMERAL_COLOR_SCHEMES.quality) {\n    return ColorUtils.continuous(note.noteIndex - viewerData.keyLow, viewerData.minNote.noteIndex - viewerData.keyLow, viewerData.maxNote.noteIndex - viewerData.keyLow, scheme);\n  }\n\n}\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.strategies.js?");
+
+/***/ }),
+
+/***/ "./src/RomanNumerals/_module.js":
+/*!**************************************!*\
+  !*** ./src/RomanNumerals/_module.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _RomanNumerals__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RomanNumerals */ \"./src/RomanNumerals/RomanNumerals.jsx\");\n/* harmony import */ var _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.defaults */ \"./src/RomanNumerals/RomanNumerals.defaults.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Viewer: _RomanNumerals__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Defaults: _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  Strategies: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack:///./src/RomanNumerals/_module.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: Fretboard, Keyboard */
+/*! exports provided: Fretboard, Keyboard, RomanNumerals */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Fretboard\", function() { return _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Keyboard\", function() { return _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Fretboard\", function() { return _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Keyboard\", function() { return _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _RomanNumerals_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RomanNumerals/_module */ \"./src/RomanNumerals/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"RomanNumerals\", function() { return _RomanNumerals_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
