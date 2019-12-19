@@ -16,8 +16,8 @@ function getKeyboardKeys(config, viewerWidth) {
     let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;
 
     let viewerData = {
-        minNote: config.mappingStrategy(config.keyLow, config.keyCenter, config.concept),
-        maxNote: config.mappingStrategy(config.keyHigh, config.keyCenter, config.concept),
+        minNote: config.mapStrategy(config.keyLow, config.keyCenter, config.concept),
+        maxNote: config.mapStrategy(config.keyHigh, config.keyCenter, config.concept),
         keyLow: config.keyLow,
         keyHigh: config.keyHigh,
         keyData: null
@@ -28,7 +28,7 @@ function getKeyboardKeys(config, viewerWidth) {
         
         viewerData.keyData = { type: type };
 
-        let note = config.mappingStrategy(i, config.keyCenter, config.concept);
+        let note = config.mapStrategy(i, config.keyCenter, config.concept);
         note = config.noteFilter(note, viewerData) ? note : null;
 
         let styles = config.colorFilter() ? config.colorStrategy(note, viewerData) : {};

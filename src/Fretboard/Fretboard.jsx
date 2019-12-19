@@ -9,8 +9,8 @@ function getFrets(config) {
     let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
     let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
     let viewerData = {
-        minNote: config.mappingStrategy(min, config.keyCenter, config.concept),
-        maxNote: config.mappingStrategy(max, config.keyCenter, config.concept),
+        minNote: config.mapStrategy(min, config.keyCenter, config.concept),
+        maxNote: config.mapStrategy(max, config.keyCenter, config.concept),
         fretLow: config.fretLow,
         fretHigh: config.fretHigh,
         numStrings: config.strings.length,
@@ -21,7 +21,7 @@ function getFrets(config) {
     let frets = [];
     // Get strings
     for (let i = 0; i < config.strings.length; i++) {
-        viewerData.stringData = { ...config.strings[i], number: i + i };
+        viewerData.stringData = { ...config.strings[i], number: i + 1 };
 
         // Get frets for string
         for (let j = config.fretLow; j <= config.fretHigh; j++) {
@@ -29,7 +29,7 @@ function getFrets(config) {
 
             viewerData.fretData = { number: j };
 
-            let note = config.mappingStrategy(index, config.keyCenter, config.concept);
+            let note = config.mapStrategy(index, config.keyCenter, config.concept);
             note = config.noteFilter(note, viewerData) ? note : null;
             let styles = config.colorFilter(note, viewerData) ? config.colorStrategy(note, viewerData) : {};
             let label = config.labelFilter(note, viewerData) ? config.labelStrategy(note, viewerData) : '';

@@ -19,7 +19,7 @@ export default {
     keyCenter: new Theory.KeyCenter(Theory.Constants.TONIC.C, Theory.Constants.ACCIDENTAL.Natural, 4),
     concept: Theory.Presets.CHORD.Maj7,
     // notes
-    mappingStrategy: Strategies.MapBy.noteIndex,
+    mapStrategy: Strategies.MapBy.noteIndex,
     noteFilter: () => true,
     // labels
     labelStrategy: LabelBy.interval,

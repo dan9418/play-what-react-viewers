@@ -35,8 +35,16 @@ export class LabelBy extends Strategies.LabelBy {
 
 /* Filter */
 
+const VOICING = {
+    barreMaj_E: ['P1', 'P5', 'M3', 'P1', 'P5', 'P1'],
+    barreMin_E: ['P1', 'P5', 'm3', 'P1', 'P5', 'P1'],
+    barreMaj_A: ['P5', 'M3', 'P1', 'P5', 'P1', null],
+    barreMin_A: ['P5', 'm3', 'P1', 'P5', 'P1', null]
+}
+
 export class FilterBy extends Strategies.FilterBy {
-    static voicing(note, viewerData, voicing = []) {
-        // TODO
+    static voicing(note, viewerData, voicing = VOICING.barreMaj_A) {
+        if (!note || !note.interval) return false;
+        return note.interval.id === voicing[viewerData.stringData.number - 1]
     }
 }
