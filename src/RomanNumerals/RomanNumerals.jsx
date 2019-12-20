@@ -20,11 +20,22 @@ function RomanNumeralBlock(props) {
         <div
             className='roman-numeral-block'
         >
-            <div>{props.romanNumeral.name}</div>
-            {getIntervalLabels(props.romanNumeral.intervals)}
-            {getIntervalLabels(props.romanNumeral.relativeIntervals)}
+            <div className='header'>{props.romanNumeral.name}</div>
+            {getIntervalTable(props.romanNumeral, props.keyCenter)}
         </div>
     )
+}
+
+function getIntervalTable(romanNumeral, keyCenter) {
+    return (
+        <table>
+            <tbody>
+                <tr>{romanNumeral.intervals.map((i) => <td>{(new Theory.FunctionalNote(keyCenter, i)).name}</td>)}</tr>
+                <tr>{romanNumeral.intervals.map((i) => <td><IntervalLabel key={i.id} interval={i} /></td>)}</tr>
+                <tr>{romanNumeral.relativeIntervals.map((i) => <td><IntervalLabel key={i.id} interval={i} /></td>)}</tr>
+            </tbody>
+        </table>
+    );
 }
 
 function getIntervalLabels(intervals) {
@@ -38,8 +49,6 @@ export default function RomanNumerals(props) {
         return null;
 
     let conceptIntervals = config.concept.intervals;
-    //let keyCenterIntervals = config.concept.intervals;
-    //let relativeIntervals = props.romanNumeral.relativeIntervals;
     return (
         <div className='roman-numerals'>
             {config.concept.name}
@@ -52,7 +61,7 @@ export default function RomanNumerals(props) {
                     conceptIntervals.map((ci) => {
                         let degree = ci.degree;
                         let romanNumeral = new Theory.ConceptTypes.RomanNumeral(config.concept, degree);
-                        return <RomanNumeralBlock key={degree} romanNumeral={romanNumeral} />;
+                        return <RomanNumeralBlock key={degree} romanNumeral={romanNumeral} keyCenter={config.keyCenter} />;
                     })
                 }
             </div>
