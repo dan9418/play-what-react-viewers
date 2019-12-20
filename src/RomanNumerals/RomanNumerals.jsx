@@ -32,7 +32,7 @@ function ConceptBlock(props) {
             className='concept-block'
         >
             <div className='header'>{props.concept.name}</div>
-            {props.concept.intervals.map(i => <NoteBlock keyCenter={props.keyCenter} interval={i} />)}
+            {props.concept.intervals.map(i => <NoteBlock key={i.id} keyCenter={props.keyCenter} interval={i} />)}
         </div>
     )
 }
@@ -58,9 +58,9 @@ function getIntervalTable(romanNumeral, keyCenter) {
     return (
         <table>
             <tbody>
-                <tr>{romanNumeral.intervals.map((i) => <td>{(new Theory.FunctionalNote(keyCenter, i)).name}</td>)}</tr>
-                <tr>{romanNumeral.intervals.map((i) => <td><IntervalLabel key={i.id} interval={i} /></td>)}</tr>
-                <tr>{romanNumeral.relativeIntervals.map((i) => <td><IntervalLabel key={i.id} interval={i} /></td>)}</tr>
+                <tr>{romanNumeral.intervals.map((i) => <td key={i.id}>{(new Theory.FunctionalNote(keyCenter, i)).name}</td>)}</tr>
+                <tr>{romanNumeral.intervals.map((i) => <td key={i.id}><IntervalLabel interval={i} /></td>)}</tr>
+                <tr>{romanNumeral.relativeIntervals.map((i) => <td key={i.id}><IntervalLabel interval={i} /></td>)}</tr>
             </tbody>
         </table>
     );

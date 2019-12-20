@@ -512,6 +512,61 @@ eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../.
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Inputs/BoxButton/BoxButton.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Inputs/BoxButton/BoxButton.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".box-button {\\r\\n    display: inline-block;\\r\\n    line-height: 20px;\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    padding: 5px;\\r\\n    cursor: pointer;\\r\\n    background-color: #EEE;\\r\\n}\\r\\n\\r\\n.box-button.selected {\\r\\n    font-weight: bold;\\r\\n    background-color: #CCC;\\r\\n}\\r\\n\\r\\n.box-button:hover {\\r\\n    background-color: #DDD;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Inputs/BoxButton/BoxButton.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Inputs/ButtonList/ButtonList.css":
+/*!************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Inputs/ButtonList/ButtonList.css ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".button-list {\\r\\n    margin: 5px;\\r\\n}\\r\\n\\r\\n.button-list .box-button {\\r\\n    border: 1px solid black;\\r\\n}\\r\\n\\r\\n.button-list .box-button:first-child {\\r\\n    border-radius: 5px 0 0 5px;\\r\\n}\\r\\n\\r\\n.button-list .box-button:last-child {\\r\\n    border-radius: 0 5px 5px 0;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Inputs/ButtonList/ButtonList.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Inputs/ConceptInput/ConceptInput.css":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Inputs/ConceptInput/ConceptInput.css ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Inputs/ConceptInput/ConceptInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Inputs/KeyCenterInput/KeyCenterInput.css":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Inputs/KeyCenterInput/KeyCenterInput.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Inputs/KeyCenterInput/KeyCenterInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Inputs/NumericInput/NumericInput.css":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Inputs/NumericInput/NumericInput.css ***!
+  \****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".numeric-input {\\r\\n    \\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Inputs/NumericInput/NumericInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/Keyboard/Keyboard.css":
 /*!*************************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/Keyboard/Keyboard.css ***!
@@ -530,7 +585,7 @@ eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../.
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".roman-numerals {\\r\\n\\tpadding: 10px;\\r\\n}\\r\\n\\r\\n.roman-numeral-block {\\r\\n    display: inline-block;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    background-color: #EEE;\\r\\n    border-radius: 5px;\\r\\n    border: 1px solid #555;\\r\\n}\\r\\n\\r\\n.interval-label {\\r\\n    display: inline-block;\\r\\n    height: 25px;\\r\\n    width: 25px;\\r\\n    line-height: 25px;\\r\\n    text-align: center;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    border-radius: 5px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".roman-numerals {\\r\\n\\tpadding: 10px;\\r\\n}\\r\\n\\r\\n.roman-numeral-block {\\r\\n    display: inline-block;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    background-color: #EEE;\\r\\n    border-radius: 5px;\\r\\n    border: 1px solid #555;\\r\\n}\\r\\n\\r\\n.roman-numeral-block .header {\\r\\n    font-weight: bold;\\r\\n    font-size: 150%;\\r\\n}\\r\\n\\r\\n.concept-block .header {\\r\\n    font-weight: bold;\\r\\n    font-size: 150%;\\r\\n}\\r\\n\\r\\n.note-block {\\r\\n    display: inline-block;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    border-radius: 5px;\\r\\n    border: 1px solid #555;\\r\\n}\\r\\n\\r\\n.note-block div {\\r\\n    display: block;\\r\\n    margin: 5px;\\r\\n}\\r\\n\\r\\n.note-block .name {\\r\\n    font-weight: bold;\\r\\n    font-size: 150%;\\r\\n}\\r\\n\\r\\n.interval-label {\\r\\n    display: inline-block;\\r\\n    height: 25px;\\r\\n    width: 25px;\\r\\n    line-height: 25px;\\r\\n    text-align: center;\\r\\n    padding: 2px;\\r\\n    margin: 2px;\\r\\n    border-radius: 5px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -629,6 +684,133 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fre
 
 /***/ }),
 
+/***/ "./src/Inputs/BoxButton/BoxButton.css":
+/*!********************************************!*\
+  !*** ./src/Inputs/BoxButton/BoxButton.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./BoxButton.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Inputs/BoxButton/BoxButton.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Inputs/BoxButton/BoxButton.css?");
+
+/***/ }),
+
+/***/ "./src/Inputs/BoxButton/BoxButton.jsx":
+/*!********************************************!*\
+  !*** ./src/Inputs/BoxButton/BoxButton.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return BoxButton; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _BoxButton_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BoxButton.css */ \"./src/Inputs/BoxButton/BoxButton.css\");\n/* harmony import */ var _BoxButton_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_BoxButton_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction BoxButton(props) {\n  let classes = ['box-button', props.selected ? 'selected' : ''];\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    onClick: props.action\n  }, props.text);\n}\n\n//# sourceURL=webpack:///./src/Inputs/BoxButton/BoxButton.jsx?");
+
+/***/ }),
+
+/***/ "./src/Inputs/ButtonList/ButtonList.css":
+/*!**********************************************!*\
+  !*** ./src/Inputs/ButtonList/ButtonList.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ButtonList.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Inputs/ButtonList/ButtonList.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Inputs/ButtonList/ButtonList.css?");
+
+/***/ }),
+
+/***/ "./src/Inputs/ButtonList/ButtonList.jsx":
+/*!**********************************************!*\
+  !*** ./src/Inputs/ButtonList/ButtonList.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ButtonList; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ButtonList_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonList.css */ \"./src/Inputs/ButtonList/ButtonList.css\");\n/* harmony import */ var _ButtonList_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ButtonList_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoxButton/BoxButton */ \"./src/Inputs/BoxButton/BoxButton.jsx\");\n\n\n\nfunction ButtonList(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"button-list\"\n  }, props.data.map(d => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    key: d.id,\n    text: d.name,\n    selected: props.selected.id === d.id,\n    action: () => props.setValue(d)\n  })));\n}\n\n//# sourceURL=webpack:///./src/Inputs/ButtonList/ButtonList.jsx?");
+
+/***/ }),
+
+/***/ "./src/Inputs/ConceptInput/ConceptInput.css":
+/*!**************************************************!*\
+  !*** ./src/Inputs/ConceptInput/ConceptInput.css ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Inputs/ConceptInput/ConceptInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Inputs/ConceptInput/ConceptInput.css?");
+
+/***/ }),
+
+/***/ "./src/Inputs/ConceptInput/ConceptInput.jsx":
+/*!**************************************************!*\
+  !*** ./src/Inputs/ConceptInput/ConceptInput.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ConceptInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptInput.css */ \"./src/Inputs/ConceptInput/ConceptInput.css\");\n/* harmony import */ var _ConceptInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction ConceptInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"concept-innput\"\n  });\n}\n\n//# sourceURL=webpack:///./src/Inputs/ConceptInput/ConceptInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/Inputs/KeyCenterInput/KeyCenterInput.css":
+/*!******************************************************!*\
+  !*** ./src/Inputs/KeyCenterInput/KeyCenterInput.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./KeyCenterInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Inputs/KeyCenterInput/KeyCenterInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Inputs/KeyCenterInput/KeyCenterInput.css?");
+
+/***/ }),
+
+/***/ "./src/Inputs/KeyCenterInput/KeyCenterInput.jsx":
+/*!******************************************************!*\
+  !*** ./src/Inputs/KeyCenterInput/KeyCenterInput.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return KeyCenterInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyCenterInput.css */ \"./src/Inputs/KeyCenterInput/KeyCenterInput.css\");\n/* harmony import */ var _KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ButtonList/ButtonList */ \"./src/Inputs/ButtonList/ButtonList.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var play_what_src_Theory_Constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! play-what/src/Theory/Constants */ \"../play-what/src/Theory/Constants.js\");\n/* harmony import */ var _NumericInput_NumericInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../NumericInput/NumericInput */ \"./src/Inputs/NumericInput/NumericInput.jsx\");\n\n\n\n\n\n\nfunction KeyCenterInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"key-center-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"tonic\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    selected: props.keyCenter.tonic,\n    data: Object.values(play_what__WEBPACK_IMPORTED_MODULE_3__[\"Theory\"].Constants.TONIC),\n    setValue: d => console.log(d)\n  })), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"accidental\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    selected: props.keyCenter.accidental,\n    data: Object.values(play_what__WEBPACK_IMPORTED_MODULE_3__[\"Theory\"].Constants.ACCIDENTAL),\n    setValue: d => console.log(d)\n  })), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"octave\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_NumericInput_NumericInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    value: props.keyCenter.octave,\n    setValue: d => console.log(d)\n  })));\n}\n\n//# sourceURL=webpack:///./src/Inputs/KeyCenterInput/KeyCenterInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/Inputs/NumericInput/NumericInput.css":
+/*!**************************************************!*\
+  !*** ./src/Inputs/NumericInput/NumericInput.css ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./NumericInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Inputs/NumericInput/NumericInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Inputs/NumericInput/NumericInput.css?");
+
+/***/ }),
+
+/***/ "./src/Inputs/NumericInput/NumericInput.jsx":
+/*!**************************************************!*\
+  !*** ./src/Inputs/NumericInput/NumericInput.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return NumericInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _NumericInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NumericInput.css */ \"./src/Inputs/NumericInput/NumericInput.css\");\n/* harmony import */ var _NumericInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NumericInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoxButton/BoxButton */ \"./src/Inputs/BoxButton/BoxButton.jsx\");\n\n\n\nfunction NumericInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"numeric-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    text: '-',\n    selected: false,\n    action: () => props.setValue(props.value - 1)\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    text: props.value,\n    selected: false,\n    action: () => null\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    text: '+',\n    selected: false,\n    action: () => props.setValue(props.value + 1)\n  }));\n}\n\n//# sourceURL=webpack:///./src/Inputs/NumericInput/NumericInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/Inputs/_module.js":
+/*!*******************************!*\
+  !*** ./src/Inputs/_module.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoxButton/BoxButton */ \"./src/Inputs/BoxButton/BoxButton.jsx\");\n/* harmony import */ var _ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonList/ButtonList */ \"./src/Inputs/ButtonList/ButtonList.jsx\");\n/* harmony import */ var _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KeyCenterInput/KeyCenterInput */ \"./src/Inputs/KeyCenterInput/KeyCenterInput.jsx\");\n/* harmony import */ var _ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ConceptInput/ConceptInput */ \"./src/Inputs/ConceptInput/ConceptInput.jsx\");\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  KeyCenter: _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  Concept: _ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/Inputs/_module.js?");
+
+/***/ }),
+
 /***/ "./src/Keyboard/Keyboard.css":
 /*!***********************************!*\
   !*** ./src/Keyboard/Keyboard.css ***!
@@ -719,7 +901,7 @@ eval("var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyCenter: new play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].KeyCenter(play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Constants.TONIC.C, play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Constants.ACCIDENTAL.Natural, 4),\n  concept: play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Presets.SCALE.Major,\n  colorStrategy: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_1__[\"ColorBy\"].degree,\n  actionStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"Strategies\"].ActionBy.none\n});\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.defaults.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyCenter: new play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].KeyCenter(play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Constants.TONIC.D, play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Constants.ACCIDENTAL.Natural, 4),\n  concept: play_what__WEBPACK_IMPORTED_MODULE_0__[\"Theory\"].Presets.SCALE.Major,\n  colorStrategy: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_1__[\"ColorBy\"].degree,\n  actionStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"Strategies\"].ActionBy.none\n});\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.defaults.js?");
 
 /***/ }),
 
@@ -731,7 +913,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return RomanNumerals; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.css */ \"./src/RomanNumerals/RomanNumerals.css\");\n/* harmony import */ var _RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n/* harmony import */ var _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RomanNumerals.defaults */ \"./src/RomanNumerals/RomanNumerals.defaults.js\");\n\n\n\n\n\n\nfunction IntervalLabel(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"interval-label\",\n    style: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__[\"ColorBy\"].degree({\n      interval: props.interval\n    })\n  }, props.interval.id);\n}\n\nfunction RomanNumeralBlock(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"roman-numeral-block\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, props.romanNumeral.name), getIntervalTable(props.romanNumeral, props.keyCenter));\n}\n\nfunction getIntervalTable(romanNumeral, keyCenter) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"table\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tbody\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, new play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].FunctionalNote(keyCenter, i).name))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    key: i.id,\n    interval: i\n  })))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.relativeIntervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    key: i.id,\n    interval: i\n  }))))));\n}\n\nfunction getIntervalLabels(intervals) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    key: i.id,\n    interval: i\n  })));\n}\n\nfunction RomanNumerals(props) {\n  let config = Object.assign({}, _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_4__[\"default\"], props);\n  if (!config.concept || !(config.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.HeptatonicScale) && !(config.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.RomanNumeral)) return null;\n  let conceptIntervals = config.concept.intervals;\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"roman-numerals\"\n  }, config.concept.name, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, getIntervalLabels(conceptIntervals)), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, conceptIntervals.map(ci => {\n    let degree = ci.degree;\n    let romanNumeral = new play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.RomanNumeral(config.concept, degree);\n    return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](RomanNumeralBlock, {\n      key: degree,\n      romanNumeral: romanNumeral,\n      keyCenter: config.keyCenter\n    });\n  })));\n}\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return RomanNumerals; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumerals.css */ \"./src/RomanNumerals/RomanNumerals.css\");\n/* harmony import */ var _RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RomanNumerals_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RomanNumerals.strategies */ \"./src/RomanNumerals/RomanNumerals.strategies.js\");\n/* harmony import */ var _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RomanNumerals.defaults */ \"./src/RomanNumerals/RomanNumerals.defaults.js\");\n\n\n\n\n\n\nfunction IntervalLabel(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"interval-label\",\n    style: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__[\"ColorBy\"].degree({\n      interval: props.interval\n    })\n  }, props.interval.id);\n}\n\nfunction RomanNumeralBlock(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"roman-numeral-block\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"header\"\n  }, props.romanNumeral.name), getIntervalTable(props.romanNumeral, props.keyCenter));\n}\n\nfunction ConceptBlock(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"concept-block\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"header\"\n  }, props.concept.name), props.concept.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](NoteBlock, {\n    key: i.id,\n    keyCenter: props.keyCenter,\n    interval: i\n  })));\n}\n\nfunction NoteBlock(props) {\n  let note = new play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].FunctionalNote(props.keyCenter, props.interval);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"note-block\",\n    style: _RomanNumerals_strategies__WEBPACK_IMPORTED_MODULE_3__[\"ColorBy\"].degree(note)\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"name\"\n  }, note.name), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, 'Interval: ' + note.interval.id), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, 'Note Index: ' + note.noteIndex), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, 'Pitch Class: ' + note.pitchClass), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, 'Octave: ' + note.octave), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, 'Frequency: ' + Math.round(note.frequency) + ' Hz'));\n}\n\nfunction getIntervalTable(romanNumeral, keyCenter) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"table\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tbody\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", {\n    key: i.id\n  }, new play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].FunctionalNote(keyCenter, i).name))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", {\n    key: i.id\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    interval: i\n  })))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.relativeIntervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", {\n    key: i.id\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    interval: i\n  }))))));\n}\n\nfunction RomanNumerals(props) {\n  let config = Object.assign({}, _RomanNumerals_defaults__WEBPACK_IMPORTED_MODULE_4__[\"default\"], props);\n  if (!config.concept || !(config.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.HeptatonicScale) && !(config.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.RomanNumeral)) return null;\n  let conceptIntervals = config.concept.intervals;\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"roman-numerals\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](ConceptBlock, {\n    concept: config.concept,\n    keyCenter: config.keyCenter\n  })), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", null, conceptIntervals.map(ci => {\n    let degree = ci.degree;\n    let romanNumeral = new play_what__WEBPACK_IMPORTED_MODULE_2__[\"Theory\"].ConceptTypes.RomanNumeral(config.concept, degree);\n    return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](RomanNumeralBlock, {\n      key: degree,\n      romanNumeral: romanNumeral,\n      keyCenter: config.keyCenter\n    });\n  })));\n}\n\n//# sourceURL=webpack:///./src/RomanNumerals/RomanNumerals.jsx?");
 
 /***/ }),
 
@@ -763,11 +945,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Rom
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: Fretboard, Keyboard, RomanNumerals */
+/*! exports provided: Fretboard, Keyboard, RomanNumerals, Inputs */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Fretboard\", function() { return _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Keyboard\", function() { return _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _RomanNumerals_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RomanNumerals/_module */ \"./src/RomanNumerals/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"RomanNumerals\", function() { return _RomanNumerals_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Fretboard\", function() { return _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Keyboard\", function() { return _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _RomanNumerals_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RomanNumerals/_module */ \"./src/RomanNumerals/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"RomanNumerals\", function() { return _RomanNumerals_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Inputs/_module */ \"./src/Inputs/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Inputs\", function() { return _Inputs_module__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
