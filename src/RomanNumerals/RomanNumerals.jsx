@@ -26,6 +26,34 @@ function RomanNumeralBlock(props) {
     )
 }
 
+function ConceptBlock(props) {
+    return (
+        <div
+            className='concept-block'
+        >
+            <div className='header'>{props.concept.name}</div>
+            {props.concept.intervals.map(i => <NoteBlock keyCenter={props.keyCenter} interval={i} />)}
+        </div>
+    )
+}
+
+function NoteBlock(props) {
+    let note = new Theory.FunctionalNote(props.keyCenter, props.interval);
+    return (
+        <div
+            className='note-block'
+            style={ColorBy.degree(note)}
+        >
+            <div className="name">{note.name}</div>
+            <div>{'Interval: ' + note.interval.id}</div>
+            <div>{'Note Index: ' + note.noteIndex}</div>
+            <div>{'Pitch Class: ' + note.pitchClass}</div>
+            <div>{'Octave: ' + note.octave}</div>
+            <div>{'Frequency: ' + Math.round(note.frequency) + ' Hz'}</div>
+        </div>
+    )
+}
+
 function getIntervalTable(romanNumeral, keyCenter) {
     return (
         <table>
@@ -38,10 +66,6 @@ function getIntervalTable(romanNumeral, keyCenter) {
     );
 }
 
-function getIntervalLabels(intervals) {
-    return <div>{intervals.map((i) => <IntervalLabel key={i.id} interval={i} />)}</div>;
-}
-
 export default function RomanNumerals(props) {
     let config = Object.assign({}, DEFAULT_PROPS, props);
 
@@ -51,10 +75,8 @@ export default function RomanNumerals(props) {
     let conceptIntervals = config.concept.intervals;
     return (
         <div className='roman-numerals'>
-            {config.concept.name}
-
             <div>
-                {getIntervalLabels(conceptIntervals)}
+                <ConceptBlock concept={config.concept} keyCenter={config.keyCenter} />
             </div>
             <div>
                 {
