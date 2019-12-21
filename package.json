@@ -23,10 +23,10 @@
     "play-what": "file:C:/_dev/play-what",
     "style-loader": "^1.0.2",
     "webpack": "^4.41.3",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "react": "^16.10.2"
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^16.10.2"
   }
 }
