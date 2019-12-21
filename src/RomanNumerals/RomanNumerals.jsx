@@ -19,6 +19,7 @@ function RomanNumeralBlock(props) {
     return (
         <div
             className='roman-numeral-block'
+            onClick={() => Utils.Sound.playNotes(props.romanNumeral.getNotes(props.keyCenter))}
         >
             <div className='header'>{props.romanNumeral.name}</div>
             {getIntervalTable(props.romanNumeral, props.keyCenter)}
@@ -43,6 +44,7 @@ function NoteBlock(props) {
         <div
             className='note-block'
             style={ColorBy.degree(note)}
+            onClick={() => Utils.Sound.play(note.frequency, .5)}
         >
             <div className="name">{note.name}</div>
             <div>{'Interval: ' + note.interval.id}</div>
