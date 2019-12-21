@@ -15,10 +15,10 @@ const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
 
 export class ColorBy extends Strategies.ColorBy {
     static stringNumber(note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.stringNumber) {
-        return ColorUtils.continuous(viewerData.stringData.number, 1, viewerData.numStrings, scheme);
+        return Utils.Color.continuous(viewerData.stringData.number, 1, viewerData.numStrings, scheme);
     }
     static fretNumber(note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.fretNumber) {
-        return ColorUtils.continuous(viewerData.fretData.number, viewerData.fretLow, viewerData.fretHigh, scheme);
+        return Utils.Color.continuous(viewerData.fretData.number, viewerData.fretLow, viewerData.fretHigh, scheme);
     }
 }
 
