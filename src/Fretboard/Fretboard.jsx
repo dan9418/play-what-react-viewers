@@ -32,7 +32,8 @@ function getFrets(config) {
 
             let note = config.mapStrategy(index, config.keyCenter, config.concept);
             note = config.noteFilter(note, viewerData) ? note : new Theory.NonfunctionalNote(index);
-            let styles = config.colorFilter(note, viewerData) ? config.colorStrategy(note, viewerData) : {};
+            let colorStrategy = typeof config.colorStrategy === 'Function' ? config.colorStrategy : config.colorStrategy.fx;
+            let styles = config.colorFilter(note, viewerData) ? colorStrategy(note, viewerData) : {};
             let label = config.labelFilter(note, viewerData) ? config.labelStrategy(note, viewerData) : '';
             let action = config.actionFilter(note, viewerData) ? config.actionStrategy(note, viewerData) : () => null;
             frets.push(<Fret

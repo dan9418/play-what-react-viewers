@@ -11,22 +11,22 @@ export default function KeyCenterInput(props) {
         >
             <div className='tonic'>
                 <ButtonList
-                    selected={props.keyCenter.tonic}
+                    selected={props.value.tonic}
                     data={Object.values(Theory.Constants.TONIC)}
-                    setValue={(tonic) => props.setKeyCenter(new Theory.KeyCenter(tonic, props.keyCenter.accidental, props.keyCenter.octave))}
+                    setValue={(tonic) => props.setValue(new Theory.KeyCenter(tonic, props.value.accidental, props.value.octave))}
                 />
             </div>
             <div className='accidental'>
                 <ButtonList
-                    selected={props.keyCenter.accidental}
+                    selected={props.value.accidental}
                     data={Object.values(Theory.Constants.ACCIDENTAL)}
-                    setValue={(accidental) => props.setKeyCenter(new Theory.KeyCenter(props.keyCenter.tonic, accidental, props.keyCenter.octave))}
+                    setValue={(accidental) => props.setValue(new Theory.KeyCenter(props.value.tonic, accidental, props.value.octave))}
                 />
             </div>
             <div className='octave'>
                 <NumericInput
-                    value={props.keyCenter.octave}
-                    setValue={(octave) => props.setKeyCenter(new Theory.KeyCenter(props.keyCenter.tonic, props.keyCenter.accidental, octave))}
+                    value={props.value.octave}
+                    setValue={(octave) => props.setValue(new Theory.KeyCenter(props.value.tonic, props.value.accidental, octave))}
                 />
             </div>
         </div>

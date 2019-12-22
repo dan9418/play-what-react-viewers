@@ -11,8 +11,9 @@ const DEFAULT_ROMAN_NUMERAL_COLOR_SCHEMES = {
     ]
 };
 
-export class ColorBy extends Strategies.ColorBy {
+const ColorBy = Object.create(Strategies.ColorBy); /*{
     static quality(note, viewerData, scheme = DEFAULT_ROMAN_NUMERAL_COLOR_SCHEMES.quality) {
         return ColorUtils.continuous(note.noteIndex - viewerData.keyLow, viewerData.minNote.noteIndex - viewerData.keyLow, viewerData.maxNote.noteIndex - viewerData.keyLow, scheme);
     }
-}
+}*/
+export { ColorBy };

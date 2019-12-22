@@ -5,59 +5,103 @@ import Fretboard from '../Fretboard';
 import { Strategies } from 'play-what';
 import * as FretboardStrategies from '../Fretboard.strategies';
 import DropdownInput from '../../Inputs/DropdownInput/DropdownInput';
+import KeyCenterInput from '../../Inputs/KeyCenterInput/KeyCenterInput';
+import ConceptInput from '../../Inputs/ConceptInput/ConceptInput';
 
-const STRATEGY_DATA = [
+const INPUT_DATA = [
+    {
+        id: 'keyCenter',
+        name: 'Key Center',
+        component: KeyCenterInput
+    },
+    {
+        id: 'concept',
+        name: 'Concept',
+        component: ConceptInput
+    },
+    /*{
+        id: 'mapStrategy',
+        mapValueToProp: val => val.fx,
+        name: 'Map Strategy',
+        component: DropdownInput,
+        props: {
+            data: [
+                {
+                    id: 'noteIndex',
+                    name: 'Note Index',
+                    fx: Strategies.MapBy.noteIndex
+                },
+                {
+                    id: 'pitchClass',
+                    name: 'Pitch Class',
+                    fx: Strategies.MapBy.pitchClass
+                }
+            ]
+        }
+    },*/
     {
         id: 'colorStrategy',
+        component: DropdownInput,
         name: 'Color Strategy',
-        data: [
-            {
-                id: 'none',
-                name: 'None',
-                fx: FretboardStrategies.ColorBy.none
-            },
-            {
-                id: 'binary',
-                name: 'Binary',
-                fx: FretboardStrategies.ColorBy.binary
-            },
-            {
-                id: 'degree',
-                name: 'Degree',
-                fx: FretboardStrategies.ColorBy.degree
-            },
-            {
-                id: 'pitchClass',
-                name: 'Pitch Class',
-                fx: FretboardStrategies.ColorBy.pitchClass
-            },
-            {
-                id: 'noteIndex',
-                name: 'Note Index',
-                fx: FretboardStrategies.ColorBy.noteIndex
-            },
-            {
-                id: 'frequency',
-                name: 'Frequency',
-                fx: FretboardStrategies.ColorBy.frequency
-            },
-            {
-                id: 'octave',
-                name: 'Octave',
-                fx: FretboardStrategies.ColorBy.octave
-            },
-            {
-                id: 'stringNumber',
-                name: 'String Number',
-                fx: FretboardStrategies.ColorBy.stringNumber
-            },
-            {
-                id: 'fretNumber',
-                name: 'Fret Number',
-                fx: FretboardStrategies.ColorBy.fretNumber
-            }
-        ]
+        props: {
+            data: Object.values(FretboardStrategies.ColorBy)
+        },
     }
+    /*{
+        id: 'labelStrategy',
+        mapValueToProp: val => val.fx,
+        component: DropdownInput,
+        name: 'Label Strategy',
+        props: {
+            data: [
+                {
+                    id: 'none',
+                    name: 'None',
+                    fx: FretboardStrategies.LabelBy.none
+                },
+                {
+                    id: 'degree',
+                    name: 'Degree',
+                    fx: FretboardStrategies.LabelBy.degree
+                },
+                {
+                    id: 'interval',
+                    name: 'Interval',
+                    fx: FretboardStrategies.LabelBy.degree
+                },
+                {
+                    id: 'pitchClass',
+                    name: 'Pitch Class',
+                    fx: FretboardStrategies.LabelBy.pitchClass
+                },
+                {
+                    id: 'noteIndex',
+                    name: 'Note Index',
+                    fx: FretboardStrategies.LabelBy.noteIndex
+                },
+                {
+                    id: 'frequency',
+                    name: 'Frequency',
+                    fx: FretboardStrategies.LabelBy.frequency
+                },
+                {
+                    id: 'octave',
+                    name: 'Octave',
+                    fx: FretboardStrategies.LabelBy.octave
+                },
+                {
+                    id: 'stringNumber',
+                    name: 'String Number',
+                    fx: FretboardStrategies.LabelBy.stringNumber
+                },
+                {
+                    id: 'fretNumber',
+                    name: 'Fret Number',
+                    fx: FretboardStrategies.LabelBy.fretNumber
+                }
+            ]
+        }
+    }*/
 ];
 
 export default class FretboardController extends React.Component {
@@ -66,20 +110,21 @@ export default class FretboardController extends React.Component {
         this.state = { ...DEFAULTS }
     }
 
-    getStrategyInput(strategy) {
+    getInput(inputData) {
+        let Comp = inputData.component;
         return (
-            <div className='strategy-input' key={strategy.id} >
-                <label>{strategy.name + ': '}</label>
-                <DropdownInput value={this.state[strategy.id]} data={strategy.data} setValue={(value) => this.setState({ [strategy.id]: value.fx })} />
+            <div className='strategy-input' key={inputData.id} >
+                <label>{inputData.name + ': '}</label>
+                <Comp value={this.state[inputData.id]} setValue={(value) => this.setState({ [inputData.id]: value })} {...inputData.props} />
             </div>
         );
     }
 
-    getStrategyInputs() {
+    getInputs() {
         let inputs = [];
-        for (let i = 0; i < STRATEGY_DATA.length; i++) {
-            let strategy = STRATEGY_DATA[i];
-            inputs.push(this.getStrategyInput(strategy));
+        for (let i = 0; i < INPUT_DATA.length; i++) {
+            let inputData = INPUT_DATA[i];
+            inputs.push(this.getInput(inputData));
         }
         return inputs;
     }
@@ -88,7 +133,7 @@ export default class FretboardController extends React.Component {
         return (
             <div className='fretboard-controller'>
                 <h1>Fretboard</h1>
-                {this.getStrategyInputs()}
+                {this.getInputs()}
                 <Fretboard {...this.state} />
             </div>
         );

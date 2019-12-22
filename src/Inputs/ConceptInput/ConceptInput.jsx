@@ -56,7 +56,7 @@ export default class ConceptInput extends React.Component {
                         setValue={(preset) => {
                             // Not sure if safe to update both states like this...
                             this.setState({ selectedPreset: preset });
-                            this.props.setConcept(preset);
+                            this.props.setValue(preset);
                         }}
                     />
                 </div>

@@ -13,14 +13,23 @@ const DEFAULT_KEYBOARD_COLOR_SCHEMES = {
     ]
 };
 
-export class ColorBy extends Strategies.ColorBy {
-    static keyNumber(note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyNumber) {
+const ColorBy = Object.create(Strategies.ColorBy);
+
+ColorBy.keyNumber = {
+    id: 'keyNumber',
+    name: 'Key Number',
+    fx: (note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyNumber) => {
         return ColorUtils.continuous(note.noteIndex - viewerData.keyLow, viewerData.minNote.noteIndex - viewerData.keyLow, viewerData.maxNote.noteIndex - viewerData.keyLow, scheme);
     }
-    static keyType(note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyType) {
+};
+ColorBy.keyType = {
+    id: 'keyType',
+    name: 'Key Type',
+    fx: (note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyType) => {
         return ColorUtils.discrete(viewerData.keyData.type === KeyboardKeyType.White ? 0 : 1, scheme);
     }
-}
+};
+export { ColorBy };
 
 /* Label */
 

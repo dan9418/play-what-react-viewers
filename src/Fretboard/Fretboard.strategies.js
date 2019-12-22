@@ -13,14 +13,23 @@ const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
     ]
 };
 
-export class ColorBy extends Strategies.ColorBy {
-    static stringNumber(note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.stringNumber) {
-        return Utils.Color.continuous(viewerData.stringData.number, 1, viewerData.numStrings, scheme);
+const ColorBy = Object.assign({}, Strategies.ColorBy, {
+    stringNumber: {
+        id: 'stringNumber',
+        name: 'String Number',
+        fx: (note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.stringNumber) => {
+            return Utils.Color.continuous(viewerData.stringData.number, 1, viewerData.numStrings, scheme);
+        }
+    },
+    fretNumber: {
+        id: 'fretNumber',
+        name: 'Fret Number',
+        fx: (note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.fretNumber) => {
+            return Utils.Color.continuous(viewerData.fretData.number, viewerData.fretLow, viewerData.fretHigh, scheme);
+        }
     }
-    static fretNumber(note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.fretNumber) {
-        return Utils.Color.continuous(viewerData.fretData.number, viewerData.fretLow, viewerData.fretHigh, scheme);
-    }
-}
+});
+export { ColorBy };
 
 /* Label */
 
