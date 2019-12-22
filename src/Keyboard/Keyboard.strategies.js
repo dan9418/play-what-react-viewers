@@ -13,31 +13,38 @@ const DEFAULT_KEYBOARD_COLOR_SCHEMES = {
     ]
 };
 
-const ColorBy = Object.create(Strategies.ColorBy);
-
-ColorBy.keyNumber = {
-    id: 'keyNumber',
-    name: 'Key Number',
-    fx: (note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyNumber) => {
-        return ColorUtils.continuous(note.noteIndex - viewerData.keyLow, viewerData.minNote.noteIndex - viewerData.keyLow, viewerData.maxNote.noteIndex - viewerData.keyLow, scheme);
+export const ColorBy = Object.assign({}, Strategies.ColorBy, {
+    keyNumber: {
+        id: 'keyNumber',
+        name: 'Key Number',
+        fx: (note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyNumber) => {
+            return ColorUtils.continuous(note.noteIndex - viewerData.keyLow, viewerData.minNote.noteIndex - viewerData.keyLow, viewerData.maxNote.noteIndex - viewerData.keyLow, scheme);
+        }
+    },
+    keyType: {
+        id: 'keyType',
+        name: 'Key Type',
+        fx: (note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyType) => {
+            return ColorUtils.discrete(viewerData.keyData.type === KeyboardKeyType.White ? 0 : 1, scheme);
+        }
     }
-};
-ColorBy.keyType = {
-    id: 'keyType',
-    name: 'Key Type',
-    fx: (note, viewerData, scheme = DEFAULT_KEYBOARD_COLOR_SCHEMES.keyType) => {
-        return ColorUtils.discrete(viewerData.keyData.type === KeyboardKeyType.White ? 0 : 1, scheme);
-    }
-};
-export { ColorBy };
+});
 
 /* Label */
 
-export class LabelBy extends Strategies.LabelBy {
-    static keyNumber(note, viewerData) {
-        return note.noteIndex - viewerData.keyLow;
+export const LabelBy = Object.assign({}, Strategies.LabelBy, {
+    keyNumber: {
+        id: 'keyNumber',
+        name: 'Key Number',
+        fx: (note, viewerData) => {
+            return note.noteIndex - viewerData.keyLow;
+        }
+    },
+    keyType: {
+        id: 'keyType',
+        name: 'Key Type',
+        fx: (note, viewerData) => {
+            return viewerData.keyData.type === KeyboardKeyType.White ? 'W' : 'B';
+        }
     }
-    static keyType(note, viewerData) {
-        return viewerData.keyData.type === KeyboardKeyType.White ? 'W' : 'B';
-    }
-}
+});

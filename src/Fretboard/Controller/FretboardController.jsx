@@ -19,26 +19,6 @@ const INPUT_DATA = [
         name: 'Concept',
         component: ConceptInput
     },
-    /*{
-        id: 'mapStrategy',
-        mapValueToProp: val => val.fx,
-        name: 'Map Strategy',
-        component: DropdownInput,
-        props: {
-            data: [
-                {
-                    id: 'noteIndex',
-                    name: 'Note Index',
-                    fx: Strategies.MapBy.noteIndex
-                },
-                {
-                    id: 'pitchClass',
-                    name: 'Pitch Class',
-                    fx: Strategies.MapBy.pitchClass
-                }
-            ]
-        }
-    },*/
     {
         id: 'colorStrategy',
         component: DropdownInput,
@@ -46,62 +26,23 @@ const INPUT_DATA = [
         props: {
             data: Object.values(FretboardStrategies.ColorBy)
         },
-    }
-    /*{
+    },
+    {
         id: 'labelStrategy',
-        mapValueToProp: val => val.fx,
         component: DropdownInput,
         name: 'Label Strategy',
         props: {
-            data: [
-                {
-                    id: 'none',
-                    name: 'None',
-                    fx: FretboardStrategies.LabelBy.none
-                },
-                {
-                    id: 'degree',
-                    name: 'Degree',
-                    fx: FretboardStrategies.LabelBy.degree
-                },
-                {
-                    id: 'interval',
-                    name: 'Interval',
-                    fx: FretboardStrategies.LabelBy.degree
-                },
-                {
-                    id: 'pitchClass',
-                    name: 'Pitch Class',
-                    fx: FretboardStrategies.LabelBy.pitchClass
-                },
-                {
-                    id: 'noteIndex',
-                    name: 'Note Index',
-                    fx: FretboardStrategies.LabelBy.noteIndex
-                },
-                {
-                    id: 'frequency',
-                    name: 'Frequency',
-                    fx: FretboardStrategies.LabelBy.frequency
-                },
-                {
-                    id: 'octave',
-                    name: 'Octave',
-                    fx: FretboardStrategies.LabelBy.octave
-                },
-                {
-                    id: 'stringNumber',
-                    name: 'String Number',
-                    fx: FretboardStrategies.LabelBy.stringNumber
-                },
-                {
-                    id: 'fretNumber',
-                    name: 'Fret Number',
-                    fx: FretboardStrategies.LabelBy.fretNumber
-                }
-            ]
-        }
-    }*/
+            data: Object.values(FretboardStrategies.LabelBy)
+        },
+    },
+    {
+        id: 'mapStrategy',
+        component: DropdownInput,
+        name: 'Map Strategy',
+        props: {
+            data: Object.values(Strategies.MapBy)
+        },
+    }
 ];
 
 export default class FretboardController extends React.Component {

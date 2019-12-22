@@ -9,9 +9,11 @@ const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 function getFrets(config) {
     let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
     let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
+    
+    let mapStrategy = typeof config.mapStrategy === 'Function' ? config.mapStrategy : config.mapStrategy.fx;
     let viewerData = {
-        minNote: config.mapStrategy(min, config.keyCenter, config.concept),
-        maxNote: config.mapStrategy(max, config.keyCenter, config.concept),
+        minNote: mapStrategy(min, config.keyCenter, config.concept),
+        maxNote: mapStrategy(max, config.keyCenter, config.concept),
         fretLow: config.fretLow,
         fretHigh: config.fretHigh,
         numStrings: config.strings.length,
@@ -30,12 +32,18 @@ function getFrets(config) {
 
             viewerData.fretData = { number: j };
 
-            let note = config.mapStrategy(index, config.keyCenter, config.concept);
+            let note = mapStrategy(index, config.keyCenter, config.concept);
             note = config.noteFilter(note, viewerData) ? note : new Theory.NonfunctionalNote(index);
+
             let colorStrategy = typeof config.colorStrategy === 'Function' ? config.colorStrategy : config.colorStrategy.fx;
             let styles = config.colorFilter(note, viewerData) ? colorStrategy(note, viewerData) : {};
-            let label = config.labelFilter(note, viewerData) ? config.labelStrategy(note, viewerData) : '';
-            let action = config.actionFilter(note, viewerData) ? config.actionStrategy(note, viewerData) : () => null;
+
+            let labelStrategy = typeof config.labelStrategy === 'Function' ? config.labelStrategy : config.labelStrategy.fx;
+            let label = config.labelFilter(note, viewerData) ? labelStrategy(note, viewerData) : '';
+
+            let actionStrategy = typeof config.actionStrategy === 'Function' ? config.actionStrategy : config.actionStrategy.fx;
+            let action = config.actionFilter(note, viewerData) ? actionStrategy(note, viewerData) : () => null;
+
             frets.push(<Fret
                 key={`s${i}f${j}`}
                 label={label}

@@ -13,7 +13,7 @@ const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
     ]
 };
 
-const ColorBy = Object.assign({}, Strategies.ColorBy, {
+export const ColorBy = Object.assign({}, Strategies.ColorBy, {
     stringNumber: {
         id: 'stringNumber',
         name: 'String Number',
@@ -29,18 +29,26 @@ const ColorBy = Object.assign({}, Strategies.ColorBy, {
         }
     }
 });
-export { ColorBy };
 
 /* Label */
 
-export class LabelBy extends Strategies.LabelBy {
-    static stringNumber(note, viewerData) {
-        return viewerData.stringData.number;
+export const LabelBy = Object.assign({}, Strategies.LabelBy, {
+    stringNumber: {
+        id: 'stringNumber',
+        name: 'String Number',
+        fx: (note, viewerData) => {
+            return viewerData.stringData.number;
+        }
+    },
+
+    fretNumber: {
+        id: 'fretNumber',
+        name: 'Fret Number',
+        fx: (note, viewerData) => {
+            return viewerData.fretData.number;
+        }
     }
-    static fretNumber(note, viewerData) {
-        return viewerData.fretData.number;
-    }
-}
+});
 
 /* Filter */
 
@@ -51,9 +59,13 @@ const VOICING = {
     barreMin_A: ['P5', 'm3', 'P1', 'P5', 'P1', null]
 }
 
-export class FilterBy extends Strategies.FilterBy {
-    static voicing(note, viewerData, voicing = VOICING.barreMaj_E) {
-        if (!note || !note.interval) return false;
-        return note.interval.id === voicing[viewerData.stringData.number - 1]
+export const FilterBy = Object.assign({}, Strategies.FilterBy, {
+    voicing: {
+        id: 'stringNumber',
+        name: 'String Number',
+        fx: (note, viewerData, voicing = VOICING.barreMaj_E) => {
+            if (!note || !note.interval) return false;
+            return note.interval.id === voicing[viewerData.stringData.number - 1]
+        }
     }
-}
+});
