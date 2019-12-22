@@ -12,13 +12,22 @@ function modulo (a, b) {
 }
 
 function getKeyboardKeys(config, viewerWidth) {
+    let mapStrategy = (typeof config.mapStrategy === 'function') ? config.mapStrategy : config.mapStrategy.fx;
+    let colorStrategy = (typeof config.colorStrategy === 'function') ? config.colorStrategy : config.colorStrategy.fx;
+    let labelStrategy = (typeof config.labelStrategy === 'function') ? config.labelStrategy : config.labelStrategy.fx;
+    let actionStrategy = (typeof config.actionStrategy === 'function') ? config.actionStrategy : config.actionStrategy.fx;
+    let noteFilter = (typeof config.noteFilter === 'function') ? config.noteFilter : config.noteFilter.fx;
+    let colorFilter = (typeof config.colorFilter === 'function') ? config.colorFilter : config.colorFilter.fx;
+    let labelFilter = (typeof config.labelFilter === 'function') ? config.labelFilter : config.labelFilter.fx;
+    let actionFilter = (typeof config.actionFilter === 'function') ? config.actionFilter : config.actionFilter.fx;
+
     let keys = [];
     // Safe approximation for scale
     let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;
 
     let viewerData = {
-        minNote: config.mapStrategy(config.keyLow, config.keyCenter, config.concept),
-        maxNote: config.mapStrategy(config.keyHigh, config.keyCenter, config.concept),
+        minNote: mapStrategy(config.keyLow, config.keyCenter, config.concept),
+        maxNote: mapStrategy(config.keyHigh, config.keyCenter, config.concept),
         keyLow: config.keyLow,
         keyHigh: config.keyHigh,
         keyData: null
@@ -29,12 +38,12 @@ function getKeyboardKeys(config, viewerWidth) {
         
         viewerData.keyData = { type: type };
 
-        let note = config.mapStrategy(i, config.keyCenter, config.concept);
-        note = config.noteFilter(note, viewerData) ? note : new Theory.NonfunctionalNote(i);
+        let note = mapStrategy(i, config.keyCenter, config.concept);
+        note = noteFilter(note, viewerData) ? note : new Theory.NonfunctionalNote(i);
 
-        let styles = config.colorFilter() ? config.colorStrategy(note, viewerData) : {};
-        let label = config.labelFilter() ? config.labelStrategy(note, viewerData) : '';
-        let action = config.actionFilter(note, viewerData) ? config.actionStrategy(note, viewerData) : () => null;
+        let styles = colorFilter() ? colorStrategy(note, viewerData) : {};
+        let label = labelFilter() ? labelStrategy(note, viewerData) : '';
+        let action = actionFilter(note, viewerData) ? actionStrategy(note, viewerData) : () => null;
         keys.push(
             <KeyboardKey
                 key={i}
@@ -73,6 +82,7 @@ export default class Keyboard extends React.Component {
 
     render() {
         let config = Object.assign({}, DEFAULT_PROPS, this.props);
+        
         return (
             <div className='keyboard' ref={this.domNode}>
                 {getKeyboardKeys(config, this.state.width)}

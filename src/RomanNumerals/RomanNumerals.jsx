@@ -8,7 +8,7 @@ function IntervalLabel(props) {
     return (
         <div
             className='interval-label'
-            style={ColorBy.degree({ interval: props.interval })}
+            style={ColorBy.degree.fx({ interval: props.interval })}
         >
             {props.interval.id}
         </div>
@@ -43,7 +43,7 @@ function NoteBlock(props) {
     return (
         <div
             className='note-block'
-            style={ColorBy.degree(note)}
+            style={ColorBy.degree.fx(note)}
             onClick={() => Utils.Sound.play(note.frequency, .5)}
         >
             <div className="name">{note.name}</div>
