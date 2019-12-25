@@ -10,7 +10,15 @@ const DEFAULT_FRETBOARD_COLOR_SCHEMES = {
     fretNumber: [
         Utils.COLORS.White,
         Utils.COLORS.Black
-    ]
+    ],
+    caged: [
+        null,
+        Utils.COLORS.Red,
+        Utils.COLORS.Orange,
+        Utils.COLORS.Yellow,
+        Utils.COLORS.Green,
+        Utils.COLORS.Black
+    ],
 };
 
 export const ColorBy = Object.assign({}, Strategies.ColorBy, {
@@ -26,6 +34,18 @@ export const ColorBy = Object.assign({}, Strategies.ColorBy, {
         name: 'Fret Number',
         fx: (note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.fretNumber) => {
             return Utils.Color.continuous(viewerData.fretData.number, viewerData.fretLow, viewerData.fretHigh, scheme);
+        }
+    },
+    caged: {
+        id: 'caged',
+        name: 'CAGED',
+        fx: (note, viewerData, scheme = DEFAULT_FRETBOARD_COLOR_SCHEMES.caged) => {
+            if (!note || !note.interval) return Utils.Color.discrete(0, scheme);
+            else if (note.interval.degree === 1) return Utils.Color.discrete(1, scheme);
+            else if (note.interval.degree === 3) return Utils.Color.discrete(1, scheme);
+            else if (note.interval.degree === 5) return Utils.Color.discrete(1, scheme);
+            else if (note.interval.degree === 7) return Utils.Color.discrete(5, scheme);
+            else return Utils.Color.discrete(5, scheme);
         }
     }
 });

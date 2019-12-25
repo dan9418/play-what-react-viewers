@@ -17,7 +17,7 @@ export default {
     showDots: true,
     // theory
     keyCenter: new Theory.KeyCenter(Theory.Constants.TONIC.C, Theory.Constants.ACCIDENTAL.Natural, 4),
-    concept: Theory.Presets.CHORD.Maj7,
+    concept: Theory.Presets.SCALE.Major,
     // notes
     mapStrategy: Strategies.MapBy.noteIndex,
     noteFilter: () => true,
