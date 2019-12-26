@@ -18,23 +18,44 @@ export default class ViewController extends React.Component {
         );
     }
 
-    getInputs(data) {
+    getInputs() {
         let inputs = [];
-        for (let i = 0; i < data.length; i++) {
-            let inputData = data[i];
+        for (let i = 0; i < this.props.inputs.length; i++) {
+            let inputData = this.props.inputs[i];
             inputs.push(this.getInput(inputData));
         }
         return inputs;
     }
 
+    getOutputs() {
+        let outputs = [];
+        for (let i = 0; i < this.props.outputs.length; i++) {
+            let outputData = this.props.outputs[i];
+            let Comp = outputData.component;
+            outputs.push(<Comp key={outputData.id} {...this.state} {...this.props.parentState} />);
+        }
+        return outputs;
+    }
+
+    getChildren() {
+        if(!this.props.children)
+            return null;
+        let children = [];
+        for (let i = 0; i < this.props.children.length; i++) {
+            let child = this.props.children[i];
+            let parentState = Object.assign({}, this.state, this.props.parentState)
+            children.push(<ViewController key={child.id} parentState={parentState} {...child} />);
+        }
+        return children;
+    }
+
     render() {
-        let Viewer = this.props.viewer;
         return (
             <div className='fretboard-controller'>
-                <h1>Fretboard</h1>
-                {this.getInputs(this.props.inputs)}
-                <RomanNumerals {...this.state} />
-                <Viewer {...this.state} />
+                <h1>{this.props.name}</h1>
+                {this.getInputs()}
+                {this.getOutputs()}
+                {this.getChildren()}
             </div>
         );
     }
