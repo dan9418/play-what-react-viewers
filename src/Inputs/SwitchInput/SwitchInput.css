@@ -1,0 +1,17 @@
+.switch-input {
+    margin: 5px;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.switch-input .box-button {
+    border: 1px solid black;
+}
+
+.switch-input .box-button:first-child {
+    border-radius: 5px 0 0 5px;
+}
+
+.switch-input .box-button:last-child {
+    border-radius: 0 5px 5px 0;
+}
