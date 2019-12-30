@@ -11,11 +11,6 @@ export default function NoteBlock(props) {
             onClick={() => Utils.Sound.play(note.frequency, .5)}
         >
             <div className="name">{note.name}</div>
-            <div>{'Interval: ' + note.interval.id}</div>
-            <div>{'Note Index: ' + note.noteIndex}</div>
-            <div>{'Pitch Class: ' + note.pitchClass}</div>
-            <div>{'Octave: ' + note.octave}</div>
-            <div>{'Frequency: ' + Math.round(note.frequency) + ' Hz'}</div>
         </div>
     )
 }

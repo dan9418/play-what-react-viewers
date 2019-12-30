@@ -7,6 +7,8 @@ import Keyboard from "./Keyboard/_module";
 
 import ChordAnalysis from "./ChordAnalysis/ChordAnalysis";
 import ConceptBlock from "./ConceptBlock/ConceptBlock";
+import NoteTable from "./NoteTable/NoteTable";
 
 
-export { Fretboard, Keyboard, Inputs, ViewController, ChordAnalysis, ConceptBlock };
+
+export { Fretboard, Keyboard, Inputs, ViewController, ChordAnalysis, ConceptBlock, NoteTable };

@@ -8,7 +8,7 @@ export default function RomanNumeralBlock(props) {
             className='roman-numeral-block'
             onClick={() => Utils.Sound.playNotes(props.romanNumeral.getNotes(props.keyCenter))}
         >
-            <div className='header'>{props.romanNumeral.name}</div>
+            <div className='name'>{props.romanNumeral.name}</div>
             {getIntervalTable(props.romanNumeral, props.keyCenter)}
         </div>
     )

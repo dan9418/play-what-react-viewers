@@ -1,5 +1,12 @@
 .concept-input {
     margin: 5px;
-    display: inline-grid;
-    grid-template-columns: 50% 50%;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-top: 1px solid #333;
+    min-height: 30px;
 }
