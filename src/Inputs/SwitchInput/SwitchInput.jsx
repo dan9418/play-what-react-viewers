@@ -7,8 +7,8 @@ export default function SwitchInput(props) {
         <div
             className='switch-input'
         >
-            <BoxButton className='left' text={'0'} selected={!props.value} action={() => props.setValue(!props.value)} />
-            <BoxButton className='right' text={'1'} selected={props.value} action={() => props.setValue(!props.value)} />
+            <BoxButton className='left' text={'N'} selected={!props.value} action={() => props.setValue(!props.value)} />
+            <BoxButton className='right' text={'Y'} selected={props.value} action={() => props.setValue(!props.value)} />
         </div>
     );
 }
