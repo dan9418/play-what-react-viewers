@@ -6,6 +6,7 @@
     padding: 5px;
     cursor: pointer;
     background-color: #EEE;
+    color: black;
 }
 
 .box-button.selected {

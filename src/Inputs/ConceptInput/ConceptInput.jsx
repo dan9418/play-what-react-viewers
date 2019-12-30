@@ -39,8 +39,7 @@ export default class ConceptInput extends React.Component {
             <div
                 className='concept-input'
             >
-                <div className='input-row'>
-                    <label>Preset Type:</label>
+                <div className='type'>
                     <DropdownInput
                         data={PRESET_TYPES}
                         value={this.state.selectedType}
@@ -48,8 +47,7 @@ export default class ConceptInput extends React.Component {
                     />
                 </div>
 
-                <div className='input-row'>
-                    <label>{this.state.selectedType.name}:</label>
+                <div className='preset'>
                     <DropdownInput
                         data={this.state.selectedType.presets}
                         value={this.state.selectedPreset}

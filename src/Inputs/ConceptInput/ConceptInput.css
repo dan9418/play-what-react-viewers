@@ -1,11 +1,5 @@
 .concept-input {
     margin: 5px;
-}
-
-.concept-input .input-row {
-    margin: 5px;
-}
-
-.concept-input label {
-    margin: 5px;
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
 }

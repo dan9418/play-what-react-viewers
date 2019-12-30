@@ -1,0 +1,8 @@
+.key-center-input {
+    display: inline-grid;
+    grid-template-columns: 50% 50%;
+}
+
+.key-center-input .tonic {
+    grid-column: 1 / span 2;
+}

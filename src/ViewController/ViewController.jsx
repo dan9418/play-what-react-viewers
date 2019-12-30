@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './ViewController.css';
-import RomanNumerals from '../RomanNumerals/RomanNumerals';
+import RomanNumerals from '../RomanNumeralBlock/RomanNumeralBlock';
 
 export default class ViewController extends React.Component {
     constructor(props) {
