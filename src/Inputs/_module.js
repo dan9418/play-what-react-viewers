@@ -1,10 +1,10 @@
 import BoxButton from './BoxButton/BoxButton';
 import ButtonList from './ButtonList/ButtonList';
-import KeyCenter from './KeyCenterInput/KeyCenterInput';
-import Concept from './ConceptInput/ConceptInput';
 import DropdownInput from './DropdownInput/DropdownInput';
 import NumericInput from './NumericInput/NumericInput';
 import SwitchInput from './SwitchInput/SwitchInput';
+import TonicInput from './TonicInput/TonicInput';
+import AccidentalInput from './AccidentalInput/AccidentalInput';
 
 
-export default { KeyCenter, Concept, DropdownInput, NumericInput, SwitchInput };
+export default { DropdownInput, NumericInput, SwitchInput, TonicInput, AccidentalInput };
