@@ -47,8 +47,8 @@ function getFrets(config) {
                 fretNumber={fretNum}
                 styles={styles}
                 action={action}
-                showFretNumber={config.showFretNumbers && strNum === 0}
-                showFretDots={config.showDots && strNum === config.strings.length - 1}
+                showFretNumber={config.showFretNumbers && strNum === 1}
+                showFretDots={config.showDots && strNum === config.strings.length}
             />);
         }
     }
