@@ -3,12 +3,12 @@ import './SwitchInput.css';
 import BoxButton from '../BoxButton/BoxButton';
 
 export default function SwitchInput(props) {
+    let classes = ['switch-input', props.value ? 'true' : 'false'];
     return (
-        <div
-            className='switch-input'
-        >
-            <BoxButton className='left' text={'N'} selected={!props.value} action={() => props.setValue(!props.value)} />
-            <BoxButton className='right' text={'Y'} selected={props.value} action={() => props.setValue(!props.value)} />
+        <div className={classes.join(' ')}>
+            <div className='shell' onClick={() => props.setValue(!props.value)}>
+                <div className='ball' />
+            </div>
         </div>
     );
 }
