@@ -7,7 +7,7 @@ export default function NoteBlock(props) {
     return (
         <div
             className='note-block'
-            style={Strategies.ColorBy.degree.fx(note)}
+            style={props.colorStrategy.fx(note, props.viewerData)}
             onClick={() => Utils.Sound.play(note.frequency, .5)}
         >
             <div className="name">{note.name}</div>
