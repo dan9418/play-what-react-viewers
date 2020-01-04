@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './ConceptBlock.css';
 import NoteBlock from '../NoteBlock/NoteBlock';
-import { Theory } from 'play-what';
+import PlayWhat from 'play-what';
 
 export default function ConceptBlock(props) {
     let viewerData = {
-        minNote: new Theory.FunctionalNote(props.keyCenter, props.concept.intervals[0]),
-        maxNote: new Theory.FunctionalNote(props.keyCenter, props.concept.intervals[props.concept.intervals.length - 1])
+        minNote: new PlayWhat.FunctionalNote(props.keyCenter, props.concept.intervals[0]),
+        maxNote: new PlayWhat.FunctionalNote(props.keyCenter, props.concept.intervals[props.concept.intervals.length - 1])
     }
     return (
         <div className='concept-block'>

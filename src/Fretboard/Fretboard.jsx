@@ -2,7 +2,7 @@ import * as React from "react";
 import "./Fretboard.css";
 import { Fret } from "./Fret";
 import DEFAULT_PROPS from "./Fretboard.defaults";
-import { Theory } from 'play-what';
+import PlayWhat from 'play-what';
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
@@ -36,7 +36,7 @@ function getFrets(config) {
             viewerData.fretData = { number: fretNum };
 
             let note = callConfigFunction(config.mapStrategy, index, config.keyCenter, config.concept);
-            note = callConfigFunction(config.noteFilter, note, viewerData) ? note : new Theory.NonfunctionalNote(index);
+            note = callConfigFunction(config.noteFilter, note, viewerData) ? note : new PlayWhat.NonfunctionalNote(index);
             let styles = callConfigFunction(config.colorFilter, note, viewerData) ? callConfigFunction(config.colorStrategy, note, viewerData) : {};
             let label = callConfigFunction(config.labelFilter, note, viewerData) ? callConfigFunction(config.labelStrategy, note, viewerData) : '';
             let action = callConfigFunction(config.actionFilter, note, viewerData) ? callConfigFunction(config.actionStrategy, note, viewerData) : () => null;

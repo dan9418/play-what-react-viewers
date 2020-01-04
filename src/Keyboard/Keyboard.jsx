@@ -2,7 +2,7 @@ import * as React from "react";
 import "./Keyboard.css";
 import { KeyboardKey, KeyboardKeyType } from "./KeyboardKey";
 import DEFAULT_PROPS from "./Keyboard.defaults";
-import { Theory } from 'play-what';
+import PlayWhat from 'play-what';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -34,7 +34,7 @@ function getKeyboardKeys(config, viewerWidth) {
         viewerData.keyData = { type: type };
 
         let note = callConfigFunction(config.mapStrategy, i, config.keyCenter, config.concept);
-        note = callConfigFunction(config.noteFilter, note, viewerData) ? note : new Theory.NonfunctionalNote(i);
+        note = callConfigFunction(config.noteFilter, note, viewerData) ? note : new PlayWhat.NonfunctionalNote(i);
 
         let styles = callConfigFunction(config.colorFilter, note, viewerData) ? callConfigFunction(config.colorStrategy, note, viewerData) : {};
         let label = callConfigFunction(config.labelFilter, note, viewerData) ? callConfigFunction(config.labelStrategy, note, viewerData) : '';

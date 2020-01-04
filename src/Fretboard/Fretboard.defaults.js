@@ -1,4 +1,4 @@
-import { Theory, Strategies, Utils } from 'play-what';
+import PlayWhat from 'play-what';
 import { ColorBy, LabelBy, FilterBy } from './Fretboard.strategies';
 
 export default {
@@ -16,10 +16,10 @@ export default {
     showFretNumbers: true,
     showDots: true,
     // theory
-    keyCenter: new Theory.KeyCenter(Theory.Constants.TONIC.C, Theory.Constants.ACCIDENTAL.Natural, 4),
-    concept: Theory.Presets.SCALE.Major,
+    keyCenter: new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.C, PlayWhat.Constants.ACCIDENTAL.Natural, 4),
+    concept: PlayWhat.Presets.SCALE.Major,
     // notes
-    mapStrategy: Strategies.MapBy.noteIndex,
+    mapStrategy: PlayWhat.MapBy.noteIndex,
     noteFilter: () => true,
     // labels
     labelStrategy: LabelBy.interval,
@@ -28,6 +28,6 @@ export default {
     colorStrategy: ColorBy.degree,
     colorFilter: () => true,
     // actions
-    actionStrategy: Strategies.ActionBy.playSound,
+    actionStrategy: PlayWhat.ActionBy.playSound,
     actionFilter: () => true
 };

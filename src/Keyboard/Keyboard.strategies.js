@@ -1,19 +1,19 @@
-import { Theory, Strategies, Utils } from 'play-what';
+import PlayWhat from 'play-what';
 
 /* Color */
 
 const DEFAULT_KEYBOARD_COLOR_SCHEMES = {
     keyNumber: [
-        Utils.COLORS.White,
-        Utils.COLORS.Black
+        PlayWhat.COLORS.White,
+        PlayWhat.COLORS.Black
     ],
     keyType: [
-        Utils.COLORS.Green,
-        Utils.COLORS.Red
+        PlayWhat.COLORS.Green,
+        PlayWhat.COLORS.Red
     ]
 };
 
-export const ColorBy = Object.assign({}, Strategies.ColorBy, {
+export const ColorBy = Object.assign({}, PlayWhat.ColorBy, {
     keyNumber: {
         id: 'keyNumber',
         name: 'Key Number',
@@ -32,7 +32,7 @@ export const ColorBy = Object.assign({}, Strategies.ColorBy, {
 
 /* Label */
 
-export const LabelBy = Object.assign({}, Strategies.LabelBy, {
+export const LabelBy = Object.assign({}, PlayWhat.LabelBy, {
     keyNumber: {
         id: 'keyNumber',
         name: 'Key Number',
