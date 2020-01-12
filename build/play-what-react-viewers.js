@@ -511,14 +511,14 @@ eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../.
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/ConceptBlock/ConceptBlock.css":
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Summary/Summary.css":
 /*!*********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/ConceptBlock/ConceptBlock.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Summary/Summary.css ***!
   \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".concept-block .name {\\r\\n    \\r\\n}\\r\\n\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/ConceptBlock/ConceptBlock.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".concept-block .name {\\r\\n    \\r\\n}\\r\\n\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Summary/Summary.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -701,26 +701,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/ConceptBlock/ConceptBlock.css":
+/***/ "./src/Summary/Summary.css":
 /*!*******************************************!*\
-  !*** ./src/ConceptBlock/ConceptBlock.css ***!
+  !*** ./src/Summary/Summary.css ***!
   \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./ConceptBlock.css */ \"./node_modules/css-loader/dist/cjs.js!./src/ConceptBlock/ConceptBlock.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/ConceptBlock/ConceptBlock.css?");
+eval("var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Summary.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Summary/Summary.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Summary/Summary.css?");
 
 /***/ }),
 
-/***/ "./src/ConceptBlock/ConceptBlock.jsx":
+/***/ "./src/Summary/Summary.jsx":
 /*!*******************************************!*\
-  !*** ./src/ConceptBlock/ConceptBlock.jsx ***!
+  !*** ./src/Summary/Summary.jsx ***!
   \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ConceptBlock; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptBlock_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptBlock.css */ \"./src/ConceptBlock/ConceptBlock.css\");\n/* harmony import */ var _ConceptBlock_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptBlock_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _NoteBlock_NoteBlock__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../NoteBlock/NoteBlock */ \"./src/NoteBlock/NoteBlock.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nfunction ConceptBlock(props) {\n  let viewerData = {\n    minNote: new PlayWhat.FunctionalNote(props.keyCenter, props.concept.intervals[0]),\n    maxNote: new PlayWhat.FunctionalNote(props.keyCenter, props.concept.intervals[props.concept.intervals.length - 1])\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"concept-block\"\n  }, props.concept.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_NoteBlock_NoteBlock__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    key: i.id,\n    keyCenter: props.keyCenter,\n    interval: i,\n    colorStrategy: props.colorStrategy,\n    labelStrategy: props.labelStrategy,\n    viewerData: viewerData\n  })));\n}\n\n//# sourceURL=webpack:///./src/ConceptBlock/ConceptBlock.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Summary; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptBlock_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Summary.css */ \"./src/Summary/Summary.css\");\n/* harmony import */ var _ConceptBlock_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptBlock_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _NoteBlock_NoteBlock__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../NoteBlock/NoteBlock */ \"./src/NoteBlock/NoteBlock.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nfunction Summary(props) {\n  let viewerData = {\n    minNote: new PlayWhat.FunctionalNote(props.keyCenter, props.concept.intervals[0]),\n    maxNote: new PlayWhat.FunctionalNote(props.keyCenter, props.concept.intervals[props.concept.intervals.length - 1])\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"concept-block\"\n  }, props.concept.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_NoteBlock_NoteBlock__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    key: i.id,\n    keyCenter: props.keyCenter,\n    interval: i,\n    colorStrategy: props.colorStrategy,\n    labelStrategy: props.labelStrategy,\n    viewerData: viewerData\n  })));\n}\n\n//# sourceURL=webpack:///./src/Summary/Summary.jsx?");
 
 /***/ }),
 
@@ -1112,11 +1112,11 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
-/*! exports provided: Fretboard, Keyboard, Inputs, ChordAnalysis, ConceptBlock, NoteTable */
+/*! exports provided: Fretboard, Keyboard, Inputs, ChordAnalysis, Summary, NoteTable */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Inputs/_module */ \"./src/Inputs/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Inputs\", function() { return _Inputs_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Fretboard\", function() { return _Fretboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Keyboard\", function() { return _Keyboard_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _ChordAnalysis_ChordAnalysis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChordAnalysis/ChordAnalysis */ \"./src/ChordAnalysis/ChordAnalysis.jsx\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ChordAnalysis\", function() { return _ChordAnalysis_ChordAnalysis__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n/* harmony import */ var _ConceptBlock_ConceptBlock__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ConceptBlock/ConceptBlock */ \"./src/ConceptBlock/ConceptBlock.jsx\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConceptBlock\", function() { return _ConceptBlock_ConceptBlock__WEBPACK_IMPORTED_MODULE_4__[\"default\"]; });\n\n/* harmony import */ var _NoteTable_NoteTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NoteTable/NoteTable */ \"./src/NoteTable/NoteTable.jsx\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"NoteTable\", function() { return _NoteTable_NoteTable__WEBPACK_IMPORTED_MODULE_5__[\"default\"]; });\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Inputs/_module */ \"./src/Inputs/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Inputs\", function() { return _Inputs_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Fretboard\", function() { return _Fretboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Keyboard\", function() { return _Keyboard_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _ChordAnalysis_ChordAnalysis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChordAnalysis/ChordAnalysis */ \"./src/ChordAnalysis/ChordAnalysis.jsx\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ChordAnalysis\", function() { return _ChordAnalysis_ChordAnalysis__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n/* harmony import */ var _ConceptBlock_ConceptBlock__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Summary/Summary */ \"./src/Summary/Summary.jsx\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Summary\", function() { return _ConceptBlock_ConceptBlock__WEBPACK_IMPORTED_MODULE_4__[\"default\"]; });\n\n/* harmony import */ var _NoteTable_NoteTable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NoteTable/NoteTable */ \"./src/NoteTable/NoteTable.jsx\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"NoteTable\", function() { return _NoteTable_NoteTable__WEBPACK_IMPORTED_MODULE_5__[\"default\"]; });\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
