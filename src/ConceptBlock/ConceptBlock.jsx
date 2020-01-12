@@ -1,7 +1,19 @@
 import * as React from 'react';
 import './ConceptBlock.css';
-import NoteBlock from '../NoteBlock/NoteBlock';
 import PlayWhat from 'play-what';
+
+function NoteBlock(props) {
+    let note = new PlayWhat.FunctionalNote(props.keyCenter, props.interval);
+    return (
+        <div
+            className='note-block'
+            style={props.colorStrategy.fx(note, props.viewerData)}
+            onClick={() => PlayWhat.Sound.play(note.frequency, .5)}
+        >
+            <div className='name'>{props.labelStrategy.fx(note, props.viewerData)}</div>
+        </div>
+    )
+}
 
 export default function ConceptBlock(props) {
     let viewerData = {
