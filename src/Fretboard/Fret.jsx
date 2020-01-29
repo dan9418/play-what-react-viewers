@@ -23,7 +23,7 @@ export const Fret = (props) => {
         <div className={classes.join(' ')}>
             {props.showFretNumber && <div className='fret-number'>{props.fretNumber}</div>}
             <div className='fret-string'/>
-            <LabelComponent/>
+            <LabelComponent {...props} />
             {props.showFretDots && <div className='fret-dots'>{getDotsForFret(props.fretNumber)}</div>}
         </div>
     );
