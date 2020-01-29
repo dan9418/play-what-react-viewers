@@ -28,7 +28,6 @@
 /* Key */
 
 .keyboard-key {
-	display: inline-block;
 	vertical-align: top;
 	position: relative;
 	display: inline-flex;

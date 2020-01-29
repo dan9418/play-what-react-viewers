@@ -43,7 +43,7 @@ export const KeyboardKey = (props) => {
     return (
         <div className={`${keyColor}-key-container`}>
             <div className={classes.join(' ')} style={Object.assign({}, scaleStyles, props.styles)} onClick={props.action}>
-                <LabelComponent/>
+                <LabelComponent {...props}/>
             </div>
         </div>
     );

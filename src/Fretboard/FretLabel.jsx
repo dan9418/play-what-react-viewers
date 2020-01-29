@@ -3,6 +3,7 @@ import "./Fretboard.css";
 import DEFAULT_PROPS from "./FretLabel.defaults";
 import PlayWhat from 'play-what';
 
+// Temp
 function callConfigFunction(configFunction, ...args) {
     return ((typeof configFunction).toLowerCase() === 'function') ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);
 }
