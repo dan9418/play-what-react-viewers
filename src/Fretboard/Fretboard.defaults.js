@@ -1,4 +1,5 @@
 import React from 'react';
+import FretLabel from './FretLabel';
 
 export default {
     // form
@@ -14,5 +15,5 @@ export default {
     ],
     showFretNumbers: true,
     showDots: true,
-    labelComponent: () => <div/>
+    labelComponent: FretLabel
 };

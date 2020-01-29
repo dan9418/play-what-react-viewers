@@ -56,6 +56,19 @@
 	box-shadow: 0 0 1px 2px black inset;
 }
 
+/* Colors (applied only in absence of degree class) */
+
+.white {
+	background-color: white;
+    color: black;
+}
+
+.black {
+	background-color: black;
+	color: white;
+}
+
+
 /* Label */
 
 .white-key .keyboard-key-label {
@@ -67,16 +80,4 @@
 	bottom: 105%;
 	position: absolute;
 	color: black;
-}
-
-/* Colors (applied only in absence of degree class) */
-
-.white {
-	background-color: white;
-    color: black;
-}
-
-.black {
-	background-color: black;
-	color: white;
 }
