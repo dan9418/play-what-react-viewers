@@ -1,5 +1,4 @@
-import PlayWhat from 'play-what';
-import { ColorBy, LabelBy, FilterBy } from './Fretboard.strategies';
+import React from 'react';
 
 export default {
     // form
@@ -14,5 +13,6 @@ export default {
         { tuning: -8 }    // E
     ],
     showFretNumbers: true,
-    showDots: true
+    showDots: true,
+    labelComponent: () => <div/>
 };

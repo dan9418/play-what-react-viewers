@@ -12,7 +12,7 @@ export const KeyboardKeyType = {
     White: 'White'
 }
 
-function getScaleStyles(keyType, scale) {
+const getScaleStyles = (keyType, scale) => {
     switch (keyType) {
         case KeyboardKeyType.White:
             return {
@@ -33,15 +33,17 @@ function getScaleStyles(keyType, scale) {
     }
 }
 
-export function KeyboardKey(props) {
+export const KeyboardKey = (props) => {
     let keyColor = (props.type === KeyboardKeyType.White) ? 'white' : 'black';
     let scaleStyles = getScaleStyles(props.type, props.scale);
     let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
 
+    let LabelComponent = props.labelComponent;
+
     return (
         <div className={`${keyColor}-key-container`}>
             <div className={classes.join(' ')} style={Object.assign({}, scaleStyles, props.styles)} onClick={props.action}>
-                <div className='keyboard-key-label'>{props.label}</div>
+                <LabelComponent/>
             </div>
         </div>
     );

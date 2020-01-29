@@ -17,7 +17,7 @@ export const Fret = (props) => {
     if (props.fretNumber === 0)
         classes.push('open');
 
-    let LabelComponent = () => <div/>;
+    let LabelComponent = props.labelComponent;
 
     return (
         <div className={classes.join(' ')}>

@@ -7,46 +7,27 @@ import PlayWhat from 'play-what';
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
 // TODO Enforce code reuse
-function modulo (a, b) {
+const modulo = (a, b) => {
     return ((a % b) + b) % b;
 }
 
-function callConfigFunction(configFunction, ...args) {
-    return ((typeof configFunction).toLowerCase() === 'function') ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);
-}
-
-function getKeyboardKeys(config, viewerWidth) {
+const getKeyboardKeys = (config, viewerWidth) => {
     let keys = [];
     // Safe approximation for scale
     let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;
 
-    let viewerData = {
-        minNote: callConfigFunction(config.mapStrategy, config.keyLow, config.keyCenter, config.concept),
-        maxNote: callConfigFunction(config.mapStrategy, config.keyHigh, config.keyCenter, config.concept),
-        keyLow: config.keyLow,
-        keyHigh: config.keyHigh,
-        keyData: null
-    };
-
     for (let i = config.keyLow; i <= config.keyHigh; i++) {
         let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? KeyboardKeyType.White : KeyboardKeyType.Black;
         
-        viewerData.keyData = { type: type };
-
-        let note = callConfigFunction(config.mapStrategy, i, config.keyCenter, config.concept);
-        note = callConfigFunction(config.noteFilter, note, viewerData) ? note : new PlayWhat.NonfunctionalNote(i);
-
-        let styles = callConfigFunction(config.colorFilter, note, viewerData) ? callConfigFunction(config.colorStrategy, note, viewerData) : {};
-        let label = callConfigFunction(config.labelFilter, note, viewerData) ? callConfigFunction(config.labelStrategy, note, viewerData) : '';
-        let action = callConfigFunction(config.actionFilter, note, viewerData) ? callConfigFunction(config.actionStrategy, note, viewerData) : () => null;
         keys.push(
             <KeyboardKey
                 key={i}
+                noteIndex={i}
+                minIndex={config.keyLow}
+                maxIndex={config.keyHigh}
                 scale={viewerWidth / numWhiteKeys}
                 type={type}
-                label={label}
-                styles={styles}
-                action={action}
+                labelComponent={config.labelComponent}
             />
         );
     }
