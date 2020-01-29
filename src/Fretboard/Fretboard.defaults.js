@@ -14,20 +14,5 @@ export default {
         { tuning: -8 }    // E
     ],
     showFretNumbers: true,
-    showDots: true,
-    // theory
-    keyCenter: new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.C, PlayWhat.Constants.ACCIDENTAL.Natural, 4),
-    concept: PlayWhat.Presets.SCALE.Major,
-    // notes
-    mapStrategy: PlayWhat.MapBy.noteIndex,
-    noteFilter: () => true,
-    // labels
-    labelStrategy: LabelBy.interval,
-    labelFilter: () => true,
-    // colors
-    colorStrategy: ColorBy.degree,
-    colorFilter: () => true,
-    // actions
-    actionStrategy: PlayWhat.ActionBy.playSound,
-    actionFilter: () => true
+    showDots: true
 };

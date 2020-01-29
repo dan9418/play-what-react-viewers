@@ -6,47 +6,25 @@ import PlayWhat from 'play-what';
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
-function callConfigFunction(configFunction, ...args) {
-    return ((typeof configFunction).toLowerCase() === 'function') ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);
-}
-
-function getFrets(config) {
+const getFrets = (config) => {
     let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
     let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
-
-    let viewerData = {
-        minNote: callConfigFunction(config.mapStrategy, min, config.keyCenter, config.concept),
-        maxNote: callConfigFunction(config.mapStrategy, max, config.keyCenter, config.concept),
-        fretLow: config.fretLow,
-        fretHigh: config.fretHigh,
-        numStrings: config.strings.length,
-        stringData: null,
-        fretData: null
-    }
 
     let frets = [];
     // Get strings
     for (let strNum = 1; strNum <= config.strings.length; strNum++) {
-        viewerData.stringData = { ...config.strings[strNum - 1], number: strNum };
 
         // Get frets for string
         for (let fretNum = config.fretLow; fretNum <= config.fretHigh; fretNum++) {
-            let index = config.strings[strNum - 1].tuning + fretNum;
-
-            viewerData.fretData = { number: fretNum };
-
-            let note = callConfigFunction(config.mapStrategy, index, config.keyCenter, config.concept);
-            note = callConfigFunction(config.noteFilter, note, viewerData) ? note : new PlayWhat.NonfunctionalNote(index);
-            let styles = callConfigFunction(config.colorFilter, note, viewerData) ? callConfigFunction(config.colorStrategy, note, viewerData) : {};
-            let label = callConfigFunction(config.labelFilter, note, viewerData) ? callConfigFunction(config.labelStrategy, note, viewerData) : '';
-            let action = callConfigFunction(config.actionFilter, note, viewerData) ? callConfigFunction(config.actionStrategy, note, viewerData) : () => null;
+            let noteIndex = config.strings[strNum - 1].tuning + fretNum;
 
             frets.push(<Fret
                 key={`s${strNum}f${fretNum}`}
-                label={label}
-                fretNumber={fretNum}
-                styles={styles}
-                action={action}
+                noteIndex={noteIndex}
+                minIndex={min}
+                maxIndex={max}
+                fretNum={fretNum}
+                stringNum={strNum}
                 showFretNumber={config.showFretNumbers && strNum === 1}
                 showFretDots={config.showDots && strNum === config.strings.length}
             />);
@@ -55,7 +33,7 @@ function getFrets(config) {
     return frets;
 }
 
-function getFretRatios(numFrets) {
+const getFretRatios = (numFrets) => {
     let ratios = [];
     for (let i = 1; i <= numFrets; i++) {
         ratios.push((i <= 1) ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);
