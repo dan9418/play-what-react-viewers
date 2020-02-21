@@ -128,14 +128,25 @@
 	margin: 0 5px;
 }
 
-.string-tuner {
+.string-tuner, .string-remove {
 	display: inline-block;
 	margin: 0 5px;
 	cursor: pointer;
 }
 
-.string-tuner:hover {
+.string-remove {
+	color: grey;
+}
+
+.string-tuner:hover, .string-remove:hover {
 	color: tomato;
+}
+
+.string-tuning {
+	display: inline-block;
+	background-color: #EEE;
+	border-radius: 5px;
+	min-width: 25px;
 }
 
 .no-select {

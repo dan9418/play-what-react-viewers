@@ -12,12 +12,17 @@ const tuneString = (config, setStrings, stringIndex, tuning) => {
     setStrings(newConfig);
 };
 
-const getStringInputs = (stringConfig, setStrings) => {
+const removeString = (config, setStrings, stringIndex) => {
+    const newConfig = config.filter((s, i) => i !== stringIndex);
+    setStrings(newConfig);
+};
 
-    let inputs = stringConfig.map((c, i) => (
+const getStringInputs = (stringConfig, setStrings) => {
+    const inputs = stringConfig.map((c, i) => (
         <div key={i} className='string-input'>
+            <div onClick={() => removeString(stringConfig, setStrings, i)} className='string-remove'>X</div>
             <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} className='string-tuner'>-</div>
-            ({c.tuning})
+            <div key={i} className='string-tuning'>{c.tuning}</div>
             <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} className='string-tuner'>+</div>
         </div>
     ));
