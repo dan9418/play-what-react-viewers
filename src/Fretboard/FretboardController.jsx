@@ -4,6 +4,7 @@ import { Fret } from "./Fret";
 import Fretboard from './Fretboard';
 import DEFAULT_PROPS from "./Fretboard.defaults";
 import PlayWhat from 'play-what';
+import Inputs from '../Inputs/_module';
 
 export default function FretboardController(props) {
 
@@ -33,6 +34,20 @@ export default function FretboardController(props) {
                 labelStrategy={labelStrategy}
                 mapStrategy={mapStrategy}
             />
+
+            <div className='input-group'>
+                <div className='input-label'>Range</div>
+
+                <div className='input-container'>
+                    <div className='input-label'>Low Fret</div>
+                    <Inputs.NumericInput value={fretLow} setValue={setFretLow} />
+                </div>
+
+                <div className='input-container'>
+                    <div className='input-label'>High Fret</div>
+                    <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
+                </div>
+            </div>
         </div>
     );
 }

@@ -94,3 +94,19 @@
 .fretboard-controller {
 	width: 100%;
 }
+
+.input-group {
+
+}
+
+.input-container {
+	display: flex;
+	margin: 5px;
+	align-items: center;
+	justify-content: center;
+}
+
+.input-label {
+	margin: 5px;
+	font-weight: bold;
+}
