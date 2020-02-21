@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "./Fretboard.css";
 import { Fret } from "./Fret";
 import Fretboard from './Fretboard';
@@ -7,20 +7,32 @@ import PlayWhat from 'play-what';
 
 export default function FretboardController(props) {
 
-    const [keyCenter, setKeyCenter] = useState(0);
-    const [conceptData, setConceptData] = useState(0);
+    const [keyCenter, setKeyCenter] = useState(new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.C, PlayWhat.Constants.ACCIDENTAL.Natural, 4));
+    const [conceptData, setConceptData] = useState(PlayWhat.Presets.MODE.Ionian);
     const [fretLow, setFretLow] = useState(0);
     const [fretHigh, setFretHigh] = useState(12);
     const [showDots, setShowDots] = useState(true);
     const [showFretNumbers, setShowFretNumbers] = useState(true);
-    const [strings, setStrings] = useState([]);
-    const [colorStrategy, setColorStrategy] = useState(0);
-    const [labelStrategy, setLabelStrategy] = useState(0);
-    const [mapStrategy, setMapStrategy] = useState(0);
-    
+    const [strings, setStrings] = useState(DEFAULT_PROPS.strings);
+    const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.degree);
+    const [labelStrategy, setLabelStrategy] = useState(PlayWhat.LabelUtils.interval);
+    const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
+
     return (
         <div className='fretboard-controller'>
-            <Fretboard/>
+            <Fretboard
+                fretLow={fretLow}
+                fretHigh={fretHigh}
+                showDots={showDots}
+                showFretNumbers={showFretNumbers}
+                strings={strings}
+
+                keyCenter={keyCenter}
+                concept={conceptData.value}
+                colorStrategy={colorStrategy}
+                labelStrategy={labelStrategy}
+                mapStrategy={mapStrategy}
+            />
         </div>
     );
 }
