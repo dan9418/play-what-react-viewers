@@ -93,6 +93,9 @@
 
 .fretboard-controller {
 	width: 100%;
+	background-color: #BBB;
+	padding: 20px;
+	border-radius: 20px;
 }
 
 .input-group {

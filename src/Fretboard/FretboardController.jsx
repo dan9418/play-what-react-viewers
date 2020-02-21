@@ -53,6 +53,8 @@ export default function FretboardController(props) {
     return (
         <div className='fretboard-controller no-select'>
 
+            <div className='input-label'>Fretboard</div>
+
             <div className='fretboard-input-container'>
                 <div className='string-input-container'>
                     <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div>
