@@ -23,7 +23,7 @@ const getFrets = (config) => {
                 noteIndex={noteIndex}
                 minIndex={min}
                 maxIndex={max}
-                fretNum={fretNum}
+                fretNumber={fretNum}
                 stringNum={strNum}
                 showFretNumber={config.showFretNumbers && strNum === 1}
                 showFretDots={config.showDots && strNum === config.strings.length}

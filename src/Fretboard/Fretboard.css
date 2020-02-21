@@ -53,8 +53,6 @@
 .fret-number {
 	position: absolute;
 	bottom: 105%;
-
-	color: grey;
 }
 
 /* Fret Dots */
@@ -65,8 +63,10 @@
 
 	font-size: 16px;
 	white-space: nowrap;
+}
 
-	color: grey;
+.fret-number, .fret-dots {
+	color: #555;
 }
 
 /* Fret Label */
