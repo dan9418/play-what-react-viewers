@@ -119,8 +119,8 @@
 .string-input-container {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-evenly;
-	padding: 20px 0;
+	justify-content: space-between;
+	/*padding: 20px 0;*/
 }
 
 .string-input {
@@ -157,4 +157,11 @@
 		  -ms-user-select: none; /* Internet Explorer/Edge */
 			  user-select: none; /* Non-prefixed version, currently
 									supported by Chrome, Opera and Firefox */
+  }
+
+  .string-add {
+	  background: #AAA;
+	  height: 20px;
+	  border-radius: 10px;
+	cursor: pointer;
   }

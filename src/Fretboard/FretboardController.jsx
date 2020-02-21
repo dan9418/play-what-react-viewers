@@ -17,10 +17,16 @@ const removeString = (config, setStrings, stringIndex) => {
     setStrings(newConfig);
 };
 
+const addString = (config, setStrings, stringIndex) => {
+    const newConfig = [...config];
+    newConfig.splice(stringIndex, 0, { tuning: 0 })
+    setStrings(newConfig);
+};
+
 const getStringInputs = (stringConfig, setStrings) => {
     const inputs = stringConfig.map((c, i) => (
         <div key={i} className='string-input'>
-            <div onClick={() => removeString(stringConfig, setStrings, i)} className='string-remove'>X</div>
+            <div onClick={() => removeString(stringConfig, setStrings, i)} className='string-remove'>x</div>
             <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} className='string-tuner'>-</div>
             <div key={i} className='string-tuning'>{c.tuning}</div>
             <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} className='string-tuner'>+</div>
@@ -49,7 +55,9 @@ export default function FretboardController(props) {
 
             <div className='fretboard-input-container'>
                 <div className='string-input-container'>
+                    <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div>
                     {getStringInputs(strings, setStrings)}
+                    <div onClick={() => addString(strings, setStrings, strings.length)} className='string-add'>+</div>
                 </div>
                 <Fretboard
                     fretLow={fretLow}
