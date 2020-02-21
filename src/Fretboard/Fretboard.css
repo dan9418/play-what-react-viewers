@@ -110,3 +110,40 @@
 	margin: 5px;
 	font-weight: bold;
 }
+
+.fretboard-input-container {
+	display: grid;
+	grid-template-columns: auto 1fr;
+}
+
+.string-input-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 20px 0;
+}
+
+.string-input {
+	min-width: 25px;
+	margin: 0 5px;
+}
+
+.string-tuner {
+	display: inline-block;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.string-tuner:hover {
+	color: tomato;
+}
+
+.no-select {
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+		 -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Opera and Firefox */
+  }

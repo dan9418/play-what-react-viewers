@@ -6,6 +6,24 @@ import DEFAULT_PROPS from "./Fretboard.defaults";
 import PlayWhat from 'play-what';
 import Inputs from '../Inputs/_module';
 
+const tuneString = (config, setStrings, stringIndex, tuning) => {
+    const newConfig = [...config];
+    newConfig[stringIndex] = { tuning: tuning };
+    setStrings(newConfig);
+};
+
+const getStringInputs = (stringConfig, setStrings) => {
+
+    let inputs = stringConfig.map((c, i) => (
+        <div key={i} className='string-input'>
+            <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} className='string-tuner'>-</div>
+            ({c.tuning})
+            <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} className='string-tuner'>+</div>
+        </div>
+    ));
+    return inputs;
+}
+
 export default function FretboardController(props) {
 
     const [fretLow, setFretLow] = useState(0);
@@ -22,22 +40,28 @@ export default function FretboardController(props) {
     const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
 
     return (
-        <div className='fretboard-controller'>
-            <Fretboard
-                fretLow={fretLow}
-                fretHigh={fretHigh}
-                showDots={showDots}
-                showFretNumbers={showFretNumbers}
-                strings={strings}
+        <div className='fretboard-controller no-select'>
 
-                keyCenter={keyCenter}
-                concept={conceptData.value}
-                colorStrategy={colorStrategy}
-                labelStrategy={labelStrategy}
-                mapStrategy={mapStrategy}
-            />
+            <div className='fretboard-input-container'>
+                <div className='string-input-container'>
+                    {getStringInputs(strings, setStrings)}
+                </div>
+                <Fretboard
+                    fretLow={fretLow}
+                    fretHigh={fretHigh}
+                    showDots={showDots}
+                    showFretNumbers={showFretNumbers}
+                    strings={strings}
 
-        <div className='input-group'>
+                    keyCenter={keyCenter}
+                    concept={conceptData.value}
+                    colorStrategy={colorStrategy}
+                    labelStrategy={labelStrategy}
+                    mapStrategy={mapStrategy}
+                />
+            </div>
+
+            <div className='input-group'>
                 <div className='input-label'>Labels</div>
 
                 <div className='input-container'>
