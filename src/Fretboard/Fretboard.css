@@ -4,8 +4,6 @@
 	display: inline-block;
 	display: inline-grid;
 	width: 100%;
-	min-width: 100px;
-	max-width: 400px;
 
 	background-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);
 
