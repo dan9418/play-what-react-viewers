@@ -23,10 +23,26 @@ const addString = (config, setStrings, stringIndex) => {
     setStrings(newConfig);
 };
 
+const setStringNumber = (config, setStrings, number) => {
+    const newConfig = [...config];
+    const getEmptyStrings = n => {
+        const s = [];
+        for (let i = 0; i < n; i++) {
+            s.push({ tuning: 0 })
+        }
+        return s;
+    }
+    if (number < config.length) {
+        setStrings(newConfig.slice(0, number));
+    }
+    else if (number > config.length) {
+        setStrings([...newConfig, ...getEmptyStrings(number - config.length)]);
+    }
+};
+
 const getStringInputs = (stringConfig, setStrings) => {
     const inputs = stringConfig.map((c, i) => (
         <React.Fragment key={i}>
-            <div key={i + 'x'} className='string-remove' onClick={() => removeString(stringConfig, setStrings, i)} >x</div>
             <div key={i + '-'} className='string-tuner down' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
             <div key={i + '*'} className='string-tuning'>{PlayWhat.Constants.PITCH_CLASS_NAMES[PlayWhat.Common.modulo(c.tuning, 12)]}</div>
             <div key={i + '+'} className='string-tuner up' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
@@ -58,10 +74,9 @@ export default function FretboardController(props) {
 
             <div className='fretboard-input-container'>
                 <div className='card'>
-                    <div className='string-input-grid' style={{ gridTemplateRows: `20px repeat(${strings.length}, auto) 20px` }} >
-                        <div /> <div /> <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div> <div />
+                    <div className='string-input-grid' style={{ gridTemplateRows: `repeat(${strings.length}, auto)` }} >
+                        <div className='title'>Tuning</div>
                         {getStringInputs(strings, setStrings)}
-                        <div /><div /><div onClick={() => addString(strings, setStrings, strings.length)} className='string-add'>+</div><div />
                     </div>
                 </div>
                 <Fretboard
@@ -95,19 +110,13 @@ export default function FretboardController(props) {
 
                 <div className='card range-input-container'>
                     <div className='title'>Range</div>
-                    {/*
-                    <div className='input-container'>
-                        <div className='input-label'>Low Fret</div>
-                        <Inputs.NumericInput value={fretLow} setValue={setFretLow} />
-                    </div>
 
-                    <div className='input-container'>
-                        <div className='input-label'>High Fret</div>
-                        <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
-                    </div>
-                    */}
-
+                    <div className='range-input-label'>Frets</div>
                     <RangeInput min={0} max={24} low={fretLow} high={fretHigh} setLowValue={setFretLow} setHighValue={setFretHigh} />
+
+                    <div className='range-input-label'>Strings</div>
+                    <RangeInput min={1} max={12} low={1} high={strings.length} setHighValue={v => setStringNumber(strings, setStrings, v)} fixed={true} />
+
                 </div>
             </div>
 

@@ -127,11 +127,6 @@
 	justify-content: center;
 }
 
-.input-label {
-	margin: 5px;
-	font-weight: bold;
-}
-
 .fretboard-input-container {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
@@ -166,7 +161,13 @@
 	height: 100%;
 	min-width: 50px;
 	display: grid;
-	grid-template-columns: auto auto auto auto;
+	grid-template-columns: auto auto auto;
+}
+
+.string-input-grid .title {
+	grid-column: 1 / span 3;
+	font-weight: bold;
+	text-align: center;
 }
 
 .string-tuner, .string-remove, .string-tuning {
@@ -252,5 +253,17 @@
 .range-input-container .title {
 	font-weight: bold;
 	text-align: center;
-	margin-bottom: 40px;
+	grid-column: 1 / span 2;
+}
+
+.range-input-label {
+	font-style: italic;
+	text-align: center;
+	padding: 5px;
+	margin: auto;
+}
+
+.range-input-container {
+	display: grid;
+	grid-template-columns: auto 1fr;
 }

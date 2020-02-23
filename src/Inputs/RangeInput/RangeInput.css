@@ -1,10 +1,14 @@
 .range-input {
     display: grid;
     grid-template-columns: auto 1fr auto;
+    margin-top: 40px;
 }
 
 .value {
-    
+    font-size: 12px;
+    color: #333;
+    line-height: 20px;
+    width: 10px;
 }
 
 .track {
