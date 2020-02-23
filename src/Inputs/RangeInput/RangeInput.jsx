@@ -9,8 +9,12 @@ export default function RangeInput(props) {
         <div className='range-input'>
             <div className='value min'>{props.min}</div>
             <div className='track' onClick={() => { }}>
-                <div className='marker low' style={{ left: `${percentLow}%` }}>{props.low}</div>
-                <div className='marker high' style={{ left: `${percentHigh}%` }}>{props.high}</div>
+                <div className='marker low' style={{ left: `${percentLow}%` }}>
+                    <input type='number' className='marker-input' min={props.min} max={props.max} value={props.low} onChange={event => props.setLowValue(event.target.value.replace(/\D/, ''))} />
+                </div>
+                <div className='marker high' style={{ left: `${percentHigh}%` }}>
+                    <input type='number' className='marker-input' min={props.min} max={props.max} value={props.high} onChange={event => props.setHighValue(event.target.value.replace(/\D+/, ''))} />
+                </div>
                 <div className='active' style={{ width: `${percentHigh - percentLow}%`, left: `${percentLow + 1}%` }} />
             </div>
             <div className='value max'>{props.max}</div>

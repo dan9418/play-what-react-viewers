@@ -31,6 +31,13 @@
     justify-content: center;
 }
 
+.marker-input {
+    position: absolute;
+    height: 20px;
+    width: 40px;
+    top: -30px;
+}
+
 .active {
     height: 100%;
     position: absolute;

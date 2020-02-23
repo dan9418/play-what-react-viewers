@@ -25,12 +25,12 @@ const addString = (config, setStrings, stringIndex) => {
 
 const getStringInputs = (stringConfig, setStrings) => {
     const inputs = stringConfig.map((c, i) => (
-        <>
+        <React.Fragment key={i}>
             <div key={i + 'x'} className='string-remove' onClick={() => removeString(stringConfig, setStrings, i)} >x</div>
             <div key={i + '-'} className='string-tuner down' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
             <div key={i + '*'} className='string-tuning'>{PlayWhat.Constants.PITCH_CLASS_NAMES[PlayWhat.Common.modulo(c.tuning, 12)]}</div>
             <div key={i + '+'} className='string-tuner up' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
-        </>
+        </React.Fragment>
     ));
     return inputs;
 }
@@ -95,7 +95,7 @@ export default function FretboardController(props) {
 
                 <div className='card range-input-container'>
                     <div className='title'>Range</div>
-
+                    {/*
                     <div className='input-container'>
                         <div className='input-label'>Low Fret</div>
                         <Inputs.NumericInput value={fretLow} setValue={setFretLow} />
@@ -105,8 +105,9 @@ export default function FretboardController(props) {
                         <div className='input-label'>High Fret</div>
                         <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
                     </div>
+                    */}
 
-                    <RangeInput min={0} max={24} low={fretLow} high={fretHigh} />
+                    <RangeInput min={0} max={24} low={fretLow} high={fretHigh} setLowValue={setFretLow} setHighValue={setFretHigh} />
                 </div>
             </div>
 
