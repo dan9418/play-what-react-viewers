@@ -56,10 +56,12 @@ export default function FretboardController(props) {
 
 
             <div className='fretboard-input-container'>
-                <div className='string-input-grid' style={{ gridTemplateRows: `20px repeat(${strings.length}, auto) 20px` }} >
-                    <div /> <div /> <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div> <div />
-                    {getStringInputs(strings, setStrings)}
-                    <div /><div /><div onClick={() => addString(strings, setStrings, strings.length)} className='string-add'>+</div><div />
+                <div className='card'>
+                    <div className='string-input-grid' style={{ gridTemplateRows: `20px repeat(${strings.length}, auto) 20px` }} >
+                        <div /> <div /> <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div> <div />
+                        {getStringInputs(strings, setStrings)}
+                        <div /><div /><div onClick={() => addString(strings, setStrings, strings.length)} className='string-add'>+</div><div />
+                    </div>
                 </div>
                 <Fretboard
                     fretLow={fretLow}
@@ -89,23 +91,24 @@ export default function FretboardController(props) {
                         <div className='label-label'>Dots</div>
                     </div>
                 </div>
-            </div>
 
+                <div className='card range-input-container'>
+                    <div className='title'>Range</div>
 
-            <div className='input-group'>
-                <div className='toggle'>*</div>
-                <div className='input-label'>Range</div>
+                    <div className='input-container'>
+                        <div className='input-label'>Low Fret</div>
+                        <Inputs.NumericInput value={fretLow} setValue={setFretLow} />
+                    </div>
 
-                <div className='input-container'>
-                    <div className='input-label'>Low Fret</div>
-                    <Inputs.NumericInput value={fretLow} setValue={setFretLow} />
-                </div>
-
-                <div className='input-container'>
-                    <div className='input-label'>High Fret</div>
-                    <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
+                    <div className='input-container'>
+                        <div className='input-label'>High Fret</div>
+                        <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
+                    </div>
                 </div>
             </div>
+
+
+
         </div >
     );
 }

@@ -163,6 +163,7 @@
 /* string controls */
 
 .string-input-grid {
+	height: 100%;
 	min-width: 50px;
 	display: grid;
 	grid-template-columns: auto auto auto auto;
@@ -240,4 +241,15 @@
 
 .label-input-container .label-label {
 	margin-left: 5px;
+}
+
+/* Range */
+
+.range-input-container {
+	grid-column: 2;
+}
+
+.range-input-container .title {
+	font-weight: bold;
+	text-align: center;
 }
