@@ -4,6 +4,7 @@ import Fretboard from './Fretboard';
 import DEFAULT_PROPS from "./Fretboard.defaults";
 import PlayWhat from 'play-what';
 import Inputs from '../Inputs/_module';
+import RangeInput from "../Inputs/RangeInput/RangeInput";
 
 const tuneString = (config, setStrings, stringIndex, tuning) => {
     const newConfig = [...config];
@@ -104,6 +105,8 @@ export default function FretboardController(props) {
                         <div className='input-label'>High Fret</div>
                         <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
                     </div>
+
+                    <RangeInput min={0} max={24} low={fretLow} high={fretHigh} />
                 </div>
             </div>
 
