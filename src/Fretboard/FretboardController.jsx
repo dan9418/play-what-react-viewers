@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Fretboard.css";
-import { Fret } from "./Fret";
 import Fretboard from './Fretboard';
 import DEFAULT_PROPS from "./Fretboard.defaults";
 import PlayWhat from 'play-what';
@@ -25,12 +24,12 @@ const addString = (config, setStrings, stringIndex) => {
 
 const getStringInputs = (stringConfig, setStrings) => {
     const inputs = stringConfig.map((c, i) => (
-        <div key={i} className='string-input'>
-            <div onClick={() => removeString(stringConfig, setStrings, i)} className='string-remove'>x</div>
-            <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} className='string-tuner'>-</div>
-            <div key={i} className='string-tuning'>{c.tuning}</div>
-            <div onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} className='string-tuner'>+</div>
-        </div>
+        <>
+            <div key={i + 'x'} className='string-remove' onClick={() => removeString(stringConfig, setStrings, i)} >x</div>
+            <div key={i + '-'} className='string-tuner' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
+            <div key={i + '*'} className='string-tuning'>{PlayWhat.Constants.PITCH_CLASS_NAMES[PlayWhat.Common.modulo(c.tuning, 12)]}</div>
+            <div key={i + '+'} className='string-tuner' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
+        </>
     ));
     return inputs;
 }
@@ -56,10 +55,10 @@ export default function FretboardController(props) {
             <div className='input-label'>Fretboard</div>
 
             <div className='fretboard-input-container'>
-                <div className='string-input-container'>
-                    <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div>
+                <div className='string-input-grid' style={{ gridTemplateRows: `20px repeat(${strings.length}, auto) 20px` }} >
+                    <div /> <div /> <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div> <div />
                     {getStringInputs(strings, setStrings)}
-                    <div onClick={() => addString(strings, setStrings, strings.length)} className='string-add'>+</div>
+                    <div /><div /><div onClick={() => addString(strings, setStrings, strings.length)} className='string-add'>+</div><div />
                 </div>
                 <Fretboard
                     fretLow={fretLow}
@@ -77,6 +76,7 @@ export default function FretboardController(props) {
             </div>
 
             <div className='input-group'>
+                <div className='toggle'>*</div>
                 <div className='input-label'>Labels</div>
 
                 <div className='input-container'>
@@ -91,6 +91,7 @@ export default function FretboardController(props) {
             </div>
 
             <div className='input-group'>
+                <div className='toggle'>*</div>
                 <div className='input-label'>Range</div>
 
                 <div className='input-container'>
@@ -103,6 +104,6 @@ export default function FretboardController(props) {
                     <Inputs.NumericInput value={fretHigh} setValue={setFretHigh} />
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

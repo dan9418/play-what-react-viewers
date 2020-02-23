@@ -99,7 +99,28 @@
 }
 
 .input-group {
+	background-color: #CCC;
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
+	display: inline-block;
+	position: relative;
+}
 
+.toggle {
+	position: absolute;
+    top: 0;
+    right: 0;
+    background: #DDD;
+    border-radius: 100%;
+    line-height: 30px;
+    height: 30px;
+	width: 30px;
+	cursor: pointer;
+}
+
+.toggle:hover {
+	color: tomato;
 }
 
 .input-container {
@@ -119,22 +140,32 @@
 	grid-template-columns: auto 1fr;
 }
 
-.string-input-container {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	/*padding: 20px 0;*/
+.no-select {
+	-webkit-touch-callout: none; /* iOS Safari */
+	  -webkit-user-select: none; /* Safari */
+	   -khtml-user-select: none; /* Konqueror HTML */
+		 -moz-user-select: none; /* Old versions of Firefox */
+		  -ms-user-select: none; /* Internet Explorer/Edge */
+			  user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Opera and Firefox */
+  }
+
+/* string controls */
+
+.string-input-grid {
+	min-width: 50px;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
 }
 
-.string-input {
-	min-width: 25px;
-	margin: 0 5px;
-}
-
-.string-tuner, .string-remove {
+.string-tuner, .string-remove, .string-tuning {
 	display: inline-block;
-	margin: 0 5px;
+	min-width: 25px;
 	cursor: pointer;
+
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .string-remove {
@@ -146,21 +177,8 @@
 }
 
 .string-tuning {
-	display: inline-block;
-	background-color: #EEE;
-	border-radius: 5px;
-	min-width: 25px;
+	width: 50px;
 }
-
-.no-select {
-	-webkit-touch-callout: none; /* iOS Safari */
-	  -webkit-user-select: none; /* Safari */
-	   -khtml-user-select: none; /* Konqueror HTML */
-		 -moz-user-select: none; /* Old versions of Firefox */
-		  -ms-user-select: none; /* Internet Explorer/Edge */
-			  user-select: none; /* Non-prefixed version, currently
-									supported by Chrome, Opera and Firefox */
-  }
 
   .string-add {
 	  background: #AAA;
