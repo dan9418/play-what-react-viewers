@@ -54,6 +54,7 @@ export default function FretboardController(props) {
 
             <div className='controller-title'>Fretboard</div>
 
+
             <div className='fretboard-input-container'>
                 <div className='string-input-grid' style={{ gridTemplateRows: `20px repeat(${strings.length}, auto) 20px` }} >
                     <div /> <div /> <div onClick={() => addString(strings, setStrings, 0)} className='string-add'>+</div> <div />
@@ -73,19 +74,23 @@ export default function FretboardController(props) {
                     labelStrategy={labelStrategy}
                     mapStrategy={mapStrategy}
                 />
-                <div className="label-input-container">
-                    <div className='title'>Labels</div>
 
-                    <Inputs.SwitchInput value={showFretNumbers} setValue={setShowFretNumbers} />
-                    <div className='label-label'>Numbers</div>
+                <div className='card'>
+                    <div className='label-input-container'>
+                        <div className='title'>Labels</div>
 
-                    <Inputs.SwitchInput value={false} setValue={() => {}} />
-                    <div className='label-label'>Tuning</div>
+                        <Inputs.SwitchInput value={showFretNumbers} setValue={setShowFretNumbers} />
+                        <div className='label-label'>Numbers</div>
 
-                    <Inputs.SwitchInput value={showDots} setValue={setShowDots} />
-                    <div className='label-label'>Dots</div>
+                        <Inputs.SwitchInput value={false} setValue={() => { }} />
+                        <div className='label-label'>Tuning</div>
+
+                        <Inputs.SwitchInput value={showDots} setValue={setShowDots} />
+                        <div className='label-label'>Dots</div>
+                    </div>
                 </div>
             </div>
+
 
             <div className='input-group'>
                 <div className='toggle'>*</div>
