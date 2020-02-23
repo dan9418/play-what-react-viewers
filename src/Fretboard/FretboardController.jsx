@@ -26,9 +26,9 @@ const getStringInputs = (stringConfig, setStrings) => {
     const inputs = stringConfig.map((c, i) => (
         <>
             <div key={i + 'x'} className='string-remove' onClick={() => removeString(stringConfig, setStrings, i)} >x</div>
-            <div key={i + '-'} className='string-tuner' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
+            <div key={i + '-'} className='string-tuner down' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
             <div key={i + '*'} className='string-tuning'>{PlayWhat.Constants.PITCH_CLASS_NAMES[PlayWhat.Common.modulo(c.tuning, 12)]}</div>
-            <div key={i + '+'} className='string-tuner' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
+            <div key={i + '+'} className='string-tuner up' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
         </>
     ));
     return inputs;
@@ -52,7 +52,7 @@ export default function FretboardController(props) {
     return (
         <div className='fretboard-controller no-select'>
 
-            <div className='input-label'>Fretboard</div>
+            <div className='controller-title'>Fretboard</div>
 
             <div className='fretboard-input-container'>
                 <div className='string-input-grid' style={{ gridTemplateRows: `20px repeat(${strings.length}, auto) 20px` }} >
@@ -73,20 +73,17 @@ export default function FretboardController(props) {
                     labelStrategy={labelStrategy}
                     mapStrategy={mapStrategy}
                 />
-            </div>
+                <div className="label-input-container">
+                    <div className='title'>Labels</div>
 
-            <div className='input-group'>
-                <div className='toggle'>*</div>
-                <div className='input-label'>Labels</div>
-
-                <div className='input-container'>
-                    <div className='input-label'>Show Dots</div>
-                    <Inputs.SwitchInput value={showDots} setValue={setShowDots} />
-                </div>
-
-                <div className='input-container'>
-                    <div className='input-label'>Show Fret Numbers</div>
                     <Inputs.SwitchInput value={showFretNumbers} setValue={setShowFretNumbers} />
+                    <div className='label-label'>Numbers</div>
+
+                    <Inputs.SwitchInput value={false} setValue={() => {}} />
+                    <div className='label-label'>Tuning</div>
+
+                    <Inputs.SwitchInput value={showDots} setValue={setShowDots} />
+                    <div className='label-label'>Dots</div>
                 </div>
             </div>
 
