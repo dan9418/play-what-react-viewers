@@ -2,7 +2,6 @@ import React from 'react';
 import FretLabel from './FretLabel';
 
 export default {
-    // form
     fretLow: 0,
     fretHigh: 12,
     strings: [
@@ -15,5 +14,6 @@ export default {
     ],
     showFretNumbers: true,
     showDots: true,
-    labelComponent: FretLabel
+    labelComponent: FretLabel,
+    labelProps: {}
 };

@@ -9,7 +9,7 @@ function callConfigFunction(configFunction, ...args) {
 }
 
 export default function FretLabel(props) {
-    let config = Object.assign({}, DEFAULT_PROPS, props);
+    let config = Object.assign({}, DEFAULT_PROPS, props, props.labelProps);
 
     let note = callConfigFunction(config.mapStrategy, config.noteIndex, config.keyCenter, config.concept);
     note = note ? note : new Theory.NonfunctionalNote(config.noteIndex);

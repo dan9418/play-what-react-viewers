@@ -12,12 +12,12 @@ const THEORY_PANELS = [
     {
         id: 'keyCenter',
         name: 'KeyCenter',
-        component: Panels.Range
+        component: Panels.KeyCenter
     },
     {
         id: 'concept',
         name: 'Concept',
-        component: Panels.Range
+        component: Panels.KeyCenter
     }
 ];
 
@@ -69,10 +69,11 @@ const FretboardController = () => {
 
     // Theory
     const [keyCenter, setKeyCenter] = useState(new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.C, PlayWhat.Constants.ACCIDENTAL.Natural, 4));
-    const [conceptData, setConceptData] = useState(PlayWhat.Presets.MODE.Ionian);
+    const [concept, setConcept] = useState(PlayWhat.Presets.MODE.Ionian);
     const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.degree);
-    const [labelStrategy, setLabelStrategy] = useState(PlayWhat.LabelUtils.interval);
+    const [labelStrategy, setLabelStrategy] = useState(() => PlayWhat.LabelUtils.interval);
     const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
+    const [actionStrategy, setActionStrategy] = useState(PlayWhat.ActionBy.playSound);
 
     const ActivePanel = activePanel.component;
     const state = {
@@ -80,7 +81,22 @@ const FretboardController = () => {
         fretHigh, setFretHigh,
         showDots, setShowDots,
         showFretNumbers, setShowFretNumbers,
-        strings, setStrings
+        strings, setStrings,
+        keyCenter, setKeyCenter,
+        concept, setConcept,
+        mapStrategy, setMapStrategy,
+        labelStrategy, setLabelStrategy,
+        colorStrategy, setColorStrategy,
+        actionStrategy, setActionStrategy
+    };
+
+    const labelProps = {
+        keyCenter,
+        concept,
+        mapStrategy,
+        labelStrategy,
+        colorStrategy,
+        actionStrategy
     };
 
     return (
@@ -95,12 +111,7 @@ const FretboardController = () => {
                     showDots={showDots}
                     showFretNumbers={showFretNumbers}
                     strings={strings}
-
-                    keyCenter={keyCenter}
-                    concept={conceptData.value}
-                    colorStrategy={colorStrategy}
-                    labelStrategy={labelStrategy}
-                    mapStrategy={mapStrategy}
+                    labelProps={labelProps}
                 />
             </div>
 
@@ -109,7 +120,6 @@ const FretboardController = () => {
                 <div className={`card preview ${configOpen ? 'active' : ''}`} onClick={() => setConfigOpen(!configOpen)}>
                     edit
                 </div>
-
 
                 {configOpen &&
                     <>
@@ -132,8 +142,6 @@ const FretboardController = () => {
                         </div>
                     </>
                 }
-
-
             </div>
         </div >
     );

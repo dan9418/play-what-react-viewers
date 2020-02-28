@@ -28,6 +28,7 @@ const getFrets = (config) => {
                 showFretNumber={config.showFretNumbers && strNum === 1}
                 showFretDots={config.showDots && strNum === config.strings.length}
                 labelComponent={config.labelComponent}
+                labelProps={config.labelProps}
             />);
         }
     }
