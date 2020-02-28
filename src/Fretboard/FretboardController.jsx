@@ -8,7 +8,20 @@ import Panels from './Panels/_module';
 
 // Constants
 
-const PANELS = [
+const THEORY_PANELS = [
+    {
+        id: 'keyCenter',
+        name: 'KeyCenter',
+        component: Panels.Range
+    },
+    {
+        id: 'concept',
+        name: 'Concept',
+        component: Panels.Range
+    }
+];
+
+const FRETBOARD_PANELS = [
     {
         id: 'range',
         name: 'Range',
@@ -26,12 +39,26 @@ const PANELS = [
     }
 ];
 
+const PANEL_TYPES = [
+    {
+        id: 'theory',
+        name: 'Theory',
+        panels: THEORY_PANELS
+    },
+    {
+        id: 'fretboard',
+        name: 'Fretboard',
+        panels: FRETBOARD_PANELS
+    }
+];
+
 // Controller
 
 const FretboardController = () => {
 
     const [configOpen, setConfigOpen] = useState(false);
-    const [activePanel, setActivePanel] = useState(PANELS[0]);
+    const [activePanelType, setActivePanelType] = useState(PANEL_TYPES[0]);
+    const [activePanel, setActivePanel] = useState(activePanelType.panels[0]);
 
     // Fretboard
     const [fretLow, setFretLow] = useState(0);
@@ -85,18 +112,25 @@ const FretboardController = () => {
 
 
                 {configOpen &&
-                    <div className='input-box'>
-                        <div className='panel-name-container'>
-                            {PANELS.map(panel => (
-                                <div key={panel.id} fixclassName={`panel-name ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
-                                    {panel.name}
-                                </div>
-                            ))}
-                        </div>
-                        {
+                    <>
+                        <div className='input-box'>
+                            <div className='panel-name-container'>
+                                {PANEL_TYPES.map(type => (
+                                    <div key={type.id} className={`panel-name ${type.id === activePanelType.id ? 'active' : ''}`} onClick={() => { setActivePanelType(type); setActivePanel(type.panels[0]); } }>
+                                        {type.name}
+                                    </div>
+                                ))}
+                            </div>
+                            <div className='panel-name-container'>
+                                {activePanelType.panels.map(panel => (
+                                    <div key={panel.id} className={`panel-name ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
+                                        {panel.name}
+                                    </div>
+                                ))}
+                            </div>
                             <ActivePanel {...state} />
-                        }
-                    </div>
+                        </div>
+                    </>
                 }
 
 
