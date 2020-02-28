@@ -12,6 +12,18 @@
 	margin-bottom: 20px;
 }
 
+.fretboard-container {
+	max-width: 500px;
+	margin: auto;
+}
+
+.input-container {
+	max-width: 500px;
+	margin: auto;
+	background-color: #CCC;
+	border-radius: 10px;
+}
+
 /* Fret */
 
 .fret {
@@ -120,18 +132,6 @@
 	color: tomato;
 }
 
-.input-container {
-	display: flex;
-	margin: 5px;
-	align-items: center;
-	justify-content: center;
-}
-
-.fretboard-input-container {
-	display: grid;
-	grid-template-columns: auto 1fr auto;
-}
-
 .no-select {
 	-webkit-touch-callout: none;
 	/* iOS Safari */
@@ -152,13 +152,11 @@
 	background-color: #CCC;
     border-radius: 10px;
     padding: 10px;
-    margin: 10px;
 }
 
 /* string controls */
 
 .string-input-grid {
-	height: 100%;
 	min-width: 50px;
 	display: grid;
 	grid-template-columns: auto auto auto;
@@ -222,7 +220,6 @@
 	grid-template-columns: auto auto;
 	grid-template-rows: 20px 1fr 1fr 1fr;
 	text-align: left;
-	height: 100%;
 }
 
 .label-input-container > *:not(:first-child) {
@@ -266,4 +263,33 @@
 .range-input-container {
 	display: grid;
 	grid-template-columns: auto 1fr;
+}
+
+.preview {
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	cursor: pointer;
+}
+
+.preview:hover {
+	background-color: #DDD;
+}
+
+.input-box {
+	padding: 10px;
+}
+
+.panel-name {
+	display: inline-block;
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #AAA;
+	cursor: pointer;
+}
+
+.panel-name-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
