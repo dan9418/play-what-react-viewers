@@ -4,14 +4,14 @@
     margin-top: 40px;
 }
 
-.value {
+.range-input .value {
     font-size: 12px;
     color: #333;
     line-height: 20px;
     width: 10px;
 }
 
-.track {
+.range-input .track {
     margin: 5px 5px;
     background-color: #AAA;
     height: 10px;
@@ -19,7 +19,7 @@
     position: relative;
 }
 
-.marker {
+.range-input .marker {
     background-color: #EEE;
     height: 20px;
     width: 20px;
@@ -35,14 +35,14 @@
     justify-content: center;
 }
 
-.marker-input {
+.range-input .marker-input {
     position: absolute;
     height: 20px;
     width: 40px;
     top: -30px;
 }
 
-.active {
+.range-input .active {
     height: 100%;
     position: absolute;
     background-color: #5E99D1;

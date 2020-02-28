@@ -53,8 +53,6 @@ const getStringInputs = (stringConfig, setStrings) => {
 
 const RangePanel = props => (
     <div className='range-input-container'>
-        <div className='title'>Range</div>
-
         <div className='range-input-label'>Frets</div>
         <RangeInput min={0} max={24} low={props.fretLow} high={props.fretHigh} setLowValue={props.setFretLow} setHighValue={props.setFretHigh} />
 
@@ -63,17 +61,14 @@ const RangePanel = props => (
     </div>
 );
 
-const StringPanel = props => (
+const TuningPanel = props => (
     <div className='string-input-grid' style={{ gridTemplateRows: `repeat(${props.strings.length}, auto)` }} >
-        <div className='title'>Tuning</div>
         {getStringInputs(props.strings, props.setStrings)}
     </div>
 );
 
 const LabelPanel = props => (
     <div className='label-input-container'>
-        <div className='title'>Labels</div>
-
         <Inputs.SwitchInput value={props.showFretNumbers} setValue={props.setShowFretNumbers} />
         <div className='label-label'>Numbers</div>
 
@@ -92,9 +87,9 @@ const PANELS = [
         component: RangePanel
     },
     {
-        id: 'string',
-        name: 'Strings',
-        component: StringPanel
+        id: 'tuning',
+        name: 'Tuning',
+        component: TuningPanel
     },
     {
         id: 'label',
@@ -106,7 +101,7 @@ const PANELS = [
 const FretboardController = () => {
 
     const [configOpen, setConfigOpen] = useState(false);
-    const [activePanel, setActivePanel] = useState(PANELS[2]);
+    const [activePanel, setActivePanel] = useState(PANELS[0]);
 
     // Fretboard
     const [fretLow, setFretLow] = useState(0);
@@ -163,7 +158,7 @@ const FretboardController = () => {
                     <div className='input-box'>
                         <div className='panel-name-container'>
                             {PANELS.map(panel => (
-                                <div className="panel-name">
+                                <div className={`panel-name ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
                                     {panel.name}
                                 </div>
                             ))}
