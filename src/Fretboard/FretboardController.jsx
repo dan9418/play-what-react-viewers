@@ -18,6 +18,11 @@ const THEORY_PANELS = [
         id: 'concept',
         name: 'Concept',
         component: Panels.KeyCenter
+    },
+    {
+        id: 'filters',
+        name: 'Filters',
+        component: Panels.KeyCenter
     }
 ];
 
@@ -51,6 +56,8 @@ const PANEL_TYPES = [
         panels: FRETBOARD_PANELS
     }
 ];
+
+const getPreviewText = keyCenter => `${keyCenter.tonic.name}${keyCenter.accidental.name} ${keyCenter.octave}`;
 
 // Controller
 
@@ -122,7 +129,7 @@ const FretboardController = () => {
             <div className='input-container'>
 
                 <div className={`card preview ${configOpen ? 'active' : ''}`} onClick={() => setConfigOpen(!configOpen)}>
-                    edit
+                    {getPreviewText(keyCenter)}
                 </div>
 
                 {configOpen &&
