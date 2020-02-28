@@ -88,7 +88,7 @@ const FretboardController = () => {
                     <div className='input-box'>
                         <div className='panel-name-container'>
                             {PANELS.map(panel => (
-                                <div className={`panel-name ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
+                                <div key={panel.id} fixclassName={`panel-name ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
                                     {panel.name}
                                 </div>
                             ))}
