@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: auto 1fr auto;
     margin-top: 40px;
+    width: 100%;
+    width: 200px;
 }
 
 .range-input .value {

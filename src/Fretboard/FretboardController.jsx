@@ -6,79 +6,103 @@ import PlayWhat from 'play-what';
 import Inputs from '../Inputs/_module';
 import RangeInput from "../Inputs/RangeInput/RangeInput";
 
+// Tuning Panel
+
+// const removeString = (config, setStrings, stringIndex) => {
+//     const newConfig = config.filter((s, i) => i !== stringIndex);
+//     setStrings(newConfig);
+// };
+
+// const addString = (config, setStrings, stringIndex) => {
+//     const newConfig = [...config];
+//     newConfig.splice(stringIndex, 0, { tuning: 0 })
+//     setStrings(newConfig);
+// };
+
+// const setStringNumber = (config, setStrings, number) => {
+//     const newConfig = [...config];
+//     const getEmptyStrings = n => {
+//         const s = [];
+//         for (let i = 0; i < n; i++) {
+//             s.push({ tuning: 0 })
+//         }
+//         return s;
+//     }
+//     if (number < config.length) {
+//         setStrings(newConfig.slice(0, number));
+//     }
+//     else if (number > config.length) {
+//         setStrings([...newConfig, ...getEmptyStrings(number - config.length)]);
+//     }
+// };
+
 const tuneString = (config, setStrings, stringIndex, tuning) => {
     const newConfig = [...config];
     newConfig[stringIndex] = { tuning: tuning };
     setStrings(newConfig);
 };
 
-const removeString = (config, setStrings, stringIndex) => {
-    const newConfig = config.filter((s, i) => i !== stringIndex);
-    setStrings(newConfig);
-};
-
-const addString = (config, setStrings, stringIndex) => {
-    const newConfig = [...config];
-    newConfig.splice(stringIndex, 0, { tuning: 0 })
-    setStrings(newConfig);
-};
-
-const setStringNumber = (config, setStrings, number) => {
-    const newConfig = [...config];
-    const getEmptyStrings = n => {
-        const s = [];
-        for (let i = 0; i < n; i++) {
-            s.push({ tuning: 0 })
-        }
-        return s;
-    }
-    if (number < config.length) {
-        setStrings(newConfig.slice(0, number));
-    }
-    else if (number > config.length) {
-        setStrings([...newConfig, ...getEmptyStrings(number - config.length)]);
-    }
-};
-
 const getStringInputs = (stringConfig, setStrings) => {
-    const inputs = stringConfig.map((c, i) => (
-        <React.Fragment key={i}>
-            <div key={i + '-'} className='string-tuner down' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
-            <div key={i + '*'} className='string-tuning'>{PlayWhat.Constants.PITCH_CLASS_NAMES[PlayWhat.Common.modulo(c.tuning, 12)]}</div>
-            <div key={i + '+'} className='string-tuner up' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
-        </React.Fragment>
-    ));
-    return inputs;
+    return [
+        ...stringConfig.map((c, i) => (
+            <div key={i + '+'} className='tune' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)} >+</div>
+        )).reverse(),
+        ...stringConfig.map((c, i) => (
+            <div key={i + '*'} className='tuning'>
+                {PlayWhat.Constants.PITCH_CLASS_NAMES[PlayWhat.Common.modulo(c.tuning, 12)]}
+                <sub className="tuning-octave">{Math.floor(c.tuning / 12)}</sub>
+            </div>
+        )).reverse(),
+        ...stringConfig.map((c, i) => (
+            <div key={i + '-'} className='tune' onClick={() => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)} >-</div>
+        )).reverse()
+    ];
 }
 
-const RangePanel = props => (
-    <div className='range-input-container'>
-        <div className='range-input-label'>Frets</div>
-        <RangeInput min={0} max={24} low={props.fretLow} high={props.fretHigh} setLowValue={props.setFretLow} setHighValue={props.setFretHigh} />
-
-        <div className='range-input-label'>Strings</div>
-        <RangeInput min={1} max={12} low={1} high={props.strings.length} setHighValue={v => props.setStringNumber(strings, setStrings, v)} fixed={true} />
-    </div>
-);
-
 const TuningPanel = props => (
-    <div className='string-input-grid' style={{ gridTemplateRows: `repeat(${props.strings.length}, auto)` }} >
+    <div className='tuning-panel' style={{ gridTemplateColumns: `repeat(${props.strings.length}, 1fr)` }} >
         {getStringInputs(props.strings, props.setStrings)}
     </div>
 );
 
-const LabelPanel = props => (
-    <div className='label-input-container'>
-        <Inputs.SwitchInput value={props.showFretNumbers} setValue={props.setShowFretNumbers} />
-        <div className='label-label'>Numbers</div>
+// Range Panel
 
-        <Inputs.SwitchInput value={false} setValue={() => { }} />
-        <div className='label-label'>Tuning</div>
+const RangePanel = props => (
+    <div className='range-panel'>
+        <div className='labeled-input'>
+            <div className='label-text'>Frets</div>
+            <RangeInput min={0} max={24} low={props.fretLow} high={props.fretHigh} setLowValue={props.setFretLow} setHighValue={props.setFretHigh} />
+        </div>
 
-        <Inputs.SwitchInput value={props.showDots} setValue={props.setShowDots} />
-        <div className='label-label'>Dots</div>
+        <div className='labeled-input'>
+            <div className='label-text'>Strings</div>
+            <RangeInput min={1} max={12} low={1} high={props.strings.length} setHighValue={v => props.setStringNumber(strings, setStrings, v)} fixed={true} />
+        </div>
     </div>
 );
+
+// Label Panel
+
+const LabelPanel = props => (
+    <div className='label-panel'>
+        <div className='labeled-input'>
+            <div className='label-text'>Fret Numbers</div>
+            <Inputs.SwitchInput value={props.showFretNumbers} setValue={props.setShowFretNumbers} />
+        </div>
+
+        <div className='labeled-input'>
+            <div className='label-text'>String Tunings</div>
+            <Inputs.SwitchInput value={false} setValue={() => { }} />
+        </div>
+
+        <div className='labeled-input'>
+            <div className='label-text'>Fret Dots</div>
+            <Inputs.SwitchInput value={props.showDots} setValue={props.setShowDots} />
+        </div>
+    </div>
+);
+
+// Constants
 
 const PANELS = [
     {
@@ -97,6 +121,8 @@ const PANELS = [
         component: LabelPanel
     }
 ];
+
+// Controller
 
 const FretboardController = () => {
 
@@ -164,8 +190,8 @@ const FretboardController = () => {
                             ))}
                         </div>
                         {
-                        <ActivePanel {...state}/>
-}
+                            <ActivePanel {...state} />
+                        }
                     </div>
                 }
 
