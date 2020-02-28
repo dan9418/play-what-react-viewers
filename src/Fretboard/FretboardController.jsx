@@ -68,7 +68,11 @@ const FretboardController = () => {
     const [strings, setStrings] = useState(DEFAULT_PROPS.strings);
 
     // Theory
-    const [keyCenter, setKeyCenter] = useState(new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.C, PlayWhat.Constants.ACCIDENTAL.Natural, 4));
+    const [keyCenter, setKeyCenter] = useState(new PlayWhat.KeyCenter(
+        PlayWhat.Constants.TONIC.C,
+        PlayWhat.Constants.ACCIDENTAL.Natural,
+        4
+    ));
     const [concept, setConcept] = useState(PlayWhat.Presets.MODE.Ionian);
     const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.degree);
     const [labelStrategy, setLabelStrategy] = useState(() => PlayWhat.LabelUtils.interval);
@@ -126,7 +130,7 @@ const FretboardController = () => {
                         <div className='input-box'>
                             <div className='panel-name-container'>
                                 {PANEL_TYPES.map(type => (
-                                    <div key={type.id} className={`panel-name ${type.id === activePanelType.id ? 'active' : ''}`} onClick={() => { setActivePanelType(type); setActivePanel(type.panels[0]); } }>
+                                    <div key={type.id} className={`panel-name ${type.id === activePanelType.id ? 'active' : ''}`} onClick={() => { setActivePanelType(type); setActivePanel(type.panels[0]); }}>
                                         {type.name}
                                     </div>
                                 ))}
