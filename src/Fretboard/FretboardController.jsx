@@ -137,14 +137,14 @@ const FretboardController = () => {
                         <div className='input-box'>
                             <div className='panel-name-container'>
                                 {PANEL_TYPES.map(type => (
-                                    <div key={type.id} className={`panel-name ${type.id === activePanelType.id ? 'active' : ''}`} onClick={() => { setActivePanelType(type); setActivePanel(type.panels[0]); }}>
+                                    <div key={type.id} className={`panel-name primary ${type.id === activePanelType.id ? 'active' : ''}`} onClick={() => { setActivePanelType(type); setActivePanel(type.panels[0]); }}>
                                         {type.name}
                                     </div>
                                 ))}
                             </div>
                             <div className='panel-name-container'>
                                 {activePanelType.panels.map(panel => (
-                                    <div key={panel.id} className={`panel-name ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
+                                    <div key={panel.id} className={`panel-name secondary ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
                                         {panel.name}
                                     </div>
                                 ))}

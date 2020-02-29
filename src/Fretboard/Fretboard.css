@@ -115,8 +115,12 @@
 }
 
 .fretboard-controller {
-	width: 100%;
-	max-width: 500px;
+	/*width: 100%;
+	min-width: 200px;
+	max-width: 500px;*/
+	width: 500px;
+	display: inline-block;
+	margin: 50px;
 }
 
 .input-container {
@@ -165,16 +169,13 @@
 .panel-name {
 	width: 100%;
     padding: 5px;
-    background-color: #AAA;
+    background-color: white;
     cursor: pointer;
     margin: 2px;
     text-align: center;
-    border-radius: 2px;
-}
-
-.panel-name.active {
-	background-color: #5E99D1;
-	color: white;
+	border-radius: 5px;
+	box-sizing: border-box;
+	font-weight: bold;
 }
 
 .panel-name-container {
@@ -191,3 +192,25 @@
 }
 
 .label-text {}
+
+/* Panel Themes */
+
+.primary {
+	border: 2px solid #d1835e;
+	color: #d1835e;
+}
+
+.primary:hover, .primary.active {
+	background-color:  #d1835e;
+	color: white;
+}
+
+.secondary {
+	border: 2px solid #5ed183;
+	color: #5ed183;
+}
+
+.secondary:hover, .secondary.active {
+	background-color:  #5ed183;
+	color: white;
+}
