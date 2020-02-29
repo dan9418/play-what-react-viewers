@@ -128,7 +128,7 @@ const FretboardController = () => {
 
             <div className='input-container'>
 
-                <div className={`card preview ${configOpen ? 'active' : ''}`} onClick={() => setConfigOpen(!configOpen)}>
+                <div className={`preview ${configOpen ? 'active' : ''}`} onClick={() => setConfigOpen(!configOpen)}>
                     {getPreviewText(keyCenter)}
                 </div>
 
