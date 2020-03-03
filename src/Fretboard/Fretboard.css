@@ -95,55 +95,37 @@
 
 /* Inputs */
 
-.controller-title {
-	font-weight: bold;
-	font-size: 20px;
-	text-align: center;
-	background-color: #5E99D1;
-	color: white;
-	border-radius: 10px 10px 0 0;
+.fretboard-controller {
+	display: inline-block;
+	margin: 20px;
 }
 
 .fretboard-container {
 	width: 100%;
 	margin: auto;
-	background-color: #badbeb;
-    padding: 10px;
-    box-sizing: border-box;
-    border-right: 2px solid #5E99D1;
-    border-left: 2px solid #5E99D1;
+    padding: 20px 20px 0 20px;
+	box-sizing: border-box;
+	border-radius: 15px 15px 0 0;
+    background-color: #badbeb;
 }
 
-.fretboard-controller {
-	/*width: 100%;
-	min-width: 200px;
-	max-width: 500px;*/
-	width: 500px;
-	display: inline-block;
-	margin: 50px;
+.fretboard-controller.edit {
+	
 }
 
 .input-container {
-	max-width: 500px;
-	margin: auto;
-	border-radius: 0 0 10px 10px;
-	background-color: #badbeb;
-	border-left: 2px solid #5E99D1;
-	border-right: 2px solid #5E99D1;
-	border-bottom: 2px solid #5E99D1;
-	padding: 0 10px 10px 10px;
 	position: relative;
 }
 
 .preview {
 	font-weight: bold;
-	text-transform: uppercase;
 	text-align: center;
 	cursor: pointer;
 	background-color: #8cc4de;
 	color: white;
 	padding: 5px;
-	border-radius: 10px;
+	border-radius: 0 0 15px 15px;
+	z-index: 1001;
 }
 
 .preview:hover {
@@ -151,19 +133,21 @@
 }
 
 .preview.active {
-	background-color: #5E99D1;
-	border-radius: 10px 10px 0 0;
+	background-color: #d1835e;
+	border-radius: 0;
 }
 
 .input-box {
-	padding: 10px;
-	margin: 0 10px;
-	background-color: #c9e3f0;
-	border-radius: 0 0 10px 10px;
-	border: 2px solid #5E99D1;
 	position: absolute;
+    background: white;
+    z-index: 1000;
 	left: 0;
 	right: 0;
+    padding: 5px;
+    background-color: #ebcaba;
+    border-radius: 0 0 10px 10px;
+	padding: 5px;
+	box-shadow: 0 0 15px rgba(0,0,0,.5);
 }
 
 .panel-name {
@@ -186,6 +170,7 @@
 
 .labeled-input {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-between;
 	margin: 5px;
@@ -196,12 +181,12 @@
 /* Panel Themes */
 
 .primary {
-	border: 2px solid #d1835e;
-	color: #d1835e;
+	border: 2px solid #d15eac;
+	color: #d15eac;
 }
 
 .primary:hover, .primary.active {
-	background-color:  #d1835e;
+	background-color:  #d15eac;
 	color: white;
 }
 

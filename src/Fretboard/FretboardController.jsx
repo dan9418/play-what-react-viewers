@@ -57,30 +57,36 @@ const PANEL_TYPES = [
     }
 ];
 
-const getPreviewText = keyCenter => `${keyCenter.tonic.name}${keyCenter.accidental.name} ${keyCenter.octave}`;
+const getPreviewText = (keyCenter, concept) => `${keyCenter.tonic.name}${keyCenter.accidental.name} ${keyCenter.octave} ${concept.id}`;
 
 // Controller
 
-const FretboardController = () => {
+const FretboardController = props => {
 
     const [configOpen, setConfigOpen] = useState(false);
     const [activePanelType, setActivePanelType] = useState(PANEL_TYPES[0]);
     const [activePanel, setActivePanel] = useState(activePanelType.panels[0]);
 
     // Fretboard
-    const [fretLow, setFretLow] = useState(0);
-    const [fretHigh, setFretHigh] = useState(12);
+    const [fretLow, setFretLow] = useState(props.fretLow || 0);
+    const [fretHigh, setFretHigh] = useState(props.fretHigh || 12);
     const [showDots, setShowDots] = useState(true);
     const [showFretNumbers, setShowFretNumbers] = useState(true);
     const [strings, setStrings] = useState(DEFAULT_PROPS.strings);
 
     // Theory
-    const [keyCenter, setKeyCenter] = useState(new PlayWhat.KeyCenter(
-        PlayWhat.Constants.TONIC.C,
-        PlayWhat.Constants.ACCIDENTAL.Natural,
-        4
-    ));
-    const [concept, setConcept] = useState(PlayWhat.Presets.MODE.Ionian);
+    const [keyCenter, setKeyCenter] = useState(
+        props.keyCenter ||
+        new PlayWhat.KeyCenter(
+            PlayWhat.Constants.TONIC.C,
+            PlayWhat.Constants.ACCIDENTAL.Natural,
+            4
+        )
+    );
+    const [concept, setConcept] = useState(
+        props.concept ||
+        PlayWhat.Presets.MODE.Ionian
+    );
     const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.degree);
     const [labelStrategy, setLabelStrategy] = useState(() => PlayWhat.LabelUtils.interval);
     const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
@@ -111,9 +117,7 @@ const FretboardController = () => {
     };
 
     return (
-        <div className='fretboard-controller no-select'>
-
-            <div className='controller-title'>Fretboard</div>
+        <div className={`fretboard-controller no-select ${configOpen ? 'edit' : ''}`}>
 
             <div className='fretboard-container'>
                 <Fretboard
@@ -129,7 +133,7 @@ const FretboardController = () => {
             <div className='input-container'>
 
                 <div className={`preview ${configOpen ? 'active' : ''}`} onClick={() => setConfigOpen(!configOpen)}>
-                    {getPreviewText(keyCenter)}
+                    {getPreviewText(keyCenter, concept)}
                 </div>
 
                 {configOpen &&
