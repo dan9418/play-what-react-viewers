@@ -59,13 +59,27 @@ const PANEL_TYPES = [
 
 const getPreviewText = (keyCenter, concept) => `${keyCenter.tonic.name}${keyCenter.accidental.name} ${keyCenter.octave} ${concept.id}`;
 
+// Panel 
+
+const Panel = props => {
+    const [open, setOpen] = useState(false);
+    return (
+        <div className='panel' style={{ paddingLeft: `${props.level * 5}px` }}>
+            <div className={`panel-name`} onClick={() => setOpen(!open)} style={{ fontWeight: props.level > 0 ? 'normal' : 'bold' }}>
+                {props.name}
+            </div>
+            <div className={`panel-content`}>
+                {open && props.children}
+            </div>
+        </div>
+    )
+}
+
 // Controller
 
 const FretboardController = props => {
 
     const [configOpen, setConfigOpen] = useState(false);
-    const [activePanelType, setActivePanelType] = useState(PANEL_TYPES[0]);
-    const [activePanel, setActivePanel] = useState(activePanelType.panels[0]);
 
     // Fretboard
     const [fretLow, setFretLow] = useState(props.fretLow || 0);
@@ -92,7 +106,6 @@ const FretboardController = props => {
     const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
     const [actionStrategy, setActionStrategy] = useState(PlayWhat.ActionBy.playSound);
 
-    const ActivePanel = activePanel.component;
     const state = {
         fretLow, setFretLow,
         fretHigh, setFretHigh,
@@ -137,25 +150,19 @@ const FretboardController = props => {
                 </div>
 
                 {configOpen &&
-                    <>
-                        <div className='input-box'>
-                            <div className='panel-name-container'>
-                                {PANEL_TYPES.map(type => (
-                                    <div key={type.id} className={`panel-name primary ${type.id === activePanelType.id ? 'active' : ''}`} onClick={() => { setActivePanelType(type); setActivePanel(type.panels[0]); }}>
-                                        {type.name}
-                                    </div>
-                                ))}
-                            </div>
-                            <div className='panel-name-container'>
-                                {activePanelType.panels.map(panel => (
-                                    <div key={panel.id} className={`panel-name secondary ${panel.id === activePanel.id ? 'active' : ''}`} onClick={() => setActivePanel(panel)}>
-                                        {panel.name}
-                                    </div>
-                                ))}
-                            </div>
-                            <ActivePanel {...state} />
+                    <div className='input-modal'>
+                        <div className='panel-name-container'>
+                            {PANEL_TYPES.map(type => (
+                                <Panel key={type.id} name={type.name} level={0}>
+                                    {type.panels.map(P => (
+                                        <Panel key={P.id} name={P.name} level={1}>
+                                            <P.component {...state} />
+                                        </Panel>
+                                    ))}
+                                </Panel>
+                            ))}
                         </div>
-                    </>
+                    </div>
                 }
             </div>
         </div >

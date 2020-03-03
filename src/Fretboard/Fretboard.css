@@ -109,19 +109,16 @@
     background-color: #badbeb;
 }
 
-.fretboard-controller.edit {
-	
-}
-
 .input-container {
 	position: relative;
+	background-color: #badbeb;
+    border-radius: 0 0 10px 10px;
 }
 
 .preview {
 	font-weight: bold;
 	text-align: center;
 	cursor: pointer;
-	background-color: #8cc4de;
 	color: white;
 	padding: 5px;
 	border-radius: 0 0 15px 15px;
@@ -129,43 +126,38 @@
 }
 
 .preview:hover {
-	background-color: #5E99D1;
 }
 
 .preview.active {
-	background-color: #d1835e;
 	border-radius: 0;
 }
 
-.input-box {
+.input-modal {
 	position: absolute;
-    background: white;
     z-index: 1000;
 	left: 0;
 	right: 0;
-    padding: 5px;
-    background-color: #ebcaba;
-    border-radius: 0 0 10px 10px;
-	padding: 5px;
-	box-shadow: 0 0 15px rgba(0,0,0,.5);
+	border-radius: 0 0 10px 10px;
+	/*box-shadow: 0 0 15px rgba(0,0,0,.5);*/
+}
+
+
+.fretboard-controller.edit .input-modal,
+.fretboard-controller.edit .preview,
+.fretboard-controller.edit .fretboard-container
+{
+	background-color: #ebcaba;
 }
 
 .panel-name {
 	width: 100%;
     padding: 5px;
-    background-color: white;
     cursor: pointer;
-    margin: 2px;
-    text-align: center;
-	border-radius: 5px;
 	box-sizing: border-box;
-	font-weight: bold;
 }
 
 .panel-name-container {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
+	
 }
 
 .labeled-input {
@@ -181,7 +173,7 @@
 /* Panel Themes */
 
 .primary {
-	border: 2px solid #d15eac;
+	/*border: 2px solid #d15eac;*/
 	color: #d15eac;
 }
 
@@ -191,7 +183,7 @@
 }
 
 .secondary {
-	border: 2px solid #5ed183;
+	/*border: 2px solid #5ed183;*/
 	color: #5ed183;
 }
 
