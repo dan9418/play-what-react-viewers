@@ -24,7 +24,7 @@ export default function FretLabel(props) {
 
     styles = {
         color: 'white',
-        backgroundColor: getBG(note.interval && note.interval.degree, scaleTone.interval)
+        backgroundColor: getBG(note.interval && note.interval.degree, scaleTone.interval, isInVoicing(note.interval, props.stringNum, props.rootString))
     };
 
     return (
@@ -34,15 +34,22 @@ export default function FretLabel(props) {
     );
 }
 
-var getBG = (degree, scaleTone) => {
-    const def = '#999';
+var isInVoicing = (interval, stringNum, rootString = 6) => {
+    return interval && interval.degree === 1 && rootString - stringNum === 0 ||
+        interval && interval.degree === 7 && rootString - stringNum === 2 ||
+        interval && interval.degree === 3 && rootString - stringNum === 3 ||
+        interval && interval.degree === 9 && rootString - stringNum === 3;
+}
+
+var getBG = (degree, scaleTone, isInVoicing) => {
+    const def = '#BBB';
     switch (degree) {
         case 1:
-            return 'red';
+            return isInVoicing ? 'red' : def;
         case 2:
             return def;
         case 3:
-            return 'green';
+            return isInVoicing ? 'green' : def;
         case 4:
             return def;
         case 5:
@@ -50,7 +57,9 @@ var getBG = (degree, scaleTone) => {
         case 6:
             return def;
         case 7:
-            return 'blue';
+            return isInVoicing ? 'blue' : def;
+        case 9:
+                return isInVoicing ? 'purple' : def;
         default:
             return scaleTone ? '#DDD' : '';
     }
