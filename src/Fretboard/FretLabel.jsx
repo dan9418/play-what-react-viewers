@@ -20,12 +20,10 @@ export default function FretLabel(props) {
 
     let scaleTone = callConfigFunction(config.mapStrategy, config.noteIndex, new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.G, PlayWhat.Constants.ACCIDENTAL.Natural, 4), PlayWhat.Presets.SCALE.Major);
 
-    console.log(scaleTone);
-
-    styles = {
+    /*styles = {
         color: 'white',
         backgroundColor: getBG(note.interval && note.interval.degree, scaleTone.interval, isInVoicing(note.interval, props.stringNum, props.rootString))
-    };
+    };*/
 
     return (
         <div className='fret-label' style={styles} onClick={action}>

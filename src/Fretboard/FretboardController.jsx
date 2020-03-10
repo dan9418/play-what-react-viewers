@@ -90,13 +90,12 @@ const FretboardController = props => {
 
     // Theory
     const [keyCenter, setKeyCenter] = useState(
-        new PlayWhat.KeyCenter('C#')
-        /*props.keyCenter ||
+        props.keyCenter ||
         new PlayWhat.KeyCenter(
             PlayWhat.Constants.TONIC.C,
             PlayWhat.Constants.ACCIDENTAL.Natural,
             4
-        )*/
+        )
     );
     const [concept, setConcept] = useState(
         props.concept ||
