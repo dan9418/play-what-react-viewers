@@ -119,6 +119,7 @@
 	font-weight: bold;
 	text-align: center;
 	cursor: pointer;
+	background: #5E99D1;
 	color: white;
 	padding: 5px;
 	border-radius: 0 0 15px 15px;
@@ -141,12 +142,15 @@
 	/*box-shadow: 0 0 15px rgba(0,0,0,.5);*/
 }
 
-
-.fretboard-controller.edit .input-modal,
-.fretboard-controller.edit .preview,
 .fretboard-controller.edit .fretboard-container
 {
-	background-color: #ebcaba;
+	background-color: #9EC1E3;
+}
+
+.fretboard-controller.edit .input-modal,
+.fretboard-controller.edit .preview
+{
+	background-color: #5E99D1;
 }
 
 .panel-name {
@@ -169,6 +173,14 @@
 }
 
 .label-text {}
+
+.panel-name {
+	font-weight: bold;
+}
+
+.panel {
+	background: #9EC1E3
+}
 
 /* Panel Themes */
 

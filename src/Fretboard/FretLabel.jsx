@@ -14,13 +14,18 @@ export default function FretLabel(props) {
     let note = callConfigFunction(config.mapStrategy, config.noteIndex, config.keyCenter, config.concept);
     note = note ? note : new Theory.NonfunctionalNote(config.noteIndex);
 
-    let styles = callConfigFunction(config.colorStrategy, note);
+    let viewerData = {
+        minNote: callConfigFunction(config.mapStrategy, config.minIndex, config.keyCenter, config.concept),
+        maxNote: callConfigFunction(config.mapStrategy, config.maxIndex, config.keyCenter, config.concept)
+    };
+
+    let styles = callConfigFunction(config.colorStrategy, note, viewerData);
     let label = callConfigFunction(config.labelStrategy, note);
     let action = callConfigFunction(config.actionStrategy, note);
 
-    let scaleTone = callConfigFunction(config.mapStrategy, config.noteIndex, new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.G, PlayWhat.Constants.ACCIDENTAL.Natural, 4), PlayWhat.Presets.SCALE.Major);
+    /*let scaleTone = callConfigFunction(config.mapStrategy, config.noteIndex, new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.G, PlayWhat.Constants.ACCIDENTAL.Natural, 4), PlayWhat.Presets.SCALE.Major);
 
-    /*styles = {
+    styles = {
         color: 'white',
         backgroundColor: getBG(note.interval && note.interval.degree, scaleTone.interval, isInVoicing(note.interval, props.stringNum, props.rootString))
     };*/

@@ -65,7 +65,7 @@ const Panel = props => {
     const [open, setOpen] = useState(false);
     return (
         <div className='panel' style={{ paddingLeft: `${props.level * 5}px` }}>
-            <div className={`panel-name`} onClick={() => setOpen(!open)} style={{ fontWeight: props.level > 0 ? 'normal' : 'bold' }}>
+            <div className={`panel-name`} onClick={() => setOpen(!open)} style={props.level > 0 ? {} : {color: '#DDD', background: '#5E99D1'}}>
                 {props.name}
             </div>
             <div className={`panel-content`}>
@@ -101,7 +101,7 @@ const FretboardController = props => {
         props.concept ||
         PlayWhat.Presets.MODE.Ionian
     );
-    const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.degree);
+    const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.octave);
     const [labelStrategy, setLabelStrategy] = useState(() => PlayWhat.LabelUtils.interval);
     const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
     const [actionStrategy, setActionStrategy] = useState(PlayWhat.ActionBy.playSound);
