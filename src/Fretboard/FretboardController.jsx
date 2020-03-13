@@ -101,7 +101,7 @@ const FretboardController = props => {
         props.concept ||
         PlayWhat.Presets.MODE.Ionian
     );
-    const [colorStrategy, setColorStrategy] = useState(PlayWhat.ColorBy.octave);
+    const [colorStrategy, setColorStrategy] = useState(props.colorStrategy ? PlayWhat.ColorBy[props.colorStrategy] : PlayWhat.ColorBy.degree);
     const [labelStrategy, setLabelStrategy] = useState(() => PlayWhat.LabelUtils.interval);
     const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
     const [actionStrategy, setActionStrategy] = useState(PlayWhat.ActionBy.playSound);
