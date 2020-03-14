@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Fretboard.css";
 import PlayWhat from 'play-what';
+import DEFAULT_PROPS from "./Fretboard.defaults";
 
 import Fretboard from './Fretboard';
-import DEFAULT_PROPS from "./Fretboard.defaults";
 import Panels from './Panels/_module';
 
 // Constants
@@ -81,30 +81,19 @@ const FretboardController = props => {
 
     const [configOpen, setConfigOpen] = useState(false);
 
-    // Fretboard
-    const [fretLow, setFretLow] = useState(props.fretLow || 0);
-    const [fretHigh, setFretHigh] = useState(props.fretHigh || 12);
-    const [showDots, setShowDots] = useState(true);
-    const [showFretNumbers, setShowFretNumbers] = useState(true);
-    const [strings, setStrings] = useState(DEFAULT_PROPS.strings);
-
-    // Theory
-    const [keyCenter, setKeyCenter] = useState(
-        props.keyCenter ||
-        new PlayWhat.KeyCenter(
-            PlayWhat.Constants.TONIC.C,
-            PlayWhat.Constants.ACCIDENTAL.Natural,
-            4
-        )
-    );
-    const [concept, setConcept] = useState(
-        props.concept ||
-        PlayWhat.Presets.MODE.Ionian
-    );
-    const [colorStrategy, setColorStrategy] = useState(props.colorStrategy ? PlayWhat.ColorBy[props.colorStrategy] : PlayWhat.ColorBy.degree);
-    const [labelStrategy, setLabelStrategy] = useState(() => PlayWhat.LabelUtils.interval);
-    const [mapStrategy, setMapStrategy] = useState(PlayWhat.MapBy.pitchClass);
-    const [actionStrategy, setActionStrategy] = useState(PlayWhat.ActionBy.playSound);
+    // Set initial state from (1) props and (2) defaults
+    const [fretLow, setFretLow] = useState(props.fretLow || DEFAULT_PROPS.fretLow);
+    const [fretHigh, setFretHigh] = useState(props.fretHigh || DEFAULT_PROPS.fretHigh);
+    const [showDots, setShowDots] = useState(props.showDots || DEFAULT_PROPS.showDots);
+    const [showFretNumbers, setShowFretNumbers] = useState(props.showFretNumbers || DEFAULT_PROPS.showFretNumbers);
+    const [strings, setStrings] = useState(props.strings || DEFAULT_PROPS.strings);
+    // Label props
+    const [keyCenter, setKeyCenter] = useState(props.keyCenter || DEFAULT_PROPS.labelProps.keyCenter);
+    const [concept, setConcept] = useState(props.concept || DEFAULT_PROPS.labelProps.concept);
+    const [colorStrategy, setColorStrategy] = useState(props.colorStrategy ? PlayWhat.ColorBy[props.colorStrategy] : DEFAULT_PROPS.labelProps.colorStrategy);
+    const [labelStrategy, setLabelStrategy] = useState(props.labelStrategy ? PlayWhat.LabelUtils[props.labelStrategy] : DEFAULT_PROPS.labelProps.labelStrategy);
+    const [mapStrategy, setMapStrategy] = useState(props.mapStrategy ? PlayWhat.MapBy[props.mapStrategy] : DEFAULT_PROPS.labelProps.mapStrategy);
+    const [actionStrategy, setActionStrategy] = useState(props.actionStrategy ? PlayWhat.ActionBy[props.actionStrategy] : DEFAULT_PROPS.labelProps.actionStrategy);
 
     const state = {
         fretLow, setFretLow,

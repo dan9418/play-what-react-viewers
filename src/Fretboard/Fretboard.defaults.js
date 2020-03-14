@@ -1,5 +1,6 @@
 import React from 'react';
 import FretLabel from './FretLabel';
+import LABEL_DEFAULTS from './FretLabel.defaults';
 
 export default {
     fretLow: 0,
@@ -15,5 +16,5 @@ export default {
     showFretNumbers: true,
     showDots: true,
     labelComponent: FretLabel,
-    labelProps: {}
+    labelProps: LABEL_DEFAULTS
 };
