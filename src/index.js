@@ -1,11 +1,7 @@
-import Fretboard from "./v1/Fretboard/_module";
-import Keyboard from "./v1/Keyboard/_module";
-import ChordAnalysis from "./v1/ChordAnalysis/ChordAnalysis";
-import Summary from "./v1/Summary/Summary";
-import NoteTable from "./v1/NoteTable/NoteTable";
-import Inputs from "./v1/Inputs/_module";
+import v1 from "./v1/_module";
+import v2 from "./v2/_module";
 
 export default {
-    v1: { Fretboard, Keyboard, ChordAnalysis, Summary, NoteTable, Inputs },
-    v2: {}
+    v1,
+    v2
  };
