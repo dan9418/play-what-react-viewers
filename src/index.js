@@ -3,8 +3,9 @@ import Keyboard from "./v1/Keyboard/_module";
 import ChordAnalysis from "./v1/ChordAnalysis/ChordAnalysis";
 import Summary from "./v1/Summary/Summary";
 import NoteTable from "./v1/NoteTable/NoteTable";
+import Inputs from "./v1/Inputs/_module";
 
 export default {
-    v1: { Fretboard, Keyboard, ChordAnalysis, Summary, NoteTable },
+    v1: { Fretboard, Keyboard, ChordAnalysis, Summary, NoteTable, Inputs },
     v2: {}
  };
