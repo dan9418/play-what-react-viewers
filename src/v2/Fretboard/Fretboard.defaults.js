@@ -1,4 +1,3 @@
-import React from 'react';
 import FretLabel from './FretLabel';
 import LABEL_DEFAULTS from './FretLabel.defaults';
 

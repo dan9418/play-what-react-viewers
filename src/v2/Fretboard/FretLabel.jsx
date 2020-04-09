@@ -1,7 +1,6 @@
 import * as React from "react";
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./FretLabel.defaults";
-import PlayWhat from 'play-what';
 
 // Temp
 function callConfigFunction(configFunction, ...args) {

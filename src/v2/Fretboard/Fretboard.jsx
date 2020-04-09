@@ -2,7 +2,6 @@ import * as React from "react";
 import "./Fretboard.css";
 import { Fret } from "./Fret";
 import DEFAULT_PROPS from "./Fretboard.defaults";
-import PlayWhat from 'play-what';
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
