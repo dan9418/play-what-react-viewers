@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./Fretboard.css";
+import FretLabel from './FretLabel';
 
 const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];
 
@@ -17,13 +18,11 @@ export const Fret = (props) => {
     if (props.fretNumber === 0)
         classes.push('open');
 
-    let LabelComponent = props.labelComponent;
-
     return (
         <div className={classes.join(' ')}>
             {props.showFretNumber && <div className='fret-number'>{props.fretNumber}</div>}
             <div className='fret-string'/>
-            <LabelComponent {...props} {...props.labelProps} />
+            <FretLabel noteIndex={props.noteIndex} notes={props.notes} />
             {props.showFretDots && <div className='fret-dots'>{getDotsForFret(props.fretNumber)}</div>}
         </div>
     );

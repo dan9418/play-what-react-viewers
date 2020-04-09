@@ -1,6 +1,3 @@
-import FretLabel from './FretLabel';
-import LABEL_DEFAULTS from './FretLabel.defaults';
-
 export default {
     fretLow: 0,
     fretHigh: 12,
@@ -13,7 +10,5 @@ export default {
         { tuning: -8 }    // E
     ],
     showFretNumbers: true,
-    showDots: true,
-    labelComponent: FretLabel,
-    labelProps: LABEL_DEFAULTS
+    showDots: true
 };
