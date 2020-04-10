@@ -19,7 +19,7 @@ const getFrets = (config) => {
 
             frets.push(<Fret
                 key={`s${strNum}f${fretNum}`}
-                notes={config.notes}
+                fretMapping={config.fretMapping}
                 noteIndex={noteIndex}
                 minIndex={min}
                 maxIndex={max}
