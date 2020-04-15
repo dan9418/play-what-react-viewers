@@ -10,7 +10,7 @@ const parseLabelConfig = config => {
         case 'DEGREE':
             return note => note ? note.interval.degree : '';
         case 'NAME':
-            return note => note? note.name : '';
+            return note => note ? note.name : '';
         default:
             return null;
     }
@@ -18,10 +18,20 @@ const parseLabelConfig = config => {
 
 const parseColorConfig = config => {
     switch (config.strategy) {
-        case 'PITCH_CLASS':
-            return note => note.interval.id;
+        case 'NONE':
+            return () => PW.v2.Color.none();
+        case 'BINARY':
+            return note => PW.v2.Color.binary(note, config.args);
         case 'DEGREE':
-            return note => PW.v2.Color.byDegree(note, config.args);
+            return note => PW.v2.Color.degree(note, config.args);
+        case 'PITCH_CLASS':
+            return note => PW.v2.Color.pitchClass(note, config.args);
+        case 'OCTAVE':
+            return (note, min, max) => PW.v2.Color.octave(note, min, max, config.args);
+        case 'NOTE_INDEX':
+            return (note, min, max) => PW.v2.Color.noteIndex(note, min, max, config.args);
+        case 'FREQUENCY':
+            return (note, min, max) => PW.v2.Color.frequency(note, min, max, config.args);
         default:
             return null;
     }
