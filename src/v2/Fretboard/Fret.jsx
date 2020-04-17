@@ -1,17 +1,7 @@
 import * as React from "react";
 import "./Fretboard.css";
 import FretLabel from './FretLabel';
-
-const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];
-
-const getDotsForFret = (fretNumber) => {
-    let mod = fretNumber % 12;
-    if (mod === 0)
-        return '• •';
-    else if (DOTTED_FRET_INDICES[mod])
-        return '•';
-    return '';
-}
+import { getDotsForFret } from './Fretboard.api';
 
 export const Fret = (props) => {
     let classes = ['fret'];
