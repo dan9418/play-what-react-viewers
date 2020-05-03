@@ -1,7 +1,9 @@
-import v1 from "./v1/_module";
-import v2 from "./v2/_module";
+import Fretboard from './Fretboard/Fretboard';
+//import Keyboard from './Keyboard/Keyboard';
+import ErrorBoundary from './ErrorBoundary';
 
 export default {
-    v1,
-    v2
+    Fretboard,
+    //Keyboard,
+    ErrorBoundary
  };
