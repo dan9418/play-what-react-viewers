@@ -1,25 +1,20 @@
 import * as React from "react";
 import "./Keyboard.css";
-import DEFAULT_PROPS from "./KeyboardKeyLabel.defaults";
-import PlayWhat from 'play-what';
-
-// Temp
-function callConfigFunction(configFunction, ...args) {
-    return ((typeof configFunction).toLowerCase() === 'function') ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);
-}
+import PW from 'play-what';
 
 export default function KeyboardKeyLabel(props) {
-    let config = Object.assign({}, DEFAULT_PROPS, props);
+    const { notes, noteIndex, minIndex, maxIndex } = props;
 
-    let note = callConfigFunction(config.mapStrategy, config.noteIndex, config.keyCenter, config.concept);
-    note = note ? note : new Theory.NonfunctionalNote(config.noteIndex);
+    const note = PW.Theory.findNoteWithPitch(notes, noteIndex, true);
+    // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);
+    // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);
 
-    let styles = callConfigFunction(config.colorStrategy, note);
-    let label = callConfigFunction(config.labelStrategy, note);
-    let action = callConfigFunction(config.actionStrategy, note);
+    const styles = PW.Color.degree(note);
+    const label = PW.Label.degree(note);
+
 
     return (
-        <div className='keyboard-key-label' style={styles} onClick={action}>
+        <div className='keyboard-key-label' style={styles} onClick={() => null}>
             {label}
         </div>
     );

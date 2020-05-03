@@ -22,12 +22,12 @@ const getKeyboardKeys = (config, viewerWidth) => {
         keys.push(
             <KeyboardKey
                 key={i}
+                notes={config.notes}
                 noteIndex={i}
                 minIndex={config.keyLow}
                 maxIndex={config.keyHigh}
                 scale={viewerWidth / numWhiteKeys}
                 type={type}
-                labelComponent={config.labelComponent}
             />
         );
     }

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import KeyboardKeyLabel from './KeyboardKeyLabel';
 
 // Key dimensions relative to white key width
 const KEY__DIMS = {
@@ -38,12 +39,10 @@ export const KeyboardKey = (props) => {
     let scaleStyles = getScaleStyles(props.type, props.scale);
     let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
 
-    let LabelComponent = props.labelComponent;
-
     return (
         <div className={`${keyColor}-key-container`}>
             <div className={classes.join(' ')} style={Object.assign({}, scaleStyles, props.styles)} onClick={props.action}>
-                <LabelComponent {...props}/>
+                <KeyboardKeyLabel {...props}/>
             </div>
         </div>
     );
