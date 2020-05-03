@@ -10,5 +10,6 @@ export default {
         { tuning: -8 }    // E
     ],
     showFretNumbers: true,
-    showDots: true
+    showDots: true,
+    notes: []
 };

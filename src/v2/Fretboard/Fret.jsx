@@ -12,7 +12,7 @@ export const Fret = (props) => {
         <div className={classes.join(' ')}>
             {props.showFretNumber && <div className='fret-number'>{props.fretNumber}</div>}
             <div className='fret-string' />
-            <FretLabel noteIndex={props.noteIndex} minIndex={props.minIndex} maxIndex={props.maxIndex} fretMapping={props.fretMapping} />
+            <FretLabel noteIndex={props.noteIndex} minIndex={props.minIndex} maxIndex={props.maxIndex} notes={props.notes} />
             {props.showFretDots && <div className='fret-dots'>{getDotsForFret(props.fretNumber)}</div>}
         </div>
     );
