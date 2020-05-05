@@ -19,3 +19,25 @@
     text-align: left;
     margin: 5px;
 }
+
+
+
+.degree-button {
+    height: 20px;
+    width: 20px;
+    background-color: #DDD;
+    margin: 5px;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.degree-button:hover {
+    background-color: #AAA;
+    cursor: pointer;
+}
+
+.degree-button.active {
+    background-color: #999;
+}
