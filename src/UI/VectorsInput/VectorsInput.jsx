@@ -13,30 +13,13 @@ const VectorInput = ({ value, setValue }) => {
     );
 };
 
-const IntervalLabel = ({ value, max }) => {
-    return (
-        <div className='interval-label'>
-            {PW.Theory.getIntervalName(value, max)}
-        </div>
-    );
-};
-
-const NoteLabel = ({ value, max }) => {
-    return (
-        <div className='note-label'>
-            {PW.Theory.getNoteName(value, max)}
-        </div>
-    );
-};
-
 const VectorRow = ({ vector, origin, max, setValue }) => {
     const resultant = PW.Theory.addVectors(origin, vector, max);
     return (
         <div className='vector-row'>
             <VectorInput value={vector} setValue={setValue} />
-            <IntervalLabel value={vector} max={max} />
+            <span>→</span>
             <VectorInput value={resultant} />
-            <NoteLabel value={resultant} max={max} />
         </div>
     );
 };
@@ -49,14 +32,13 @@ const ConceptInput = props => {
     ));
 
     return (
-        <div className="concept-input">
+        <div className="vectors-input">
             <div className='origin-input'>
-                <label>Key Center</label>
+                <label>a</label>
                 <VectorInput value={keyCenter} setValue={setKeyCenter} point />
-                <NoteLabel value={keyCenter} max={max} />
             </div>
             <div className='vector-rows'>
-                <label>Intervals</label>
+                <label>B</label>
                 {rows}
             </div>
         </div>

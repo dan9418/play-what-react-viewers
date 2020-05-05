@@ -1,14 +1,14 @@
-.concept-input {
+.vectors-input {
 
 }
 
-.concept-input label {
+.vectors-input label {
     font-weight: bold;
     display: block;
     padding: 5px;
 }
 
-.concept-input .vector-row {
+.vectors-input .vector-row {
     display: grid;
     grid-template-columns: repeat(4, auto);
     padding: 5px;
@@ -22,11 +22,5 @@
     height: 20px;
     line-height: 20px;
     width: 50px;
-    margin: 5px;
-}
-
-.note-label, .interval-label  {
-    display: inline-block;
-    text-align: left;
     margin: 5px;
 }

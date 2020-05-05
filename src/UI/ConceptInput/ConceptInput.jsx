@@ -21,10 +21,10 @@ const NoteLabel = ({ value, max }) => {
     );
 };
 
-const VectorRow = ({ vector, origin, max, setValue }) => {
+const IntervalRow = ({ vector, origin, max, setValue }) => {
     const resultant = PW.Theory.addVectors(origin, vector, max);
     return (
-        <div className='vector-row'>
+        <div className='interval-row'>
             <IntervalLabel value={vector} max={max} />
             <NoteLabel value={resultant} max={max} />
         </div>
@@ -35,20 +35,18 @@ const ConceptInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals, max } = props;
 
     const rows = intervals.map((v, i) => (
-        <VectorRow key={i} vector={v} origin={keyCenter} max={max} setValue={x => setIntervals([...intervals.slice(0, i), x, ...(intervals.slice(i + 1))])} />
+        <IntervalRow key={i} vector={v} origin={keyCenter} max={max} setValue={x => setIntervals([...intervals.slice(0, i), x, ...(intervals.slice(i + 1))])} />
     ));
 
     return (
         <div className="concept-input">
-            <div className='origin-input'>
-                <label>Key Center</label>
-                <NoteLabel value={keyCenter} max={max} />
-            </div>
-            <div className='vector-rows'>
-                <label>Intervals</label>
-                <PresetInput value={intervals} setValue={setIntervals} />
-                {rows}
-            </div>
+            <label>Key Center:</label>
+            <NoteLabel value={keyCenter} max={max} />
+
+            <label>Intervals:</label>
+            {rows}
+            <PresetInput value={intervals} setValue={setIntervals} />
+            
         </div>
     );
 }

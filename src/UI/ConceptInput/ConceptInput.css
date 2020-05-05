@@ -14,17 +14,6 @@
     padding: 5px;
 }
 
-.vector-input {
-    display: inline-block;
-}
-
-.vector-input input {
-    height: 20px;
-    line-height: 20px;
-    width: 50px;
-    margin: 5px;
-}
-
 .note-label, .interval-label  {
     display: inline-block;
     text-align: left;
