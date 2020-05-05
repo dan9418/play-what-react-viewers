@@ -27,9 +27,10 @@ const VectorRow = ({ vector, origin, max, setValue }) => {
 const ConceptInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals, max } = props;
 
-    const rows = intervals.map((v, i) => (
-        <VectorRow key={i} vector={v} origin={keyCenter} max={max} setValue={x => setIntervals([...intervals.slice(0, i), x, ...(intervals.slice(i + 1))])} />
-    ));
+    const rows = intervals.map((v, i) => {
+        const updateInterval = newInterval => setIntervals([...intervals.slice(0, i), newInterval, ...(intervals.slice(i + 1))]);
+        return <VectorRow key={i} vector={v} origin={keyCenter} max={max} setValue={updateInterval} />;
+    });
 
     return (
         <div className="vectors-input">

@@ -21,7 +21,7 @@ const GraphCard = () => {
     const [max, setMax] = useState(MAX_VECTOR);
     const [origin, setOrigin] = useState(ORIGIN);
     const [vectors, setVectors] = useState(VECTORS);
-    const [mathMode, setMathMode] = useState(false);
+    const [mathMode, setMathMode] = useState(true);
 
     return (
         <Card title="Graph" defaultOpen>
