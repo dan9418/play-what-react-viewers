@@ -9,6 +9,8 @@ import InputDocsCard from './Modules/InputDocs/InputDocsCard';
 
 import ErrorBoundary from './UI/ErrorBoundary';
 
+import './index.css';
+
 const Modules = {
     Fretboard,
     FretboardCard,
