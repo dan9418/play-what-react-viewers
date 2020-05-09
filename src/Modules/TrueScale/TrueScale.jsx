@@ -41,8 +41,14 @@ const getButtons = (fundamental, n) => {
     return freq.map((f, i) => <div key={i} className="button" onClick={() => PW.Sound.play(f)}>{TRUE_INTERVAL_MAP[i]}</div>);
 }
 
+
+const DEFAULT_PROPS = {
+    fundamental: 100,
+    n: 8
+}
 const TrueScale = props => {
-    const { fundamental, n } = props;
+    const config = { ...DEFAULT_PROPS, ...props };
+    const { fundamental, n } = config;
     return (
         <div className="true-scale">
             {getButtons(fundamental, n)}

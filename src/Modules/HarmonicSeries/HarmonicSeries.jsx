@@ -56,11 +56,16 @@ const Overtone = ({ f, n }) => {
     );
 };
 
+const DEFAULT_PROPS = {
+    fundamental: 100,
+    n: 8
+}
 const HarmonicSeries = props => {
     const { fundamental, n } = props;
+    const config = { ...DEFAULT_PROPS, ...props };
     return (
         <div className="harmonic-series">
-            {[...Array(n)].map((e, i) => <Overtone key={i} f={fundamental} n={n - i} />)}
+            {[...Array(n)].map((e, i) => <Overtone key={i} f={config.fundamental} n={config.n - i} />)}
         </div>
     );
 };

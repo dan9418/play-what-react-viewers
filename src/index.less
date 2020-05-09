@@ -1,24 +1,81 @@
+@primary: #5E99D1;
+@primary-fg: #FFF;
+@primary-hover: darken(@primary, 10%);
+
+@secondary: #F7A072;
+@secondary-fg: #FFF;
+@secondary-hover: darken(@secondary, 10%);
+
+@light: #F6F7EB;
+@light-fg: #000;
+@light-hover: darken(@light, 10%);
+
+@medium: #B8BDB5;
+@medium-fg: #000;
+@medium-hover: darken(@medium, 10%);
+
+@dark: #272635;
+@dark-fg: #FFF;
+@dark-hover: lighten(@dark, 10%);
+
 .pw-primary {
-    background-color: #5E99D1;
-    color: #F6F7EB;
+    background-color: @primary;
+    color: @primary-fg;
 }
+
+.pw-primary.link:hover {
+    background-color: @primary-hover;
+}
+
 
 .pw-secondary {
-    background-color: #F7A072;
-    color: #F6F7EB;
+    background-color: @secondary;
+    color: @secondary-fg;
 }
+
+.pw-secondary.link:hover {
+    background-color: @secondary-hover;
+}
+
 
 .pw-light {
-    background-color: #F6F7EB;
-    color: #272635;
+    background-color: @light;
+    color: @light-fg;
 }
+
+.pw-light.link:hover {
+    background-color: @light-hover;
+}
+
 
 .pw-medium {
-    background-color: #F6F7EB;
-    color: #272635;
+    background-color: @medium;
+    color: @medium-fg;
 }
 
+.pw-medium.link:hover {
+    background-color: @medium-hover;
+}
+
+
 .pw-dark {
-    background-color: #272635;
-    color: #F6F7EB;
+    background-color: @dark;
+    color: @dark-fg;
+}
+
+.pw-dark.link:hover {
+    background-color: @dark-hover;
+}
+
+
+
+
+.pw-inactive {
+    background-color: @medium;
+    color: @light;
+}
+
+.pw-active {
+    background-color: @secondary;
+    color: @secondary-fg
 }

@@ -41,8 +41,20 @@ const getCells = (origin, vectors, x, y, max) => {
     return cells;
 };
 
+const DEFAULT_PROPS = {
+    origin: { p: 0, d: 0 },
+    vectors: [{ p: 2, d: 2 }],
+    x: 'd',
+    y: 'p',
+    max: { p: 12, d: 7 },
+    title: 'x vs y',
+    xLabel: 'x',
+    yLabel: 'y'
+}
+
 const Graph = props => {
-    const { origin, vectors, x, y, max, title, xLabel, yLabel } = props;
+    const config = { ...DEFAULT_PROPS, ...props };
+    const { origin, vectors, x, y, max, title, xLabel, yLabel } = config;
     return (
         <div className="graph-container">
             <div className="graph-title">{title}</div>

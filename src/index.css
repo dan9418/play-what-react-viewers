@@ -1,20 +1,43 @@
 .pw-primary {
   background-color: #5E99D1;
-  color: #F6F7EB;
+  color: #FFF;
+}
+.pw-primary.link:hover {
+  background-color: #3880c4;
 }
 .pw-secondary {
   background-color: #F7A072;
-  color: #F6F7EB;
+  color: #FFF;
+}
+.pw-secondary.link:hover {
+  background-color: #f47f42;
 }
 .pw-light {
   background-color: #F6F7EB;
-  color: #272635;
+  color: #000;
+}
+.pw-light.link:hover {
+  background-color: #e6e8c7;
 }
 .pw-medium {
-  background-color: #F6F7EB;
-  color: #272635;
+  background-color: #B8BDB5;
+  color: #000;
+}
+.pw-medium.link:hover {
+  background-color: #9ea59a;
 }
 .pw-dark {
   background-color: #272635;
+  color: #FFF;
+}
+.pw-dark.link:hover {
+  background-color: #3d3b53;
+}
+.pw-inactive {
+  background-color: #B8BDB5;
   color: #F6F7EB;
+}
+.pw-active {
+  background-color: #F7A072;
+  color: #FFF;
 }

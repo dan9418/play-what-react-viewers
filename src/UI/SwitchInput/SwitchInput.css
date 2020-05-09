@@ -14,8 +14,8 @@
     flex-direction: row;
 }
 
-.switch-input.active {
-    background-color: #5E99D1;
+.switch-input.pw-active {
+    /*background-color: #5E99D1;*/
     flex-direction: row-reverse;
 }
 
