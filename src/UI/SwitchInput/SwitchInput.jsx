@@ -2,12 +2,10 @@ import * as React from 'react';
 import './SwitchInput.css';
 
 export default function SwitchInput(props) {
-    let classes = ['switch-input', props.value ? 'true' : 'false'];
+    let classes = ['switch-input', props.value ? 'active' : ''];
     return (
-        <div className={classes.join(' ')}>
-            <div className='shell' onClick={() => props.setValue(!props.value)}>
-                <div className='ball' />
-            </div>
+        <div className={classes.join(' ')} onClick={() => props.setValue(!props.value)}>
+            <div className='ball' />
         </div>
     );
 }
