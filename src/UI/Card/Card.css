@@ -1,5 +1,10 @@
 .card {
     width: 100%;
+    min-width: 512px;
+    max-width: 1024px;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .card .title, .card .content {
@@ -9,12 +14,13 @@
 
 .card .title {
     font-weight: bolder;
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
+    padding: 32px 32px 16px 32px;
+    border-bottom: 1px solid #aaa;
 }
 
-.card .title:hover {
-    cursor: pointer;
+.card .content {
+    font-weight: bolder;
+    padding: 16px 32px 32px 32px;
 }
 
 .card.open .title {

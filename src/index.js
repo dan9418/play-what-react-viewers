@@ -16,6 +16,7 @@ import HarmonicSeriesCard from './Modules/HarmonicSeries/HarmonicSeriesCard';
 import InputDocsCard from './Modules/InputDocs/InputDocsCard';
 
 import ErrorBoundary from './UI/ErrorBoundary';
+import ButtonInput from './UI/ButtonInput/ButtonInput';
 
 import './index.css';
 
@@ -34,7 +35,8 @@ const Modules = {
 }
 
 const UI = {
-    ErrorBoundary
+    ErrorBoundary,
+    ButtonInput
 }
 
 export default {
