@@ -1,12 +1,12 @@
 import React from 'react';
-// import './Dropdown.css';
+import './Dropdown.css';
 
 const Dropdown = props => {
     const { value, setValue, options } = props;
 
     return (
         <select
-            className='dropdown'
+            className='dropdown-input'
             onChange={e => setValue(options[e.target.selectedIndex])}
             value={value ? value.id : ''}
         >

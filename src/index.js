@@ -5,6 +5,7 @@ import KeyboardCard from './Modules/Keyboard/KeyboardCard';
 import GraphCard from './Modules/Graph/GraphCard';
 import TrueScaleCard from './Modules/TrueScale/TrueScaleCard';
 import HarmonicSeriesCard from './Modules/HarmonicSeries/HarmonicSeriesCard';
+import InputDocsCard from './Modules/InputDocs/InputDocsCard';
 
 import ErrorBoundary from './UI/ErrorBoundary';
 
@@ -15,7 +16,8 @@ const Modules = {
     KeyboardCard,
     GraphCard,
     TrueScaleCard,
-    HarmonicSeriesCard
+    HarmonicSeriesCard,
+    InputDocsCard
 }
 
 const UI = {

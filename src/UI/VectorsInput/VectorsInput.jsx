@@ -3,7 +3,7 @@ import './VectorsInput.css';
 
 import PW from 'play-what';
 
-const VectorInput = ({ value, setValue }) => {
+export const VectorInput = ({ value, setValue }) => {
     const { p, d } = value;
     return (
         <div className='vector-input'>

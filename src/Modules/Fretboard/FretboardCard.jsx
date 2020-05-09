@@ -6,11 +6,11 @@ import Fretboard from './Fretboard';
 
 const NOTES = PW.Theory.addVectorsBatch(PW.Presets.KEY_CENTERS.A, PW.Presets.SCALE.NaturalMinor.intervals);
 
-const FretboardCard = () => {
+const FretboardCard = ({ defaultOpen }) => {
     const [open, setOpen] = useState(false);
 
     return (
-        <Card title="Fretboard" defaultOpen>
+        <Card title="Fretboard" defaultOpen={defaultOpen}>
             <Fretboard
                 notes={NOTES}
             />

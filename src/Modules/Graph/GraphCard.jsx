@@ -17,14 +17,14 @@ const VECTORS = [
 import Card from '../../UI/Card/Card';
 import './Graph.css';
 
-const GraphCard = () => {
+const GraphCard = ({ defaultOpen }) => {
     const [max, setMax] = useState(MAX_VECTOR);
     const [origin, setOrigin] = useState(ORIGIN);
     const [vectors, setVectors] = useState(VECTORS);
     const [mathMode, setMathMode] = useState(false);
 
     return (
-        <Card title="Graph" defaultOpen>
+        <Card title="Graph" defaultOpen={defaultOpen}>
             <div className="mode-button" onClick={() => setMathMode(!mathMode)}>Toggle Mode</div>
             <div className="graph-card">
                 <div className='left'>

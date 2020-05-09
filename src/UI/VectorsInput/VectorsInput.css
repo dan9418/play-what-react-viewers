@@ -13,14 +13,3 @@
     grid-template-columns: repeat(4, auto);
     padding: 5px;
 }
-
-.vector-input {
-    display: inline-block;
-}
-
-.vector-input input {
-    height: 20px;
-    line-height: 20px;
-    width: 50px;
-    margin: 5px;
-}

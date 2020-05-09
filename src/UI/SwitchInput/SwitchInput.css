@@ -1,10 +1,7 @@
 .switch-input {
     -ms-user-select: none;
     user-select: none;
-}
-
-.switch-input {
-
+    display: inline-block;
 }
 
 .switch-input .shell {
