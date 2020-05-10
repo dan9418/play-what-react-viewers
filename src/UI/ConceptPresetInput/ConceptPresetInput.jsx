@@ -1,8 +1,6 @@
 import React from 'react';
 import './ConceptPresetInput.css';
-
 import KeyCenterInput from '../KeyCenterInput/KeyCenterInput';
-
 import PW from 'play-what';
 
 const ConceptPresetInput = props => {

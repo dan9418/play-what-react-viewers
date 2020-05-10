@@ -17,6 +17,7 @@ const VECTORS = [
 import Card from '../../UI/Card/Card';
 import './Graph.css';
 import ConceptPresetInput from '../../UI/ConceptPresetInput/ConceptPresetInput';
+import ConceptIntervalsInput from '../../UI/ConceptIntervalsInput/ConceptIntervalsInput';
 
 const GraphCard = ({ defaultOpen }) => {
     const [max, setMax] = useState(MAX_VECTOR);
@@ -30,6 +31,7 @@ const GraphCard = ({ defaultOpen }) => {
             <div className="graph-card">
                 <div className='left'>
                     {mode === 0 && <ConceptPresetInput keyCenter={origin} setKeyCenter={setOrigin} intervals={vectors} setIntervals={setVectors} />}
+                    {mode === 1 && <ConceptIntervalsInput keyCenter={origin} setKeyCenter={setOrigin} intervals={vectors} setIntervals={setVectors} />}
                     {mode === 2 && <ConceptMathInput keyCenter={origin} setKeyCenter={setOrigin} intervals={vectors} setIntervals={setVectors} />}
                 </div>
                 <div className='right'>
