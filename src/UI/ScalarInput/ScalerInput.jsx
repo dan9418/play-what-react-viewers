@@ -7,7 +7,7 @@ const ScalarInput = props => {
     const disabled = typeof value === 'undefined' || typeof value === null;
 
     return (
-        <input className='scalar-input' type='number' disabled={disabled} value={value} onChange={e => setValue(e.target.value)} />
+        <input className='scalar-input' type='number' disabled={disabled} value={value} onChange={e => setValue(parseInt(e.target.value))} />
     );
 }
 
