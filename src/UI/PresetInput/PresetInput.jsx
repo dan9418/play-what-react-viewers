@@ -23,7 +23,7 @@ const PRESET_TYPES = [
 ];
 
 const PresetInput = props => {
-    const { value, setValue } = props;
+    const { preset, setPreset } = props;
 
     const [presetType, setPresetType] = useState(PRESET_TYPES[1]);
 
@@ -31,10 +31,8 @@ const PresetInput = props => {
 
     return (
         <div className='preset-input'>
-            <label>Preset:</label>
             <Dropdown value={presetType} setValue={setPresetType} options={PRESET_TYPES} />
-            <label>{presetType.name}:</label>
-            <Dropdown value={null} setValue={v => setValue(v.intervals)} options={presetType.options} />
+            <Dropdown value={null} setValue={v => setPreset(v.intervals)} options={presetType.options} />
         </div>
     );
 }

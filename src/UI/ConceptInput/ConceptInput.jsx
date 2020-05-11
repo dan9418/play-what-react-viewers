@@ -1,53 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ConceptInput.css';
-
-import PresetInput from './PresetInput'
-
 import PW from 'play-what';
+import KeyCenterInput from '../KeyCenterInput/KeyCenterInput';
+import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
+import ConceptIntervalsInput from '../ConceptIntervalsInput/ConceptIntervalsInput';
+import ConceptMathInput from '../ConceptMathInput/ConceptMathInput';
+import Dropdown from '../Dropdown/Dropdown';
 
-
-const IntervalLabel = ({ value, max }) => {
-    return (
-        <div className='interval-label'>
-            {PW.Theory.getIntervalName(value, max)}
-        </div>
-    );
-};
-
-const NoteLabel = ({ value, max }) => {
-    return (
-        <div className='note-label'>
-            {PW.Theory.getNoteName(value, max)}
-        </div>
-    );
-};
-
-const IntervalRow = ({ vector, origin, max, setValue }) => {
-    const resultant = PW.Theory.addVectors(origin, vector, max);
-    return (
-        <div className='interval-row'>
-            <IntervalLabel value={vector} max={max} />
-            <NoteLabel value={resultant} max={max} />
-        </div>
-    );
-};
+const CONCEPT_INPUT_MODES = {
+    preset: {
+        id: 'preset',
+        name: 'Preset'
+    },
+    intervals: {
+        id: 'intervals',
+        name: 'Intervals'
+    },
+    math: {
+        id: 'math',
+        name: 'Math'
+    }
+}
+const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 
 const ConceptInput = props => {
-    const { keyCenter, setKeyCenter, intervals, setIntervals, max } = props;
+    const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
-    const rows = intervals.map((v, i) => (
-        <IntervalRow key={i} vector={v} origin={keyCenter} max={max} setValue={x => setIntervals([...intervals.slice(0, i), x, ...(intervals.slice(i + 1))])} />
-    ));
+    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.math);
 
     return (
         <div className="concept-input">
-            <label>Key Center:</label>
-            <NoteLabel value={keyCenter} max={max} />
-
-            <label>Intervals:</label>
-            {rows}
-            <PresetInput value={intervals} setValue={setIntervals} />
-
+            <Dropdown value={inputMode} setValue={setInputMode} options={CONCEPT_INPUT_MODES_VALUES} />
+            {inputMode.id === CONCEPT_INPUT_MODES.preset.id && <ConceptPresetInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
+            {inputMode.id === CONCEPT_INPUT_MODES.intervals.id && <ConceptIntervalsInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
+            {inputMode.id === CONCEPT_INPUT_MODES.math.id && <ConceptMathInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
         </div>
     );
 }

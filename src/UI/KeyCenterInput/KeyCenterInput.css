@@ -1,7 +1,40 @@
-.degree-input > .button-input {
-    margin: 4px;
+.degree-input, .accidental-input, .octave-input {
+    margin: 8px;
 }
 
-.accidental-input > .button-input {
-    margin: 4px;
+.degree-input > .button-input {
+    border-radius: 0;
+    background-color: green;
 }
+
+.degree-input > .button-input:hover {
+
+    background-color: greenyellow;
+}
+
+.degree-input > .button-input:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.degree-input > .button-input:last-child {
+    border-radius: 0 4px 4px 0;
+}
+
+
+.accidental-input > .button-input {
+    border-radius: 0;
+    background-color: orange;
+}
+
+.accidental-input > .button-input:hover {
+    background-color: orangered;
+}
+
+.accidental-input > .button-input:first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.accidental-input > .button-input:last-child {
+    border-radius: 0 4px 4px 0;
+}
+

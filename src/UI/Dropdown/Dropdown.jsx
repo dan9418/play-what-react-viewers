@@ -2,7 +2,7 @@ import React from 'react';
 import './Dropdown.css';
 
 const Dropdown = props => {
-    const { value, setValue, options } = props;
+    const { value, setValue, options, displayProperty } = props;
 
     return (
         <select
@@ -11,7 +11,7 @@ const Dropdown = props => {
             value={value ? value.id : ''}
         >
             {options.map((v, i) => (
-                <option key={i} value={v.id}>{v.name}</option>
+                <option key={i} value={v.id}>{displayProperty ? v[displayProperty] : v.name}</option>
             ))}
         </select>
     );
