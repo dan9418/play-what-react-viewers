@@ -10,9 +10,9 @@ const ConceptMathInput = props => {
 
     return (
         <div className="concept-math-input">
-            a:
+            <label>a:</label>
             <VectorInput value={keyCenter} setValue={setKeyCenter} />
-            B:
+            <label>B:</label>
             <MatrixInput value={intervals} setValue={setIntervals} />
         </div>
     );

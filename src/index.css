@@ -41,3 +41,8 @@
   background-color: #F7A072;
   color: #FFF;
 }
+label {
+  display: inline-block;
+  font-weight: bold;
+  margin: 4px;
+}

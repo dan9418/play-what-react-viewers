@@ -48,8 +48,11 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
     const setValue = d => setKeyCenter({ d: d.d, p: d.p });
     return (
         <div className="key-center-input">
+            <label>Degree:</label>
             <DegreeInput value={keyCenter} setValue={setValue} />
+            <label>Accidental:</label>
             <AccidentalInput />
+            <label>Octave:</label>
             <OctaveInput />
         </div>
     );

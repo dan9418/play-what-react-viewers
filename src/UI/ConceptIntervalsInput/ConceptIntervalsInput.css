@@ -1,0 +1,3 @@
+.concept-intervals-input *:not(:last-child) {
+    margin-bottom: 4px;
+}
