@@ -2,13 +2,15 @@ import React from 'react';
 import './ButtonInput.css';
 
 const ButtonInput = props => {
-    const { disabled, onClick, children, className } = props;
+    const { disabled, onClick, children, className, highlight } = props;
 
     const isDisabled = disabled || false;
     const clickHander = onClick || (() => null);
 
+    const cn = `button-input ${className ? className : ''} ${highlight ? 'highlight' : ''}`;
+
     return (
-        <button className={`button-input ${className}`} type='button' disabled={isDisabled} onClick={clickHander} >{children}</button>
+        <button className={cn} type='button' disabled={isDisabled} onClick={clickHander} >{children}</button>
     );
 }
 

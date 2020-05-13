@@ -15,3 +15,7 @@
 .button-input:hover {
     background-color: #f47f42;
 }
+
+.button-input.highlight {
+    background-color: #fff;
+}

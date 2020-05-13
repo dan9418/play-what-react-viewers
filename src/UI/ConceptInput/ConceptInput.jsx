@@ -26,7 +26,7 @@ const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 const ConceptInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
-    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.math);
+    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.preset);
 
     return (
         <div className="concept-input">
