@@ -2,7 +2,7 @@ import React from 'react';
 import './ConceptIntervalsInput.css';
 import PW from 'play-what';
 import KeyCenterInput from '../KeyCenterInput/KeyCenterInput';
-import IntervalListInput from '../IntervalListInput/MatrixInput';
+import IntervalListInput from '../IntervalListInput/IntervalListInput';
 
 const ConceptIntervalsInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;

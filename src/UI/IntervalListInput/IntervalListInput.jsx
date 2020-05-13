@@ -6,7 +6,7 @@ const IntervalListInput = props => {
     const { intervals, setIntervals } = props;
 
     const intervalInputs = intervals.map((v, i) => {
-        const setIntervalValue = ivl => setIntervals([...value.slice(0, i), ivl, ...(value.slice(i + 1))]);
+        const setIntervalValue = ivl => setIntervals([...intervals.slice(0, i), ivl, ...(intervals.slice(i + 1))]);
         return <div><IntervalInput key={i} interval={v} setInterval={setIntervalValue} /></div>;
     });
 

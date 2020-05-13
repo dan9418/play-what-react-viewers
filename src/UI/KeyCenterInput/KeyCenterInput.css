@@ -4,12 +4,13 @@
 
 .degree-input > .button-input {
     border-radius: 0;
-    background-color: green;
+    background-color: white;
+    color: black;
+    border: 1px solid #aaa;
 }
 
 .degree-input > .button-input:hover {
-
-    background-color: greenyellow;
+    background-color: #ddd;
 }
 
 .degree-input > .button-input:first-child {
@@ -23,11 +24,13 @@
 
 .accidental-input > .button-input {
     border-radius: 0;
-    background-color: orange;
+    background-color: white;
+    color: black;
+    border: 1px solid #aaa;
 }
 
 .accidental-input > .button-input:hover {
-    background-color: orangered;
+    background-color: #ddd;
 }
 
 .accidental-input > .button-input:first-child {

@@ -4,21 +4,27 @@ import './PresetInput.css';
 import PW from 'play-what';
 import Dropdown from '../Dropdown/Dropdown';
 
+const CUSTOM_PRESET = {
+    id: 'custom',
+    name: 'Custom',
+    intervals: []
+};
+
 const PRESET_TYPES = [
     {
         id: 'intervalPair',
         name: 'Interval Pair',
-        options: PW.Presets.INTERVAL_PAIR_VALUES
+        options: [...PW.Presets.INTERVAL_PAIR_VALUES, CUSTOM_PRESET]
     },
     {
         id: 'chord',
         name: 'Chord',
-        options: PW.Presets.CHORD_VALUES
+        options: [...PW.Presets.CHORD_VALUES, CUSTOM_PRESET]
     },
     {
         id: 'scale',
         name: 'Scale',
-        options: PW.Presets.SCALE_VALUES
+        options: [...PW.Presets.SCALE_VALUES, CUSTOM_PRESET]
     }
 ];
 
@@ -32,7 +38,7 @@ const PresetInput = props => {
     return (
         <div className='preset-input'>
             <Dropdown value={presetType} setValue={setPresetType} options={PRESET_TYPES} />
-            <Dropdown value={null} setValue={v => setPreset(v.intervals)} options={presetType.options} />
+            <Dropdown value={preset} setValue={v => setPreset(v.intervals)} options={presetType.options} />
         </div>
     );
 }

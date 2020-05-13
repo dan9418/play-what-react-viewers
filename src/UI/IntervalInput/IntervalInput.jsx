@@ -4,15 +4,29 @@ import './IntervalInput.css';
 import PW from 'play-what';
 import Dropdown from '../Dropdown/Dropdown';
 
-const DATA = PW.Presets.INTERVALS_VALUES;
+const CUSTOM_PRESET = {
+    id: 'custom',
+    name: 'Custom',
+    p: 0,
+    d: 0
+};
+
+const DATA = [...PW.Presets.INTERVALS_VALUES, CUSTOM_PRESET];
+
+const areIntervalsEqual = (a, b) => a.p === b.p && a.d === b.d;
+
+const findPreset = interval => {
+    const preset = PW.Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));
+    return preset ? preset : { ...CUSTOM_PRESET, p: preset.p, d: preset.d };
+}
 
 const IntervalInput = props => {
-    const { ivl, setIvl } = props;
+    const namedInterval = findPreset(props.interval);
 
     const disabled = typeof value === 'undefined' || typeof value === null;
 
     return (
-        <Dropdown options={DATA} disabled={disabled} value={ivl} setValue={setIvl} displayProperty='id' />
+        <Dropdown options={DATA} disabled={disabled} value={namedInterval} setValue={props.setInterval} displayProperty='id' />
     );
 }
 
