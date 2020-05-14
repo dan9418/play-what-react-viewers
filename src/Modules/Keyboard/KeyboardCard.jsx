@@ -3,10 +3,14 @@ import Keyboard from './Keyboard';
 import Card from '../../UI/Card/Card';
 import PW from 'play-what';
 import ConceptInput from '../../UI/ConceptInput/ConceptInput';
+import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 
 const KeyboardCard = ({ defaultOpen }) => {
     const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
     const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
+
+    const [keyLow, setKeyLow] = useState(0);
+    const [keyHigh, setKeyHigh] = useState(25);
 
     const notes = PW.Theory.addVectorsBatch(keyCenter, intervals)
 
@@ -14,8 +18,16 @@ const KeyboardCard = ({ defaultOpen }) => {
         <Card title="Keyboard" defaultOpen={defaultOpen}>
             <Keyboard 
                 notes={notes}
+                keyLow={keyLow}
+                keyHigh={keyHigh}
             />
+
             <ConceptInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
+
+            <label>Low Key:</label>
+            <ScalarInput value={keyLow} setValue={setKeyLow} />
+            <label>High Key:</label>
+            <ScalarInput value={keyHigh} setValue={setKeyHigh} />
         </Card>
     )
 }
