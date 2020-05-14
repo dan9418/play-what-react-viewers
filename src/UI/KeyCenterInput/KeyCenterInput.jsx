@@ -78,7 +78,6 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
 
     return (
         <div className="key-center-input">
-            {JSON.stringify(keyCenter)}
             <label>Degree:</label>
             <DegreeInput degree={degree} setDegree={setDegree} />
             <label>Accidental:</label>

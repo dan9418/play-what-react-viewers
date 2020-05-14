@@ -3,17 +3,20 @@ import PW from 'play-what';
 
 import Card from '../../UI/Card/Card';
 import Fretboard from './Fretboard';
-
-const NOTES = PW.Theory.addVectorsBatch(PW.Presets.KEY_CENTERS.A, PW.Presets.SCALE.NaturalMinor.intervals);
+import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 
 const FretboardCard = ({ defaultOpen }) => {
-    const [open, setOpen] = useState(false);
+    const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
+    const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
+
+    const notes = PW.Theory.addVectorsBatch(keyCenter, intervals)
 
     return (
         <Card title="Fretboard" defaultOpen={defaultOpen}>
             <Fretboard
-                notes={NOTES}
+                notes={notes}
             />
+            <ConceptInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
         </Card>
     )
 }
