@@ -1,0 +1,9 @@
+.true-scale .button-input {
+    margin: 4px;
+    background-color: #eee;
+    color: black;
+}
+
+.true-scale .button-input:hover {
+    background-color: #ddd;
+}

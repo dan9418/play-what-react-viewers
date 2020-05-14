@@ -1,6 +1,7 @@
 import React from 'react';
 import PW from 'play-what';
 import './TrueScale.css';
+import ButtonInput from '../../UI/ButtonInput/ButtonInput';
 
 const TRUE_INTERVAL_MAP = [
     'P1',
@@ -38,7 +39,7 @@ const getButtons = (fundamental, n) => {
         }
     }
     freq.sort((a, b) => a - b);
-    return freq.map((f, i) => <div key={i} className="button" onClick={() => PW.Sound.play(f)}>{TRUE_INTERVAL_MAP[i]}</div>);
+    return freq.map((f, i) => <ButtonInput key={i} onClick={() => PW.Sound.play(f)}>{TRUE_INTERVAL_MAP[i]}</ButtonInput>);
 }
 
 
