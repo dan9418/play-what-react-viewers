@@ -48,19 +48,24 @@ const AccidentalInput = ({ accidental, setAccidental }) => {
 const OctaveInput = ({ octave, setOctave }) => <ScalarInput value={octave} setValue={setOctave} />;
 
 const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
+
+    const degree = PW.Theory.getDegree(keyCenter.d);
+    const octave = Math.floor(keyCenter.p / 12) + 4;
+    const offset = keyCenter.p - degree.p;
+    const accidental = PW.Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;
+
     const setDegree = (d) => {
-        /*const newKeyCenter = {
-            p: Math.floor(keyCenter.p / 12) + PW.Utils.modulo(d.pitch, 12),
-            d: i
-        };*/
-        setKeyCenter(d);
+        const newKeyCenter = {
+            p: Math.floor(keyCenter.p / 12) * 12 + d.p,
+            d: d.d
+        };
+        setKeyCenter(newKeyCenter);
     };
     const setAccidental = a => {
         const newKeyCenter = {
-            p: keyCenter.p,
+            p: keyCenter.p + a.offset,
             d: keyCenter.d
         };
-        newKeyCenter.p = newKeyCenter.p + a.offset;
         setKeyCenter(newKeyCenter);
     };
     const setOctave = o => {
@@ -70,14 +75,6 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
         };
         setKeyCenter(newKeyCenter);
     };
-
-    // TODO
-    const degree = PW.Theory.getDegree(keyCenter.d);
-
-
-    const offset = keyCenter.p - degree.p;
-    const accidental = PW.Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;
-    const octave = Math.floor(keyCenter.p / 12) + 4;
 
     return (
         <div className="key-center-input">
