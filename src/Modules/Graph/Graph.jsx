@@ -1,5 +1,6 @@
 import React from 'react';
 import './Graph.css';
+import PW from 'play-what';
 
 const Cell = props => {
     const { x, y, color } = props;
@@ -18,8 +19,11 @@ const Label = ({ axis, children }) => {
     );
 };
 
-const areEqual = (v1, v2, x, y) => {
-    return v1[x] === v2[x] && v1[y] === v2[y];
+const areEqual = (v1, v2, x, y, max) => {
+    const mod = PW.Utils.modulo;
+    const xEqual = mod(v1[x], max[x]) === mod(v2[x], max[x]);
+    const yEqual = mod(v1[y], max[y]) === mod(v2[y], max[y]);
+    return xEqual && yEqual;
 }
 
 const getCells = (origin, vectors, x, y, max) => {
@@ -32,8 +36,8 @@ const getCells = (origin, vectors, x, y, max) => {
             }
             else {
                 const point = { [x]: j, [y]: i };
-                const isOrigin = areEqual(origin, point, x, y);
-                const isResultant = vectors.findIndex(v => areEqual(v, point, x, y)) >= 0;
+                const isOrigin = areEqual(origin, point, x, y, max);
+                const isResultant = vectors.findIndex(v => areEqual(v, point, x, y, max)) >= 0;
                 cells.push(<Cell key={j + '-' + i} x={j} y={i} color={isOrigin ? 'red' : isResultant ? 'blue' : null} />)
             }
         }

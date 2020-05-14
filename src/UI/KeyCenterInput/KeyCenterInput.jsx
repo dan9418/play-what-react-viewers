@@ -10,11 +10,11 @@ const DegreeInput = ({ degree, setDegree }) => {
     return (
         <div className="degree-input">
             {allDegrees.map((d, i) => {
-                const isActive = degree && degree.d === i && degree.p === d.pitch
+                const isActive = degree && degree.d === i && degree.p === d.p
                 return (
                     <ButtonInput
                         key={i}
-                        onClick={() => setDegree(d, i)}
+                        onClick={() => setDegree({ p: d.p, d: i })}
                         highlight={isActive}
                     >
                         {PW.Theory.getDegreeMapping(d.d).name}
@@ -48,38 +48,42 @@ const AccidentalInput = ({ accidental, setAccidental }) => {
 const OctaveInput = ({ octave, setOctave }) => <ScalarInput value={octave} setValue={setOctave} />;
 
 const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
-    const setDegree = (d, i) => {
-        const newKeyCenter = { ...keyCenter };
-        newKeyCenter.d = i; // TODO
-        setKeyCenter(newKeyCenter);
+    const setDegree = (d) => {
+        /*const newKeyCenter = {
+            p: Math.floor(keyCenter.p / 12) + PW.Utils.modulo(d.pitch, 12),
+            d: i
+        };*/
+        setKeyCenter(d);
     };
     const setAccidental = a => {
-        const newKeyCenter = { ...keyCenter };
+        const newKeyCenter = {
+            p: keyCenter.p,
+            d: keyCenter.d
+        };
         newKeyCenter.p = newKeyCenter.p + a.offset;
         setKeyCenter(newKeyCenter);
     };
     const setOctave = o => {
-        const newKeyCenter = { ...keyCenter };
-        newKeyCenter.p = newKeyCenter.p + o * 12; // TODO
+        const newKeyCenter = {
+            p: ((o - 4) * 12) + PW.Utils.modulo(keyCenter.p, 12),
+            d: keyCenter.d
+        };
         setKeyCenter(newKeyCenter);
     };
 
     // TODO
-    const degreeIndex = PW.Utils.modulo(keyCenter.d, 12);
-    const degreeTemp = PW.Constants.DEGREE_MAPPING[degreeIndex] || null;
-    const degree = {
-        p: degreeTemp.pitch,
-        d: degreeIndex
-    }
+    const degree = PW.Theory.getDegree(keyCenter.d);
+
 
     const offset = keyCenter.p - degree.p;
     const accidental = PW.Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;
-    const octave = Math.floor(keyCenter.p / 12);
+    const octave = Math.floor(keyCenter.p / 12) + 4;
 
     return (
         <div className="key-center-input">
+            {JSON.stringify(keyCenter)}
             <label>Degree:</label>
-            <DegreeInput degree={keyCenter} setDegree={setDegree} />
+            <DegreeInput degree={degree} setDegree={setDegree} />
             <label>Accidental:</label>
             <AccidentalInput accidental={accidental} setAccidental={setAccidental} />
             <label>Octave:</label>
