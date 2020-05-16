@@ -11,5 +11,6 @@ export default {
     ],
     showFretNumbers: true,
     showDots: true,
-    notes: []
+    keyCenter: { d: 2, p: 0 },
+    intervals: []
 };
