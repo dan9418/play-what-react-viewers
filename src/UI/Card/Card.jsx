@@ -6,7 +6,7 @@ const Card = ({ title, children, defaultOpen }) => {
 
     return (
         <div className={`card ${open ? 'open' : ''}`}>
-            <div className="title" onClick={() => setOpen(!open)}>{title}</div>
+            <h2 className="title" onClick={() => setOpen(!open)}>{title}</h2>
             {open && <div className="content ">{children}</div>}
         </div>
     )
