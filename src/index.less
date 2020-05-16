@@ -1,10 +1,15 @@
-@primary: #5E99D1;
+//@primary: #5E99D1;
+@primary: #414770;
 @primary-fg: #FFF;
 @primary-hover: darken(@primary, 10%);
 
-@secondary: #F7A072;
+@secondary: #5B85AA;
 @secondary-fg: #FFF;
 @secondary-hover: darken(@secondary, 10%);
+
+@accent: #5B85AA;
+@accent-fg: #FFF;
+@accent-hover: darken(@accent, 10%);
 
 @light: #F6F7EB;
 @light-fg: #000;
@@ -27,7 +32,6 @@
     background-color: @primary-hover;
 }
 
-
 .pw-secondary {
     background-color: @secondary;
     color: @secondary-fg;
@@ -35,6 +39,15 @@
 
 .pw-secondary.link:hover {
     background-color: @secondary-hover;
+}
+
+.pw-accent {
+    background-color: @accent;
+    color: @accent-fg;
+}
+
+.pw-accent.link:hover {
+    background-color: @accent-hover;
 }
 
 
