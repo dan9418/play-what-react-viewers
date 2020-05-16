@@ -25,6 +25,11 @@ const PRESET_TYPES = [
         id: 'scale',
         name: 'Scale',
         options: [...PW.Presets.SCALE_VALUES, CUSTOM_PRESET]
+    },
+    {
+        id: 'mode',
+        name: 'Mode',
+        options: [...PW.Presets.QUICK_MODE_VALUES, CUSTOM_PRESET]
     }
 ];
 
