@@ -14,7 +14,7 @@
     flex-direction: row;
 }
 
-.switch-input.pw-active {
+.switch-input.pw-accent {
     /*background-color: #5E99D1;*/
     flex-direction: row-reverse;
 }

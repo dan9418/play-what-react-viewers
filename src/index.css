@@ -13,40 +13,32 @@
   background-color: #486b8a;
 }
 .pw-accent {
-  background-color: #5B85AA;
+  background-color: #F46036;
   color: #FFF;
 }
 .pw-accent.link:hover {
-  background-color: #486b8a;
+  background-color: #ea3e0d;
 }
 .pw-light {
-  background-color: #F6F7EB;
+  background-color: #EBEBEB;
   color: #000;
 }
 .pw-light.link:hover {
-  background-color: #e6e8c7;
+  background-color: #d2d2d2;
 }
 .pw-medium {
-  background-color: #B8BDB5;
+  background-color: #C0C0C0;
   color: #000;
 }
 .pw-medium.link:hover {
-  background-color: #9ea59a;
+  background-color: #a7a7a7;
 }
 .pw-dark {
-  background-color: #272635;
+  background-color: #232323;
   color: #FFF;
 }
 .pw-dark.link:hover {
-  background-color: #3d3b53;
-}
-.pw-inactive {
-  background-color: #B8BDB5;
-  color: #F6F7EB;
-}
-.pw-active {
-  background-color: #5B85AA;
-  color: #FFF;
+  background-color: #3d3d3d;
 }
 label {
   display: inline-block;

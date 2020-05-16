@@ -7,7 +7,7 @@ const ButtonInput = props => {
     const isDisabled = disabled || false;
     const clickHander = onClick || (() => null);
 
-    const cn = `button-input ${className ? className : ''} ${highlight ? 'highlight' : ''}`;
+    const cn = `button-input pw-accent ${className ? className : ''} ${highlight ? 'highlight' : ''} ${!isDisabled ? 'link' : ''}`;
 
     return (
         <button className={cn} type='button' disabled={isDisabled} onClick={clickHander} >{children}</button>

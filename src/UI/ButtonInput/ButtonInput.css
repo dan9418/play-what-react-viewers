@@ -7,13 +7,7 @@
     border: none;
     outline: none;
     border-radius: 4px;
-    background-color: #F7A072;
-    color: white;
     padding: 0 16px;
-}
-
-.button-input:hover {
-    background-color: #f47f42;
 }
 
 .button-input.highlight {
