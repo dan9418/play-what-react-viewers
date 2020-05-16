@@ -189,6 +189,90 @@ eval("!function(t,e){ true?module.exports=e():undefined}(\"undefined\"!=typeof s
 
 /***/ }),
 
+/***/ "../play-what/src/Color.js":
+/*!*********************************!*\
+  !*** ../play-what/src/Color.js ***!
+  \*********************************/
+/*! exports provided: COLORS, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"COLORS\", function() { return COLORS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ColorUtils; });\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color */ \"../play-what/node_modules/color/index.js\");\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(color__WEBPACK_IMPORTED_MODULE_0__);\n\nconst COLORS = {\n  White: '#000000',\n  Black: '#FFFFFF',\n  d1: '#E6194B',\n  d2: '#F58231',\n  d3: '#FFE119',\n  d4: '#3CB44B',\n  d5: '#4363D8',\n  d6: '#911DB4',\n  d7: '#F032E6',\n  pc0: '#ED1C24',\n  pc1: '#F1592A',\n  pc2: '#F8981E',\n  pc3: '#FCB040',\n  pc4: '#FFF200',\n  pc5: '#8CC63F',\n  pc6: '#056839',\n  pc7: '#13A89E',\n  pc8: '#A898C8',\n  pc9: '#662D91',\n  pc10: '#92278F',\n  pc11: '#C2305E'\n};\nconst SCHEMES = {\n  binary: {\n    active: null,\n    inacitve: COLORS.Black\n  },\n  degree: {\n    d0: null,\n    d1: COLORS.d1,\n    d2: COLORS.d2,\n    d3: COLORS.d3,\n    d4: COLORS.d4,\n    d5: COLORS.d5,\n    d6: COLORS.d6,\n    d7: COLORS.d7\n  },\n  pitchClass: {\n    pc0: COLORS.pc0,\n    pc1: COLORS.pc1,\n    pc2: COLORS.pc2,\n    pc3: COLORS.pc3,\n    pc4: COLORS.pc4,\n    pc5: COLORS.pc5,\n    pc6: COLORS.pc6,\n    pc7: COLORS.pc7,\n    pc8: COLORS.pc8,\n    pc9: COLORS.pc9,\n    pc10: COLORS.pc10,\n    pc11: COLORS.pc11\n  },\n  octave: {\n    min: COLORS.White,\n    max: COLORS.Black\n  },\n  frequency: {\n    min: COLORS.White,\n    max: COLORS.Black\n  },\n  noteIndex: {\n    min: COLORS.White,\n    max: COLORS.Black\n  }\n};\nclass ColorUtils {\n  static none() {\n    return {};\n  }\n\n  static binary(note, scheme = SCHEMES.binary) {\n    if (!note || !note.interval) return {};\n    return this.getStylesFromColor(scheme.active);\n  }\n\n  static degree(note, scheme = SCHEMES.degree) {\n    if (!note || typeof note.d !== 'number') return {};\n    const id = `d${note.d + 1}`;\n    const bg = scheme[id] ? scheme[id] : SCHEMES.degree[id];\n    return this.getStylesFromColor(bg);\n  }\n\n  static pitchClass(note, scheme = SCHEMES.pitchClass) {\n    if (!note) return {};\n    const pitchClass = note.getPitchClass();\n    const id = `pc${pitchClass}`;\n    const bg = scheme[id] ? scheme[id] : SCHEMES.pitchClass[id];\n    return this.getStylesFromColor(bg);\n  }\n\n  static octave(note, minNote, maxNote, scheme = SCHEMES.octave) {\n    if (!note) return {};\n    const minOctave = minNote.getOctave();\n    const octave = note.getOctave();\n    const maxOctave = maxNote.getOctave();\n    const bg = this.getColorFromContinuousScheme(octave, minOctave, maxOctave, scheme);\n    return this.getStylesFromColor(bg);\n  }\n\n  static frequency(note, minNote, maxNote, scheme = SCHEMES.frequency) {\n    if (!note) return {};\n    const minFrequency = minNote.getFrequency();\n    const frequency = note.getFrequency();\n    const maxFrequency = maxNote.getFrequency();\n    const bg = this.getColorFromContinuousScheme(frequency, minFrequency, maxFrequency, scheme);\n    return this.getStylesFromColor(bg);\n  }\n\n  static noteIndex(note, minNote, maxNote, scheme = SCHEMES.noteIndex) {\n    if (!note) return {};\n    const minNoteIndex = minNote.getNoteIndex();\n    const noteIndex = note.getNoteIndex();\n    const maxNoteIndex = maxNote.getNoteIndex();\n    const bg = this.getColorFromContinuousScheme(noteIndex, minNoteIndex, maxNoteIndex, scheme);\n    return this.getStylesFromColor(bg);\n  } // Helpers\n\n\n  static getStylesFromColor(background, foreground) {\n    if (!background) {\n      return {};\n    }\n\n    let bg = color__WEBPACK_IMPORTED_MODULE_0__(background);\n    return {\n      backgroundColor: bg.hsl().string(),\n      color: foreground || (bg.isDark() ? COLORS.Black : COLORS.White)\n    };\n  }\n\n  static getColorFromContinuousScheme(value, min, max, scheme) {\n    let percent = (value - min) / (max - min);\n    percent <= 0 ? 0 : percent >= 1 ? 1 : percent;\n    const initialColor = color__WEBPACK_IMPORTED_MODULE_0__(scheme.min);\n    const finalColor = color__WEBPACK_IMPORTED_MODULE_0__(scheme.max);\n    const background = initialColor.mix(finalColor, percent);\n    return background;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/Color.js?");
+
+/***/ }),
+
+/***/ "../play-what/src/Constants.js":
+/*!*************************************!*\
+  !*** ../play-what/src/Constants.js ***!
+  \*************************************/
+/*! exports provided: MAX_VECTOR, DEGREE_MAPPING, ACCIDENTAL, ACCIDENTAL_VALUES */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"MAX_VECTOR\", function() { return MAX_VECTOR; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DEGREE_MAPPING\", function() { return DEGREE_MAPPING; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ACCIDENTAL\", function() { return ACCIDENTAL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ACCIDENTAL_VALUES\", function() { return ACCIDENTAL_VALUES; });\nconst MAX_VECTOR = {\n  p: 12,\n  d: 7\n};\nconst DEGREE_MAPPING = [{\n  name: 'A',\n  pitch: 9\n}, {\n  name: 'B',\n  pitch: 11\n}, {\n  name: 'C',\n  pitch: 0\n}, {\n  name: 'D',\n  pitch: 2\n}, {\n  name: 'E',\n  pitch: 4\n}, {\n  name: 'F',\n  pitch: 5\n}, {\n  name: 'G',\n  pitch: 7\n}];\nconst ACCIDENTAL = Object.freeze({\n  Flat: {\n    id: 'Flat',\n    name: 'b',\n    offset: -1\n  },\n  Natural: {\n    id: 'Natural',\n    name: '♮',\n    offset: 0\n  },\n  Sharp: {\n    id: 'Sharp',\n    name: '#',\n    offset: 1\n  }\n});\nconst ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));\n/*\r\nexport const PITCH_CLASS_NAMES = [\r\n    'C',\r\n    'C#/Db',\r\n    'D',\r\n    'D#/Eb',\r\n    'E',\r\n    'F',\r\n    'F#/Gb',\r\n    'G',\r\n    'G#/Ab',\r\n    'A',\r\n    'A#/Bb',\r\n    'B'\r\n];\r\n\r\nexport const CALIBRATION_NOTE = {\r\n    frequency: 440,\r\n    noteIndex: 9\r\n};\r\n\r\nexport const CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);\r\n*/\n\n//# sourceURL=webpack:///../play-what/src/Constants.js?");
+
+/***/ }),
+
+/***/ "../play-what/src/Label.js":
+/*!*********************************!*\
+  !*** ../play-what/src/Label.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return LabelUtils; });\nclass LabelUtils {\n  static none() {\n    return '';\n  }\n\n  static binary(note, options) {\n    if (!note || !note.interval) return '';\n    return 'X';\n  }\n\n  static degree(note, options) {\n    if (!note || typeof note.d !== 'number') return '';\n    return note.d + 1;\n  }\n\n  static interval(note, options) {\n    if (!note || !note.interval) return '';\n    return note.interval.id;\n  }\n\n  static name(note, options) {\n    if (!note || !note.interval) return '';\n    return note.getName();\n  }\n\n  static pitchClass(note, options) {\n    if (!note) return {};\n    return note.getPitchClass();\n  }\n\n  static octave(note, options) {\n    if (!note) return {};\n    return note.getOctave();\n  }\n\n  static noteIndex(note, options) {\n    if (!note) return {};\n    return note.getNoteIndex();\n  }\n\n  static frequency(note, options) {\n    if (!note) return {};\n    return Math.round(note.getFrequency());\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/Label.js?");
+
+/***/ }),
+
+/***/ "../play-what/src/Presets.js":
+/*!***********************************!*\
+  !*** ../play-what/src/Presets.js ***!
+  \***********************************/
+/*! exports provided: KEY_CENTERS, KEY_CENTERS_VALUES, INTERVALS, INTERVALS_VALUES, INTERVAL_PAIR, INTERVAL_PAIR_VALUES, CHORD, CHORD_VALUES, SCALE, SCALE_VALUES, QUICK_MODE, QUICK_MODE_VALUES, CONCEPT_PRESET_VALUES */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KEY_CENTERS\", function() { return KEY_CENTERS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KEY_CENTERS_VALUES\", function() { return KEY_CENTERS_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVALS\", function() { return INTERVALS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVALS_VALUES\", function() { return INTERVALS_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVAL_PAIR\", function() { return INTERVAL_PAIR; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVAL_PAIR_VALUES\", function() { return INTERVAL_PAIR_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CHORD\", function() { return CHORD; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CHORD_VALUES\", function() { return CHORD_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"SCALE\", function() { return SCALE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"SCALE_VALUES\", function() { return SCALE_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"QUICK_MODE\", function() { return QUICK_MODE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"QUICK_MODE_VALUES\", function() { return QUICK_MODE_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CONCEPT_PRESET_VALUES\", function() { return CONCEPT_PRESET_VALUES; });\nconst KEY_CENTERS = {\n  A: {\n    id: 'A',\n    name: 'A',\n    p: 9,\n    d: 0\n  },\n  B: {\n    id: 'B',\n    name: 'B',\n    p: 11,\n    d: 1\n  },\n  C: {\n    id: 'C',\n    name: 'C',\n    p: 0,\n    d: 2\n  },\n  D: {\n    id: 'D',\n    name: 'D',\n    p: 2,\n    d: 3\n  },\n  E: {\n    id: 'E',\n    name: 'E',\n    p: 4,\n    d: 4\n  },\n  F: {\n    id: 'F',\n    name: 'F',\n    p: 5,\n    d: 5\n  },\n  G: {\n    id: 'G',\n    name: 'G',\n    p: 7,\n    d: 6\n  }\n};\nconst KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));\nconst INTERVALS = Object.freeze({\n  P1: {\n    id: 'P1',\n    name: 'Perfect Unison',\n    d: 0,\n    p: 0\n  },\n  m2: {\n    id: 'm2',\n    name: 'Minor 2nd',\n    d: 1,\n    p: 1\n  },\n  M2: {\n    id: 'M2',\n    name: 'Major 2nd',\n    d: 1,\n    p: 2\n  },\n  A2: {\n    id: 'A2',\n    name: 'Augmented 2nd',\n    d: 1,\n    p: 3\n  },\n  d3: {\n    id: 'd3',\n    name: 'Diminished 3rd',\n    d: 2,\n    p: 2\n  },\n  m3: {\n    id: 'm3',\n    name: 'Minor 3rd',\n    d: 2,\n    p: 3\n  },\n  M3: {\n    id: 'M3',\n    name: 'Major 3rd',\n    d: 2,\n    p: 4\n  },\n  A3: {\n    id: 'A3',\n    name: 'Augmented 3rd',\n    d: 2,\n    p: 5\n  },\n  d4: {\n    id: 'd4',\n    name: 'Diminished 4th',\n    d: 3,\n    p: 4\n  },\n  P4: {\n    id: 'P4',\n    name: 'Perfect 4th',\n    d: 3,\n    p: 5\n  },\n  A4: {\n    id: 'A4',\n    name: 'Augmented 4th',\n    d: 3,\n    p: 6\n  },\n  d5: {\n    id: 'd5',\n    name: 'Diminished 5th',\n    d: 4,\n    p: 6\n  },\n  P5: {\n    id: 'P5',\n    name: 'Perfect 5th',\n    d: 4,\n    p: 7\n  },\n  A5: {\n    id: 'A5',\n    name: 'Augmented 5th',\n    d: 4,\n    p: 8\n  },\n  d6: {\n    id: 'd6',\n    name: 'Diminished 6th',\n    d: 5,\n    p: 7\n  },\n  m6: {\n    id: 'm6',\n    name: 'Minor 6th',\n    d: 5,\n    p: 8\n  },\n  M6: {\n    id: 'M6',\n    name: 'Major 6th',\n    d: 5,\n    p: 9\n  },\n  A6: {\n    id: 'A6',\n    name: 'Augmented 6th',\n    d: 5,\n    p: 10\n  },\n  d7: {\n    id: 'd7',\n    name: 'Diminished 7th',\n    d: 6,\n    p: 9\n  },\n  m7: {\n    id: 'm7',\n    name: 'Minor 7th',\n    d: 6,\n    p: 10\n  },\n  M7: {\n    id: 'M7',\n    name: 'Major 7th',\n    d: 6,\n    p: 11\n  },\n  P8: {\n    id: 'P8',\n    name: 'Octave',\n    d: 7,\n    p: 12\n  }\n});\nconst INTERVALS_VALUES = Object.freeze(Object.values(INTERVALS));\nconst INTERVAL_PAIR = Object.freeze({\n  P1: {\n    id: 'P1',\n    name: 'P1',\n    intervals: [INTERVALS.P1, INTERVALS.P1]\n  },\n  m2: {\n    id: 'm2',\n    name: 'm2',\n    intervals: [INTERVALS.P1, INTERVALS.m2]\n  },\n  M2: {\n    id: 'M2',\n    name: 'M2',\n    intervals: [INTERVALS.P1, INTERVALS.M2]\n  },\n  A2: {\n    id: 'A2',\n    name: 'A2',\n    intervals: [INTERVALS.P1, INTERVALS.A2]\n  },\n  d3: {\n    id: 'd3',\n    name: 'd3',\n    intervals: [INTERVALS.P1, INTERVALS.d3]\n  },\n  m3: {\n    id: 'm3',\n    name: 'm3',\n    intervals: [INTERVALS.P1, INTERVALS.m3]\n  },\n  M3: {\n    id: 'M3',\n    name: 'M3',\n    intervals: [INTERVALS.P1, INTERVALS.M3]\n  },\n  P4: {\n    id: 'P4',\n    name: 'P4',\n    intervals: [INTERVALS.P1, INTERVALS.P4]\n  },\n  A4: {\n    id: 'A4',\n    name: 'A4',\n    intervals: [INTERVALS.P1, INTERVALS.A4]\n  },\n  d5: {\n    id: 'd5',\n    name: 'd5',\n    intervals: [INTERVALS.P1, INTERVALS.d5]\n  },\n  P5: {\n    id: 'P5',\n    name: 'P5',\n    intervals: [INTERVALS.P1, INTERVALS.P5]\n  },\n  A5: {\n    id: 'A5',\n    name: 'A5',\n    intervals: [INTERVALS.P1, INTERVALS.A5]\n  },\n  d6: {\n    id: 'd6',\n    name: 'd6',\n    intervals: [INTERVALS.P1, INTERVALS.d6]\n  },\n  m6: {\n    id: 'm6',\n    name: 'm6',\n    intervals: [INTERVALS.P1, INTERVALS.m6]\n  },\n  M6: {\n    id: 'M6',\n    name: 'M6',\n    intervals: [INTERVALS.P1, INTERVALS.M6]\n  },\n  d7: {\n    id: 'd7',\n    name: 'd7',\n    intervals: [INTERVALS.P1, INTERVALS.d7]\n  },\n  m7: {\n    id: 'm7',\n    name: 'm7',\n    intervals: [INTERVALS.P1, INTERVALS.m7]\n  },\n  M7: {\n    id: 'M7',\n    name: 'M7',\n    intervals: [INTERVALS.P1, INTERVALS.M7]\n  }\n});\nconst INTERVAL_PAIR_VALUES = Object.freeze(Object.values(INTERVAL_PAIR));\nconst CHORD = Object.freeze({\n  Maj: {\n    id: 'Maj',\n    name: 'Major Triad',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5]\n  },\n  Maj6: {\n    id: 'Maj6',\n    name: 'Major 6th',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.M6]\n  },\n  Maj7: {\n    id: 'Maj7',\n    name: 'Major 7th',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.M7]\n  },\n  Min: {\n    id: 'Min',\n    name: 'Minor Triad',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5]\n  },\n  Min6: {\n    id: 'Min6',\n    name: 'Minor 6th',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.M6]\n  },\n  Min7: {\n    id: 'Min7',\n    name: 'Minor 7th',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.m7]\n  },\n  MinMaj7: {\n    id: 'MinMaj7',\n    name: 'Minor-Major 7th',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.M7]\n  },\n  Dom7: {\n    id: 'Dom7',\n    name: 'Dominant 7th',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.m7]\n  },\n  Aug: {\n    id: 'Aug',\n    name: 'Augmented Triad',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5]\n  },\n  Aug7: {\n    id: 'Aug7',\n    name: 'Augmented 7th',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5, INTERVALS.m7]\n  },\n  AugM7: {\n    id: 'AugM7',\n    name: 'Augmented Major 7th',\n    intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5, INTERVALS.M7]\n  },\n  Dim: {\n    id: 'Dim',\n    name: 'Diminished Triad',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.d5]\n  },\n  Dim7: {\n    id: 'Dim7',\n    name: 'Diminished 7th',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.d5, INTERVALS.d7]\n  },\n  HalfDim7: {\n    id: 'HalfDim7',\n    name: 'Half-Diminished 7th',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.d5, INTERVALS.m7]\n  },\n  Sus2: {\n    id: 'Sus2',\n    name: 'Suspended 2nd',\n    intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.P5]\n  },\n  Sus4: {\n    id: 'Sus4',\n    name: 'Suspended 4th',\n    intervals: [INTERVALS.P1, INTERVALS.P4, INTERVALS.P5]\n  }\n});\nconst CHORD_VALUES = Object.freeze(Object.values(CHORD));\nconst SCALE = Object.freeze({\n  Major: {\n    id: 'Major',\n    name: 'Major',\n    intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7]\n  },\n  NaturalMinor: {\n    id: 'NaturalMinor',\n    name: 'Natural Minor',\n    intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7]\n  },\n  HarmonicMinor: {\n    id: 'HarmonicMinor',\n    name: 'Harmonic Minor',\n    intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.M7]\n  },\n  MajorPentatonic: {\n    id: 'MajorPentatonic',\n    name: 'Major Pentatonic',\n    intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P5, INTERVALS.M6]\n  },\n  MinorPentatonic: {\n    id: 'MinorPentatonic',\n    name: 'Minor Pentatonic',\n    intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m7]\n  },\n  Chromatic: {\n    id: 'Chromatic',\n    name: 'Chromatic',\n    intervals: [INTERVALS.P1, INTERVALS.m2, INTERVALS.M2, INTERVALS.m3, INTERVALS.M3, INTERVALS.P4, INTERVALS.A4, INTERVALS.P5, INTERVALS.m6, INTERVALS.M6, INTERVALS.m7, INTERVALS.M7]\n  }\n});\nconst SCALE_VALUES = Object.freeze(Object.values(SCALE));\nconst QUICK_MODE = {\n  Ionian: {\n    id: 'Ionian',\n    name: 'Ionian',\n    intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7]\n  },\n  Dorian: {\n    id: 'Dorian',\n    name: 'Dorian',\n    intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7]\n  },\n  Phrygian: {\n    id: 'Phrygian',\n    name: 'Phrygian',\n    intervals: [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7]\n  },\n  Lydian: {\n    id: 'Lydian',\n    name: 'Lydian',\n    intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.A4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7]\n  },\n  Mixolydian: {\n    id: 'Mixolydian',\n    name: 'Mixolydian',\n    intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7]\n  },\n  Aeolian: {\n    id: 'Aeolian',\n    name: 'Aeolian',\n    intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7]\n  },\n  Locrian: {\n    id: 'Locrian',\n    name: 'Locrian',\n    intervals: [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.d5, INTERVAL.m6, INTERVAL.m7]\n  }\n};\nconst QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));\nconst CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];\n/*export const MODE = Object.freeze({\r\n    Ionian: { id: 'Ionian', name: 'Ionian', scale: 'Major', degree: 1 },\r\n    Dorian: { id: 'Dorian', name: 'Dorian', scale: 'Major', degree: 2 },\r\n    Phrygian: { id: 'Phrygian', name: 'Phrygian', scale: 'Major', degree: 3 },\r\n    Lydian: { id: 'Lydian', name: 'Lydian', scale: 'Major', degree: 4 },\r\n    Mixolydian: { id: 'Mixolydian', name: 'Mixolydian', scale: 'Major', degree: 5 },\r\n    Aeolian: { id: 'Aeolian', name: 'Aeolian', scale: 'Major', degree: 6 },\r\n    Locrian: { id: 'Locrian', name: 'Locrian', scale: 'Major', degree: 7 }\r\n});*/\n\n//# sourceURL=webpack:///../play-what/src/Presets.js?");
+
+/***/ }),
+
+/***/ "../play-what/src/Sound.js":
+/*!*********************************!*\
+  !*** ../play-what/src/Sound.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return SoundUtils; });\n/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ \"../play-what/node_modules/tone/build/Tone.js\");\n/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_0__);\n\nconst MASTER_OUT = new tone__WEBPACK_IMPORTED_MODULE_0__[\"Synth\"]().toMaster();\nclass SoundUtils {\n  static getSynth() {\n    return MASTER_OUT;\n  }\n\n  static play(frequency, duration = .5) {\n    MASTER_OUT.triggerAttackRelease(frequency, duration);\n  }\n\n  static playNotes(notes, duration) {\n    let synth = new tone__WEBPACK_IMPORTED_MODULE_0__[\"PolySynth\"](notes.length, tone__WEBPACK_IMPORTED_MODULE_0__[\"Synth\"]).toMaster();\n    let freqs = notes.map(n => n.frequency);\n    synth.triggerAttackRelease(freqs, .5);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/Sound.js?");
+
+/***/ }),
+
+/***/ "../play-what/src/Theory.js":
+/*!**********************************!*\
+  !*** ../play-what/src/Theory.js ***!
+  \**********************************/
+/*! exports provided: getAccidentalString, addVectors, addVectorsBatch, moduloVectors, getDegreeMapping, getDegree, getAllDegrees, getNoteName, getIntervalName, octaveReduce, findNoteWithPitch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAccidentalString\", function() { return getAccidentalString; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addVectors\", function() { return addVectors; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addVectorsBatch\", function() { return addVectorsBatch; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"moduloVectors\", function() { return moduloVectors; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDegreeMapping\", function() { return getDegreeMapping; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDegree\", function() { return getDegree; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAllDegrees\", function() { return getAllDegrees; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getNoteName\", function() { return getNoteName; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getIntervalName\", function() { return getIntervalName; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"octaveReduce\", function() { return octaveReduce; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"findNoteWithPitch\", function() { return findNoteWithPitch; });\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/Constants.js\");\n/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Utils */ \"../play-what/src/Utils.js\");\n/* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Presets */ \"../play-what/src/Presets.js\");\n\n\n\nconst getAccidentalString = offset => {\n  switch (offset) {\n    case 0:\n      return '';\n\n    case 1:\n      return '#';\n\n    case 2:\n      return 'x';\n\n    case -1:\n      return 'b';\n\n    case -2:\n      return 'bb';\n\n    default:\n      return offset < 0 ? -offset + 'b' : offset + '#';\n  }\n};\nconst addVectors = (a, b, max) => ({\n  p: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(a.p, b.p, max.p),\n  d: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(a.d, b.d, max.d)\n});\nconst addVectorsBatch = (a, vectors, max = _Constants__WEBPACK_IMPORTED_MODULE_0__[\"MAX_VECTOR\"]) => vectors.map(v => addVectors(a, v, max));\nconst moduloVectors = (a, b, max = _Constants__WEBPACK_IMPORTED_MODULE_0__[\"MAX_VECTOR\"]) => ({\n  p: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(a.p, b.p),\n  d: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(a.d, b.d)\n});\nconst getDegreeMapping = degree => _Constants__WEBPACK_IMPORTED_MODULE_0__[\"DEGREE_MAPPING\"][_Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(degree, _Constants__WEBPACK_IMPORTED_MODULE_0__[\"DEGREE_MAPPING\"].length)];\nconst getDegree = degree => ({\n  d: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(degree, _Constants__WEBPACK_IMPORTED_MODULE_0__[\"DEGREE_MAPPING\"].length),\n  p: getDegreeMapping(degree).pitch\n});\nconst getAllDegrees = () => _Constants__WEBPACK_IMPORTED_MODULE_0__[\"DEGREE_MAPPING\"].map((m, i) => ({\n  d: i,\n  p: m.pitch\n}));\nconst getNoteName = (note, max = _Constants__WEBPACK_IMPORTED_MODULE_0__[\"MAX_VECTOR\"]) => {\n  const reduced = moduloVectors(note, max);\n  const degree = getDegreeMapping(reduced.d);\n  return degree.name + getAccidentalString(note.p - degree.p);\n};\nconst getIntervalName = (interval, max = _Constants__WEBPACK_IMPORTED_MODULE_0__[\"MAX_VECTOR\"]) => {\n  const reduced = moduloVectors(interval, max);\n  const preset = _Presets__WEBPACK_IMPORTED_MODULE_2__[\"INTERVALS_VALUES\"].find(i => i.p === reduced.p && i.d === reduced.d);\n  return preset ? preset.id : '?';\n};\nconst octaveReduce = note => ({\n  p: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(note.p, _Constants__WEBPACK_IMPORTED_MODULE_0__[\"MAX_VECTOR\"].p),\n  d: note.d\n});\nconst findNoteWithPitch = (notes, pitch, octaveReduce = false) => {\n  const p = octaveReduce ? _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(pitch, _Constants__WEBPACK_IMPORTED_MODULE_0__[\"MAX_VECTOR\"].p) : n.p;\n  return notes.find(n => n.p === p) || null;\n};\n\n//# sourceURL=webpack:///../play-what/src/Theory.js?");
+
+/***/ }),
+
+/***/ "../play-what/src/Utils.js":
+/*!*********************************!*\
+  !*** ../play-what/src/Utils.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return CommonUtils; });\nclass CommonUtils {\n  static moduloSum(a, b, divisor, offset = 0, subtraction = false) {\n    let dividend = subtraction ? a - offset - (b - offset) : a - offset + (b - offset);\n    return CommonUtils.modulo(dividend, divisor) + offset;\n  }\n\n  static modulo(a, b) {\n    return (a % b + b) % b;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/Utils.js?");
+
+/***/ }),
+
 /***/ "../play-what/src/index.js":
 /*!*********************************!*\
   !*** ../play-what/src/index.js ***!
@@ -197,648 +281,249 @@ eval("!function(t,e){ true?module.exports=e():undefined}(\"undefined\"!=typeof s
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _v1_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./v1/_module */ \"../play-what/src/v1/_module.js\");\n/* harmony import */ var _v2_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./v2/_module */ \"../play-what/src/v2/_module.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({ ..._v1_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  v2: _v2_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///../play-what/src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/Constants.js\");\n/* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Presets */ \"../play-what/src/Presets.js\");\n/* harmony import */ var _Theory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Theory */ \"../play-what/src/Theory.js\");\n/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Utils */ \"../play-what/src/Utils.js\");\n/* harmony import */ var _Color__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Color */ \"../play-what/src/Color.js\");\n/* harmony import */ var _Sound__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Sound */ \"../play-what/src/Sound.js\");\n/* harmony import */ var _Label__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Label */ \"../play-what/src/Label.js\");\n\n\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Constants: _Constants__WEBPACK_IMPORTED_MODULE_0__,\n  Presets: _Presets__WEBPACK_IMPORTED_MODULE_1__,\n  Theory: _Theory__WEBPACK_IMPORTED_MODULE_2__,\n  Utils: _Utils__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  Color: _Color__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  Label: _Label__WEBPACK_IMPORTED_MODULE_6__[\"default\"],\n  Sound: _Sound__WEBPACK_IMPORTED_MODULE_5__[\"default\"]\n});\n\n//# sourceURL=webpack:///../play-what/src/index.js?");
 
 /***/ }),
 
-/***/ "../play-what/src/v1/Strategies/ActionBy.js":
-/*!**************************************************!*\
-  !*** ../play-what/src/v1/Strategies/ActionBy.js ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Utils_SoundUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Utils/SoundUtils */ \"../play-what/src/v1/Utils/SoundUtils.js\");\n\nconst ActionBy = {\n  none: {\n    id: 'none',\n    name: 'None',\n    fx: () => null\n  },\n  logData: {\n    id: 'logData',\n    name: 'Log Data',\n    fx: (note, viewerData) => {\n      let output = {\n        note: note,\n        viewerData: viewerData\n      };\n      return () => {\n        console.log(output);\n      };\n    }\n  },\n  playSound: {\n    id: 'playSound',\n    name: 'Play Sound',\n    fx: (note, viewerData) => {\n      return () => {\n        _Utils_SoundUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].play(note.frequency, .5);\n      };\n    }\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (ActionBy);\n\n//# sourceURL=webpack:///../play-what/src/v1/Strategies/ActionBy.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Strategies/ColorBy.js":
-/*!*************************************************!*\
-  !*** ../play-what/src/v1/Strategies/ColorBy.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Utils/ColorUtils */ \"../play-what/src/v1/Utils/ColorUtils.js\");\n/* harmony import */ var _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Utils/Colors */ \"../play-what/src/v1/Utils/Colors.js\");\n\n\nconst DEFAULT_COLOR_SCHEMES = {\n  binary: [null, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Red],\n  degree: [null, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Red, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Orange, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Yellow, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Green, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Blue, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Purple, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Pink, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Red, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Orange, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Yellow, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Green, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Blue, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Purple, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Pink, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Red],\n  pitchClass: [_Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc0, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc1, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc2, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc3, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc4, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc5, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc6, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc7, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc8, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc9, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc10, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].pc11],\n  octave: [_Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Black, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].White],\n  frequency: [_Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Black, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].White],\n  noteIndex: [_Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Black, _Utils_Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].White]\n};\nconst ColorBy = {\n  none: {\n    id: 'none',\n    name: 'None',\n    fx: () => {}\n  },\n  binary: {\n    id: 'binary',\n    name: 'Binary',\n    fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.binary) => {\n      return !note || !note.interval ? _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].discrete(0, scheme) : _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].discrete(1, scheme);\n    }\n  },\n  degree: {\n    id: 'degree',\n    name: 'Degree',\n    fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.degree) => {\n      return !note || !note.interval ? _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].discrete(0, scheme) : _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].discrete(note.interval.degree, scheme);\n    }\n  },\n  pitchClass: {\n    id: 'pitchClass',\n    name: 'Pitch Class',\n    fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.pitchClass) => {\n      return note ? _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].discrete(note.pitchClass, scheme) : {};\n    }\n  },\n  octave: {\n    id: 'octave',\n    name: 'Octave',\n    fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.octave) => {\n      if (!note || !viewerData) return {};\n      let currentOctave = note.octave;\n      let minOctave = viewerData.minNote.octave;\n      let maxOctave = viewerData.maxNote.octave;\n      return _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].continuous(currentOctave, minOctave, maxOctave, scheme);\n    }\n  },\n  frequency: {\n    id: 'frequency',\n    name: 'Frequency',\n    fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.frequency) => {\n      if (!note || !viewerData) return {};\n      let currentFrequency = note.frequency;\n      let minFrequency = viewerData.minNote.frequency;\n      let maxFrequency = viewerData.maxNote.frequency;\n      return _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].continuous(currentFrequency, minFrequency, maxFrequency, scheme);\n    }\n  },\n  noteIndex: {\n    id: 'noteIndex',\n    name: 'Note Index',\n    fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.noteIndex) => {\n      if (!note || !viewerData) return {};\n      let currentIndex = note.noteIndex;\n      let minIndex = viewerData.minNote.noteIndex;\n      let maxIndex = viewerData.maxNote.noteIndex;\n      return _Utils_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].continuous(currentIndex, minIndex, maxIndex, scheme);\n    }\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (ColorBy);\n\n//# sourceURL=webpack:///../play-what/src/v1/Strategies/ColorBy.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Strategies/LabelUtils.js":
-/*!****************************************************!*\
-  !*** ../play-what/src/v1/Strategies/LabelUtils.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst EMPTY = '';\n/*const LabelUtils = {\r\n    none: () => EMPTY,\r\n    name: (note) => {\r\n        if (!note) return EMPTY;\r\n\r\n        return note.name;\r\n    },\r\n    degree: (note) => {\r\n        if (!note || !note.interval) return EMPTY;\r\n\r\n        return note.interval.degree;\r\n    },\r\n    interval: (note) => {\r\n        if (!note || !note.interval) return EMPTY;\r\n\r\n        return note.interval.id;\r\n    },\r\n    noteIndex: (note) => {\r\n        if (!note) return EMPTY;\r\n\r\n        return note.noteIndex;\r\n    },\r\n    pitchClass: (note) => {\r\n        if (!note) return EMPTY;\r\n\r\n        return note.pitchClass;\r\n    },\r\n    octave: (note) => {\r\n        if (!note) return EMPTY;\r\n\r\n        return note.octave;\r\n    },\r\n    frequency: (note) => {\r\n        if (!note) return EMPTY;\r\n\r\n        return Math.round(note.frequency);\r\n    }\r\n}*/\n\nconst LabelUtils = {\n  none: {\n    id: 'none',\n    name: 'None',\n    fx: () => EMPTY\n  },\n  name: {\n    id: 'name',\n    name: 'Name',\n    fx: note => {\n      if (!note) return EMPTY;\n      return note.name;\n    }\n  },\n  degree: {\n    id: 'degree',\n    name: 'Degree',\n    fx: note => {\n      if (!note || !note.interval) return EMPTY;\n      return note.interval.degree;\n    }\n  },\n  interval: {\n    id: 'interval',\n    name: 'Interval',\n    fx: note => {\n      if (!note || !note.interval) return EMPTY;\n      return note.interval.id;\n    }\n  },\n  noteIndex: {\n    id: 'noteIndex',\n    name: 'Note Index',\n    fx: note => {\n      if (!note) return EMPTY;\n      return note.noteIndex;\n    }\n  },\n  pitchClass: {\n    id: 'pitchClass',\n    name: 'Pitch Class',\n    fx: note => {\n      if (!note) return EMPTY;\n      return note.pitchClass;\n    }\n  },\n  octave: {\n    id: 'octave',\n    name: 'Octave',\n    fx: note => {\n      if (!note) return EMPTY;\n      return note.octave;\n    }\n  },\n  frequency: {\n    id: 'frequency',\n    name: 'Frequency',\n    fx: note => {\n      if (!note) return EMPTY;\n      return Math.round(note.frequency);\n    }\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (LabelUtils);\n\n//# sourceURL=webpack:///../play-what/src/v1/Strategies/LabelUtils.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Strategies/MapBy.js":
-/*!***********************************************!*\
-  !*** ../play-what/src/v1/Strategies/MapBy.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Utils/CommonUtils */ \"../play-what/src/v1/Utils/CommonUtils.js\");\n/* harmony import */ var _Theory_FunctionalNote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Theory/FunctionalNote */ \"../play-what/src/v1/Theory/FunctionalNote.js\");\n/* harmony import */ var _Theory_NonfunctionalNote__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Theory/NonfunctionalNote */ \"../play-what/src/v1/Theory/NonfunctionalNote.js\");\n\n\n\n\nfunction getIntervalByPitchClass(keyCenter, intervals, pitchClass) {\n  return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;\n}\n\nfunction getIntervalByNoteIndex(keyCenter, intervals, noteIndex) {\n  return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;\n}\n/*function getNoteAt(noteIndex, keyCenter, concept, filterOctave = true) {\r\n    return filterOctave ?\r\n        MapBy.noteIndex(noteIndex, keyCenter, concept) :\r\n        MapBy.pitchClass.getNoteByPitchClass(noteIndex, keyCenter, concept);\r\n}*/\n\n\nconst MapBy = {\n  pitchClass: {\n    id: 'pitchClass',\n    name: 'Pitch Class',\n    fx: (noteIndex, keyCenter, concept) => {\n      let pitchClass = _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].modulo(noteIndex, 12);\n      let interval = getIntervalByPitchClass(keyCenter, concept.intervals, pitchClass);\n\n      if (interval === null) {\n        return new _Theory_NonfunctionalNote__WEBPACK_IMPORTED_MODULE_2__[\"default\"](noteIndex);\n      }\n\n      let relativeKeyCenter = { ...keyCenter,\n        octave: _Theory_NonfunctionalNote__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getOctave(noteIndex - interval.semitones)\n      };\n      return new _Theory_FunctionalNote__WEBPACK_IMPORTED_MODULE_1__[\"default\"](relativeKeyCenter, interval);\n    }\n  },\n  noteIndex: {\n    id: 'noteIndex',\n    name: 'Note Index',\n    fx: (noteIndex, keyCenter, concept) => {\n      let interval = getIntervalByNoteIndex(keyCenter, concept.intervals, noteIndex, true);\n\n      if (interval === null) {\n        return new _Theory_NonfunctionalNote__WEBPACK_IMPORTED_MODULE_2__[\"default\"](noteIndex);\n      }\n\n      return new _Theory_FunctionalNote__WEBPACK_IMPORTED_MODULE_1__[\"default\"](keyCenter, interval);\n    }\n  }\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (MapBy);\n\n//# sourceURL=webpack:///../play-what/src/v1/Strategies/MapBy.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Strategies/_module.js":
-/*!*************************************************!*\
-  !*** ../play-what/src/v1/Strategies/_module.js ***!
-  \*************************************************/
-/*! exports provided: ActionBy, ColorBy, LabelUtils, MapBy */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ActionBy__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ActionBy */ \"../play-what/src/v1/Strategies/ActionBy.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ActionBy\", function() { return _ActionBy__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _ColorBy__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColorBy */ \"../play-what/src/v1/Strategies/ColorBy.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ColorBy\", function() { return _ColorBy__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _MapBy__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MapBy */ \"../play-what/src/v1/Strategies/MapBy.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"MapBy\", function() { return _MapBy__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _LabelUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LabelUtils */ \"../play-what/src/v1/Strategies/LabelUtils.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"LabelUtils\", function() { return _LabelUtils__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n\n\n\n\n\n\n//# sourceURL=webpack:///../play-what/src/v1/Strategies/_module.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/Concept.js":
-/*!*********************************************!*\
-  !*** ../play-what/src/v1/Theory/Concept.js ***!
-  \*********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Concept; });\n/* harmony import */ var _IntervalWrapper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./IntervalWrapper */ \"../play-what/src/v1/Theory/IntervalWrapper.js\");\n/* harmony import */ var _FunctionalNote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FunctionalNote */ \"../play-what/src/v1/Theory/FunctionalNote.js\");\n\n\nclass Concept {\n  constructor(id = '', name = '', intervals = []) {\n    this.intervals = intervals[0] instanceof _IntervalWrapper__WEBPACK_IMPORTED_MODULE_0__[\"IntervalWrapper\"] ? intervals : intervals.map(i => new _IntervalWrapper__WEBPACK_IMPORTED_MODULE_0__[\"IntervalWrapper\"](i));\n    this.id = id;\n    this.name = name;\n  }\n\n  getNotes(keyCenter) {\n    let notes = this.intervals.map(i => new _FunctionalNote__WEBPACK_IMPORTED_MODULE_1__[\"default\"](keyCenter, i));\n    return notes;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/Concept.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/ConceptTypes/Chord.js":
-/*!********************************************************!*\
-  !*** ../play-what/src/v1/Theory/ConceptTypes/Chord.js ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Chord; });\n/* harmony import */ var _Concept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Concept */ \"../play-what/src/v1/Theory/Concept.js\");\n\nclass Chord extends _Concept__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  constructor(id, name, intervals, inversion = 0) {\n    super(id, name, intervals); // TODO initial inversions\n  }\n\n  copy() {\n    let intervalsCopy = [...this.intervals];\n    return new Chord(this.id, this.name, intervalsCopy, this.inversion);\n  }\n\n  chordInversion(inversion) {\n    for (let i = 0; i < inversion; i++) {\n      let shifted = this.intervals.shift();\n      shifted = { ...shifted\n      };\n      shifted.octaveOffset = shifted.octaveOffset + 1;\n      this.intervals.push(shifted);\n    }\n\n    this.inversion = this.inversion + inversion;\n    return this; // TODO reverse inversions\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/ConceptTypes/Chord.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/ConceptTypes/HeptatonicScale.js":
-/*!******************************************************************!*\
-  !*** ../play-what/src/v1/Theory/ConceptTypes/HeptatonicScale.js ***!
-  \******************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return HeptatonicScale; });\n/* harmony import */ var _Scale__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Scale */ \"../play-what/src/v1/Theory/ConceptTypes/Scale.js\");\n/* harmony import */ var _RomanNumeral__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RomanNumeral */ \"../play-what/src/v1/Theory/ConceptTypes/RomanNumeral.js\");\n\n\nclass HeptatonicScale extends _Scale__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  constructor(id, name, intervals) {\n    if (intervals.length !== 7) {\n      throw 'Heptatonic scale must have exactly 7 intervals';\n    }\n\n    super(id, name, intervals);\n  }\n\n  getRomanNumeral(degree) {\n    return new _RomanNumeral__WEBPACK_IMPORTED_MODULE_1__[\"default\"](this, degree);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/ConceptTypes/HeptatonicScale.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/ConceptTypes/IntervalPair.js":
-/*!***************************************************************!*\
-  !*** ../play-what/src/v1/Theory/ConceptTypes/IntervalPair.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return IntervalPair; });\n/* harmony import */ var _Concept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Concept */ \"../play-what/src/v1/Theory/Concept.js\");\n\nclass IntervalPair extends _Concept__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  constructor(id, name, intervals) {\n    if (intervals.length !== 2) {\n      throw 'Interval pair must have exactly 2 intervals';\n    }\n\n    super(id, name, intervals);\n  }\n\n  copy() {\n    let intervalsCopy = [...this.intervals];\n    return new IntervalPair(this.id, this.name, intervalsCopy);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/ConceptTypes/IntervalPair.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/ConceptTypes/RomanNumeral.js":
-/*!***************************************************************!*\
-  !*** ../play-what/src/v1/Theory/ConceptTypes/RomanNumeral.js ***!
-  \***************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return RomanNumeral; });\n/* harmony import */ var _Chord__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Chord */ \"../play-what/src/v1/Theory/ConceptTypes/Chord.js\");\n/* harmony import */ var _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Utils/CommonUtils */ \"../play-what/src/v1/Utils/CommonUtils.js\");\n/* harmony import */ var _IntervalWrapper__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../IntervalWrapper */ \"../play-what/src/v1/Theory/IntervalWrapper.js\");\n\n\n\nclass RomanNumeral extends _Chord__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  constructor(sourceScale, degree) {\n    let intervals = degree ? RomanNumeral._getIntervals(sourceScale, degree) : sourceScale.intervals;\n\n    let relativeIntervals = RomanNumeral._getRelativeIntervals(intervals);\n\n    let id = degree ? `${sourceScale.id}_rn${degree}` : sourceScale.id;\n    let name = degree ? RomanNumeral.getName(relativeIntervals, degree) : sourceScale.name;\n    super(id, name, intervals);\n    this.sourceScale = sourceScale;\n    this.relativeIntervals = relativeIntervals;\n  }\n\n  static _getRelativeIntervals(intervals) {\n    return intervals.map(ivl => ivl.subtract(intervals[0]));\n  }\n\n  static _getIntervals(sourceScale, degree) {\n    degree = degree;\n    let validDegrees = [degree, _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(degree, 3, 7, 1), _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(degree, 5, 7, 1), _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(degree, 7, 7, 1)];\n    let newIntervals = sourceScale.intervals.filter(interval => validDegrees.includes(interval.degree));\n\n    while (newIntervals[0].degree < degree) {\n      let first = newIntervals.shift().copy();\n      first.octaveOffset = 1;\n      newIntervals.push(first);\n    }\n\n    return newIntervals;\n  }\n\n  static getName(intervals, degree) {\n    let quality = RomanNumeral.getQuality(intervals);\n\n    switch (quality) {\n      case 'Dim':\n        return RomanNumeral.getDimName(degree);\n\n      case 'Min':\n        return RomanNumeral.getMinName(degree);\n\n      case 'Maj':\n        return RomanNumeral.getMajName(degree);\n\n      case 'Aug':\n        return RomanNumeral.getAugName(degree);\n    }\n  }\n\n  static getDimName(degree) {\n    return RomanNumeral.getMinName(degree) + '°';\n  }\n\n  static getAugName(degree) {\n    return RomanNumeral.getMajName(degree) + '+';\n  }\n\n  static getMinName(degree) {\n    switch (degree) {\n      case 1:\n        return 'i';\n\n      case 2:\n        return 'ii';\n\n      case 3:\n        return 'iii';\n\n      case 4:\n        return 'iv';\n\n      case 5:\n        return 'v';\n\n      case 6:\n        return 'vi';\n\n      case 7:\n        return 'vii';\n    }\n  }\n\n  static getMajName(degree) {\n    switch (degree) {\n      case 1:\n        return 'I';\n\n      case 2:\n        return 'II';\n\n      case 3:\n        return 'III';\n\n      case 4:\n        return 'IV';\n\n      case 5:\n        return 'V';\n\n      case 6:\n        return 'VI';\n\n      case 7:\n        return 'VII';\n    }\n  }\n\n  static getQuality(intervals) {\n    let root = intervals[0];\n    let third = intervals[1];\n    let fifth = intervals[2];\n\n    if (third.id === 'm3' && fifth.id === 'd5') {\n      return 'Dim';\n    } else if (third.id === 'm3' && fifth.id === 'P5') {\n      return 'Min';\n    } else if (third.id === 'M3' && fifth.id === 'P5') {\n      return 'Maj';\n    } else if (third.id === 'M3' && fifth.id === 'A5') {\n      return 'Aug';\n    } else {\n      return 'Unknown';\n    }\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/ConceptTypes/RomanNumeral.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/ConceptTypes/Scale.js":
-/*!********************************************************!*\
-  !*** ../play-what/src/v1/Theory/ConceptTypes/Scale.js ***!
-  \********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Scale; });\n/* harmony import */ var _Concept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Concept */ \"../play-what/src/v1/Theory/Concept.js\");\n\nclass Scale extends _Concept__WEBPACK_IMPORTED_MODULE_0__[\"default\"] {\n  constructor(id, name, intervals) {\n    super(id, name, intervals);\n  }\n\n  copy() {\n    let intervalsCopy = [...this.intervals];\n    return new Scale(this.id, this.name, intervalsCopy);\n  }\n\n  reverse() {\n    this.intervals.reverse();\n    return this;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/ConceptTypes/Scale.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/ConceptTypes/_module.js":
-/*!**********************************************************!*\
-  !*** ../play-what/src/v1/Theory/ConceptTypes/_module.js ***!
-  \**********************************************************/
-/*! exports provided: Chord, HeptatonicScale, IntervalPair, RomanNumeral, Scale */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Chord__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Chord */ \"../play-what/src/v1/Theory/ConceptTypes/Chord.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Chord\", function() { return _Chord__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _HeptatonicScale__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeptatonicScale */ \"../play-what/src/v1/Theory/ConceptTypes/HeptatonicScale.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"HeptatonicScale\", function() { return _HeptatonicScale__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _IntervalPair__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./IntervalPair */ \"../play-what/src/v1/Theory/ConceptTypes/IntervalPair.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"IntervalPair\", function() { return _IntervalPair__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _RomanNumeral__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RomanNumeral */ \"../play-what/src/v1/Theory/ConceptTypes/RomanNumeral.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"RomanNumeral\", function() { return _RomanNumeral__WEBPACK_IMPORTED_MODULE_3__[\"default\"]; });\n\n/* harmony import */ var _Scale__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Scale */ \"../play-what/src/v1/Theory/ConceptTypes/Scale.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Scale\", function() { return _Scale__WEBPACK_IMPORTED_MODULE_4__[\"default\"]; });\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/ConceptTypes/_module.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/Constants.js":
-/*!***********************************************!*\
-  !*** ../play-what/src/v1/Theory/Constants.js ***!
-  \***********************************************/
-/*! exports provided: TONIC, ACCIDENTAL, PITCH_CLASS_NAMES, INTERVAL, CALIBRATION_NOTE, CALIBRATION_CONSTANT */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TONIC\", function() { return TONIC; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ACCIDENTAL\", function() { return ACCIDENTAL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PITCH_CLASS_NAMES\", function() { return PITCH_CLASS_NAMES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVAL\", function() { return INTERVAL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CALIBRATION_NOTE\", function() { return CALIBRATION_NOTE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CALIBRATION_CONSTANT\", function() { return CALIBRATION_CONSTANT; });\n// Key Center\nconst TONIC = Object.freeze({\n  C: {\n    id: 'C',\n    name: 'C',\n    degreeInC: 1,\n    pitchClass: 0\n  },\n  D: {\n    id: 'D',\n    name: 'D',\n    degreeInC: 2,\n    pitchClass: 2\n  },\n  E: {\n    id: 'E',\n    name: 'E',\n    degreeInC: 3,\n    pitchClass: 4\n  },\n  F: {\n    id: 'F',\n    name: 'F',\n    degreeInC: 4,\n    pitchClass: 5\n  },\n  G: {\n    id: 'G',\n    name: 'G',\n    degreeInC: 5,\n    pitchClass: 7\n  },\n  A: {\n    id: 'A',\n    name: 'A',\n    degreeInC: 6,\n    pitchClass: 9\n  },\n  B: {\n    id: 'B',\n    name: 'B',\n    degreeInC: 7,\n    pitchClass: 11\n  }\n});\nconst ACCIDENTAL = Object.freeze({\n  Flat: {\n    id: 'Flat',\n    name: 'b',\n    offset: -1\n  },\n  Natural: {\n    id: 'Natural',\n    name: '♮',\n    offset: 0\n  },\n  Sharp: {\n    id: 'Sharp',\n    name: '#',\n    offset: 1\n  }\n});\nconst PITCH_CLASS_NAMES = ['C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B']; // Intervals\n\nconst INTERVAL = Object.freeze({\n  P1: {\n    degree: 1,\n    semitones: 0,\n    id: 'P1',\n    name: 'Perfect Unison'\n  },\n  m2: {\n    degree: 2,\n    semitones: 1,\n    id: 'm2',\n    name: 'Minor 2nd'\n  },\n  M2: {\n    degree: 2,\n    semitones: 2,\n    id: 'M2',\n    name: 'Major 2nd'\n  },\n  A2: {\n    degree: 2,\n    semitones: 3,\n    id: 'A2',\n    name: 'Augmented 2nd'\n  },\n  d3: {\n    degree: 3,\n    semitones: 2,\n    id: 'd3',\n    name: 'Diminished 3rd'\n  },\n  m3: {\n    degree: 3,\n    semitones: 3,\n    id: 'm3',\n    name: 'Minor 3rd'\n  },\n  M3: {\n    degree: 3,\n    semitones: 4,\n    id: 'M3',\n    name: 'Major 3rd'\n  },\n  A3: {\n    degree: 3,\n    semitones: 5,\n    id: 'A3',\n    name: 'Augmented 3rd'\n  },\n  d4: {\n    degree: 4,\n    semitones: 4,\n    id: 'd4',\n    name: 'Diminished 4th'\n  },\n  P4: {\n    degree: 4,\n    semitones: 5,\n    id: 'P4',\n    name: 'Perfect 4th'\n  },\n  A4: {\n    degree: 4,\n    semitones: 6,\n    id: 'A4',\n    name: 'Augmented 4th'\n  },\n  d5: {\n    degree: 5,\n    semitones: 6,\n    id: 'd5',\n    name: 'Diminished 5th'\n  },\n  P5: {\n    degree: 5,\n    semitones: 7,\n    id: 'P5',\n    name: 'Perfect 5th'\n  },\n  A5: {\n    degree: 5,\n    semitones: 8,\n    id: 'A5',\n    name: 'Augmented 5th'\n  },\n  d6: {\n    degree: 6,\n    semitones: 7,\n    id: 'd6',\n    name: 'Diminished 6th'\n  },\n  m6: {\n    degree: 6,\n    semitones: 8,\n    id: 'm6',\n    name: 'Minor 6th'\n  },\n  M6: {\n    degree: 6,\n    semitones: 9,\n    id: 'M6',\n    name: 'Major 6th'\n  },\n  A6: {\n    degree: 6,\n    semitones: 10,\n    id: 'A6',\n    name: 'Augmented 6th'\n  },\n  d7: {\n    degree: 7,\n    semitones: 9,\n    id: 'd7',\n    name: 'Diminished 7th'\n  },\n  m7: {\n    degree: 7,\n    semitones: 10,\n    id: 'm7',\n    name: 'Minor 7th'\n  },\n  M7: {\n    degree: 7,\n    semitones: 11,\n    id: 'M7',\n    name: 'Major 7th'\n  },\n  P8: {\n    degree: 8,\n    semitones: 12,\n    id: 'P8',\n    name: 'Octave'\n  },\n  // Extended (experimental)\n  flat9: {\n    degree: 9,\n    semitones: 13,\n    id: 'b9',\n    name: 'Flat Ninth'\n  },\n  ext9: {\n    degree: 9,\n    semitones: 14,\n    id: '9',\n    name: 'Ninth'\n  },\n  sharp9: {\n    degree: 9,\n    semitones: 15,\n    id: '#9',\n    name: 'Sharp Ninth'\n  },\n  flat11: {\n    degree: 11,\n    semitones: 16,\n    id: 'b11',\n    name: 'Flat Eleventh'\n  },\n  ext11: {\n    degree: 11,\n    semitones: 17,\n    id: '11',\n    name: 'Eleventh'\n  },\n  sharp11: {\n    degree: 11,\n    semitones: 18,\n    id: '#11',\n    name: 'Sharp Eleventh'\n  },\n  P12: {\n    degree: 12,\n    semitones: 19,\n    id: 'P12',\n    name: 'Perfect 12th'\n  },\n  flat13: {\n    degree: 13,\n    semitones: 20,\n    id: 'b13',\n    name: 'Flat Thirteenth'\n  },\n  ext13: {\n    degree: 13,\n    semitones: 21,\n    id: '13',\n    name: 'Thirteenth'\n  },\n  sharp13: {\n    degree: 13,\n    semitones: 22,\n    id: '#13',\n    name: 'Sharp Thirteenth'\n  },\n  flat15: {\n    degree: 15,\n    semitones: 23,\n    id: 'b15',\n    name: 'Flat Fifthteenth'\n  },\n  ext15: {\n    degree: 15,\n    semitones: 24,\n    id: '15',\n    name: 'Fifthteenth'\n  }\n}); // Tuning\n\nconst CALIBRATION_NOTE = {\n  frequency: 440,\n  noteIndex: 9\n};\nconst CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/Constants.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/FunctionalNote.js":
-/*!****************************************************!*\
-  !*** ../play-what/src/v1/Theory/FunctionalNote.js ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FunctionalNote; });\n/* harmony import */ var _Theory_Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Theory/Constants */ \"../play-what/src/v1/Theory/Constants.js\");\n/* harmony import */ var _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Utils/CommonUtils */ \"../play-what/src/v1/Utils/CommonUtils.js\");\n/* harmony import */ var _NonfunctionalNote__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NonfunctionalNote */ \"../play-what/src/v1/Theory/NonfunctionalNote.js\");\n\n\n\nclass FunctionalNote {\n  constructor(keyCenter, interval) {\n    this.keyCenter = keyCenter;\n    this.interval = interval;\n    this.noteDegree = FunctionalNote.getDegree(this.keyCenter, this.interval);\n    this.pitchClass = FunctionalNote.getPitchClass(this.keyCenter, this.interval);\n    this.name = FunctionalNote.getName(this.noteDegree, this.pitchClass, this.keyCenter.accidental);\n    this.octave = FunctionalNote.getOctave(this.keyCenter, this.interval);\n    this.noteIndex = FunctionalNote.getNoteIndex(this.octave, this.pitchClass);\n    this.frequency = _NonfunctionalNote__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getFrequency(this.noteIndex);\n  }\n\n  copy() {\n    return new FunctionalNote(this.keyCenter, this.interval);\n  }\n\n  static getDegree(keyCenter, interval) {\n    return _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(keyCenter.tonic.degreeInC, interval.degree, 7, 1);\n  }\n\n  static getPitchClass(keyCenter, interval) {\n    return _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].moduloSum(keyCenter.tonic.pitchClass + keyCenter.accidental.offset, interval.semitones, 12, 0);\n  }\n\n  static getName(noteDegree, pitchClass, accidental) {\n    let spelling = FunctionalNote._getTonicByDegree(noteDegree); // Get accidental offset\n\n\n    let offset = pitchClass - spelling.pitchClass;\n    if (offset < 0 && accidental.offset > 0) offset = offset + 12;else if (offset > 0 && accidental.offset < 0) offset = offset - 12; // Combine tonic name with accidental\n\n    return spelling.name + FunctionalNote._getAccidentalString(offset);\n  }\n\n  static _getTonicByDegree(noteDegree) {\n    return Object.values(_Theory_Constants__WEBPACK_IMPORTED_MODULE_0__[\"TONIC\"])[noteDegree - 1];\n  }\n\n  static _getAccidentalString(offset) {\n    switch (offset) {\n      case 0:\n        return '';\n\n      case 1:\n        return '#';\n\n      case 2:\n        return 'x';\n\n      case -1:\n        return 'b';\n\n      case -2:\n        return 'bb';\n\n      default:\n        return offset < 0 ? -offset + 'b' : offset + '#';\n    }\n  }\n\n  static getOctave(keyCenter, interval) {\n    return keyCenter.octave + Math.floor((keyCenter.tonic.pitchClass + keyCenter.accidental.offset + interval.semitones) / 12) + interval.octaveOffset;\n  }\n\n  static getNoteIndex(noteOctave, pitchClass) {\n    return (noteOctave - 4) * 12 + pitchClass;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/FunctionalNote.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/IntervalWrapper.js":
-/*!*****************************************************!*\
-  !*** ../play-what/src/v1/Theory/IntervalWrapper.js ***!
-  \*****************************************************/
-/*! exports provided: IntervalWrapper */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"IntervalWrapper\", function() { return IntervalWrapper; });\n/* harmony import */ var _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Utils/CommonUtils */ \"../play-what/src/v1/Utils/CommonUtils.js\");\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/v1/Theory/Constants.js\");\n\n\nclass IntervalWrapper {\n  constructor(baseInterval, ascending = true, octaveOffset = 0) {\n    this.baseInterval = baseInterval;\n    this.degree = baseInterval.degree;\n    this.semitones = baseInterval.semitones;\n    this.id = baseInterval.id;\n    this.name = baseInterval.name;\n    this.ascending = ascending;\n    this.octaveOffset = octaveOffset;\n  }\n\n  copy() {\n    return new IntervalWrapper(this.baseInterval, this.ascending, this.octaveOffset);\n  }\n\n  matchesPitchClassFromKeyCenter(keyCenter, pitchClass) {\n    return _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].modulo(keyCenter.getRootIndex(true) + this.semitones, 12) === pitchClass;\n  }\n\n  matchesNoteIndexFromKeyCenter(keyCenter, noteIndex) {\n    return keyCenter.getRootIndex() + this.octaveOffset * 12 + this.semitones === noteIndex;\n  }\n\n  subtract(interval) {\n    return this.add(interval, true);\n  }\n\n  add(interval, subtract = false) {\n    let newDegree = _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].moduloSum(this.degree, interval.degree, 7, 1, subtract);\n    let newSemitones = _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].moduloSum(this.octaveOffset * 12 + this.semitones, interval.octaveOffset * 12 + interval.semitones, 12, 0, subtract);\n    let allIntervals = Object.values(_Constants__WEBPACK_IMPORTED_MODULE_1__[\"INTERVAL\"]);\n    let newInterval = allIntervals.find(i => i.degree === newDegree && i.semitones === newSemitones);\n    return newInterval ? new IntervalWrapper(newInterval) : null;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/IntervalWrapper.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/KeyCenter.js":
-/*!***********************************************!*\
-  !*** ../play-what/src/v1/Theory/KeyCenter.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return KeyCenter; });\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/v1/Theory/Constants.js\");\n\nclass KeyCenter {\n  constructor(tonic, accidental, octave) {\n    if (typeof arguments[0] === 'string') {\n      const keyString = arguments[0];\n      this.tonic = _Constants__WEBPACK_IMPORTED_MODULE_0__[\"TONIC\"][keyString[0]] || _Constants__WEBPACK_IMPORTED_MODULE_0__[\"TONIC\"].C;\n      this.accidental = keyString[1] === '#' ? _Constants__WEBPACK_IMPORTED_MODULE_0__[\"ACCIDENTAL\"].Sharp : keyString[1] === 'b' ? _Constants__WEBPACK_IMPORTED_MODULE_0__[\"ACCIDENTAL\"].Flat : _Constants__WEBPACK_IMPORTED_MODULE_0__[\"ACCIDENTAL\"].Natural;\n      this.octave = 4;\n    } else {\n      this.tonic = tonic;\n      this.accidental = accidental;\n      this.octave = octave;\n    }\n  }\n\n  copy() {\n    return new KeyCenter(this.tonic, this.accidental, this.octave);\n  }\n\n  getOctaveRootIndex() {\n    return (this.octave - 4) * 12;\n  }\n\n  getRootIndex(relative = false) {\n    let keyRootRelative = this.tonic.pitchClass + this.accidental.offset;\n    return relative ? keyRootRelative : this.getOctaveRootIndex() + keyRootRelative;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/KeyCenter.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/NonfunctionalNote.js":
-/*!*******************************************************!*\
-  !*** ../play-what/src/v1/Theory/NonfunctionalNote.js ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return NonfunctionalNote; });\n/* harmony import */ var _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Utils/CommonUtils */ \"../play-what/src/v1/Utils/CommonUtils.js\");\n/* harmony import */ var _Theory_Constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Theory/Constants */ \"../play-what/src/v1/Theory/Constants.js\");\n\n\nclass NonfunctionalNote {\n  constructor(noteIndex) {\n    this.keyCenter = null;\n    this.interval = null;\n    this.noteDegree = 0;\n    this.pitchClass = NonfunctionalNote.getPitchClass(noteIndex);\n    this.name = '';\n    this.octave = NonfunctionalNote.getOctave(noteIndex);\n    this.noteIndex = noteIndex;\n    this.frequency = NonfunctionalNote.getFrequency(noteIndex);\n  }\n\n  copy() {\n    return new NonfunctionalNote(this.noteIndex);\n  }\n\n  static getPitchClass(noteIndex) {\n    return _Utils_CommonUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].modulo(noteIndex, 12);\n  }\n\n  static getOctave(noteIndex) {\n    return 4 + Math.floor(noteIndex / 12);\n  }\n\n  static getFrequency(noteIndex) {\n    return _Theory_Constants__WEBPACK_IMPORTED_MODULE_1__[\"CALIBRATION_NOTE\"].frequency * Math.pow(_Theory_Constants__WEBPACK_IMPORTED_MODULE_1__[\"CALIBRATION_CONSTANT\"], noteIndex - _Theory_Constants__WEBPACK_IMPORTED_MODULE_1__[\"CALIBRATION_NOTE\"].noteIndex);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/NonfunctionalNote.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/Presets.js":
-/*!*********************************************!*\
-  !*** ../play-what/src/v1/Theory/Presets.js ***!
-  \*********************************************/
-/*! exports provided: INTERVAL_PAIR, CHORD, SCALE, MODE */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVAL_PAIR\", function() { return INTERVAL_PAIR; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CHORD\", function() { return CHORD; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"SCALE\", function() { return SCALE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"MODE\", function() { return MODE; });\n/* harmony import */ var _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConceptTypes/IntervalPair */ \"../play-what/src/v1/Theory/ConceptTypes/IntervalPair.js\");\n/* harmony import */ var _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptTypes/Chord */ \"../play-what/src/v1/Theory/ConceptTypes/Chord.js\");\n/* harmony import */ var _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ConceptTypes/HeptatonicScale */ \"../play-what/src/v1/Theory/ConceptTypes/HeptatonicScale.js\");\n/* harmony import */ var _ConceptTypes_Scale__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ConceptTypes/Scale */ \"../play-what/src/v1/Theory/ConceptTypes/Scale.js\");\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/v1/Theory/Constants.js\");\n\n\n\n\n\n/***** Concepts *****/\n\nconst INTERVAL_PAIR = {\n  P1: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1]),\n  m2: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m2.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m2.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m2]),\n  M2: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2]),\n  A2: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A2.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A2.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A2]),\n  d3: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d3.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d3.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d3]),\n  m3: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3]),\n  M3: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3]),\n  P4: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4]),\n  A4: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A4.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A4.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A4]),\n  d5: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5]),\n  P5: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5]),\n  A5: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A5.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A5.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A5]),\n  d6: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d6.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d6.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d6]),\n  m6: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6]),\n  M6: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6]),\n  d7: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d7.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d7.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d7]),\n  m7: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  M7: new _ConceptTypes_IntervalPair__WEBPACK_IMPORTED_MODULE_0__[\"default\"](_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7.id, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7.name, [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7])\n};\nconst CHORD = {\n  // Major\n  Maj: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Maj', 'Major Triad', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5]),\n  Maj6: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Maj6', 'Major 6th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6]),\n  Maj7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Maj7', 'Major 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  // Minor\n  Min: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Min', 'Minor Triad', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5]),\n  Min6: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Min6', 'Minor 6th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6]),\n  Min7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Min7', 'Minor 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  MinMaj7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('MinMaj7', 'Minor-Major 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  // Dominant\n  Dom7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dom7', 'Dominant 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  // Augmented\n  Aug: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Aug', 'Augmented Triad', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A5]),\n  Aug7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Aug7', 'Augmented 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  AugM7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('AugM7', 'Augmented Major 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  // Diminished\n  Dim: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dim', 'Diminished Triad', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5]),\n  Dim7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dim7', 'Diminished 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d7]),\n  HalfDim7: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('HalfDim7', 'Half-Diminished 7th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  // Suspended\n  Sus2: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Sus2', 'Suspended 2nd', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5]),\n  Sus4: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Sus4', 'Suspended 4th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5]),\n  // Extended\n  Dom7b9: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Dom7b9', 'Dom7 b9', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].flat9]),\n  Maj9: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Maj9', 'Major 9th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].ext9]),\n  Maj11: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Maj11', 'Major 11th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].ext9, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].ext11]),\n  Maj13: new _ConceptTypes_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"]('Maj13', 'Major 13th', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].ext9, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].ext11, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].ext13])\n};\nconst SCALE = {\n  // Major\n  Major: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Major', 'Major', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  // Minor\n  NatualMinor: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('NaturalMinor', 'Natural Minor', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  HarmonicMinor: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('HarmonicMinor', 'Harmonic Minor', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  // Pentatonic\n  MajorPentatonic: new _ConceptTypes_Scale__WEBPACK_IMPORTED_MODULE_3__[\"default\"]('MajorPentatonic', 'Major Pentatonic', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6]),\n  MinorPentatonic: new _ConceptTypes_Scale__WEBPACK_IMPORTED_MODULE_3__[\"default\"]('MinorPentatonic', 'Minor Pentatonic', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  // Chromatic\n  Chromatic: new _ConceptTypes_Scale__WEBPACK_IMPORTED_MODULE_3__[\"default\"]('Chromatic', 'Chromatic', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7])\n};\nconst MODE = {\n  Ionian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Ionian', 'Ionian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  Dorian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Dorian', 'Dorian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  Phrygian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Phrygian', 'Phrygian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  Lydian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Lydian', 'Lydian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].A4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M7]),\n  Mixolydian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Mixolydian', 'Mixolydian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  Aeolian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Aeolian', 'Aeolian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].M2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7]),\n  Locrian: new _ConceptTypes_HeptatonicScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"]('Locrian', 'Locrian', [_Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P1, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m2, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m3, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].P4, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].d5, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m6, _Constants__WEBPACK_IMPORTED_MODULE_4__[\"INTERVAL\"].m7])\n};\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/Presets.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Theory/_module.js":
-/*!*********************************************!*\
-  !*** ../play-what/src/v1/Theory/_module.js ***!
-  \*********************************************/
-/*! exports provided: ConceptTypes, Concept, Constants, FunctionalNote, IntervalWrapper, KeyCenter, NonfunctionalNote, Presets */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Concept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Concept */ \"../play-what/src/v1/Theory/Concept.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Concept\", function() { return _Concept__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/v1/Theory/Constants.js\");\n/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, \"Constants\", function() { return _Constants__WEBPACK_IMPORTED_MODULE_1__; });\n/* harmony import */ var _FunctionalNote__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FunctionalNote */ \"../play-what/src/v1/Theory/FunctionalNote.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"FunctionalNote\", function() { return _FunctionalNote__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _IntervalWrapper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./IntervalWrapper */ \"../play-what/src/v1/Theory/IntervalWrapper.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"IntervalWrapper\", function() { return _IntervalWrapper__WEBPACK_IMPORTED_MODULE_3__[\"IntervalWrapper\"]; });\n\n/* harmony import */ var _KeyCenter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./KeyCenter */ \"../play-what/src/v1/Theory/KeyCenter.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"KeyCenter\", function() { return _KeyCenter__WEBPACK_IMPORTED_MODULE_4__[\"default\"]; });\n\n/* harmony import */ var _NonfunctionalNote__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./NonfunctionalNote */ \"../play-what/src/v1/Theory/NonfunctionalNote.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"NonfunctionalNote\", function() { return _NonfunctionalNote__WEBPACK_IMPORTED_MODULE_5__[\"default\"]; });\n\n/* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Presets */ \"../play-what/src/v1/Theory/Presets.js\");\n/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, \"Presets\", function() { return _Presets__WEBPACK_IMPORTED_MODULE_6__; });\n/* harmony import */ var _ConceptTypes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ConceptTypes/_module */ \"../play-what/src/v1/Theory/ConceptTypes/_module.js\");\n/* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, \"ConceptTypes\", function() { return _ConceptTypes_module__WEBPACK_IMPORTED_MODULE_7__; });\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack:///../play-what/src/v1/Theory/_module.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Utils/ColorUtils.js":
-/*!***********************************************!*\
-  !*** ../play-what/src/v1/Utils/ColorUtils.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ColorUtils; });\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color */ \"../play-what/node_modules/color/index.js\");\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(color__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Colors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Colors */ \"../play-what/src/v1/Utils/Colors.js\");\n\n\nclass ColorUtils {\n  static getColorStyles(background, foreground) {\n    if (!background) {\n      return {};\n    }\n\n    let bg = color__WEBPACK_IMPORTED_MODULE_0__(background);\n    return {\n      backgroundColor: bg.hsl().string(),\n      color: foreground || (bg.isDark() ? _Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].Black : _Colors__WEBPACK_IMPORTED_MODULE_1__[\"COLORS\"].White)\n    };\n  }\n\n  static discrete(value, colorScheme) {\n    let background = colorScheme[value];\n    return ColorUtils.getColorStyles(background);\n  }\n\n  static continuous(value, min, max, colorScheme) {\n    let percent = (value - min) / (max - min);\n    percent <= 0 ? 0 : percent >= 1 ? 1 : percent;\n    let initialColor = color__WEBPACK_IMPORTED_MODULE_0__(colorScheme[0]);\n    let finalColor = color__WEBPACK_IMPORTED_MODULE_0__(colorScheme[1]);\n    let background = initialColor.mix(finalColor, percent);\n    return ColorUtils.getColorStyles(background);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Utils/ColorUtils.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Utils/Colors.js":
-/*!*******************************************!*\
-  !*** ../play-what/src/v1/Utils/Colors.js ***!
-  \*******************************************/
-/*! exports provided: COLORS */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"COLORS\", function() { return COLORS; });\nconst COLORS = {\n  White: '#000000',\n  Black: '#FFFFFF',\n  Red: '#E6194B',\n  Orange: '#F58231',\n  Yellow: '#FFE119',\n  Green: '#3CB44B',\n  Blue: '#4363D8',\n  Purple: '#911DB4',\n  Pink: '#F032E6',\n  pc0: '#ED1C24',\n  pc1: '#F1592A',\n  pc2: '#F8981E',\n  pc3: '#FCB040',\n  pc4: '#FFF200',\n  pc5: '#8CC63F',\n  pc6: '#056839',\n  pc7: '#13A89E',\n  pc8: '#A898C8',\n  pc9: '#662D91',\n  pc10: '#92278F',\n  pc11: '#C2305E'\n};\n\n//# sourceURL=webpack:///../play-what/src/v1/Utils/Colors.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Utils/CommonUtils.js":
-/*!************************************************!*\
-  !*** ../play-what/src/v1/Utils/CommonUtils.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return CommonUtils; });\nclass CommonUtils {\n  static moduloSum(a, b, divisor, offset = 0, subtraction = false) {\n    let dividend = subtraction ? a - offset - (b - offset) : a - offset + (b - offset);\n    return CommonUtils.modulo(dividend, divisor) + offset;\n  }\n\n  static modulo(a, b) {\n    return (a % b + b) % b;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Utils/CommonUtils.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Utils/SoundUtils.js":
-/*!***********************************************!*\
-  !*** ../play-what/src/v1/Utils/SoundUtils.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return SoundUtils; });\n/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tone */ \"../play-what/node_modules/tone/build/Tone.js\");\n/* harmony import */ var tone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(tone__WEBPACK_IMPORTED_MODULE_0__);\n\nconst MASTER_OUT = new tone__WEBPACK_IMPORTED_MODULE_0__[\"Synth\"]().toMaster();\nclass SoundUtils {\n  static getSynth() {\n    return MASTER_OUT;\n  }\n\n  static play(frequency, duration) {\n    MASTER_OUT.triggerAttackRelease(frequency, duration);\n  }\n\n  static playNotes(notes, duration) {\n    let synth = new tone__WEBPACK_IMPORTED_MODULE_0__[\"PolySynth\"](notes.length, tone__WEBPACK_IMPORTED_MODULE_0__[\"Synth\"]).toMaster();\n    let freqs = notes.map(n => n.frequency);\n    synth.triggerAttackRelease(freqs, .5);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v1/Utils/SoundUtils.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/Utils/_module.js":
-/*!********************************************!*\
-  !*** ../play-what/src/v1/Utils/_module.js ***!
-  \********************************************/
-/*! exports provided: Color, Common, Sound, COLORS */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ColorUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColorUtils */ \"../play-what/src/v1/Utils/ColorUtils.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Color\", function() { return _ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"]; });\n\n/* harmony import */ var _CommonUtils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CommonUtils */ \"../play-what/src/v1/Utils/CommonUtils.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Common\", function() { return _CommonUtils__WEBPACK_IMPORTED_MODULE_1__[\"default\"]; });\n\n/* harmony import */ var _SoundUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SoundUtils */ \"../play-what/src/v1/Utils/SoundUtils.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"Sound\", function() { return _SoundUtils__WEBPACK_IMPORTED_MODULE_2__[\"default\"]; });\n\n/* harmony import */ var _Colors__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Colors */ \"../play-what/src/v1/Utils/Colors.js\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"COLORS\", function() { return _Colors__WEBPACK_IMPORTED_MODULE_3__[\"COLORS\"]; });\n\n\n\n\n\n\n\n//# sourceURL=webpack:///../play-what/src/v1/Utils/_module.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v1/_module.js":
-/*!**************************************!*\
-  !*** ../play-what/src/v1/_module.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Theory_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Theory/_module */ \"../play-what/src/v1/Theory/_module.js\");\n/* harmony import */ var _Utils_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Utils/_module */ \"../play-what/src/v1/Utils/_module.js\");\n/* harmony import */ var _Strategies_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Strategies/_module */ \"../play-what/src/v1/Strategies/_module.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({ ..._Theory_module__WEBPACK_IMPORTED_MODULE_0__,\n  ..._Utils_module__WEBPACK_IMPORTED_MODULE_1__,\n  ..._Strategies_module__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack:///../play-what/src/v1/_module.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Entities/Concepts/Chord.js":
-/*!******************************************************!*\
-  !*** ../play-what/src/v2/Entities/Concepts/Chord.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Chord; });\n/* harmony import */ var _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Tools/Presets */ \"../play-what/src/v2/Tools/Presets.js\");\n/* harmony import */ var _Interval__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Interval */ \"../play-what/src/v2/Entities/Interval.js\");\n/* harmony import */ var _Tools_Theory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Tools/Theory */ \"../play-what/src/v2/Tools/Theory.js\");\n\n\n\nclass Chord {\n  constructor(args) {\n    if (typeof args === 'string') {\n      this.intervals = [..._Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"CHORD\"][args.preset].intervals].map(i => new _Interval__WEBPACK_IMPORTED_MODULE_1__[\"default\"](i));\n    } else if (typeof args === 'object') {\n      if (args.preset) {\n        this.intervals = [..._Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"CHORD\"][args.preset].intervals].map(i => new _Interval__WEBPACK_IMPORTED_MODULE_1__[\"default\"](i));\n      }\n    } else {\n      console.error('Chord error');\n      return;\n    }\n  }\n\n  getNotes(keyCenter) {\n    return _Tools_Theory__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getNotes(this.intervals, keyCenter);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v2/Entities/Concepts/Chord.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Entities/Concepts/Scale.js":
-/*!******************************************************!*\
-  !*** ../play-what/src/v2/Entities/Concepts/Scale.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Scale; });\n/* harmony import */ var _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Tools/Presets */ \"../play-what/src/v2/Tools/Presets.js\");\n/* harmony import */ var _Interval__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Interval */ \"../play-what/src/v2/Entities/Interval.js\");\n/* harmony import */ var _Tools_Theory__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Tools/Theory */ \"../play-what/src/v2/Tools/Theory.js\");\n\n\n\nclass Scale {\n  constructor(args) {\n    if (typeof args === 'string') {\n      this.intervals = [..._Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"SCALE\"][args].intervals].map(i => new _Interval__WEBPACK_IMPORTED_MODULE_1__[\"default\"](i));\n    } else if (typeof args === 'object') {\n      if (args.preset) {\n        this.intervals = [..._Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"SCALE\"][args.preset].intervals].map(i => new _Interval__WEBPACK_IMPORTED_MODULE_1__[\"default\"](i));\n      }\n    }\n\n    Object.freeze(this);\n  }\n\n  getNotes(keyCenter) {\n    return _Tools_Theory__WEBPACK_IMPORTED_MODULE_2__[\"default\"].getNotes(this.intervals, keyCenter);\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v2/Entities/Concepts/Scale.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Entities/Interval.js":
-/*!************************************************!*\
-  !*** ../play-what/src/v2/Entities/Interval.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Interval; });\n/* harmony import */ var _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Tools/Presets */ \"../play-what/src/v2/Tools/Presets.js\");\n/* harmony import */ var _Tools_Utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Tools/Utils */ \"../play-what/src/v2/Tools/Utils.js\");\n\n\nclass Interval {\n  constructor(args) {\n    if (typeof args === 'string') {\n      const preset = _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"INTERVAL\"][args];\n      this.id = preset.id;\n      this.name = preset.id;\n      this.degree = preset.degree;\n      this.semitones = preset.semitones;\n      this.octaveOffset = 0;\n    } else {\n      return;\n    }\n  }\n\n  matchesPitchClassFromKeyCenter(keyCenter, pitchClass) {\n    return _Tools_Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"].modulo(keyCenter.getRootIndex(true) + this.semitones, 12) === pitchClass;\n  }\n\n  matchesNoteIndexFromKeyCenter(keyCenter, noteIndex) {\n    return keyCenter.getRootIndex() + this.octaveOffset * 12 + this.semitones === noteIndex;\n  }\n\n  toJSON() {\n    return this.id;\n  }\n\n}\n/*export class IntervalV2 {\r\n\r\n    static fromPreset(preset) {\r\n        return INTERVAL[preset];\r\n    }\r\n\r\n    static fromConfig(config) {\r\n        this.id = INTERVAL[args].id;\r\n        this.name = INTERVAL[args].id;\r\n        this.degree = preset.degree;\r\n        this.semitones = preset.semitones;\r\n        this.octaveOffset = 0;\r\n    }\r\n\r\n    static matchesPitchClassFromKeyCenter(interval, keyCenter, pitchClass) {\r\n        return Utils.modulo(keyCenter.getRootIndex(true) + interval.semitones, 12) === pitchClass;\r\n    }\r\n\r\n    static matchesNoteIndexFromKeyCenter(interval, keyCenter, noteIndex) {\r\n        return keyCenter.getRootIndex() + interval.octaveOffset * 12 + interval.semitones === noteIndex;\r\n    }\r\n}*/\n\n//# sourceURL=webpack:///../play-what/src/v2/Entities/Interval.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Entities/KeyCenter.js":
-/*!*************************************************!*\
-  !*** ../play-what/src/v2/Entities/KeyCenter.js ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return KeyCenter; });\n/* harmony import */ var _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Tools/Presets */ \"../play-what/src/v2/Tools/Presets.js\");\n\nclass KeyCenter {\n  constructor(args) {\n    if (typeof args === 'string') {\n      this.str = args;\n      this.tonic = _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"TONIC\"][args[0]] || _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"TONIC\"].C;\n      this.accidental = args[1] === '#' ? _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"ACCIDENTAL\"].Sharp : args[1] === 'b' ? _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"ACCIDENTAL\"].Flat : _Tools_Presets__WEBPACK_IMPORTED_MODULE_0__[\"ACCIDENTAL\"].Natural;\n      this.octave = 4;\n    } else {\n      console.error('KeyCenter error');\n      return;\n    }\n\n    Object.freeze(this);\n  }\n\n  getOctaveRootIndex() {\n    return (this.octave - 4) * 12;\n  }\n\n  getRootIndex(relative = false) {\n    let keyRootRelative = this.tonic.pitchClass + this.accidental.offset;\n    return relative ? keyRootRelative : this.getOctaveRootIndex() + keyRootRelative;\n  }\n\n  toJSON() {\n    return this.tonic.id + this.accidental.symbol + this.octave;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v2/Entities/KeyCenter.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Entities/Note.js":
-/*!********************************************!*\
-  !*** ../play-what/src/v2/Entities/Note.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Note; });\n/* harmony import */ var _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Tools/Theory */ \"../play-what/src/v2/Tools/Theory.js\");\n\nclass Note {\n  constructor(keyCenter, interval) {\n    this.keyCenter = keyCenter;\n    this.interval = interval;\n    this.noteDegree = _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getDegree(this.keyCenter, this.interval);\n    this.pitchClass = _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getPitchClass(this.keyCenter, this.interval);\n    this.name = _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getName(this.noteDegree, this.pitchClass, this.keyCenter.accidental);\n    this.octave = _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getOctave(this.keyCenter, this.interval);\n    this.noteIndex = _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getNoteIndex(this.octave, this.pitchClass);\n    this.frequency = _Tools_Theory__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getFrequency(this.noteIndex);\n    Object.freeze(this);\n  }\n\n  toJSON() {\n    return this.name;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v2/Entities/Note.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Tools/Constants.js":
-/*!**********************************************!*\
-  !*** ../play-what/src/v2/Tools/Constants.js ***!
-  \**********************************************/
-/*! exports provided: PITCH_CLASS_NAMES, CALIBRATION_NOTE, CALIBRATION_CONSTANT */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PITCH_CLASS_NAMES\", function() { return PITCH_CLASS_NAMES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CALIBRATION_NOTE\", function() { return CALIBRATION_NOTE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CALIBRATION_CONSTANT\", function() { return CALIBRATION_CONSTANT; });\nconst PITCH_CLASS_NAMES = ['C', 'C#/Db', 'D', 'D#/Eb', 'E', 'F', 'F#/Gb', 'G', 'G#/Ab', 'A', 'A#/Bb', 'B'];\nconst CALIBRATION_NOTE = {\n  frequency: 440,\n  noteIndex: 9\n};\nconst CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);\n\n//# sourceURL=webpack:///../play-what/src/v2/Tools/Constants.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Tools/ParseEngine.js":
-/*!************************************************!*\
-  !*** ../play-what/src/v2/Tools/ParseEngine.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Entities_KeyCenter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Entities/KeyCenter */ \"../play-what/src/v2/Entities/KeyCenter.js\");\n/* harmony import */ var _Entities_Concepts_Chord__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Entities/Concepts/Chord */ \"../play-what/src/v2/Entities/Concepts/Chord.js\");\n/* harmony import */ var _Entities_Concepts_Scale__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Entities/Concepts/Scale */ \"../play-what/src/v2/Entities/Concepts/Scale.js\");\n\n\n\n\nconst getConcept = args => {\n  if (typeof args === 'object') {\n    switch (args.strategy) {\n      case 'INTERVAL_PAIR':\n        return null;\n\n      case 'CHORD':\n        return new _Entities_Concepts_Chord__WEBPACK_IMPORTED_MODULE_1__[\"default\"](args.args);\n\n      case 'SCALE':\n        return new _Entities_Concepts_Scale__WEBPACK_IMPORTED_MODULE_2__[\"default\"](args.args);\n\n      case 'MODE':\n        return null;\n\n      case 'ROMAN_NUMERAL':\n        return null;\n\n      default:\n        return null;\n    }\n  }\n\n  return null;\n};\n\nconst notesFromIntervals = args => {\n  if (typeof args === 'array') {\n    return null;\n  } else if (typeof args === 'object') {\n    const keyCenter = new _Entities_KeyCenter__WEBPACK_IMPORTED_MODULE_0__[\"default\"](args.keyCenter);\n    const concept = getConcept(args.intervals);\n    return concept.getNotes(keyCenter);\n  }\n\n  return null;\n};\n\nconst parse = config => {\n  switch (config.strategy) {\n    case 'NOTES_FROM_INTERVALS':\n      return notesFromIntervals(config.args);\n\n    default:\n      return null;\n  }\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (parse);\n\n//# sourceURL=webpack:///../play-what/src/v2/Tools/ParseEngine.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Tools/Presets.js":
-/*!********************************************!*\
-  !*** ../play-what/src/v2/Tools/Presets.js ***!
-  \********************************************/
-/*! exports provided: TONIC, TONICS, ACCIDENTAL, INTERVAL, INTERVALS, INTERVAL_PAIR, CHORD, SCALE, MODE */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TONIC\", function() { return TONIC; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"TONICS\", function() { return TONICS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ACCIDENTAL\", function() { return ACCIDENTAL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVAL\", function() { return INTERVAL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVALS\", function() { return INTERVALS; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"INTERVAL_PAIR\", function() { return INTERVAL_PAIR; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"CHORD\", function() { return CHORD; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"SCALE\", function() { return SCALE; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"MODE\", function() { return MODE; });\n/*\r\n    Entity\r\n        api: (...) => result: any\r\n            fromX: (x: X) => class: Entity\r\n        presets: IEnityConfig\r\n        class: \"immutible static class representing config state snapshot with OO api wrappers for chaining function calls\"\r\n            constructor(presetId || config || array)\r\n            toConfig: IEntityConfig\r\n*/\n\n/*\r\n    IKeyCenterArgs\r\n        keyString: string ||\r\n        IKeyCenterConfig\r\n            tonic: ITonicArgs\r\n            accidental: IAccidentalArgs\r\n            octave: number\r\n*/\n\n/*\r\n    IDegreeArgs\r\n        presetId: string ||\r\n        IDegreeConfig: nubmer\r\n*/\n\n/*\r\n    IPitchClassArgs\r\n        presetId: string ||\r\n        IPitchClassConfig: number\r\n*/\n\n/*\r\n    ITonicArgs\r\n        presetId: string ||\r\n        config: ITonicConfig\r\n            id?: string,\r\n            name?: string,\r\n            degreeInC?: number,\r\n            pitchClass?: number\r\n*/\nconst TONIC = Object.freeze({\n  C: {\n    id: 'C',\n    name: 'C',\n    degreeInC: 1,\n    pitchClass: 0\n  },\n  D: {\n    id: 'D',\n    name: 'D',\n    degreeInC: 2,\n    pitchClass: 2\n  },\n  E: {\n    id: 'E',\n    name: 'E',\n    degreeInC: 3,\n    pitchClass: 4\n  },\n  F: {\n    id: 'F',\n    name: 'F',\n    degreeInC: 4,\n    pitchClass: 5\n  },\n  G: {\n    id: 'G',\n    name: 'G',\n    degreeInC: 5,\n    pitchClass: 7\n  },\n  A: {\n    id: 'A',\n    name: 'A',\n    degreeInC: 6,\n    pitchClass: 9\n  },\n  B: {\n    id: 'B',\n    name: 'B',\n    degreeInC: 7,\n    pitchClass: 11\n  }\n});\nconst TONICS = Object.freeze(Object.values(TONIC));\n/*\r\n    IAccidentalArgs\r\n        presetId: string ||\r\n        config: IAccidentalConfig\r\n            id?: string,\r\n            name?: string,\r\n            offset?: number,\r\n            symbol?: number\r\n*/\n\nconst ACCIDENTAL = Object.freeze({\n  Flat: {\n    id: 'flat',\n    name: 'Flat',\n    symbol: 'b',\n    offset: -1\n  },\n  Natural: {\n    id: 'natural',\n    name: 'Natural',\n    symbol: '♮',\n    offset: 0\n  },\n  Sharp: {\n    id: 'sharp',\n    name: 'Sharp',\n    symbol: '#',\n    offset: 1\n  }\n});\n/*\r\n    IIntervalArgs\r\n        presetId: string ||\r\n        config: IIntervalConfig\r\n            id?: string,\r\n            name?: string,\r\n            degree?: number,\r\n            semitones?: number,\r\n            desending?: bool,\r\n\r\n*/\n\nconst INTERVAL = Object.freeze({\n  P1: {\n    id: 'P1',\n    name: 'Perfect Unison',\n    degree: 1,\n    semitones: 0\n  },\n  m2: {\n    id: 'm2',\n    name: 'Minor 2nd',\n    degree: 2,\n    semitones: 1\n  },\n  M2: {\n    id: 'M2',\n    name: 'Major 2nd',\n    degree: 2,\n    semitones: 2\n  },\n  A2: {\n    id: 'A2',\n    name: 'Augmented 2nd',\n    degree: 2,\n    semitones: 3\n  },\n  d3: {\n    id: 'd3',\n    name: 'Diminished 3rd',\n    degree: 3,\n    semitones: 2\n  },\n  m3: {\n    id: 'm3',\n    name: 'Minor 3rd',\n    degree: 3,\n    semitones: 3\n  },\n  M3: {\n    id: 'M3',\n    name: 'Major 3rd',\n    degree: 3,\n    semitones: 4\n  },\n  A3: {\n    id: 'A3',\n    name: 'Augmented 3rd',\n    degree: 3,\n    semitones: 5\n  },\n  d4: {\n    id: 'd4',\n    name: 'Diminished 4th',\n    degree: 4,\n    semitones: 4\n  },\n  P4: {\n    id: 'P4',\n    name: 'Perfect 4th',\n    degree: 4,\n    semitones: 5\n  },\n  A4: {\n    id: 'A4',\n    name: 'Augmented 4th',\n    degree: 4,\n    semitones: 6\n  },\n  d5: {\n    id: 'd5',\n    name: 'Diminished 5th',\n    degree: 5,\n    semitones: 6\n  },\n  P5: {\n    id: 'P5',\n    name: 'Perfect 5th',\n    degree: 5,\n    semitones: 7\n  },\n  A5: {\n    id: 'A5',\n    name: 'Augmented 5th',\n    degree: 5,\n    semitones: 8\n  },\n  d6: {\n    id: 'd6',\n    name: 'Diminished 6th',\n    degree: 6,\n    semitones: 7\n  },\n  m6: {\n    id: 'm6',\n    name: 'Minor 6th',\n    degree: 6,\n    semitones: 8\n  },\n  M6: {\n    id: 'M6',\n    name: 'Major 6th',\n    degree: 6,\n    semitones: 9\n  },\n  A6: {\n    id: 'A6',\n    name: 'Augmented 6th',\n    degree: 6,\n    semitones: 10\n  },\n  d7: {\n    id: 'd7',\n    name: 'Diminished 7th',\n    degree: 7,\n    semitones: 9\n  },\n  m7: {\n    id: 'm7',\n    name: 'Minor 7th',\n    degree: 7,\n    semitones: 10\n  },\n  M7: {\n    id: 'M7',\n    name: 'Major 7th',\n    degree: 7,\n    semitones: 11\n  },\n  P8: {\n    id: 'P8',\n    name: 'Octave',\n    degree: 8,\n    semitones: 12\n  }\n});\nconst INTERVALS = Object.freeze(Object.values(INTERVAL));\n/*\r\n    IIntervalPairArgs\r\n        preset: string ||    \r\n        config: IIntervalPairConfig\r\n            id?: string,\r\n            name?: string,\r\n            interval: IIntervalArgs\r\n\r\n    IntervalPair\r\n        fromPreset(presetId: string)\r\n        fromConfig(config: IIntervalPairConfig)\r\n*/\n\nconst INTERVAL_PAIR = Object.freeze({\n  P1: {\n    id: 'P1',\n    name: 'P1',\n    interval: 'P1'\n  },\n  m2: {\n    id: 'm2',\n    name: 'm2',\n    interval: 'm2'\n  },\n  M2: {\n    id: 'M2',\n    name: 'M2',\n    interval: 'M2'\n  },\n  A2: {\n    id: 'A2',\n    name: 'A2',\n    interval: 'A2'\n  },\n  d3: {\n    id: 'd3',\n    name: 'd3',\n    interval: 'd3'\n  },\n  m3: {\n    id: 'm3',\n    name: 'm3',\n    interval: 'm3'\n  },\n  M3: {\n    id: 'M3',\n    name: 'M3',\n    interval: 'M3'\n  },\n  P4: {\n    id: 'P4',\n    name: 'P4',\n    interval: 'P4'\n  },\n  A4: {\n    id: 'A4',\n    name: 'A4',\n    interval: 'A4'\n  },\n  d5: {\n    id: 'd5',\n    name: 'd5',\n    interval: 'd5'\n  },\n  P5: {\n    id: 'P5',\n    name: 'P5',\n    interval: 'P5'\n  },\n  A5: {\n    id: 'A5',\n    name: 'A5',\n    interval: 'A5'\n  },\n  d6: {\n    id: 'd6',\n    name: 'd6',\n    interval: 'd6'\n  },\n  m6: {\n    id: 'm6',\n    name: 'm6',\n    interval: 'm6'\n  },\n  M6: {\n    id: 'M6',\n    name: 'M6',\n    interval: 'M6'\n  },\n  d7: {\n    id: 'd7',\n    name: 'd7',\n    interval: 'd7'\n  },\n  m7: {\n    id: 'm7',\n    name: 'm7',\n    interval: 'm7'\n  },\n  M7: {\n    id: 'M7',\n    name: 'M7',\n    interval: 'M7'\n  }\n});\n/*\r\n    IChordArgs\r\n        presetId: string ||\r\n        config: IChordConfig\r\n            id?: string,\r\n            name?: string,\r\n            intervals: IIntervalArgs[],\r\n            transforms?: IChordTransformArgs[]\r\n*/\n\nconst CHORD = Object.freeze({\n  Maj: {\n    id: 'Maj',\n    name: 'Major Triad',\n    intervals: ['P1', 'M3', 'P5']\n  },\n  Maj6: {\n    id: 'Maj6',\n    name: 'Major 6th',\n    intervals: ['P1', 'M3', 'P5', 'M6']\n  },\n  Maj7: {\n    id: 'Maj7',\n    name: 'Major 7th',\n    intervals: ['P1', 'M3', 'P5', 'M7']\n  },\n  Min: {\n    id: 'Min',\n    name: 'Minor Triad',\n    intervals: ['P1', 'm3', 'P5']\n  },\n  Min6: {\n    id: 'Min6',\n    name: 'Minor 6th',\n    intervals: ['P1', 'm3', 'P5', 'M6']\n  },\n  Min7: {\n    id: 'Min7',\n    name: 'Minor 7th',\n    intervals: ['P1', 'm3', 'P5', 'm7']\n  },\n  MinMaj7: {\n    id: 'MinMaj7',\n    name: 'Minor-Major 7th',\n    intervals: ['P1', 'm3', 'P5', 'M7']\n  },\n  Dom7: {\n    id: 'Dom7',\n    name: 'Dominant 7th',\n    intervals: ['P1', 'M3', 'P5', 'm7']\n  },\n  // Dom7b9:     { id: 'Dom7b9',     name: 'Dom7 b9',                intervals: ['P1', 'M3', 'P5', 'm7', 'flat9'] },\n  Aug: {\n    id: 'Aug',\n    name: 'Augmented Triad',\n    intervals: ['P1', 'M3', 'A5']\n  },\n  Aug7: {\n    id: 'Aug7',\n    name: 'Augmented 7th',\n    intervals: ['P1', 'M3', 'A5', 'm7']\n  },\n  AugM7: {\n    id: 'AugM7',\n    name: 'Augmented Major 7th',\n    intervals: ['P1', 'M3', 'A5', 'M7']\n  },\n  Dim: {\n    id: 'Dim',\n    name: 'Diminished Triad',\n    intervals: ['P1', 'm3', 'd5']\n  },\n  Dim7: {\n    id: 'Dim7',\n    name: 'Diminished 7th',\n    intervals: ['P1', 'm3', 'd5', 'd7']\n  },\n  HalfDim7: {\n    id: 'HalfDim7',\n    name: 'Half-Diminished 7th',\n    intervals: ['P1', 'm3', 'd5', 'm7']\n  },\n  Sus2: {\n    id: 'Sus2',\n    name: 'Suspended 2nd',\n    intervals: ['P1', 'M2', 'P5']\n  },\n  Sus4: {\n    id: 'Sus4',\n    name: 'Suspended 4th',\n    intervals: ['P1', 'P4', 'P5']\n  }\n});\n/*\r\n    IScaleArgs\r\n        presetId: string ||\r\n        config: IScaleConfig\r\n            id?: string,\r\n            name?: string,\r\n            intervals: IIntervalArgs[],\r\n            transforms?: IScaleTransformArgs[]\r\n*/\n\nconst SCALE = Object.freeze({\n  Major: {\n    id: 'Major',\n    name: 'Major',\n    intervals: ['P1', 'M2', 'M3', 'P4', 'P5', 'M6', 'M7']\n  },\n  NatualMinor: {\n    id: 'NaturalMinor',\n    name: 'Natural Minor',\n    intervals: ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'm7']\n  },\n  HarmonicMinor: {\n    id: 'HarmonicMinor',\n    name: 'Harmonic Minor',\n    intervals: ['P1', 'M2', 'm3', 'P4', 'P5', 'm6', 'M7']\n  },\n  MajorPentatonic: {\n    id: 'MajorPentatonic',\n    name: 'Major Pentatonic',\n    intervals: ['P1', 'M2', 'M3', 'P5', 'M6']\n  },\n  MinorPentatonic: {\n    id: 'MinorPentatonic',\n    name: 'Minor Pentatonic',\n    intervals: ['P1', 'm3', 'P4', 'P5', 'm7']\n  },\n  Chromatic: {\n    id: 'Chromatic',\n    name: 'Chromatic',\n    intervals: ['P1', 'm2', 'M2', 'm3', 'M3', 'P4', 'A4', 'P5', 'm6', 'M6', 'm7', 'M7']\n  }\n});\n/*\r\n    IModeArgs\r\n        presetId: string\r\n        config: IIntervalPair\r\n            id?: string,\r\n            name?: string,\r\n            scale: IScaleArgs,\r\n            degree: number,\r\n            transforms?: IScaleTransformArgs[]\r\n*/\n\nconst MODE = Object.freeze({\n  Ionian: {\n    id: 'Ionian',\n    name: 'Ionian',\n    scale: 'Major',\n    degree: 1\n  },\n  Dorian: {\n    id: 'Dorian',\n    name: 'Dorian',\n    scale: 'Major',\n    degree: 2\n  },\n  Phrygian: {\n    id: 'Phrygian',\n    name: 'Phrygian',\n    scale: 'Major',\n    degree: 3\n  },\n  Lydian: {\n    id: 'Lydian',\n    name: 'Lydian',\n    scale: 'Major',\n    degree: 4\n  },\n  Mixolydian: {\n    id: 'Mixolydian',\n    name: 'Mixolydian',\n    scale: 'Major',\n    degree: 5\n  },\n  Aeolian: {\n    id: 'Aeolian',\n    name: 'Aeolian',\n    scale: 'Major',\n    degree: 6\n  },\n  Locrian: {\n    id: 'Locrian',\n    name: 'Locrian',\n    scale: 'Major',\n    degree: 7\n  }\n});\n/*\r\n    IRomanNumeralArgs\r\n        presetId: string\r\n        config: IRomanNumeralConfig\r\n            id?: string,\r\n            name?: string,\r\n            scale?: IScaleArgs\r\n            degree?: number,\r\n            quality?: 'string',\r\n            transforms?: IChordTransformArgs[]\r\n            serializer? IRomanNumeralSerializerArgs\r\n*/\n\n//# sourceURL=webpack:///../play-what/src/v2/Tools/Presets.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Tools/Theory.js":
-/*!*******************************************!*\
-  !*** ../play-what/src/v2/Tools/Theory.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Theory; });\n/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Utils */ \"../play-what/src/v2/Tools/Utils.js\");\n/* harmony import */ var _Presets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Presets */ \"../play-what/src/v2/Tools/Presets.js\");\n/* harmony import */ var _Constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Constants */ \"../play-what/src/v2/Tools/Constants.js\");\n/* harmony import */ var _Entities_KeyCenter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Entities/KeyCenter */ \"../play-what/src/v2/Entities/KeyCenter.js\");\n/* harmony import */ var _Entities_Note__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Entities/Note */ \"../play-what/src/v2/Entities/Note.js\");\n\n\n\n\n\n\n/*function getIntervalByPitchClass(pitchClass, keyCenter, intervals = INTERVALS) {\r\n    return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;\r\n}\r\n\r\n/*function getIntervalByNoteIndex(noteIndex, keyCenter, intervals = INTERVALS) {\r\n    return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;\r\n}*/\n\nclass Theory {\n  static getOctaveFromNoteIndex(noteIndex) {\n    return 4 + Math.floor(noteIndex / 12);\n  }\n\n  static getNote(interval, keyCenter) {\n    const kc = new _Entities_KeyCenter__WEBPACK_IMPORTED_MODULE_3__[\"default\"](keyCenter.str); // kc.octave = Theory.getOctaveFromNoteIndex(keyCenter.tonic.pitchClass + interval.semitones);\n\n    return new _Entities_Note__WEBPACK_IMPORTED_MODULE_4__[\"default\"](kc, interval);\n  }\n\n  static getNotes(intervals, keyCenter) {\n    return intervals.map(i => Theory.getNote(i, keyCenter));\n  }\n\n  static getFrequency(noteIndex) {\n    return _Constants__WEBPACK_IMPORTED_MODULE_2__[\"CALIBRATION_NOTE\"].frequency * Math.pow(_Constants__WEBPACK_IMPORTED_MODULE_2__[\"CALIBRATION_CONSTANT\"], noteIndex - _Constants__WEBPACK_IMPORTED_MODULE_2__[\"CALIBRATION_NOTE\"].noteIndex);\n  }\n\n  static getDegree(keyCenter, interval) {\n    return _Utils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].moduloSum(keyCenter.tonic.degreeInC, interval.degree, 7, 1);\n  }\n\n  static getPitchClass(keyCenter, interval) {\n    return _Utils__WEBPACK_IMPORTED_MODULE_0__[\"default\"].moduloSum(keyCenter.tonic.pitchClass + keyCenter.accidental.offset, interval.semitones, 12, 0);\n  }\n\n  static getName(noteDegree, pitchClass, accidental) {\n    let spelling = Theory._getTonicByDegree(noteDegree); // Get accidental offset\n\n\n    let offset = pitchClass - spelling.pitchClass;\n    if (offset < 0 && accidental.offset > 0) offset = offset + 12;else if (offset > 0 && accidental.offset < 0) offset = offset - 12; // Combine tonic name with accidental\n\n    return spelling.name + Theory._getAccidentalString(offset);\n  }\n\n  static _getTonicByDegree(noteDegree) {\n    return _Presets__WEBPACK_IMPORTED_MODULE_1__[\"TONICS\"][noteDegree - 1];\n  }\n\n  static _getAccidentalString(offset) {\n    switch (offset) {\n      case 0:\n        return '';\n\n      case 1:\n        return '#';\n\n      case 2:\n        return 'x';\n\n      case -1:\n        return 'b';\n\n      case -2:\n        return 'bb';\n\n      default:\n        return offset < 0 ? -offset + 'b' : offset + '#';\n    }\n  }\n\n  static getOctave(keyCenter, interval) {\n    return keyCenter.octave + Math.floor((keyCenter.tonic.pitchClass + keyCenter.accidental.offset + interval.semitones) / 12) + interval.octaveOffset;\n  }\n\n  static getNoteIndex(noteOctave, pitchClass) {\n    return (noteOctave - 4) * 12 + pitchClass;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v2/Tools/Theory.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/Tools/Utils.js":
-/*!******************************************!*\
-  !*** ../play-what/src/v2/Tools/Utils.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return CommonUtils; });\nclass CommonUtils {\n  static moduloSum(a, b, divisor, offset = 0, subtraction = false) {\n    let dividend = subtraction ? a - offset - (b - offset) : a - offset + (b - offset);\n    return CommonUtils.modulo(dividend, divisor) + offset;\n  }\n\n  static modulo(a, b) {\n    return (a % b + b) % b;\n  }\n\n}\n\n//# sourceURL=webpack:///../play-what/src/v2/Tools/Utils.js?");
-
-/***/ }),
-
-/***/ "../play-what/src/v2/_module.js":
-/*!**************************************!*\
-  !*** ../play-what/src/v2/_module.js ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Tools_Constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tools/Constants */ \"../play-what/src/v2/Tools/Constants.js\");\n/* harmony import */ var _Tools_Presets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tools/Presets */ \"../play-what/src/v2/Tools/Presets.js\");\n/* harmony import */ var _Tools_ParseEngine__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tools/ParseEngine */ \"../play-what/src/v2/Tools/ParseEngine.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Constants: _Tools_Constants__WEBPACK_IMPORTED_MODULE_0__,\n  Presets: _Tools_Presets__WEBPACK_IMPORTED_MODULE_1__,\n  parse: _Tools_ParseEngine__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n});\n\n//# sourceURL=webpack:///../play-what/src/v2/_module.js?");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/ChordAnalysis/ChordAnalysis.css":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/ChordAnalysis/ChordAnalysis.css ***!
-  \**************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/Fretboard/Fretboard.css":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/Fretboard/Fretboard.css ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".roman-numeral-block {\\r\\n    display: inline-block;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    background-color: #EEE;\\r\\n    border-radius: 5px;\\r\\n    border: 1px solid #555;\\r\\n}\\r\\n\\r\\n.roman-numeral-block * {\\r\\n    color: black;\\r\\n}\\r\\n\\r\\n.roman-numeral-block .name {\\r\\n    font-weight: bold;\\r\\n    font-size: 150%;\\r\\n}\\r\\n\\r\\n.interval-label {\\r\\n    display: inline-block;\\r\\n    height: 25px;\\r\\n    width: 25px;\\r\\n    line-height: 25px;\\r\\n    text-align: center;\\r\\n    padding: 2px;\\r\\n    margin: 2px;\\r\\n    border-radius: 5px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/ChordAnalysis/ChordAnalysis.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* General */\\r\\n\\r\\n.no-select {\\r\\n\\t-webkit-touch-callout: none;\\r\\n\\t-webkit-user-select: none;\\r\\n\\t-khtml-user-select: none;\\r\\n\\t-moz-user-select: none;\\r\\n\\t-ms-user-select: none;\\r\\n\\tuser-select: none;\\r\\n}\\r\\n\\r\\n/* Fretboard */\\r\\n\\r\\n.fretboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\tdisplay: inline-grid;\\r\\n\\twidth: 100%;\\r\\n\\tbackground-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);\\r\\n\\tfont-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\tmargin-top: 20px;\\r\\n\\tmargin-bottom: 20px;\\r\\n}\\r\\n\\r\\n/* Fret */\\r\\n\\r\\n.fret {\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tposition: relative;\\r\\n\\tborder-right: 2px solid darkgrey;\\r\\n}\\r\\n\\r\\n.fret.open {\\r\\n\\tborder-right: 3px solid grey;\\r\\n}\\r\\n\\r\\n/* Used to maintain aspect ratio */\\r\\n\\r\\n.fret::before {\\r\\n\\tcontent: \\\"\\\";\\r\\n\\tdisplay: block;\\r\\n\\theight: 0;\\r\\n\\twidth: 0;\\r\\n\\tmargin-top: calc(1/2 * 100%);\\r\\n}\\r\\n\\r\\n/* Fret String */\\r\\n\\r\\n.fret-string {\\r\\n\\tbackground-color: grey;\\r\\n\\theight: 1px;\\r\\n\\twidth: 100%;\\r\\n}\\r\\n\\r\\n/* Fret Numbers */\\r\\n\\r\\n.fret-number {\\r\\n\\tposition: absolute;\\r\\n\\tbottom: 105%;\\r\\n}\\r\\n\\r\\n/* Fret Dots */\\r\\n\\r\\n.fret-dots {\\r\\n\\tposition: absolute;\\r\\n\\ttop: 100%;\\r\\n\\tfont-size: 16px;\\r\\n\\twhite-space: nowrap;\\r\\n}\\r\\n\\r\\n.fret-number, .fret-dots {\\r\\n\\tcolor: #555;\\r\\n}\\r\\n\\r\\n/* Fret Label */\\r\\n\\r\\n.fret-label {\\r\\n\\tposition: absolute;\\r\\n\\twidth: 90%;\\r\\n\\theight: 90%;\\r\\n\\tdisplay: flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tborder-radius: 100%;\\r\\n}\\r\\n\\r\\n.fret-label:hover {\\r\\n\\twidth: 100%;\\r\\n\\theight: 100%;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n/* Inputs */\\r\\n\\r\\n.fretboard-controller {\\r\\n\\tdisplay: inline-block;\\r\\n\\tmargin: 20px;\\r\\n}\\r\\n\\r\\n.fretboard-container {\\r\\n\\twidth: 100%;\\r\\n\\tmargin: auto;\\r\\n    padding: 20px 20px 0 20px;\\r\\n\\tbox-sizing: border-box;\\r\\n\\tborder-radius: 15px 15px 0 0;\\r\\n    background-color: #badbeb;\\r\\n}\\r\\n\\r\\n.input-container {\\r\\n\\tposition: relative;\\r\\n\\tbackground-color: #badbeb;\\r\\n    border-radius: 0 0 10px 10px;\\r\\n}\\r\\n\\r\\n.preview {\\r\\n\\tfont-weight: bold;\\r\\n\\ttext-align: center;\\r\\n\\tcursor: pointer;\\r\\n\\tbackground: #5E99D1;\\r\\n\\tcolor: white;\\r\\n\\tpadding: 5px;\\r\\n\\tborder-radius: 0 0 15px 15px;\\r\\n\\tz-index: 1001;\\r\\n}\\r\\n\\r\\n.preview:hover {\\r\\n}\\r\\n\\r\\n.preview.active {\\r\\n\\tborder-radius: 0;\\r\\n}\\r\\n\\r\\n.input-modal {\\r\\n\\tposition: absolute;\\r\\n    z-index: 1000;\\r\\n\\tleft: 0;\\r\\n\\tright: 0;\\r\\n\\tborder-radius: 0 0 10px 10px;\\r\\n\\t/*box-shadow: 0 0 15px rgba(0,0,0,.5);*/\\r\\n}\\r\\n\\r\\n.fretboard-controller.edit .fretboard-container\\r\\n{\\r\\n\\tbackground-color: #9EC1E3;\\r\\n}\\r\\n\\r\\n.fretboard-controller.edit .input-modal,\\r\\n.fretboard-controller.edit .preview\\r\\n{\\r\\n\\tbackground-color: #5E99D1;\\r\\n}\\r\\n\\r\\n.panel-name {\\r\\n\\twidth: 100%;\\r\\n    padding: 5px;\\r\\n    cursor: pointer;\\r\\n\\tbox-sizing: border-box;\\r\\n}\\r\\n\\r\\n.panel-name-container {\\r\\n\\t\\r\\n}\\r\\n\\r\\n.labeled-input {\\r\\n\\tdisplay: flex;\\r\\n\\tflex-wrap: wrap;\\r\\n\\talign-items: center;\\r\\n\\tjustify-content: space-between;\\r\\n\\tmargin: 5px;\\r\\n}\\r\\n\\r\\n.label-text {}\\r\\n\\r\\n.panel-name {\\r\\n\\tfont-weight: bold;\\r\\n}\\r\\n\\r\\n.panel {\\r\\n\\tbackground: #9EC1E3\\r\\n}\\r\\n\\r\\n/* Panel Themes */\\r\\n\\r\\n.primary {\\r\\n\\t/*border: 2px solid #d15eac;*/\\r\\n\\tcolor: #d15eac;\\r\\n}\\r\\n\\r\\n.primary:hover, .primary.active {\\r\\n\\tbackground-color:  #d15eac;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n.secondary {\\r\\n\\t/*border: 2px solid #5ed183;*/\\r\\n\\tcolor: #5ed183;\\r\\n}\\r\\n\\r\\n.secondary:hover, .secondary.active {\\r\\n\\tbackground-color:  #5ed183;\\r\\n\\tcolor: white;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Fretboard.css":
-/*!******************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Fretboard.css ***!
-  \******************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/Graph/Graph.css":
+/*!***************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/Graph/Graph.css ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* General */\\r\\n\\r\\n.no-select {\\r\\n\\t-webkit-touch-callout: none;\\r\\n\\t-webkit-user-select: none;\\r\\n\\t-khtml-user-select: none;\\r\\n\\t-moz-user-select: none;\\r\\n\\t-ms-user-select: none;\\r\\n\\tuser-select: none;\\r\\n}\\r\\n\\r\\n/* Fretboard */\\r\\n\\r\\n.fretboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\tdisplay: inline-grid;\\r\\n\\twidth: 100%;\\r\\n\\tbackground-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);\\r\\n\\tfont-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\tmargin-top: 20px;\\r\\n\\tmargin-bottom: 20px;\\r\\n}\\r\\n\\r\\n/* Fret */\\r\\n\\r\\n.fret {\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tposition: relative;\\r\\n\\tborder-right: 2px solid darkgrey;\\r\\n}\\r\\n\\r\\n.fret.open {\\r\\n\\tborder-right: 3px solid grey;\\r\\n}\\r\\n\\r\\n/* Used to maintain aspect ratio */\\r\\n\\r\\n.fret::before {\\r\\n\\tcontent: \\\"\\\";\\r\\n\\tdisplay: block;\\r\\n\\theight: 0;\\r\\n\\twidth: 0;\\r\\n\\tmargin-top: calc(1/2 * 100%);\\r\\n}\\r\\n\\r\\n/* Fret String */\\r\\n\\r\\n.fret-string {\\r\\n\\tbackground-color: grey;\\r\\n\\theight: 1px;\\r\\n\\twidth: 100%;\\r\\n}\\r\\n\\r\\n/* Fret Numbers */\\r\\n\\r\\n.fret-number {\\r\\n\\tposition: absolute;\\r\\n\\tbottom: 105%;\\r\\n}\\r\\n\\r\\n/* Fret Dots */\\r\\n\\r\\n.fret-dots {\\r\\n\\tposition: absolute;\\r\\n\\ttop: 100%;\\r\\n\\tfont-size: 16px;\\r\\n\\twhite-space: nowrap;\\r\\n}\\r\\n\\r\\n.fret-number, .fret-dots {\\r\\n\\tcolor: #555;\\r\\n}\\r\\n\\r\\n/* Fret Label */\\r\\n\\r\\n.fret-label {\\r\\n\\tposition: absolute;\\r\\n\\twidth: 90%;\\r\\n\\theight: 90%;\\r\\n\\tdisplay: flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tborder-radius: 100%;\\r\\n}\\r\\n\\r\\n.fret-label:hover {\\r\\n\\twidth: 100%;\\r\\n\\theight: 100%;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n/* Inputs */\\r\\n\\r\\n.fretboard-controller {\\r\\n\\tdisplay: inline-block;\\r\\n\\tmargin: 20px;\\r\\n}\\r\\n\\r\\n.fretboard-container {\\r\\n\\twidth: 100%;\\r\\n\\tmargin: auto;\\r\\n    padding: 20px 20px 0 20px;\\r\\n\\tbox-sizing: border-box;\\r\\n\\tborder-radius: 15px 15px 0 0;\\r\\n    background-color: #badbeb;\\r\\n}\\r\\n\\r\\n.input-container {\\r\\n\\tposition: relative;\\r\\n\\tbackground-color: #badbeb;\\r\\n    border-radius: 0 0 10px 10px;\\r\\n}\\r\\n\\r\\n.preview {\\r\\n\\tfont-weight: bold;\\r\\n\\ttext-align: center;\\r\\n\\tcursor: pointer;\\r\\n\\tbackground: #5E99D1;\\r\\n\\tcolor: white;\\r\\n\\tpadding: 5px;\\r\\n\\tborder-radius: 0 0 15px 15px;\\r\\n\\tz-index: 1001;\\r\\n}\\r\\n\\r\\n.preview:hover {\\r\\n}\\r\\n\\r\\n.preview.active {\\r\\n\\tborder-radius: 0;\\r\\n}\\r\\n\\r\\n.input-modal {\\r\\n\\tposition: absolute;\\r\\n    z-index: 1000;\\r\\n\\tleft: 0;\\r\\n\\tright: 0;\\r\\n\\tborder-radius: 0 0 10px 10px;\\r\\n\\t/*box-shadow: 0 0 15px rgba(0,0,0,.5);*/\\r\\n}\\r\\n\\r\\n.fretboard-controller.edit .fretboard-container\\r\\n{\\r\\n\\tbackground-color: #9EC1E3;\\r\\n}\\r\\n\\r\\n.fretboard-controller.edit .input-modal,\\r\\n.fretboard-controller.edit .preview\\r\\n{\\r\\n\\tbackground-color: #5E99D1;\\r\\n}\\r\\n\\r\\n.panel-name {\\r\\n\\twidth: 100%;\\r\\n    padding: 5px;\\r\\n    cursor: pointer;\\r\\n\\tbox-sizing: border-box;\\r\\n}\\r\\n\\r\\n.panel-name-container {\\r\\n\\t\\r\\n}\\r\\n\\r\\n.labeled-input {\\r\\n\\tdisplay: flex;\\r\\n\\tflex-wrap: wrap;\\r\\n\\talign-items: center;\\r\\n\\tjustify-content: space-between;\\r\\n\\tmargin: 5px;\\r\\n}\\r\\n\\r\\n.label-text {}\\r\\n\\r\\n.panel-name {\\r\\n\\tfont-weight: bold;\\r\\n}\\r\\n\\r\\n.panel {\\r\\n\\tbackground: #9EC1E3\\r\\n}\\r\\n\\r\\n/* Panel Themes */\\r\\n\\r\\n.primary {\\r\\n\\t/*border: 2px solid #d15eac;*/\\r\\n\\tcolor: #d15eac;\\r\\n}\\r\\n\\r\\n.primary:hover, .primary.active {\\r\\n\\tbackground-color:  #d15eac;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n.secondary {\\r\\n\\t/*border: 2px solid #5ed183;*/\\r\\n\\tcolor: #5ed183;\\r\\n}\\r\\n\\r\\n.secondary:hover, .secondary.active {\\r\\n\\tbackground-color:  #5ed183;\\r\\n\\tcolor: white;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Fretboard.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".graph-container {\\r\\n\\r\\n}\\r\\n\\r\\n.graph-container .x-label {\\r\\n    font-weight: bold;\\r\\n    margin: 5px;\\r\\n\\r\\n    display: flex;\\r\\n    align-items: flex-start;\\r\\n    justify-content: center;\\r\\n}\\r\\n\\r\\n.graph-container .y-label {\\r\\n    font-weight: bold;\\r\\n    margin: 5px;\\r\\n\\r\\n    display: inline-flex;\\r\\n    align-items: center;\\r\\n    justify-content: flex-end;\\r\\n}\\r\\n\\r\\n.graph-container .graph-title {\\r\\n    font-weight: bold;\\r\\n    grid-column: 2;\\r\\n    margin: 5px;\\r\\n}\\r\\n\\r\\n\\r\\n.graph {\\r\\n    display: inline-grid;\\r\\n    grid-template-columns: repeat(8, 1fr);\\r\\n    grid-template-rows: repeat(13, 1fr);\\r\\n}\\r\\n\\r\\n.graph .cell {\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    background-color: white;\\r\\n    border: 1px solid #bbb;\\r\\n    box-sizing: border-box;\\r\\n    position: relative;\\r\\n}\\r\\n\\r\\n.graph .point {\\r\\n    height: 6px;\\r\\n    width: 6px;\\r\\n    border-radius: 6px;\\r\\n    position: absolute;\\r\\n    bottom: -3px;\\r\\n    left: -3px;\\r\\n    z-index: 10;\\r\\n}\\r\\n\\r\\n.graph .label {\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    line-height: 20px;\\r\\n    position: relative;\\r\\n    font-size: 90%;\\r\\n    color: #555;\\r\\n}\\r\\n\\r\\n.graph .y {\\r\\n    bottom: -10px;\\r\\n}\\r\\n\\r\\n.graph .x {\\r\\n    left: -10px;\\r\\n    text-align: center;\\r\\n}\\r\\n\\r\\n.graph-card {\\r\\n    display: grid;\\r\\n    grid-template-columns: auto auto;\\r\\n}\\r\\n\\r\\n.mode-button {\\r\\n    padding: 10px;\\r\\n    border-radius: 10px;\\r\\n    color: white;\\r\\n    background-color: #555;\\r\\n    display: inline-block;\\r\\n}\\r\\n\\r\\n.mode-button:hover {\\r\\n    cursor: pointer;\\r\\n    background-color: #333;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/Graph/Graph.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/KeyCenterPanel.css":
-/*!******************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/KeyCenterPanel.css ***!
-  \******************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/KeyCenterPanel.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/LabelPanel.css":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/LabelPanel.css ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".label-panel {\\r\\n\\t\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/LabelPanel.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/RangePanel.css":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/RangePanel.css ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/RangePanel.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/TuningPanel.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/TuningPanel.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".tuning-panel {\\r\\n\\tmin-width: 50px;\\r\\n\\tdisplay: grid;\\r\\n\\tgrid-template-rows: 1fr 1fr 1fr;\\r\\n\\ttext-align: center;\\r\\n\\tpadding-top: 2px;\\r\\n}\\r\\n\\r\\n.tuning-octave {\\r\\n\\tmargin-left: 2px;\\r\\n}\\r\\n\\r\\n.tune {\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n.tune:hover {\\r\\n\\tcolor: #5E99D1;\\r\\n}\\r\\n\\r\\n.tuning {\\r\\n\\tfont-weight: bold;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/TuningPanel.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/AccidentalInput/AccidentalInput.css":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/AccidentalInput/AccidentalInput.css ***!
-  \*************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".input.accidental {\\r\\n\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/AccidentalInput/AccidentalInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/BoxButton/BoxButton.css":
-/*!*************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/BoxButton/BoxButton.css ***!
-  \*************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".box-button {\\r\\n    display: inline-block;\\r\\n    line-height: 20px;\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    padding: 5px;\\r\\n    cursor: pointer;\\r\\n    background-color: #EEE;\\r\\n    color: black;\\r\\n    display: inline-flex;\\r\\n    align-items: center;\\r\\n    justify-content: center;\\r\\n}\\r\\n\\r\\n.box-button.selected {\\r\\n    font-weight: bold;\\r\\n    background-color: #CCC;\\r\\n}\\r\\n\\r\\n.box-button:hover {\\r\\n    background-color: #DDD;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/BoxButton/BoxButton.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/ButtonList/ButtonList.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/ButtonList/ButtonList.css ***!
-  \***************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".button-list {\\r\\n}\\r\\n\\r\\n.button-list .box-button {\\r\\n    border: 1px solid black;\\r\\n}\\r\\n\\r\\n.button-list .box-button:first-child {\\r\\n    border-radius: 5px 0 0 5px;\\r\\n}\\r\\n\\r\\n.button-list .box-button:last-child {\\r\\n    border-radius: 0 5px 5px 0;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/ButtonList/ButtonList.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/DropdownInput/DropdownInput.css":
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/HarmonicSeries/HarmonicSeries.css":
 /*!*********************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/DropdownInput/DropdownInput.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/HarmonicSeries/HarmonicSeries.css ***!
   \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".dropdown-input {\\r\\n    min-width: 150px;\\r\\n    height: 30px;\\r\\n    border: 1px solid black;\\r\\n    background: #EEE;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/DropdownInput/DropdownInput.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".harmonic-series {\\r\\n    position: relative;\\r\\n    background-color: white;\\r\\n    margin: 10px;\\r\\n    height: 200px;\\r\\n    margin-bottom: 20px;\\r\\n}\\r\\n\\r\\n.overtone {\\r\\n    position: absolute;\\r\\n    top: 0;\\r\\n    display: grid;\\r\\n    width: 100%;\\r\\n    height: 200px;\\r\\n}\\r\\n\\r\\n.overtone-line {\\r\\n    position: absolute;\\r\\n    top: 0;\\r\\n    height: 100%;\\r\\n    width: 1px;\\r\\n    z-index: 100;\\r\\n}\\r\\n\\r\\n.overtone-line:hover {\\r\\n    width: 5px;\\r\\n}\\r\\n\\r\\n.n {\\r\\n    height: 100%;\\r\\n}\\r\\n\\r\\n.overtone-info {\\r\\n    display: none;\\r\\n    position: absolute;\\r\\n    bottom: -25px;\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    border-radius: 5px;\\r\\n    text-align: center;\\r\\n    line-height: 20px;\\r\\n    vertical-align: middle;\\r\\n}\\r\\n\\r\\n.overtone:hover .overtone-info {\\r\\n    display: block;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/HarmonicSeries/HarmonicSeries.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/LabelInput/LabelInput.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/LabelInput/LabelInput.css ***!
-  \***************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/InputDocs/InputDocs.css":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/InputDocs/InputDocs.css ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".dropdown-input {\\r\\n    min-width: 150px;\\r\\n    height: 30px;\\r\\n    border: 1px solid black;\\r\\n    background: #EEE;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/LabelInput/LabelInput.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".row {\\r\\n    padding: 10px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/InputDocs/InputDocs.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/NumericInput/NumericInput.css":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/NumericInput/NumericInput.css ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/Keyboard/Keyboard.css":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/Keyboard/Keyboard.css ***!
+  \*********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".numeric-input {\\r\\n    -ms-user-select: none;\\r\\n    user-select: none;\\r\\n}\\r\\n\\r\\n.numeric-input .box-button {\\r\\n    border: 1px solid black;\\r\\n}\\r\\n\\r\\n.numeric-input .box-button:first-child {\\r\\n    border-radius: 5px 0 0 5px;\\r\\n}\\r\\n\\r\\n.numeric-input .box-button:last-child {\\r\\n    border-radius: 0 5px 5px 0;\\r\\n}\\r\\n\\r\\n.numeric-input .value:hover {\\r\\n    cursor: inherit;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/NumericInput/NumericInput.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Keyboard */\\r\\n\\r\\n.keyboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 100%;\\r\\n\\tmin-width: 100px;\\r\\n\\tmax-width: 400px;\\r\\n\\r\\n    font-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\t\\r\\n\\tmargin-top: 20px;\\r\\n    margin-bottom: 20px;\\r\\n}\\r\\n\\r\\n/* Key Container */\\r\\n\\r\\n.white-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n}\\r\\n\\r\\n.black-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 0px;\\r\\n}\\r\\n\\r\\n/* Key */\\r\\n\\r\\n.keyboard-key {\\r\\n\\tvertical-align: top;\\r\\n\\tposition: relative;\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n.white-key {\\r\\n\\tbox-shadow: 0 0 1px 1px black inset;\\r\\n    border-radius: 0 0 5% 5%;\\r\\n}\\r\\n\\r\\n.white-key:hover {\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n.black-key {\\r\\n\\tbox-shadow: 0 0 1px 2px #555 inset;\\r\\n\\tz-index: 10;\\r\\n    border-radius: 0 0 10% 10%;\\r\\n}\\r\\n\\r\\n.black-key:hover {\\r\\n\\tbackground-color: #333;\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n/* Colors (applied only in absence of degree class) */\\r\\n\\r\\n.white {\\r\\n\\tbackground-color: white;\\r\\n    color: black;\\r\\n}\\r\\n\\r\\n.black {\\r\\n\\tbackground-color: black;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n\\r\\n/* Label */\\r\\n\\r\\n.white-key .keyboard-key-label {\\r\\n\\tposition: absolute;\\r\\n    bottom: 5%;\\r\\n}\\r\\n\\r\\n.black-key .keyboard-key-label {\\r\\n\\tbottom: 105%;\\r\\n\\tposition: absolute;\\r\\n\\tcolor: black;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/RangeInput/RangeInput.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/RangeInput/RangeInput.css ***!
-  \***************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/TrueScale/TrueScale.css":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/TrueScale/TrueScale.css ***!
+  \***********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".range-input {\\r\\n    display: grid;\\r\\n    grid-template-columns: auto 1fr auto;\\r\\n    margin-top: 40px;\\r\\n    width: 100%;\\r\\n    width: 200px;\\r\\n}\\r\\n\\r\\n.range-input .value {\\r\\n    font-size: 12px;\\r\\n    color: #333;\\r\\n    line-height: 20px;\\r\\n    width: 10px;\\r\\n}\\r\\n\\r\\n.range-input .track {\\r\\n    margin: 5px 5px;\\r\\n    background-color: #AAA;\\r\\n    height: 10px;\\r\\n    border-radius: 5px;\\r\\n    position: relative;\\r\\n}\\r\\n\\r\\n.range-input .marker {\\r\\n    background-color: #EEE;\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    border-radius: 10px;\\r\\n    position: absolute;\\r\\n    top: -5px;\\r\\n    z-index: 1000;\\r\\n    cursor: pointer;\\r\\n    font-size: 12px;\\r\\n\\r\\n    display: flex;\\r\\n    align-items: center;\\r\\n    justify-content: center;\\r\\n}\\r\\n\\r\\n.range-input .marker-input {\\r\\n    position: absolute;\\r\\n    height: 20px;\\r\\n    width: 40px;\\r\\n    top: -30px;\\r\\n}\\r\\n\\r\\n.range-input .active {\\r\\n    height: 100%;\\r\\n    position: absolute;\\r\\n    background-color: #5E99D1;\\r\\n    z-index: 100;\\r\\n}\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/RangeInput/RangeInput.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".true-scale .button-input {\\r\\n    margin: 4px;\\r\\n    background-color: #eee;\\r\\n    color: black;\\r\\n}\\r\\n\\r\\n.true-scale .button-input:hover {\\r\\n    background-color: #ddd;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/TrueScale/TrueScale.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/SwitchInput/SwitchInput.css":
-/*!*****************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/SwitchInput/SwitchInput.css ***!
-  \*****************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ButtonInput/ButtonInput.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ButtonInput/ButtonInput.css ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".switch-input {\\r\\n    -ms-user-select: none;\\r\\n    user-select: none;\\r\\n}\\r\\n\\r\\n.switch-input {\\r\\n\\r\\n}\\r\\n\\r\\n.switch-input .shell {\\r\\n    height: 20px;\\r\\n    width: 40px;\\r\\n    border-radius: 20px;\\r\\n    display: flex;\\r\\n    align-items: center;\\r\\n    cursor: pointer;\\r\\n}\\r\\n\\r\\n.switch-input.false .shell {\\r\\n    background-color: #AAA;\\r\\n    flex-direction: row;\\r\\n}\\r\\n\\r\\n.switch-input.true .shell {\\r\\n    background-color: #5E99D1;\\r\\n    flex-direction: row-reverse;\\r\\n}\\r\\n\\r\\n.switch-input .ball {\\r\\n    height: 14px;\\r\\n    width: 14px;\\r\\n    margin: 3px;\\r\\n    background-color: #DDD;\\r\\n    border-radius: 100%;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/SwitchInput/SwitchInput.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".button-input {\\r\\n    height: 40px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    min-width: 50px;\\r\\n    cursor: pointer;\\r\\n    border: none;\\r\\n    outline: none;\\r\\n    border-radius: 4px;\\r\\n    background-color: #F7A072;\\r\\n    color: white;\\r\\n    padding: 0 16px;\\r\\n}\\r\\n\\r\\n.button-input:hover {\\r\\n    background-color: #f47f42;\\r\\n}\\r\\n\\r\\n.button-input.highlight {\\r\\n    background-color: #ddd;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ButtonInput/ButtonInput.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/TonicInput/TonicInput.css":
-/*!***************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/TonicInput/TonicInput.css ***!
-  \***************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/Card/Card.css":
+/*!********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/Card/Card.css ***!
+  \********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".input.tonic {\\r\\n\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/TonicInput/TonicInput.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".card {\\r\\n    width: 100%;\\r\\n    min-width: 512px;\\r\\n    max-width: 1024px;\\r\\n    margin: auto;\\r\\n    background-color: #F6F7EB;\\r\\n    border-radius: 20px;\\r\\n}\\r\\n\\r\\n.card .title, .card .content {\\r\\n    text-align: center;\\r\\n    padding: 10px;\\r\\n}\\r\\n\\r\\n.card .title {\\r\\n    font-weight: bolder;\\r\\n    padding: 32px 32px 16px 32px;\\r\\n    border-bottom: 1px solid #aaa;\\r\\n}\\r\\n\\r\\n.card .content {\\r\\n    font-weight: bolder;\\r\\n    padding: 16px 32px 32px 32px;\\r\\n}\\r\\n\\r\\n.card.open .title {\\r\\n    \\r\\n}\\r\\n\\r\\n.card .content {\\r\\n    \\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/Card/Card.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Keyboard/Keyboard.css":
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptInput/ConceptInput.css":
+/*!************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptInput/ConceptInput.css ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptInput/ConceptInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".concept-intervals-input *:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptMathInput/ConceptMathInput.css":
+/*!********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptMathInput/ConceptMathInput.css ***!
+  \********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".inerval-math-input *:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptMathInput/ConceptMathInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptPresetInput/ConceptPresetInput.css":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptPresetInput/ConceptPresetInput.css ***!
+  \************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".concept-preset-input *:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptPresetInput/ConceptPresetInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/Dropdown/Dropdown.css":
 /*!****************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Keyboard/Keyboard.css ***!
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/Dropdown/Dropdown.css ***!
   \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Keyboard */\\r\\n\\r\\n.keyboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 100%;\\r\\n\\tmin-width: 100px;\\r\\n\\tmax-width: 400px;\\r\\n\\r\\n    font-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\t\\r\\n\\tmargin-top: 20px;\\r\\n    margin-bottom: 20px;\\r\\n}\\r\\n\\r\\n/* Key Container */\\r\\n\\r\\n.white-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n}\\r\\n\\r\\n.black-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 0px;\\r\\n}\\r\\n\\r\\n/* Key */\\r\\n\\r\\n.keyboard-key {\\r\\n\\tvertical-align: top;\\r\\n\\tposition: relative;\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n.white-key {\\r\\n\\tbox-shadow: 0 0 1px 1px black inset;\\r\\n    border-radius: 0 0 5% 5%;\\r\\n}\\r\\n\\r\\n.white-key:hover {\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n.black-key {\\r\\n\\tbox-shadow: 0 0 1px 2px #555 inset;\\r\\n\\tz-index: 10;\\r\\n    border-radius: 0 0 10% 10%;\\r\\n}\\r\\n\\r\\n.black-key:hover {\\r\\n\\tbackground-color: #333;\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n/* Colors (applied only in absence of degree class) */\\r\\n\\r\\n.white {\\r\\n\\tbackground-color: white;\\r\\n    color: black;\\r\\n}\\r\\n\\r\\n.black {\\r\\n\\tbackground-color: black;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n\\r\\n/* Label */\\r\\n\\r\\n.white-key .keyboard-key-label {\\r\\n\\tposition: absolute;\\r\\n    bottom: 5%;\\r\\n}\\r\\n\\r\\n.black-key .keyboard-key-label {\\r\\n\\tbottom: 105%;\\r\\n\\tposition: absolute;\\r\\n\\tcolor: black;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Keyboard/Keyboard.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".dropdown-input {\\r\\n    height: 40px;\\r\\n    min-width: 50px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    outline: none;\\r\\n    cursor: pointer;\\r\\n    border: 1px solid #aaa;\\r\\n    border-radius: 4px;\\r\\n    padding: 0 8px;\\r\\n}\\r\\n\\r\\n.dropdown-input option {\\r\\n    outline: none;\\r\\n    border: none;\\r\\n    border-radius: 4px;\\r\\n    padding: 0 8px;\\r\\n    cursor: pointer;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/Dropdown/Dropdown.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/NoteTable/NoteTable.css":
-/*!******************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/NoteTable/NoteTable.css ***!
-  \******************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalInput/IntervalInput.css":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalInput/IntervalInput.css ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".note-table table {\\r\\n    width: 100%;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/NoteTable/NoteTable.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".scalar-input {\\r\\n    height: 40px;\\r\\n    width: 50px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    outline: none;\\r\\n    cursor: pointer;\\r\\n    border: 1px solid #aaa;\\r\\n    border-radius: 4px;\\r\\n    padding-left: 8px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/IntervalInput/IntervalInput.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v1/Summary/Summary.css":
-/*!**************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v1/Summary/Summary.css ***!
-  \**************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalListInput/IntervalListInput.css":
+/*!**********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalListInput/IntervalListInput.css ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".summary {\\r\\n    \\r\\n}\\r\\n\\r\\n.note-block {\\r\\n    display: inline-block;\\r\\n    width: 40px;\\r\\n    height: 40px;\\r\\n    padding: 5px;\\r\\n    margin: 5px;\\r\\n    border-radius: 5px;\\r\\n    border: 1px solid black;\\r\\n    cursor: pointer;\\r\\n}\\r\\n\\r\\n.note-block div {\\r\\n    display: block;\\r\\n    margin: 5px;\\r\\n    font-size: 10px;\\r\\n}\\r\\n\\r\\n.note-block .name {\\r\\n    font-weight: bold;\\r\\n    font-size: 150%;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v1/Summary/Summary.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".inerval-list-input *:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/IntervalListInput/IntervalListInput.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/v2/Fretboard/Fretboard.css":
-/*!******************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/v2/Fretboard/Fretboard.css ***!
-  \******************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/KeyCenterInput/KeyCenterInput.css":
+/*!****************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/KeyCenterInput/KeyCenterInput.css ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* General */\\r\\n\\r\\n.no-select {\\r\\n\\t-webkit-touch-callout: none;\\r\\n\\t-webkit-user-select: none;\\r\\n\\t-khtml-user-select: none;\\r\\n\\t-moz-user-select: none;\\r\\n\\t-ms-user-select: none;\\r\\n\\tuser-select: none;\\r\\n}\\r\\n\\r\\n/* Fretboard */\\r\\n\\r\\n.fretboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\tdisplay: inline-grid;\\r\\n\\twidth: 100%;\\r\\n\\tbackground-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);\\r\\n\\tfont-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\tmargin-top: 20px;\\r\\n\\tmargin-bottom: 20px;\\r\\n}\\r\\n\\r\\n/* Fret */\\r\\n\\r\\n.fret {\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tposition: relative;\\r\\n\\tborder-right: 2px solid darkgrey;\\r\\n}\\r\\n\\r\\n.fret.open {\\r\\n\\tborder-right: 3px solid grey;\\r\\n}\\r\\n\\r\\n/* Used to maintain aspect ratio */\\r\\n\\r\\n.fret::before {\\r\\n\\tcontent: \\\"\\\";\\r\\n\\tdisplay: block;\\r\\n\\theight: 0;\\r\\n\\twidth: 0;\\r\\n\\tmargin-top: calc(1/2 * 100%);\\r\\n}\\r\\n\\r\\n/* Fret String */\\r\\n\\r\\n.fret-string {\\r\\n\\tbackground-color: grey;\\r\\n\\theight: 1px;\\r\\n\\twidth: 100%;\\r\\n}\\r\\n\\r\\n/* Fret Numbers */\\r\\n\\r\\n.fret-number {\\r\\n\\tposition: absolute;\\r\\n\\tbottom: 105%;\\r\\n}\\r\\n\\r\\n/* Fret Dots */\\r\\n\\r\\n.fret-dots {\\r\\n\\tposition: absolute;\\r\\n\\ttop: 100%;\\r\\n\\tfont-size: 16px;\\r\\n\\twhite-space: nowrap;\\r\\n}\\r\\n\\r\\n.fret-number, .fret-dots {\\r\\n\\tcolor: #555;\\r\\n}\\r\\n\\r\\n/* Fret Label */\\r\\n\\r\\n.fret-label {\\r\\n\\tposition: absolute;\\r\\n\\twidth: 90%;\\r\\n\\theight: 90%;\\r\\n\\tdisplay: flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tborder-radius: 100%;\\r\\n}\\r\\n\\r\\n.fret-label:hover {\\r\\n\\twidth: 100%;\\r\\n\\theight: 100%;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n/* Inputs */\\r\\n\\r\\n.fretboard-controller {\\r\\n\\tdisplay: inline-block;\\r\\n\\tmargin: 20px;\\r\\n}\\r\\n\\r\\n.fretboard-container {\\r\\n\\twidth: 100%;\\r\\n\\tmargin: auto;\\r\\n    padding: 20px 20px 0 20px;\\r\\n\\tbox-sizing: border-box;\\r\\n\\tborder-radius: 15px 15px 0 0;\\r\\n    background-color: #badbeb;\\r\\n}\\r\\n\\r\\n.input-container {\\r\\n\\tposition: relative;\\r\\n\\tbackground-color: #badbeb;\\r\\n    border-radius: 0 0 10px 10px;\\r\\n}\\r\\n\\r\\n.preview {\\r\\n\\tfont-weight: bold;\\r\\n\\ttext-align: center;\\r\\n\\tcursor: pointer;\\r\\n\\tbackground: #5E99D1;\\r\\n\\tcolor: white;\\r\\n\\tpadding: 5px;\\r\\n\\tborder-radius: 0 0 15px 15px;\\r\\n\\tz-index: 1001;\\r\\n}\\r\\n\\r\\n.preview:hover {\\r\\n}\\r\\n\\r\\n.preview.active {\\r\\n\\tborder-radius: 0;\\r\\n}\\r\\n\\r\\n.input-modal {\\r\\n\\tposition: absolute;\\r\\n    z-index: 1000;\\r\\n\\tleft: 0;\\r\\n\\tright: 0;\\r\\n\\tborder-radius: 0 0 10px 10px;\\r\\n\\t/*box-shadow: 0 0 15px rgba(0,0,0,.5);*/\\r\\n}\\r\\n\\r\\n.fretboard-controller.edit .fretboard-container\\r\\n{\\r\\n\\tbackground-color: #9EC1E3;\\r\\n}\\r\\n\\r\\n.fretboard-controller.edit .input-modal,\\r\\n.fretboard-controller.edit .preview\\r\\n{\\r\\n\\tbackground-color: #5E99D1;\\r\\n}\\r\\n\\r\\n.panel-name {\\r\\n\\twidth: 100%;\\r\\n    padding: 5px;\\r\\n    cursor: pointer;\\r\\n\\tbox-sizing: border-box;\\r\\n}\\r\\n\\r\\n.panel-name-container {\\r\\n\\t\\r\\n}\\r\\n\\r\\n.labeled-input {\\r\\n\\tdisplay: flex;\\r\\n\\tflex-wrap: wrap;\\r\\n\\talign-items: center;\\r\\n\\tjustify-content: space-between;\\r\\n\\tmargin: 5px;\\r\\n}\\r\\n\\r\\n.label-text {}\\r\\n\\r\\n.panel-name {\\r\\n\\tfont-weight: bold;\\r\\n}\\r\\n\\r\\n.panel {\\r\\n\\tbackground: #9EC1E3\\r\\n}\\r\\n\\r\\n/* Panel Themes */\\r\\n\\r\\n.primary {\\r\\n\\t/*border: 2px solid #d15eac;*/\\r\\n\\tcolor: #d15eac;\\r\\n}\\r\\n\\r\\n.primary:hover, .primary.active {\\r\\n\\tbackground-color:  #d15eac;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n.secondary {\\r\\n\\t/*border: 2px solid #5ed183;*/\\r\\n\\tcolor: #5ed183;\\r\\n}\\r\\n\\r\\n.secondary:hover, .secondary.active {\\r\\n\\tbackground-color:  #5ed183;\\r\\n\\tcolor: white;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/v2/Fretboard/Fretboard.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".degree-input, .accidental-input, .octave-input {\\r\\n    margin: 8px;\\r\\n}\\r\\n\\r\\n.degree-input > .button-input {\\r\\n    border-radius: 0;\\r\\n    background-color: white;\\r\\n    color: black;\\r\\n    border: 1px solid #aaa;\\r\\n}\\r\\n\\r\\n.degree-input > .button-input:hover {\\r\\n    background-color: #ddd;\\r\\n}\\r\\n\\r\\n.degree-input > .button-input:first-child {\\r\\n    border-radius: 4px 0 0 4px;\\r\\n}\\r\\n\\r\\n.degree-input > .button-input:last-child {\\r\\n    border-radius: 0 4px 4px 0;\\r\\n}\\r\\n\\r\\n\\r\\n.accidental-input > .button-input {\\r\\n    border-radius: 0;\\r\\n    background-color: white;\\r\\n    color: black;\\r\\n    border: 1px solid #aaa;\\r\\n}\\r\\n\\r\\n.accidental-input > .button-input:hover {\\r\\n    background-color: #ddd;\\r\\n}\\r\\n\\r\\n.accidental-input > .button-input:first-child {\\r\\n    border-radius: 4px 0 0 4px;\\r\\n}\\r\\n\\r\\n.accidental-input > .button-input:last-child {\\r\\n    border-radius: 0 4px 4px 0;\\r\\n}\\r\\n\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/KeyCenterInput/KeyCenterInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/MatrixInput/MatrixInput.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/MatrixInput/MatrixInput.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".matrix-input .vector-input:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/MatrixInput/MatrixInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/PresetInput/PresetInput.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/PresetInput/PresetInput.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".preset-input *:not(:last-child) {\\r\\n    margin-right: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/PresetInput/PresetInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ScalarInput/ScalarInput.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ScalarInput/ScalarInput.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".scalar-input {\\r\\n    height: 40px;\\r\\n    width: 50px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    outline: none;\\r\\n    cursor: pointer;\\r\\n    border: 1px solid #aaa;\\r\\n    border-radius: 4px;\\r\\n    padding-left: 8px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ScalarInput/ScalarInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/SwitchInput/SwitchInput.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/SwitchInput/SwitchInput.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".switch-input {\\r\\n    -ms-user-select: none;\\r\\n    user-select: none;\\r\\n    height: 40px;\\r\\n    width: 80px;\\r\\n    border-radius: 40px;\\r\\n    display: inline-flex;\\r\\n    align-items: center;\\r\\n    cursor: pointer;\\r\\n}\\r\\n\\r\\n.switch-input {\\r\\n    background-color: #AAA;\\r\\n    flex-direction: row;\\r\\n}\\r\\n\\r\\n.switch-input.pw-active {\\r\\n    /*background-color: #5E99D1;*/\\r\\n    flex-direction: row-reverse;\\r\\n}\\r\\n\\r\\n.switch-input .ball {\\r\\n    height: 34px;\\r\\n    width: 34px;\\r\\n    margin: 3px;\\r\\n    background-color: #DDD;\\r\\n    border-radius: 100%;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/SwitchInput/SwitchInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/VectorInput/VectorInput.css":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/VectorInput/VectorInput.css ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".vector-input :first-child {\\r\\n    border-radius: 4px 0 0 4px;\\r\\n}\\r\\n\\r\\n.vector-input :last-child {\\r\\n    position: relative;\\r\\n    left: -1;\\r\\n    border-radius: 0 4px 4px 0;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/VectorInput/VectorInput.css?./node_modules/css-loader/dist/cjs.js");
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/index.css":
+/*!*************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/index.css ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".pw-primary {\\n  background-color: #5E99D1;\\n  color: #FFF;\\n}\\n.pw-primary.link:hover {\\n  background-color: #3880c4;\\n}\\n.pw-secondary {\\n  background-color: #F7A072;\\n  color: #FFF;\\n}\\n.pw-secondary.link:hover {\\n  background-color: #f47f42;\\n}\\n.pw-light {\\n  background-color: #F6F7EB;\\n  color: #000;\\n}\\n.pw-light.link:hover {\\n  background-color: #e6e8c7;\\n}\\n.pw-medium {\\n  background-color: #B8BDB5;\\n  color: #000;\\n}\\n.pw-medium.link:hover {\\n  background-color: #9ea59a;\\n}\\n.pw-dark {\\n  background-color: #272635;\\n  color: #FFF;\\n}\\n.pw-dark.link:hover {\\n  background-color: #3d3b53;\\n}\\n.pw-inactive {\\n  background-color: #B8BDB5;\\n  color: #F6F7EB;\\n}\\n.pw-active {\\n  background-color: #F7A072;\\n  color: #FFF;\\n}\\nlabel {\\n  display: inline-block;\\n  font-weight: bold;\\n  margin: 4px;\\n}\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/index.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -866,6 +551,656 @@ eval("\n\nvar stylesInDom = {};\n\nvar isOldIE = function isOldIE() {\n  var mem
 
 /***/ }),
 
+/***/ "./src/Modules/Fretboard/Fret.jsx":
+/*!****************************************!*\
+  !*** ./src/Modules/Fretboard/Fret.jsx ***!
+  \****************************************/
+/*! exports provided: Fret */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Fret\", function() { return Fret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _FretLabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FretLabel */ \"./src/Modules/Fretboard/FretLabel.jsx\");\n/* harmony import */ var _Fretboard_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.api */ \"./src/Modules/Fretboard/Fretboard.api.jsx\");\n\n\n\n\nconst Fret = props => {\n  let classes = ['fret'];\n  if (props.fretNumber === 0) classes.push('open');\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' ')\n  }, props.showFretNumber && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-number\"\n  }, props.fretNumber), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-string\"\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_FretLabel__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    noteIndex: props.noteIndex,\n    minIndex: props.minIndex,\n    maxIndex: props.maxIndex,\n    notes: props.notes\n  }), props.showFretDots && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-dots\"\n  }, Object(_Fretboard_api__WEBPACK_IMPORTED_MODULE_3__[\"getDotsForFret\"])(props.fretNumber)));\n};\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fret.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Fretboard/FretLabel.jsx":
+/*!*********************************************!*\
+  !*** ./src/Modules/Fretboard/FretLabel.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nconst FretLabel = props => {\n  const {\n    notes,\n    noteIndex,\n    minIndex,\n    maxIndex\n  } = props;\n  const note = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.findNoteWithPitch(notes, noteIndex, true); // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);\n  // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);\n\n  const styles = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Color.degree(note);\n  const label = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Label.degree(note);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-label\",\n    style: styles,\n    onClick: () => null\n  }, label);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (FretLabel);\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/FretLabel.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Fretboard/Fretboard.api.jsx":
+/*!*************************************************!*\
+  !*** ./src/Modules/Fretboard/Fretboard.api.jsx ***!
+  \*************************************************/
+/*! exports provided: DOTTED_FRET_INDICES, getDotsForFret */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DOTTED_FRET_INDICES\", function() { return DOTTED_FRET_INDICES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDotsForFret\", function() { return getDotsForFret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard */ \"./src/Modules/Fretboard/Fretboard.jsx\");\n\n\n\nconst DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];\nconst getDotsForFret = fretNumber => {\n  let mod = fretNumber % 12;\n  if (mod === 0) return '• •';else if (DOTTED_FRET_INDICES[mod]) return '•';\n  return '';\n};\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.api.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Fretboard/Fretboard.css":
+/*!*********************************************!*\
+  !*** ./src/Modules/Fretboard/Fretboard.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Fretboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/Fretboard/Fretboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.css?");
+
+/***/ }),
+
+/***/ "./src/Modules/Fretboard/Fretboard.defaults.js":
+/*!*****************************************************!*\
+  !*** ./src/Modules/Fretboard/Fretboard.defaults.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  fretLow: 0,\n  fretHigh: 12,\n  strings: [{\n    tuning: 16\n  }, // e\n  {\n    tuning: 11\n  }, // B\n  {\n    tuning: 7\n  }, // G\n  {\n    tuning: 2\n  }, // D\n  {\n    tuning: -3\n  }, // A\n  {\n    tuning: -8\n  } // E\n  ],\n  showFretNumbers: true,\n  showDots: true,\n  notes: []\n});\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.defaults.js?");
+
+/***/ }),
+
+/***/ "./src/Modules/Fretboard/Fretboard.jsx":
+/*!*********************************************!*\
+  !*** ./src/Modules/Fretboard/Fretboard.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Fretboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Fret__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fret */ \"./src/Modules/Fretboard/Fret.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/Modules/Fretboard/Fretboard.defaults.js\");\n\n\n\n\nconst FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);\n\nconst getFrets = config => {\n  let min = config.strings.reduce((prev, current) => prev.tuning < current.tuning ? prev : current).tuning + config.fretLow;\n  let max = config.strings.reduce((prev, current) => prev.tuning > current.tuning ? prev : current).tuning + config.fretHigh;\n  let frets = []; // Get strings\n\n  for (let strNum = 1; strNum <= config.strings.length; strNum++) {\n    // Get frets for string\n    for (let fretNum = config.fretLow; fretNum <= config.fretHigh; fretNum++) {\n      let noteIndex = config.strings[strNum - 1].tuning + fretNum;\n      frets.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fret__WEBPACK_IMPORTED_MODULE_2__[\"Fret\"], {\n        key: `s${strNum}f${fretNum}`,\n        noteIndex: noteIndex,\n        minIndex: min,\n        maxIndex: max,\n        fretNumber: fretNum,\n        stringNum: strNum,\n        showFretNumber: config.showFretNumbers && strNum === 1,\n        showFretDots: config.showDots && strNum === config.strings.length,\n        notes: config.notes\n      }));\n    }\n  }\n\n  return frets;\n};\n\nconst getFretRatios = numFrets => {\n  let ratios = [];\n\n  for (let i = 1; i <= numFrets; i++) {\n    ratios.push(i <= 1 ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);\n  }\n\n  return ratios;\n};\n\nfunction Fretboard(props) {\n  let config = Object.assign({}, _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props); // Calculate fretboard dimensions\n\n  let fretRatioStyle = getFretRatios(config.fretHigh - config.fretLow + 1).map(num => {\n    return num + 'fr';\n  }).join(' ');\n  let fretboardScaleStyles = {\n    gridTemplateColumns: fretRatioStyle,\n    gridTemplateRows: `repeat(${config.strings.length}, 1fr)`\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fretboard\",\n    style: fretboardScaleStyles\n  }, getFrets(config));\n}\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Fretboard/FretboardCard.jsx":
+/*!*************************************************!*\
+  !*** ./src/Modules/Fretboard/FretboardCard.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _UI_Card_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../UI/Card/Card */ \"./src/UI/Card/Card.jsx\");\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard */ \"./src/Modules/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/ConceptInput/ConceptInput */ \"./src/UI/ConceptInput/ConceptInput.jsx\");\n/* harmony import */ var _UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n/* harmony import */ var _UI_SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/SwitchInput/SwitchInput */ \"./src/UI/SwitchInput/SwitchInput.jsx\");\n\n\n\n\n\n\n\n\nconst FretboardCard = ({\n  defaultOpen\n}) => {\n  const [keyCenter, setKeyCenter] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Presets.KEY_CENTERS.A);\n  const [intervals, setIntervals] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Presets.SCALE.NaturalMinor.intervals);\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  const [fretLow, setFretLow] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(0);\n  const [fretHigh, setFretHigh] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(12);\n  const [showDots, setShowDots] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(true);\n  const [showFretNumbers, setShowFretNumbers] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(true);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Card_Card__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    title: \"Fretboard\",\n    defaultOpen: defaultOpen\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Fretboard__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    notes: notes,\n    fretLow: fretLow,\n    fretHigh: fretHigh,\n    showDots: showDots,\n    showFretNumbers: showFretNumbers\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter,\n    intervals: intervals,\n    setIntervals: setIntervals\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Low Fret:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    value: fretLow,\n    setValue: setFretLow\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"High Fret:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    value: fretHigh,\n    setValue: setFretHigh\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Show Dots:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n    value: showDots,\n    setValue: setShowDots\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Show Fret Numbers:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n    value: showFretNumbers,\n    setValue: setShowFretNumbers\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (FretboardCard);\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/FretboardCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Graph/Graph.css":
+/*!*************************************!*\
+  !*** ./src/Modules/Graph/Graph.css ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Graph.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/Graph/Graph.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/Graph/Graph.css?");
+
+/***/ }),
+
+/***/ "./src/Modules/Graph/Graph.jsx":
+/*!*************************************!*\
+  !*** ./src/Modules/Graph/Graph.jsx ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Graph_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Graph.css */ \"./src/Modules/Graph/Graph.css\");\n/* harmony import */ var _Graph_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Graph_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nconst Cell = props => {\n  const {\n    x,\n    y,\n    color\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"cell\"\n  }, color && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"point\",\n    style: {\n      backgroundColor: color\n    }\n  }));\n};\n\nconst Label = ({\n  axis,\n  children\n}) => {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `label ${axis}`\n  }, children);\n};\n\nconst areEqual = (v1, v2, x, y, max) => {\n  const mod = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Utils.modulo;\n  const xEqual = mod(v1[x], max[x]) === mod(v2[x], max[x]);\n  const yEqual = mod(v1[y], max[y]) === mod(v2[y], max[y]);\n  return xEqual && yEqual;\n};\n\nconst getCells = (origin, vectors, x, y, max) => {\n  const cells = [];\n\n  for (let i = max[y] - 1; i >= -1; i--) {\n    cells.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, {\n      key: 'y' + i,\n      axis: \"y\"\n    }, i > -1 && i));\n\n    for (let j = 0; j < max[x]; j++) {\n      if (i === -1) {\n        cells.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Label, {\n          key: 'x' + j,\n          axis: \"x\"\n        }, j));\n      } else {\n        const point = {\n          [x]: j,\n          [y]: i\n        };\n        const isOrigin = areEqual(origin, point, x, y, max);\n        const isResultant = vectors.findIndex(v => areEqual(v, point, x, y, max)) >= 0;\n        cells.push(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Cell, {\n          key: j + '-' + i,\n          x: j,\n          y: i,\n          color: isOrigin ? 'red' : isResultant ? 'blue' : null\n        }));\n      }\n    }\n  }\n\n  return cells;\n};\n\nconst DEFAULT_PROPS = {\n  origin: {\n    p: 0,\n    d: 0\n  },\n  vectors: [{\n    p: 2,\n    d: 2\n  }],\n  x: 'd',\n  y: 'p',\n  max: {\n    p: 12,\n    d: 7\n  },\n  title: 'x vs y',\n  xLabel: 'x',\n  yLabel: 'y'\n};\n\nconst Graph = props => {\n  const config = { ...DEFAULT_PROPS,\n    ...props\n  };\n  const {\n    origin,\n    vectors,\n    x,\n    y,\n    max,\n    title,\n    xLabel,\n    yLabel\n  } = config;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"graph-container\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"graph-title\"\n  }, title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    style: {\n      display: 'flex',\n      justifyContent: 'center'\n    }\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"y-label\"\n  }, yLabel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"graph\"\n  }, getCells(origin, vectors, x, y, max))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"x-label\"\n  }, xLabel));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Graph);\n\n//# sourceURL=webpack:///./src/Modules/Graph/Graph.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Graph/GraphCard.jsx":
+/*!*****************************************!*\
+  !*** ./src/Modules/Graph/GraphCard.jsx ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Graph_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Graph.css */ \"./src/Modules/Graph/Graph.css\");\n/* harmony import */ var _Graph_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Graph_css__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _UI_Card_Card__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Card/Card */ \"./src/UI/Card/Card.jsx\");\n/* harmony import */ var _Graph__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Graph */ \"./src/Modules/Graph/Graph.jsx\");\n/* harmony import */ var _UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/ConceptInput/ConceptInput */ \"./src/UI/ConceptInput/ConceptInput.jsx\");\n\n\n\n\n\n\nconst MAX_VECTOR = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Constants.MAX_VECTOR;\nconst ORIGIN = {\n  p: 0,\n  d: 2\n};\nconst VECTORS = [{\n  d: 0,\n  p: 0\n}, {\n  d: 2,\n  p: 4\n}, {\n  d: 4,\n  p: 7\n}, {\n  d: 6,\n  p: 11\n}];\n\nconst GraphCard = ({\n  defaultOpen\n}) => {\n  const [max, setMax] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(MAX_VECTOR);\n  const [origin, setOrigin] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(ORIGIN);\n  const [vectors, setVectors] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(VECTORS);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Card_Card__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    title: \"Graph\",\n    defaultOpen: defaultOpen\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"graph-card\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"left\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    keyCenter: origin,\n    setKeyCenter: setOrigin,\n    intervals: vectors,\n    setIntervals: setVectors\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"right\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Graph__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    origin: origin,\n    vectors: vectors,\n    x: \"d\",\n    y: \"p\",\n    max: max,\n    title: \"d vs p\",\n    yLabel: \"p\",\n    xLabel: \"d\"\n  }))));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (GraphCard);\n\n//# sourceURL=webpack:///./src/Modules/Graph/GraphCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/HarmonicSeries/HarmonicSeries.css":
+/*!*******************************************************!*\
+  !*** ./src/Modules/HarmonicSeries/HarmonicSeries.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./HarmonicSeries.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/HarmonicSeries/HarmonicSeries.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/HarmonicSeries/HarmonicSeries.css?");
+
+/***/ }),
+
+/***/ "./src/Modules/HarmonicSeries/HarmonicSeries.jsx":
+/*!*******************************************************!*\
+  !*** ./src/Modules/HarmonicSeries/HarmonicSeries.jsx ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _HarmonicSeries_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HarmonicSeries.css */ \"./src/Modules/HarmonicSeries/HarmonicSeries.css\");\n/* harmony import */ var _HarmonicSeries_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_HarmonicSeries_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\nconst PRIMES = {\n  ['1']: 'black',\n  ['2']: 'red',\n  ['3']: 'orange',\n  ['5']: 'yellow',\n  ['7']: 'green',\n  ['9']: 'salmon',\n  ['11']: 'blue',\n  ['13']: 'indigo',\n  ['15']: 'darkred',\n  ['17']: 'purple',\n  ['19']: 'darkblue',\n  ['21']: 'aqua',\n  ['23']: 'darkgreen',\n  ['27']: 'lime'\n};\n\nconst Overtone = ({\n  f,\n  n\n}) => {\n  //const color = (n * 1000).toString(16);\n  //const color = Math.floor(Math.random() * parseInt('aaaaaa', 16)).toString(16);\n  //console.log(color);\n  let color = '#ddd';\n\n  if (PRIMES[n]) {\n    color = PRIMES[n];\n  } else {\n    let x = n;\n\n    while (x >= 1) {\n      x = x / 2;\n\n      if (PRIMES[x]) {\n        color = PRIMES[x];\n        break;\n      }\n    }\n  }\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"overtone\",\n    style: {\n      gridTemplateColumns: `repeat(${n}, 1fr)`\n    }\n  }, [...Array(n)].map((e, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"n\",\n    key: i\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"overtone-line\",\n    style: {\n      backgroundColor: i === 1 && PRIMES[n] ? color : '#ddd'\n    },\n    onClick: () => play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Sound.play(f * n)\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"overtone-info\"\n  }, n))));\n};\n\nconst DEFAULT_PROPS = {\n  fundamental: 100,\n  n: 8\n};\n\nconst HarmonicSeries = props => {\n  const {\n    fundamental,\n    n\n  } = props;\n  const config = { ...DEFAULT_PROPS,\n    ...props\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"harmonic-series\"\n  }, [...Array(n)].map((e, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Overtone, {\n    key: i,\n    f: config.fundamental,\n    n: config.n - i\n  })));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (HarmonicSeries);\n\n//# sourceURL=webpack:///./src/Modules/HarmonicSeries/HarmonicSeries.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/HarmonicSeries/HarmonicSeriesCard.jsx":
+/*!***********************************************************!*\
+  !*** ./src/Modules/HarmonicSeries/HarmonicSeriesCard.jsx ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _UI_Card_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../UI/Card/Card */ \"./src/UI/Card/Card.jsx\");\n/* harmony import */ var _HarmonicSeries__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HarmonicSeries */ \"./src/Modules/HarmonicSeries/HarmonicSeries.jsx\");\n/* harmony import */ var _UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n\n\n\n\n\nconst HarmonicSeriesCard = ({\n  defaultOpen\n}) => {\n  const [fundamental, setFundamental] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(100);\n  const [n, setN] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(16);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Card_Card__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    title: \"HarmonicSeries\",\n    defaultOpen: defaultOpen\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_HarmonicSeries__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    fundamental: fundamental,\n    n: n\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Fundamental:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: fundamental,\n    setValue: setFundamental\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"n:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: n,\n    setValue: setN\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (HarmonicSeriesCard);\n\n//# sourceURL=webpack:///./src/Modules/HarmonicSeries/HarmonicSeriesCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/InputDocs/InputDocs.css":
+/*!*********************************************!*\
+  !*** ./src/Modules/InputDocs/InputDocs.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./InputDocs.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/InputDocs/InputDocs.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/InputDocs/InputDocs.css?");
+
+/***/ }),
+
+/***/ "./src/Modules/InputDocs/InputDocsCard.jsx":
+/*!*************************************************!*\
+  !*** ./src/Modules/InputDocs/InputDocsCard.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _InputDocs_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InputDocs.css */ \"./src/Modules/InputDocs/InputDocs.css\");\n/* harmony import */ var _InputDocs_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_InputDocs_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _UI_Card_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../UI/Card/Card */ \"./src/UI/Card/Card.jsx\");\n/* harmony import */ var _UI_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n/* harmony import */ var _UI_SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/SwitchInput/SwitchInput */ \"./src/UI/SwitchInput/SwitchInput.jsx\");\n/* harmony import */ var _UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n/* harmony import */ var _UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../UI/ButtonInput/ButtonInput */ \"./src/UI/ButtonInput/ButtonInput.jsx\");\n/* harmony import */ var _UI_VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../UI/VectorInput/VectorInput */ \"./src/UI/VectorInput/VectorInput.jsx\");\n\n\n\n\n\n\n\n\nconst DATA_A = {\n  id: 'a',\n  name: 'a',\n  p: 0,\n  d: 0\n};\nconst DATA_B = {\n  id: 'b',\n  name: 'b',\n  p: 1,\n  d: 1\n};\nconst DATA = [DATA_A, DATA_B];\n\nconst InputDocsCard = ({\n  defaultOpen\n}) => {\n  const [dropdownValue, setDropdownValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(DATA_A);\n  const [switchValue, setSwitchValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(true);\n  const [scalarValue, setScalarValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(0);\n  const [vectorValue, setVectorValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(DATA_A);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Card_Card__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    title: \"Input Docs\",\n    defaultOpen: defaultOpen\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    options: DATA,\n    value: dropdownValue,\n    setValue: setDropdownValue\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    value: switchValue,\n    setValue: setSwitchValue\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    value: scalarValue,\n    setValue: setScalarValue\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_7__[\"default\"], {\n    value: vectorValue,\n    setValue: setVectorValue\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n    disabled: false,\n    onClick: null\n  }, \"Click Me\")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"row\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n    disabled: false,\n    onClick: null\n  }, \"Click Me\")));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (InputDocsCard);\n\n//# sourceURL=webpack:///./src/Modules/InputDocs/InputDocsCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Keyboard/Keyboard.css":
+/*!*******************************************!*\
+  !*** ./src/Modules/Keyboard/Keyboard.css ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Keyboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/Keyboard/Keyboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.css?");
+
+/***/ }),
+
+/***/ "./src/Modules/Keyboard/Keyboard.defaults.js":
+/*!***************************************************!*\
+  !*** ./src/Modules/Keyboard/Keyboard.defaults.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyLow: 0,\n  keyHigh: 24,\n  notes: []\n});\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.defaults.js?");
+
+/***/ }),
+
+/***/ "./src/Modules/Keyboard/Keyboard.jsx":
+/*!*******************************************!*\
+  !*** ./src/Modules/Keyboard/Keyboard.jsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Keyboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Modules/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KeyboardKey */ \"./src/Modules/Keyboard/KeyboardKey.jsx\");\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/Modules/Keyboard/Keyboard.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11]; // TODO Enforce code reuse\n\nconst modulo = (a, b) => {\n  return (a % b + b) % b;\n};\n\nconst getKeyboardKeys = (config, viewerWidth) => {\n  let keys = []; // Safe approximation for scale\n\n  let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;\n\n  for (let i = config.keyLow; i <= config.keyHigh; i++) {\n    let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].White : _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].Black;\n    keys.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKey\"], {\n      key: i,\n      notes: config.notes,\n      noteIndex: i,\n      minIndex: config.keyLow,\n      maxIndex: config.keyHigh,\n      scale: viewerWidth / numWhiteKeys,\n      type: type\n    }));\n  }\n\n  return keys;\n};\n\nclass Keyboard extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n  constructor(props) {\n    super(props);\n    this.domNode = null;\n    this.state = {\n      height: 0,\n      width: 0\n    };\n    this.domNode = react__WEBPACK_IMPORTED_MODULE_0__[\"createRef\"]();\n  }\n\n  componentDidMount() {\n    window.addEventListener('resize', this.resetDimensions);\n    this.resetDimensions();\n  }\n\n  componentWillUnmount() {\n    window.removeEventListener('resize', this.resetDimensions);\n  }\n\n  resetDimensions() {\n    this.setState({\n      width: this.domNode.current.clientWidth,\n      height: this.domNode.current.clientHeight\n    });\n  }\n\n  render() {\n    let config = Object.assign({}, _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], this.props);\n    return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n      className: \"keyboard\",\n      ref: this.domNode\n    }, getKeyboardKeys(config, this.state.width));\n  }\n\n}\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Keyboard/KeyboardCard.jsx":
+/*!***********************************************!*\
+  !*** ./src/Modules/Keyboard/KeyboardCard.jsx ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard */ \"./src/Modules/Keyboard/Keyboard.jsx\");\n/* harmony import */ var _UI_Card_Card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../UI/Card/Card */ \"./src/UI/Card/Card.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/ConceptInput/ConceptInput */ \"./src/UI/ConceptInput/ConceptInput.jsx\");\n/* harmony import */ var _UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../UI/ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n\n\n\n\n\n\n\nconst KeyboardCard = ({\n  defaultOpen\n}) => {\n  const [keyCenter, setKeyCenter] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Presets.KEY_CENTERS.A);\n  const [intervals, setIntervals] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Presets.SCALE.NaturalMinor.intervals);\n  const [keyLow, setKeyLow] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(0);\n  const [keyHigh, setKeyHigh] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(25);\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Card_Card__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    title: \"Keyboard\",\n    defaultOpen: defaultOpen\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Keyboard__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    notes: notes,\n    keyLow: keyLow,\n    keyHigh: keyHigh\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter,\n    intervals: intervals,\n    setIntervals: setIntervals\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Low Key:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    value: keyLow,\n    setValue: setKeyLow\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"High Key:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    value: keyHigh,\n    setValue: setKeyHigh\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyboardCard);\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/KeyboardCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Keyboard/KeyboardKey.jsx":
+/*!**********************************************!*\
+  !*** ./src/Modules/Keyboard/KeyboardKey.jsx ***!
+  \**********************************************/
+/*! exports provided: KeyboardKeyType, KeyboardKey */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyboardKeyType\", function() { return KeyboardKeyType; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyboardKey\", function() { return KeyboardKey; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _KeyboardKeyLabel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyboardKeyLabel */ \"./src/Modules/Keyboard/KeyboardKeyLabel.jsx\");\n\n // Key dimensions relative to white key width\n\nconst KEY__DIMS = {\n  WhW_WhH: 4.6875,\n  // White key width to white key height\n  WhW_BlW: 0.6250,\n  // White key width to black key width\n  WhW_BlH: 2.9688 // White key width to black hey height\n\n};\nconst KeyboardKeyType = {\n  Black: 'Black',\n  White: 'White'\n};\n\nconst getScaleStyles = (keyType, scale) => {\n  switch (keyType) {\n    case KeyboardKeyType.White:\n      return {\n        width: scale + 'px',\n        height: KEY__DIMS.WhW_WhH * scale + 'px'\n      };\n\n    case KeyboardKeyType.Black:\n      return {\n        width: KEY__DIMS.WhW_BlW * scale + 'px',\n        height: KEY__DIMS.WhW_BlH * scale + 'px',\n        right: .5 * KEY__DIMS.WhW_BlW * scale + 'px'\n      };\n\n    default:\n      return {\n        width: '0px',\n        height: '0px'\n      };\n  }\n};\n\nconst KeyboardKey = props => {\n  let keyColor = props.type === KeyboardKeyType.White ? 'white' : 'black';\n  let scaleStyles = getScaleStyles(props.type, props.scale);\n  let classes = ['keyboard-key', `${keyColor}-key`, keyColor];\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: `${keyColor}-key-container`\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    style: Object.assign({}, scaleStyles, props.styles),\n    onClick: props.action\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_KeyboardKeyLabel__WEBPACK_IMPORTED_MODULE_1__[\"default\"], props)));\n};\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/KeyboardKey.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/Keyboard/KeyboardKeyLabel.jsx":
+/*!***************************************************!*\
+  !*** ./src/Modules/Keyboard/KeyboardKeyLabel.jsx ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return KeyboardKeyLabel; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Modules/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\nfunction KeyboardKeyLabel(props) {\n  const {\n    notes,\n    noteIndex,\n    minIndex,\n    maxIndex\n  } = props;\n  const note = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.findNoteWithPitch(notes, noteIndex, true); // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);\n  // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);\n\n  const styles = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Color.degree(note);\n  const label = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Label.degree(note);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard-key-label\",\n    style: styles,\n    onClick: () => null\n  }, label);\n}\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/KeyboardKeyLabel.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/TrueScale/TrueScale.css":
+/*!*********************************************!*\
+  !*** ./src/Modules/TrueScale/TrueScale.css ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./TrueScale.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/TrueScale/TrueScale.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/TrueScale/TrueScale.css?");
+
+/***/ }),
+
+/***/ "./src/Modules/TrueScale/TrueScale.jsx":
+/*!*********************************************!*\
+  !*** ./src/Modules/TrueScale/TrueScale.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _TrueScale_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TrueScale.css */ \"./src/Modules/TrueScale/TrueScale.css\");\n/* harmony import */ var _TrueScale_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_TrueScale_css__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/ButtonInput/ButtonInput */ \"./src/UI/ButtonInput/ButtonInput.jsx\");\n\n\n\n\nconst TRUE_INTERVAL_MAP = ['P1', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'TT', 'P5', 'm6', 'm6', 'M6', 'm7', 'm7', 'M7', 'M7'];\n\nconst getHz = (fund, n) => {\n  const octave = fund * 2;\n  let hz = fund * n;\n\n  while (hz > octave) {\n    hz = hz / 2;\n  }\n\n  return hz;\n};\n\nconst getButtons = (fundamental, n) => {\n  const freq = [];\n\n  for (let i = 1; i <= n; i++) {\n    if (i % 2 === 1) {\n      freq.push(getHz(fundamental, i));\n    }\n  }\n\n  freq.sort((a, b) => a - b);\n  return freq.map((f, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    key: i,\n    onClick: () => play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Sound.play(f)\n  }, TRUE_INTERVAL_MAP[i]));\n};\n\nconst DEFAULT_PROPS = {\n  fundamental: 100,\n  n: 8\n};\n\nconst TrueScale = props => {\n  const config = { ...DEFAULT_PROPS,\n    ...props\n  };\n  const {\n    fundamental,\n    n\n  } = config;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"true-scale\"\n  }, getButtons(fundamental, n));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TrueScale);\n\n//# sourceURL=webpack:///./src/Modules/TrueScale/TrueScale.jsx?");
+
+/***/ }),
+
+/***/ "./src/Modules/TrueScale/TrueScaleCard.jsx":
+/*!*************************************************!*\
+  !*** ./src/Modules/TrueScale/TrueScaleCard.jsx ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _UI_Card_Card__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../UI/Card/Card */ \"./src/UI/Card/Card.jsx\");\n/* harmony import */ var _TrueScale__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TrueScale */ \"./src/Modules/TrueScale/TrueScale.jsx\");\n/* harmony import */ var _UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UI/ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n\n\n\n\n\nconst TrueScaleCard = ({\n  defaultOpen\n}) => {\n  const [fundamental, setFundamental] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(100);\n  const [n, setN] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(32);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_Card_Card__WEBPACK_IMPORTED_MODULE_1__[\"default\"], {\n    title: \"TrueScale\",\n    defaultOpen: defaultOpen\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TrueScale__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    fundamental: fundamental,\n    n: n\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Fundamental:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: fundamental,\n    setValue: setFundamental\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"n:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_UI_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: n,\n    setValue: setN\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TrueScaleCard);\n\n//# sourceURL=webpack:///./src/Modules/TrueScale/TrueScaleCard.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ButtonInput/ButtonInput.css":
+/*!********************************************!*\
+  !*** ./src/UI/ButtonInput/ButtonInput.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ButtonInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ButtonInput/ButtonInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ButtonInput/ButtonInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/ButtonInput/ButtonInput.jsx":
+/*!********************************************!*\
+  !*** ./src/UI/ButtonInput/ButtonInput.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ButtonInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonInput.css */ \"./src/UI/ButtonInput/ButtonInput.css\");\n/* harmony import */ var _ButtonInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ButtonInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst ButtonInput = props => {\n  const {\n    disabled,\n    onClick,\n    children,\n    className,\n    highlight\n  } = props;\n  const isDisabled = disabled || false;\n\n  const clickHander = onClick || (() => null);\n\n  const cn = `button-input ${className ? className : ''} ${highlight ? 'highlight' : ''}`;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    className: cn,\n    type: \"button\",\n    disabled: isDisabled,\n    onClick: clickHander\n  }, children);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ButtonInput);\n\n//# sourceURL=webpack:///./src/UI/ButtonInput/ButtonInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/Card/Card.css":
+/*!******************************!*\
+  !*** ./src/UI/Card/Card.css ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Card.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/Card/Card.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/Card/Card.css?");
+
+/***/ }),
+
+/***/ "./src/UI/Card/Card.jsx":
+/*!******************************!*\
+  !*** ./src/UI/Card/Card.jsx ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Card_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Card.css */ \"./src/UI/Card/Card.css\");\n/* harmony import */ var _Card_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Card_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst Card = ({\n  title,\n  children,\n  defaultOpen\n}) => {\n  const [open, setOpen] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(defaultOpen || true);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `card ${open ? 'open' : ''}`\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"title\",\n    onClick: () => setOpen(!open)\n  }, title), open && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"content \"\n  }, children));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Card);\n\n//# sourceURL=webpack:///./src/UI/Card/Card.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptInput/ConceptInput.css":
+/*!**********************************************!*\
+  !*** ./src/UI/ConceptInput/ConceptInput.css ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptInput/ConceptInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptInput/ConceptInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptInput/ConceptInput.jsx":
+/*!**********************************************!*\
+  !*** ./src/UI/ConceptInput/ConceptInput.jsx ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptInput.css */ \"./src/UI/ConceptInput/ConceptInput.css\");\n/* harmony import */ var _ConceptInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../KeyCenterInput/KeyCenterInput */ \"./src/UI/KeyCenterInput/KeyCenterInput.jsx\");\n/* harmony import */ var _ConceptPresetInput_ConceptPresetInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ConceptPresetInput/ConceptPresetInput */ \"./src/UI/ConceptPresetInput/ConceptPresetInput.jsx\");\n/* harmony import */ var _ConceptIntervalsInput_ConceptIntervalsInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ConceptIntervalsInput/ConceptIntervalsInput */ \"./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx\");\n/* harmony import */ var _ConceptMathInput_ConceptMathInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../ConceptMathInput/ConceptMathInput */ \"./src/UI/ConceptMathInput/ConceptMathInput.jsx\");\n/* harmony import */ var _Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n\n\n\n\n\n\n\n\nconst CONCEPT_INPUT_MODES = {\n  preset: {\n    id: 'preset',\n    name: 'Preset'\n  },\n  intervals: {\n    id: 'intervals',\n    name: 'Intervals'\n  },\n  math: {\n    id: 'math',\n    name: 'Math'\n  }\n};\nconst CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);\n\nconst ConceptInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  const [inputMode, setInputMode] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(CONCEPT_INPUT_MODES.preset);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Input Mode: \"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_7__[\"default\"], {\n    value: inputMode,\n    setValue: setInputMode,\n    options: CONCEPT_INPUT_MODES_VALUES\n  }), inputMode.id === CONCEPT_INPUT_MODES.preset.id && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConceptPresetInput_ConceptPresetInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter,\n    intervals: intervals,\n    setIntervals: setIntervals\n  }), inputMode.id === CONCEPT_INPUT_MODES.intervals.id && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConceptIntervalsInput_ConceptIntervalsInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter,\n    intervals: intervals,\n    setIntervals: setIntervals\n  }), inputMode.id === CONCEPT_INPUT_MODES.math.id && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ConceptMathInput_ConceptMathInput__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter,\n    intervals: intervals,\n    setIntervals: setIntervals\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptInput/ConceptInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css":
+/*!****************************************************************!*\
+  !*** ./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptIntervalsInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx":
+/*!****************************************************************!*\
+  !*** ./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptIntervalsInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptIntervalsInput.css */ \"./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css\");\n/* harmony import */ var _ConceptIntervalsInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptIntervalsInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../KeyCenterInput/KeyCenterInput */ \"./src/UI/KeyCenterInput/KeyCenterInput.jsx\");\n/* harmony import */ var _IntervalListInput_IntervalListInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../IntervalListInput/IntervalListInput */ \"./src/UI/IntervalListInput/IntervalListInput.jsx\");\n\n\n\n\n\n\nconst ConceptIntervalsInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-intervals-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_IntervalListInput_IntervalListInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    intervals: intervals,\n    setIntervals: setIntervals\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptIntervalsInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptMathInput/ConceptMathInput.css":
+/*!******************************************************!*\
+  !*** ./src/UI/ConceptMathInput/ConceptMathInput.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptMathInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptMathInput/ConceptMathInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptMathInput/ConceptMathInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptMathInput/ConceptMathInput.jsx":
+/*!******************************************************!*\
+  !*** ./src/UI/ConceptMathInput/ConceptMathInput.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptMathInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptMathInput.css */ \"./src/UI/ConceptMathInput/ConceptMathInput.css\");\n/* harmony import */ var _ConceptMathInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptMathInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../VectorInput/VectorInput */ \"./src/UI/VectorInput/VectorInput.jsx\");\n/* harmony import */ var _MatrixInput_MatrixInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MatrixInput/MatrixInput */ \"./src/UI/MatrixInput/MatrixInput.jsx\");\n\n\n\n\n\n\nconst ConceptMathInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-math-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"a:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: keyCenter,\n    setValue: setKeyCenter\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"B:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MatrixInput_MatrixInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    value: intervals,\n    setValue: setIntervals\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptMathInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptMathInput/ConceptMathInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptPresetInput/ConceptPresetInput.css":
+/*!**********************************************************!*\
+  !*** ./src/UI/ConceptPresetInput/ConceptPresetInput.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptPresetInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptPresetInput/ConceptPresetInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptPresetInput/ConceptPresetInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/ConceptPresetInput/ConceptPresetInput.jsx":
+/*!**********************************************************!*\
+  !*** ./src/UI/ConceptPresetInput/ConceptPresetInput.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptPresetInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptPresetInput.css */ \"./src/UI/ConceptPresetInput/ConceptPresetInput.css\");\n/* harmony import */ var _ConceptPresetInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptPresetInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../KeyCenterInput/KeyCenterInput */ \"./src/UI/KeyCenterInput/KeyCenterInput.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _PresetInput_PresetInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../PresetInput/PresetInput */ \"./src/UI/PresetInput/PresetInput.jsx\");\n\n\n\n\n\nconst CUSTOM_PRESET = {\n  id: 'custom',\n  name: 'Custom',\n  intervals: []\n};\n\nconst areIntervalsEqual = (a, b) => {\n  if (!a || !b) return false;\n  if (a.length != b.length) return false;\n\n  for (let i = 0; i < a.length; i++) {\n    const _a = a[i];\n    const _b = b[i];\n    if (_a.p !== _b.p || _a.d !== _b.d) return false;\n  }\n\n  return true;\n};\n\nconst findPreset = intervals => {\n  const preset = play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Presets.CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(intervals, p.intervals));\n  return preset ? preset : { ...CUSTOM_PRESET,\n    intervals: intervals\n  };\n};\n\nconst ConceptPresetInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  const preset = findPreset(intervals);\n\n  const setPreset = newIntervals => setIntervals(newIntervals);\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-preset-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PresetInput_PresetInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    preset: preset,\n    setPreset: setPreset\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptPresetInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptPresetInput/ConceptPresetInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/Dropdown/Dropdown.css":
+/*!**************************************!*\
+  !*** ./src/UI/Dropdown/Dropdown.css ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Dropdown.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/Dropdown/Dropdown.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/Dropdown/Dropdown.css?");
+
+/***/ }),
+
+/***/ "./src/UI/Dropdown/Dropdown.jsx":
+/*!**************************************!*\
+  !*** ./src/UI/Dropdown/Dropdown.jsx ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Dropdown_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dropdown.css */ \"./src/UI/Dropdown/Dropdown.css\");\n/* harmony import */ var _Dropdown_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Dropdown_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst Dropdown = props => {\n  const {\n    value,\n    setValue,\n    options,\n    displayProperty\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"select\", {\n    className: \"dropdown-input\",\n    onChange: e => setValue(options[e.target.selectedIndex]),\n    value: value ? value.id : ''\n  }, options.map((v, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"option\", {\n    key: i,\n    value: v.id\n  }, displayProperty ? v[displayProperty] : v.name)));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Dropdown);\n\n//# sourceURL=webpack:///./src/UI/Dropdown/Dropdown.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ErrorBoundary.jsx":
+/*!**********************************!*\
+  !*** ./src/UI/ErrorBoundary.jsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ErrorBoundary; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nclass ErrorBoundary extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n  constructor(props) {\n    super(props);\n    this.state = {\n      error: null,\n      errorInfo: null\n    };\n  }\n\n  componentDidCatch(error, errorInfo) {\n    console.error(error, errorInfo);\n    this.setState({\n      error: error,\n      errorInfo: errorInfo\n    });\n  }\n\n  render() {\n    if (this.state.errorInfo) {\n      return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n        className: \"error-boundary\",\n        style: {\n          color: 'red'\n        }\n      }, \"Sorry, something went wrong.\");\n    }\n\n    return this.props.children;\n  }\n\n}\n\n//# sourceURL=webpack:///./src/UI/ErrorBoundary.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/IntervalInput/IntervalInput.css":
+/*!************************************************!*\
+  !*** ./src/UI/IntervalInput/IntervalInput.css ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./IntervalInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalInput/IntervalInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/IntervalInput/IntervalInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/IntervalInput/IntervalInput.jsx":
+/*!************************************************!*\
+  !*** ./src/UI/IntervalInput/IntervalInput.jsx ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _IntervalInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IntervalInput.css */ \"./src/UI/IntervalInput/IntervalInput.css\");\n/* harmony import */ var _IntervalInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_IntervalInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n\n\n\n\nconst CUSTOM_PRESET = {\n  id: 'custom',\n  name: 'Custom',\n  p: 0,\n  d: 0\n};\nconst DATA = [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.INTERVALS_VALUES, CUSTOM_PRESET];\n\nconst areIntervalsEqual = (a, b) => a.p === b.p && a.d === b.d;\n\nconst findPreset = interval => {\n  const preset = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));\n  return preset ? preset : { ...CUSTOM_PRESET,\n    p: preset.p,\n    d: preset.d\n  };\n};\n\nconst IntervalInput = props => {\n  const namedInterval = findPreset(props.interval);\n  const disabled = typeof value === 'undefined' || typeof value === null;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    options: DATA,\n    disabled: disabled,\n    value: namedInterval,\n    setValue: props.setInterval,\n    displayProperty: \"id\"\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (IntervalInput);\n\n//# sourceURL=webpack:///./src/UI/IntervalInput/IntervalInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/IntervalListInput/IntervalListInput.css":
+/*!********************************************************!*\
+  !*** ./src/UI/IntervalListInput/IntervalListInput.css ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./IntervalListInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalListInput/IntervalListInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/IntervalListInput/IntervalListInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/IntervalListInput/IntervalListInput.jsx":
+/*!********************************************************!*\
+  !*** ./src/UI/IntervalListInput/IntervalListInput.jsx ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _IntervalListInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IntervalListInput.css */ \"./src/UI/IntervalListInput/IntervalListInput.css\");\n/* harmony import */ var _IntervalListInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_IntervalListInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _IntervalInput_IntervalInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../IntervalInput/IntervalInput */ \"./src/UI/IntervalInput/IntervalInput.jsx\");\n\n\n\n\nconst IntervalListInput = props => {\n  const {\n    intervals,\n    setIntervals\n  } = props;\n  const intervalInputs = intervals.map((v, i) => {\n    const setIntervalValue = ivl => setIntervals([...intervals.slice(0, i), ivl, ...intervals.slice(i + 1)]);\n\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      key: i\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_IntervalInput_IntervalInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      interval: v,\n      setInterval: setIntervalValue\n    }));\n  });\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"interval-list-input\"\n  }, intervalInputs);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (IntervalListInput);\n\n//# sourceURL=webpack:///./src/UI/IntervalListInput/IntervalListInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/KeyCenterInput/KeyCenterInput.css":
+/*!**************************************************!*\
+  !*** ./src/UI/KeyCenterInput/KeyCenterInput.css ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./KeyCenterInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/KeyCenterInput/KeyCenterInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/KeyCenterInput/KeyCenterInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/KeyCenterInput/KeyCenterInput.jsx":
+/*!**************************************************!*\
+  !*** ./src/UI/KeyCenterInput/KeyCenterInput.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyCenterInput.css */ \"./src/UI/KeyCenterInput/KeyCenterInput.css\");\n/* harmony import */ var _KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ButtonInput/ButtonInput */ \"./src/UI/ButtonInput/ButtonInput.jsx\");\n/* harmony import */ var _ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n\n\n\n\n\n\nconst DegreeInput = ({\n  degree,\n  setDegree\n}) => {\n  const allDegrees = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getAllDegrees();\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"degree-input\"\n  }, allDegrees.map((d, i) => {\n    const isActive = degree && degree.d === i && degree.p === d.p;\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n      key: i,\n      onClick: () => setDegree({\n        p: d.p,\n        d: i\n      }),\n      highlight: isActive\n    }, play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getDegreeMapping(d.d).name);\n  }));\n};\n\nconst AccidentalInput = ({\n  accidental,\n  setAccidental\n}) => {\n  const allAccidentals = Object.values(play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Constants.ACCIDENTAL);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"accidental-input\"\n  }, allAccidentals.map((a, i) => {\n    const isActive = accidental && accidental.offset === a.offset;\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n      key: i,\n      onClick: () => setAccidental(a),\n      highlight: isActive\n    }, a.name);\n  }));\n};\n\nconst OctaveInput = ({\n  octave,\n  setOctave\n}) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n  value: octave,\n  setValue: setOctave\n});\n\nconst KeyCenterInput = ({\n  keyCenter,\n  setKeyCenter\n}) => {\n  const degree = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getDegree(keyCenter.d);\n  const octave = Math.floor(keyCenter.p / 12) + 4;\n  const offset = keyCenter.p - degree.p;\n  const accidental = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;\n\n  const setDegree = d => {\n    const newKeyCenter = {\n      p: Math.floor(keyCenter.p / 12) * 12 + d.p,\n      d: d.d\n    };\n    setKeyCenter(newKeyCenter);\n  };\n\n  const setAccidental = a => {\n    const newKeyCenter = {\n      p: keyCenter.p + a.offset,\n      d: keyCenter.d\n    };\n    setKeyCenter(newKeyCenter);\n  };\n\n  const setOctave = o => {\n    const newKeyCenter = {\n      p: (o - 4) * 12 + play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Utils.modulo(keyCenter.p, 12),\n      d: keyCenter.d\n    };\n    setKeyCenter(newKeyCenter);\n  };\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"key-center-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Degree:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DegreeInput, {\n    degree: degree,\n    setDegree: setDegree\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Accidental:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AccidentalInput, {\n    accidental: accidental,\n    setAccidental: setAccidental\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Octave:\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OctaveInput, {\n    octave: octave,\n    setOctave: setOctave\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyCenterInput);\n\n//# sourceURL=webpack:///./src/UI/KeyCenterInput/KeyCenterInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/MatrixInput/MatrixInput.css":
+/*!********************************************!*\
+  !*** ./src/UI/MatrixInput/MatrixInput.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./MatrixInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/MatrixInput/MatrixInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/MatrixInput/MatrixInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/MatrixInput/MatrixInput.jsx":
+/*!********************************************!*\
+  !*** ./src/UI/MatrixInput/MatrixInput.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _MatrixInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MatrixInput.css */ \"./src/UI/MatrixInput/MatrixInput.css\");\n/* harmony import */ var _MatrixInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MatrixInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VectorInput/VectorInput */ \"./src/UI/VectorInput/VectorInput.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst MatrixInput = props => {\n  const {\n    value,\n    setValue\n  } = props;\n  const vectors = value.map((v, i) => {\n    const setVectorValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);\n\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      key: i,\n      value: v,\n      setValue: setVectorValue\n    });\n  });\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"matrix-input\"\n  }, vectors);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (MatrixInput);\n\n//# sourceURL=webpack:///./src/UI/MatrixInput/MatrixInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/PresetInput/PresetInput.css":
+/*!********************************************!*\
+  !*** ./src/UI/PresetInput/PresetInput.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./PresetInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/PresetInput/PresetInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/PresetInput/PresetInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/PresetInput/PresetInput.jsx":
+/*!********************************************!*\
+  !*** ./src/UI/PresetInput/PresetInput.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _PresetInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PresetInput.css */ \"./src/UI/PresetInput/PresetInput.css\");\n/* harmony import */ var _PresetInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PresetInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n\n\n\n\nconst CUSTOM_PRESET = {\n  id: 'custom',\n  name: 'Custom',\n  intervals: []\n};\nconst PRESET_TYPES = [{\n  id: 'intervalPair',\n  name: 'Interval Pair',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.INTERVAL_PAIR_VALUES, CUSTOM_PRESET]\n}, {\n  id: 'chord',\n  name: 'Chord',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.CHORD_VALUES, CUSTOM_PRESET]\n}, {\n  id: 'scale',\n  name: 'Scale',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.SCALE_VALUES, CUSTOM_PRESET]\n}, {\n  id: 'mode',\n  name: 'Mode',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.QUICK_MODE_VALUES, CUSTOM_PRESET]\n}];\n\nconst PresetInput = props => {\n  const {\n    preset,\n    setPreset\n  } = props;\n  const [presetType, setPresetType] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(PRESET_TYPES[1]);\n  const SpecificInput = presetType.component;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"preset-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: presetType,\n    setValue: setPresetType,\n    options: PRESET_TYPES\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: preset,\n    setValue: v => setPreset(v.intervals),\n    options: presetType.options\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (PresetInput);\n\n//# sourceURL=webpack:///./src/UI/PresetInput/PresetInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/ScalarInput/ScalarInput.css":
+/*!********************************************!*\
+  !*** ./src/UI/ScalarInput/ScalarInput.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ScalarInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ScalarInput/ScalarInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ScalarInput/ScalarInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/ScalarInput/ScalerInput.jsx":
+/*!********************************************!*\
+  !*** ./src/UI/ScalarInput/ScalerInput.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ScalarInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScalarInput.css */ \"./src/UI/ScalarInput/ScalarInput.css\");\n/* harmony import */ var _ScalarInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ScalarInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst ScalarInput = props => {\n  const {\n    value,\n    setValue\n  } = props;\n  const disabled = typeof value === 'undefined' || typeof value === null;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n    className: \"scalar-input\",\n    type: \"number\",\n    disabled: disabled,\n    value: value,\n    onChange: e => setValue(parseInt(e.target.value))\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ScalarInput);\n\n//# sourceURL=webpack:///./src/UI/ScalarInput/ScalerInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/SwitchInput/SwitchInput.css":
+/*!********************************************!*\
+  !*** ./src/UI/SwitchInput/SwitchInput.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./SwitchInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/SwitchInput/SwitchInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/SwitchInput/SwitchInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/SwitchInput/SwitchInput.jsx":
+/*!********************************************!*\
+  !*** ./src/UI/SwitchInput/SwitchInput.jsx ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return SwitchInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _SwitchInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SwitchInput.css */ \"./src/UI/SwitchInput/SwitchInput.css\");\n/* harmony import */ var _SwitchInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_SwitchInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction SwitchInput(props) {\n  let classes = ['switch-input', props.value ? 'pw-active' : ''];\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    onClick: () => props.setValue(!props.value)\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"ball\"\n  }));\n}\n\n//# sourceURL=webpack:///./src/UI/SwitchInput/SwitchInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/UI/VectorInput/VectorInput.css":
+/*!********************************************!*\
+  !*** ./src/UI/VectorInput/VectorInput.css ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./VectorInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/VectorInput/VectorInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/VectorInput/VectorInput.css?");
+
+/***/ }),
+
+/***/ "./src/UI/VectorInput/VectorInput.jsx":
+/*!********************************************!*\
+  !*** ./src/UI/VectorInput/VectorInput.jsx ***!
+  \********************************************/
+/*! exports provided: VectorInput, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"VectorInput\", function() { return VectorInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _VectorInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VectorInput.css */ \"./src/UI/VectorInput/VectorInput.css\");\n/* harmony import */ var _VectorInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_VectorInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n\n\n\nconst VectorInput = ({\n  value,\n  setValue\n}) => {\n  const {\n    p,\n    d\n  } = value;\n\n  const setP = v => setValue({\n    d: d,\n    p: v\n  });\n\n  const setD = v => setValue({\n    d: v,\n    p: p\n  });\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"vector-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    value: d,\n    setValue: setD\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    value: p,\n    setValue: setP\n  }));\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (VectorInput);\n\n//# sourceURL=webpack:///./src/UI/VectorInput/VectorInput.jsx?");
+
+/***/ }),
+
+/***/ "./src/index.css":
+/*!***********************!*\
+  !*** ./src/index.css ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!./index.css */ \"./node_modules/css-loader/dist/cjs.js!./src/index.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/index.css?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -874,696 +1209,7 @@ eval("\n\nvar stylesInDom = {};\n\nvar isOldIE = function isOldIE() {\n  var mem
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _v1_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./v1/_module */ \"./src/v1/_module.js\");\n/* harmony import */ var _v2_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./v2/_module */ \"./src/v2/_module.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  v1: _v1_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  v2: _v2_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/v1/ChordAnalysis/ChordAnalysis.css":
-/*!************************************************!*\
-  !*** ./src/v1/ChordAnalysis/ChordAnalysis.css ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ChordAnalysis.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/ChordAnalysis/ChordAnalysis.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/ChordAnalysis/ChordAnalysis.css?");
-
-/***/ }),
-
-/***/ "./src/v1/ChordAnalysis/ChordAnalysis.jsx":
-/*!************************************************!*\
-  !*** ./src/v1/ChordAnalysis/ChordAnalysis.jsx ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ChordAnalysis; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ChordAnalysis_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ChordAnalysis.css */ \"./src/v1/ChordAnalysis/ChordAnalysis.css\");\n/* harmony import */ var _ChordAnalysis_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ChordAnalysis_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\nfunction ChordAnalysis(props) {\n  let concept = null;\n\n  if (props.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ConceptTypes.HeptatonicScale) {\n    concept = props.concept;\n  } else if (props.concept instanceof play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ConceptTypes.RomanNumeral) {\n    concept = props.concept.sourceScale;\n  } else {\n    return null;\n  }\n\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"chord-analysis\"\n  }, concept.intervals.map(ci => {\n    let degree = ci.degree;\n    let romanNumeral = new play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ConceptTypes.RomanNumeral(concept, degree);\n    return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](RomanNumeralBlock, {\n      key: degree,\n      romanNumeral: romanNumeral,\n      keyCenter: props.keyCenter\n    });\n  }));\n}\n\nfunction RomanNumeralBlock(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"roman-numeral-block\",\n    onClick: () => play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Sound.playNotes(props.romanNumeral.getNotes(props.keyCenter))\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"name\"\n  }, props.romanNumeral.name), getIntervalTable(props.romanNumeral, props.keyCenter));\n}\n\nfunction getIntervalTable(romanNumeral, keyCenter) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"table\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tbody\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", {\n    key: i.id\n  }, new play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].FunctionalNote(keyCenter, i).name))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", {\n    key: i.id\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    interval: i\n  })))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, romanNumeral.relativeIntervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", {\n    key: i.id\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](IntervalLabel, {\n    interval: i\n  }))))));\n}\n\nfunction IntervalLabel(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"interval-label\",\n    style: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ColorBy.degree.fx({\n      interval: props.interval\n    })\n  }, props.interval.id);\n}\n\n//# sourceURL=webpack:///./src/v1/ChordAnalysis/ChordAnalysis.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Fret.jsx":
-/*!***********************************!*\
-  !*** ./src/v1/Fretboard/Fret.jsx ***!
-  \***********************************/
-/*! exports provided: Fret */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Fret\", function() { return Fret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v1/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\n\n\nconst DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];\n\nconst getDotsForFret = fretNumber => {\n  let mod = fretNumber % 12;\n  if (mod === 0) return '• •';else if (DOTTED_FRET_INDICES[mod]) return '•';\n  return '';\n};\n\nconst Fret = props => {\n  let classes = ['fret'];\n  if (props.fretNumber === 0) classes.push('open');\n  let LabelComponent = props.labelComponent;\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' ')\n  }, props.showFretNumber && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-number\"\n  }, props.fretNumber), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-string\"\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](LabelComponent, _extends({}, props, props.labelProps)), props.showFretDots && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-dots\"\n  }, getDotsForFret(props.fretNumber)));\n};\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Fret.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/FretLabel.defaults.js":
-/*!************************************************!*\
-  !*** ./src/v1/Fretboard/FretLabel.defaults.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyCenter: new play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].KeyCenter(play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Constants.TONIC.G, play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Constants.ACCIDENTAL.Natural, 4),\n  concept: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Presets.SCALE.Major,\n  mapStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].MapBy.pitchClass,\n  labelStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].LabelUtils.interval,\n  colorStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].ColorBy.degree,\n  actionStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].ActionBy.playSound\n});\n\n//# sourceURL=webpack:///./src/v1/Fretboard/FretLabel.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/FretLabel.jsx":
-/*!****************************************!*\
-  !*** ./src/v1/Fretboard/FretLabel.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FretLabel; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v1/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _FretLabel_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FretLabel.defaults */ \"./src/v1/Fretboard/FretLabel.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n // Temp\n\nfunction callConfigFunction(configFunction, ...args) {\n  return (typeof configFunction).toLowerCase() === 'function' ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);\n}\n\nfunction FretLabel(props) {\n  let config = { ..._FretLabel_defaults__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n    ...props\n  };\n  let note = callConfigFunction(config.mapStrategy, config.noteIndex, config.keyCenter, config.concept);\n  note = note ? note : new Theory.NonfunctionalNote(config.noteIndex);\n  let viewerData = {\n    minNote: callConfigFunction(config.mapStrategy, config.minIndex, config.keyCenter, config.concept),\n    maxNote: callConfigFunction(config.mapStrategy, config.maxIndex, config.keyCenter, config.concept)\n  };\n  let styles = callConfigFunction(config.colorStrategy, note, viewerData);\n  let label = callConfigFunction(config.labelStrategy, note);\n  let action = callConfigFunction(config.actionStrategy, note);\n  /*let scaleTone = callConfigFunction(config.mapStrategy, config.noteIndex, new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.G, PlayWhat.Constants.ACCIDENTAL.Natural, 4), PlayWhat.Presets.SCALE.Major);\r\n    styles = {\r\n      color: 'white',\r\n      backgroundColor: getBG(note.interval && note.interval.degree, scaleTone.interval, isInVoicing(note.interval, props.stringNum, props.rootString))\r\n  };*/\n\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-label\",\n    style: styles,\n    onClick: action\n  }, label);\n}\n\nvar isInVoicing = (interval, stringNum, rootString = 6) => {\n  return interval && interval.degree === 1 && rootString - stringNum === 0 || interval && interval.degree === 7 && rootString - stringNum === 2 || interval && interval.degree === 3 && rootString - stringNum === 3 || interval && interval.degree === 9 && rootString - stringNum === 3;\n};\n\nvar getBG = (degree, scaleTone, isInVoicing) => {\n  const def = '#BBB';\n\n  switch (degree) {\n    case 1:\n      return isInVoicing ? 'red' : def;\n\n    case 2:\n      return def;\n\n    case 3:\n      return isInVoicing ? 'green' : def;\n\n    case 4:\n      return def;\n\n    case 5:\n      return def;\n\n    case 6:\n      return def;\n\n    case 7:\n      return isInVoicing ? 'blue' : def;\n\n    case 9:\n      return isInVoicing ? 'purple' : def;\n\n    default:\n      return scaleTone ? '#DDD' : '';\n  }\n};\n\n//# sourceURL=webpack:///./src/v1/Fretboard/FretLabel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Fretboard.css":
-/*!****************************************!*\
-  !*** ./src/v1/Fretboard/Fretboard.css ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Fretboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Fretboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Fretboard.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Fretboard.defaults.js":
-/*!************************************************!*\
-  !*** ./src/v1/Fretboard/Fretboard.defaults.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _FretLabel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FretLabel */ \"./src/v1/Fretboard/FretLabel.jsx\");\n/* harmony import */ var _FretLabel_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FretLabel.defaults */ \"./src/v1/Fretboard/FretLabel.defaults.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  fretLow: 0,\n  fretHigh: 12,\n  strings: [{\n    tuning: 16\n  }, // e\n  {\n    tuning: 11\n  }, // B\n  {\n    tuning: 7\n  }, // G\n  {\n    tuning: 2\n  }, // D\n  {\n    tuning: -3\n  }, // A\n  {\n    tuning: -8\n  } // E\n  ],\n  showFretNumbers: true,\n  showDots: true,\n  labelComponent: _FretLabel__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  labelProps: _FretLabel_defaults__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Fretboard.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Fretboard.jsx":
-/*!****************************************!*\
-  !*** ./src/v1/Fretboard/Fretboard.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Fretboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v1/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Fret__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fret */ \"./src/v1/Fretboard/Fret.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/v1/Fretboard/Fretboard.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);\n\nconst getFrets = config => {\n  let min = config.strings.reduce((prev, current) => prev.tuning < current.tuning ? prev : current).tuning + config.fretLow;\n  let max = config.strings.reduce((prev, current) => prev.tuning > current.tuning ? prev : current).tuning + config.fretHigh;\n  let frets = []; // Get strings\n\n  for (let strNum = 1; strNum <= config.strings.length; strNum++) {\n    // Get frets for string\n    for (let fretNum = config.fretLow; fretNum <= config.fretHigh; fretNum++) {\n      let noteIndex = config.strings[strNum - 1].tuning + fretNum;\n      frets.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fret__WEBPACK_IMPORTED_MODULE_2__[\"Fret\"], {\n        key: `s${strNum}f${fretNum}`,\n        noteIndex: noteIndex,\n        minIndex: min,\n        maxIndex: max,\n        fretNumber: fretNum,\n        stringNum: strNum,\n        showFretNumber: config.showFretNumbers && strNum === 1,\n        showFretDots: config.showDots && strNum === config.strings.length,\n        labelComponent: config.labelComponent,\n        labelProps: config.labelProps\n      }));\n    }\n  }\n\n  return frets;\n};\n\nconst getFretRatios = numFrets => {\n  let ratios = [];\n\n  for (let i = 1; i <= numFrets; i++) {\n    ratios.push(i <= 1 ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);\n  }\n\n  return ratios;\n};\n\nfunction Fretboard(props) {\n  let config = Object.assign({}, _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props); // Calculate fretboard dimensions\n\n  let fretRatioStyle = getFretRatios(config.fretHigh - config.fretLow + 1).map(num => {\n    return num + 'fr';\n  }).join(' ');\n  let fretboardScaleStyles = {\n    gridTemplateColumns: fretRatioStyle,\n    gridTemplateRows: `repeat(${config.strings.length}, 1fr)`\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fretboard\",\n    style: fretboardScaleStyles\n  }, getFrets(config));\n}\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Fretboard.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/FretboardController.jsx":
-/*!**************************************************!*\
-  !*** ./src/v1/Fretboard/FretboardController.jsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v1/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/v1/Fretboard/Fretboard.defaults.js\");\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Fretboard */ \"./src/v1/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _Panels_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Panels/_module */ \"./src/v1/Fretboard/Panels/_module.js\");\n\n\n\n\n\n // Constants\n\nconst THEORY_PANELS = [{\n  id: 'keyCenter',\n  name: 'KeyCenter',\n  component: _Panels_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"].KeyCenter\n}, {\n  id: 'concept',\n  name: 'Concept',\n  component: _Panels_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"].KeyCenter\n}, {\n  id: 'filters',\n  name: 'Filters',\n  component: _Panels_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"].KeyCenter\n}];\nconst FRETBOARD_PANELS = [{\n  id: 'range',\n  name: 'Range',\n  component: _Panels_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"].Range\n}, {\n  id: 'tuning',\n  name: 'Tuning',\n  component: _Panels_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"].Tuning\n}, {\n  id: 'label',\n  name: 'Labels',\n  component: _Panels_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"].Label\n}];\nconst PANEL_TYPES = [{\n  id: 'theory',\n  name: 'Theory',\n  panels: THEORY_PANELS\n}, {\n  id: 'fretboard',\n  name: 'Fretboard',\n  panels: FRETBOARD_PANELS\n}];\n\nconst getPreviewText = (keyCenter, concept) => `${keyCenter.tonic.name}${keyCenter.accidental.name} ${keyCenter.octave} ${concept.id}`; // Panel \n\n\nconst Panel = props => {\n  const [open, setOpen] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(false);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"panel\",\n    style: {\n      paddingLeft: `${props.level * 5}px`\n    }\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `panel-name`,\n    onClick: () => setOpen(!open),\n    style: props.level > 0 ? {} : {\n      color: '#DDD',\n      background: '#5E99D1'\n    }\n  }, props.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `panel-content`\n  }, open && props.children));\n}; // Controller\n\n\nconst FretboardController = props => {\n  const [configOpen, setConfigOpen] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(false); // Set initial state from (1) props and (2) defaults\n\n  const [fretLow, setFretLow] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.fretLow || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].fretLow);\n  const [fretHigh, setFretHigh] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.fretHigh || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].fretHigh);\n  const [showDots, setShowDots] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.showDots || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].showDots);\n  const [showFretNumbers, setShowFretNumbers] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.showFretNumbers || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].showFretNumbers);\n  const [strings, setStrings] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.strings || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].strings); // Label props\n\n  const [keyCenter, setKeyCenter] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.keyCenter || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].labelProps.keyCenter);\n  const [concept, setConcept] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.concept || _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].labelProps.concept);\n  const [colorStrategy, setColorStrategy] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.colorStrategy ? play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ColorBy[props.colorStrategy] : _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].labelProps.colorStrategy);\n  const [labelStrategy, setLabelStrategy] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.labelStrategy ? play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils[props.labelStrategy] : _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].labelProps.labelStrategy);\n  const [mapStrategy, setMapStrategy] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.mapStrategy ? play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].MapBy[props.mapStrategy] : _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].labelProps.mapStrategy);\n  const [actionStrategy, setActionStrategy] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(props.actionStrategy ? play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].ActionBy[props.actionStrategy] : _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"].labelProps.actionStrategy);\n  const state = {\n    fretLow,\n    setFretLow,\n    fretHigh,\n    setFretHigh,\n    showDots,\n    setShowDots,\n    showFretNumbers,\n    setShowFretNumbers,\n    strings,\n    setStrings,\n    keyCenter,\n    setKeyCenter,\n    concept,\n    setConcept,\n    mapStrategy,\n    setMapStrategy,\n    labelStrategy,\n    setLabelStrategy,\n    colorStrategy,\n    setColorStrategy,\n    actionStrategy,\n    setActionStrategy\n  };\n  const labelProps = {\n    keyCenter,\n    concept,\n    mapStrategy,\n    labelStrategy,\n    colorStrategy,\n    actionStrategy,\n    rootString: props.rootString\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `fretboard-controller no-select ${configOpen ? 'edit' : ''}`\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"fretboard-container\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Fretboard__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    fretLow: fretLow,\n    fretHigh: fretHigh,\n    showDots: showDots,\n    showFretNumbers: showFretNumbers,\n    strings: strings,\n    labelProps: labelProps\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"input-container\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `preview ${configOpen ? 'active' : ''}`,\n    onClick: () => setConfigOpen(!configOpen)\n  }, getPreviewText(keyCenter, concept)), configOpen && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"input-modal\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"panel-name-container\"\n  }, PANEL_TYPES.map(type => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Panel, {\n    key: type.id,\n    name: type.name,\n    level: 0\n  }, type.panels.map(P => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Panel, {\n    key: P.id,\n    name: P.name,\n    level: 1\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(P.component, state)))))))));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (FretboardController);\n\n//# sourceURL=webpack:///./src/v1/Fretboard/FretboardController.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/KeyCenterPanel.css":
-/*!****************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/KeyCenterPanel.css ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./KeyCenterPanel.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/KeyCenterPanel.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/KeyCenterPanel.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/KeyCenterPanel.jsx":
-/*!****************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/KeyCenterPanel.jsx ***!
-  \****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _KeyCenterPanel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyCenterPanel.css */ \"./src/v1/Fretboard/Panels/KeyCenterPanel.css\");\n/* harmony import */ var _KeyCenterPanel_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_KeyCenterPanel_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Inputs/_module */ \"./src/v1/Inputs/_module.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst setKeyCenter = (setKeyCenter, tonic, accidental, octave) => setKeyCenter(new play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].KeyCenter(tonic, accidental, octave));\n\nconst KeyCenterPanel = props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"key-center-panel\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Tonic\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].TonicInput, {\n  value: props.keyCenter.tonic,\n  setValue: tonic => setKeyCenter(props.setKeyCenter, tonic, props.keyCenter.accidental, props.keyCenter.octave)\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Accidental\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].AccidentalInput, {\n  value: props.keyCenter.accidental,\n  setValue: accidental => setKeyCenter(props.setKeyCenter, props.keyCenter.tonic, accidental, props.keyCenter.octave)\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Octave\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].NumericInput, {\n  value: props.keyCenter.octave,\n  setValue: octave => setKeyCenter(props.setKeyCenter, props.keyCenter.tonic, props.keyCenter.accidental, octave)\n})));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyCenterPanel);\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/KeyCenterPanel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/LabelPanel.css":
-/*!************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/LabelPanel.css ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./LabelPanel.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/LabelPanel.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/LabelPanel.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/LabelPanel.jsx":
-/*!************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/LabelPanel.jsx ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _LabelPanel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LabelPanel.css */ \"./src/v1/Fretboard/Panels/LabelPanel.css\");\n/* harmony import */ var _LabelPanel_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_LabelPanel_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Inputs/_module */ \"./src/v1/Inputs/_module.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst LabelPanel = props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-panel\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Fret Numbers\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].SwitchInput, {\n  value: props.showFretNumbers,\n  setValue: props.setShowFretNumbers\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"String Tunings\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].SwitchInput, {\n  value: false,\n  setValue: () => {}\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Fret Dots\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].SwitchInput, {\n  value: props.showDots,\n  setValue: props.setShowDots\n})));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LabelPanel);\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/LabelPanel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/RangePanel.css":
-/*!************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/RangePanel.css ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./RangePanel.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/RangePanel.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/RangePanel.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/RangePanel.jsx":
-/*!************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/RangePanel.jsx ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RangePanel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RangePanel.css */ \"./src/v1/Fretboard/Panels/RangePanel.css\");\n/* harmony import */ var _RangePanel_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RangePanel_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Inputs/_module */ \"./src/v1/Inputs/_module.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst RangePanel = props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"range-panel\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Frets\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].RangeInput, {\n  min: 0,\n  max: 24,\n  low: props.fretLow,\n  high: props.fretHigh,\n  setLowValue: props.setFretLow,\n  setHighValue: props.setFretHigh\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"labeled-input\"\n}, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"label-text\"\n}, \"Strings\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Inputs_module__WEBPACK_IMPORTED_MODULE_2__[\"default\"].RangeInput, {\n  min: 1,\n  max: 12,\n  low: 1,\n  high: props.strings.length,\n  setHighValue: v => props.setStringNumber(strings, setStrings, v),\n  fixed: true\n})));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (RangePanel);\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/RangePanel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/TuningPanel.css":
-/*!*************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/TuningPanel.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./TuningPanel.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Fretboard/Panels/TuningPanel.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/TuningPanel.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/TuningPanel.jsx":
-/*!*************************************************!*\
-  !*** ./src/v1/Fretboard/Panels/TuningPanel.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _TuningPanel_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TuningPanel.css */ \"./src/v1/Fretboard/Panels/TuningPanel.css\");\n/* harmony import */ var _TuningPanel_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_TuningPanel_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Inputs/_module */ \"./src/v1/Inputs/_module.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n // const removeString = (config, setStrings, stringIndex) => {\n//     const newConfig = config.filter((s, i) => i !== stringIndex);\n//     setStrings(newConfig);\n// };\n// const addString = (config, setStrings, stringIndex) => {\n//     const newConfig = [...config];\n//     newConfig.splice(stringIndex, 0, { tuning: 0 })\n//     setStrings(newConfig);\n// };\n// const setStringNumber = (config, setStrings, number) => {\n//     const newConfig = [...config];\n//     const getEmptyStrings = n => {\n//         const s = [];\n//         for (let i = 0; i < n; i++) {\n//             s.push({ tuning: 0 })\n//         }\n//         return s;\n//     }\n//     if (number < config.length) {\n//         setStrings(newConfig.slice(0, number));\n//     }\n//     else if (number > config.length) {\n//         setStrings([...newConfig, ...getEmptyStrings(number - config.length)]);\n//     }\n// };\n\nconst tuneString = (config, setStrings, stringIndex, tuning) => {\n  const newConfig = [...config];\n  newConfig[stringIndex] = {\n    tuning: tuning\n  };\n  setStrings(newConfig);\n};\n\nconst getStringInputs = (stringConfig, setStrings) => {\n  return [...stringConfig.map((c, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    key: i + '+',\n    className: \"tune\",\n    onClick: () => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning + 1)\n  }, \"+\")).reverse(), ...stringConfig.map((c, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    key: i + '*',\n    className: \"tuning\"\n  }, play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Constants.PITCH_CLASS_NAMES[play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Common.modulo(c.tuning, 12)], react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"sub\", {\n    className: \"tuning-octave\"\n  }, Math.floor(c.tuning / 12)))).reverse(), ...stringConfig.map((c, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    key: i + '-',\n    className: \"tune\",\n    onClick: () => tuneString(stringConfig, setStrings, i, stringConfig[i].tuning - 1)\n  }, \"-\")).reverse()];\n};\n\nconst TuningPanel = props => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n  className: \"tuning-panel\",\n  style: {\n    gridTemplateColumns: `repeat(${props.strings.length}, 1fr)`\n  }\n}, getStringInputs(props.strings, props.setStrings));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (TuningPanel);\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/TuningPanel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/Panels/_module.js":
-/*!********************************************!*\
-  !*** ./src/v1/Fretboard/Panels/_module.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _KeyCenterPanel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./KeyCenterPanel */ \"./src/v1/Fretboard/Panels/KeyCenterPanel.jsx\");\n/* harmony import */ var _LabelPanel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LabelPanel */ \"./src/v1/Fretboard/Panels/LabelPanel.jsx\");\n/* harmony import */ var _RangePanel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RangePanel */ \"./src/v1/Fretboard/Panels/RangePanel.jsx\");\n/* harmony import */ var _TuningPanel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TuningPanel */ \"./src/v1/Fretboard/Panels/TuningPanel.jsx\");\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Label: _LabelPanel__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  Range: _RangePanel__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  Tuning: _TuningPanel__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  KeyCenter: _KeyCenterPanel__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/Fretboard/Panels/_module.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Fretboard/_module.js":
-/*!*************************************!*\
-  !*** ./src/v1/Fretboard/_module.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard */ \"./src/v1/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _FretboardController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FretboardController */ \"./src/v1/Fretboard/FretboardController.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/v1/Fretboard/Fretboard.defaults.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Viewer: _Fretboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Defaults: _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  Controller: _FretboardController__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/Fretboard/_module.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/AccidentalInput/AccidentalInput.css":
-/*!***********************************************************!*\
-  !*** ./src/v1/Inputs/AccidentalInput/AccidentalInput.css ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./AccidentalInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/AccidentalInput/AccidentalInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/AccidentalInput/AccidentalInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/AccidentalInput/AccidentalInput.jsx":
-/*!***********************************************************!*\
-  !*** ./src/v1/Inputs/AccidentalInput/AccidentalInput.jsx ***!
-  \***********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return AccidentalInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _AccidentalInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AccidentalInput.css */ \"./src/v1/Inputs/AccidentalInput/AccidentalInput.css\");\n/* harmony import */ var _AccidentalInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_AccidentalInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ButtonList/ButtonList */ \"./src/v1/Inputs/ButtonList/ButtonList.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nfunction AccidentalInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"input accidental\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    selected: props.value,\n    data: Object.values(play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Constants.ACCIDENTAL),\n    setValue: props.setValue\n  }));\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/AccidentalInput/AccidentalInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/BoxButton/BoxButton.css":
-/*!***********************************************!*\
-  !*** ./src/v1/Inputs/BoxButton/BoxButton.css ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./BoxButton.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/BoxButton/BoxButton.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/BoxButton/BoxButton.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/BoxButton/BoxButton.jsx":
-/*!***********************************************!*\
-  !*** ./src/v1/Inputs/BoxButton/BoxButton.jsx ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return BoxButton; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _BoxButton_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BoxButton.css */ \"./src/v1/Inputs/BoxButton/BoxButton.css\");\n/* harmony import */ var _BoxButton_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_BoxButton_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction BoxButton(props) {\n  let classes = ['box-button', props.selected ? 'selected' : ''];\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    onClick: props.action\n  }, props.text);\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/BoxButton/BoxButton.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/ButtonList/ButtonList.css":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/ButtonList/ButtonList.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./ButtonList.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/ButtonList/ButtonList.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/ButtonList/ButtonList.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/ButtonList/ButtonList.jsx":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/ButtonList/ButtonList.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ButtonList; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ButtonList_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonList.css */ \"./src/v1/Inputs/ButtonList/ButtonList.css\");\n/* harmony import */ var _ButtonList_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ButtonList_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoxButton/BoxButton */ \"./src/v1/Inputs/BoxButton/BoxButton.jsx\");\n\n\n\nfunction ButtonList(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"button-list\"\n  }, props.data.map(d => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    key: d.id,\n    text: d.name,\n    selected: props.selected.id === d.id,\n    action: () => props.setValue(d)\n  })));\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/ButtonList/ButtonList.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/DropdownInput/DropdownInput.css":
-/*!*******************************************************!*\
-  !*** ./src/v1/Inputs/DropdownInput/DropdownInput.css ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./DropdownInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/DropdownInput/DropdownInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/DropdownInput/DropdownInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/DropdownInput/DropdownInput.jsx":
-/*!*******************************************************!*\
-  !*** ./src/v1/Inputs/DropdownInput/DropdownInput.jsx ***!
-  \*******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return DropdownInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _DropdownInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DropdownInput.css */ \"./src/v1/Inputs/DropdownInput/DropdownInput.css\");\n/* harmony import */ var _DropdownInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_DropdownInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n // INPUT data = array of objects\n// INPUT value = selected object\n// OUTPUT setValue => newly selected object\n\nfunction DropdownInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"select\", {\n    className: \"dropdown-input\",\n    value: props.value ? props.value.id : undefined,\n    onClick: e => {\n      if (e.target && e.target.selectedIndex >= 1) {\n        props.setValue(props.data[e.target.selectedIndex]);\n      }\n    }\n  }, getDropdownOptions(props.data));\n}\n\nfunction getDropdownOptions(data) {\n  let options = [];\n\n  for (let i = 0; i < data.length; i++) {\n    let {\n      id,\n      name\n    } = data[i];\n    options.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"option\", {\n      key: id,\n      value: id\n    }, name));\n  }\n\n  return options;\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/DropdownInput/DropdownInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/LabelInput/LabelInput.css":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/LabelInput/LabelInput.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./LabelInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/LabelInput/LabelInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/LabelInput/LabelInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/LabelInput/LabelInput.jsx":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/LabelInput/LabelInput.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return LabelInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _LabelInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LabelInput.css */ \"./src/v1/Inputs/LabelInput/LabelInput.css\");\n/* harmony import */ var _LabelInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_LabelInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _DropdownInput_DropdownInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../DropdownInput/DropdownInput */ \"./src/v1/Inputs/DropdownInput/DropdownInput.jsx\");\n\n\n\n\nconst LABEL_DATA = [{\n  id: 'none',\n  name: 'None',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.none\n}, {\n  id: 'name',\n  name: 'Name',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.name\n}, {\n  id: 'degree',\n  name: 'Degree',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.degree\n}, {\n  id: 'pitchClass',\n  name: 'Pitch Class',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.pitchClass\n}, {\n  id: 'interval',\n  name: 'Interval',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.interval\n}, {\n  id: 'octave',\n  name: 'Octave',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.octave\n}, {\n  id: 'noteIndex',\n  name: 'Note Index',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.noteIndex\n}, {\n  id: 'frequency',\n  name: 'Frequency',\n  value: play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].LabelUtils.frequency\n}];\nfunction LabelInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_DropdownInput_DropdownInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    data: LABEL_DATA,\n    value: LABEL_DATA.find(l => l.value === props.value),\n    setValue: l => props.setValue(l.value)\n  });\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/LabelInput/LabelInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/NumericInput/NumericInput.css":
-/*!*****************************************************!*\
-  !*** ./src/v1/Inputs/NumericInput/NumericInput.css ***!
-  \*****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./NumericInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/NumericInput/NumericInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/NumericInput/NumericInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/NumericInput/NumericInput.jsx":
-/*!*****************************************************!*\
-  !*** ./src/v1/Inputs/NumericInput/NumericInput.jsx ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return NumericInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _NumericInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NumericInput.css */ \"./src/v1/Inputs/NumericInput/NumericInput.css\");\n/* harmony import */ var _NumericInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NumericInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoxButton/BoxButton */ \"./src/v1/Inputs/BoxButton/BoxButton.jsx\");\n\n\n\nfunction NumericInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"numeric-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    className: \"down\",\n    text: '-',\n    selected: false,\n    action: () => props.setValue(props.value - 1)\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    className: \"value\",\n    text: props.value,\n    selected: true,\n    action: () => null\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    className: \"up\",\n    text: '+',\n    selected: false,\n    action: () => props.setValue(props.value + 1)\n  }));\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/NumericInput/NumericInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/RangeInput/RangeInput.css":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/RangeInput/RangeInput.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./RangeInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/RangeInput/RangeInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/RangeInput/RangeInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/RangeInput/RangeInput.jsx":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/RangeInput/RangeInput.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return RangeInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RangeInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RangeInput.css */ \"./src/v1/Inputs/RangeInput/RangeInput.css\");\n/* harmony import */ var _RangeInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_RangeInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction RangeInput(props) {\n  const percentLow = props.low / props.max * 100;\n  const percentHigh = props.high / props.max * 100;\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"range-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"value min\"\n  }, props.min), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"track\",\n    onClick: () => {}\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"marker low\",\n    style: {\n      left: `${percentLow}%`\n    }\n  }, !props.fixed && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"input\", {\n    type: \"number\",\n    className: \"marker-input\",\n    min: props.min,\n    max: props.max,\n    value: props.low,\n    onChange: event => props.setLowValue(event.target.value.replace(/\\D/, ''))\n  })), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"marker high\",\n    style: {\n      left: `${percentHigh}%`\n    }\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"input\", {\n    type: \"number\",\n    className: \"marker-input\",\n    min: props.min,\n    max: props.max,\n    value: props.high,\n    onChange: event => props.setHighValue(event.target.value.replace(/\\D+/, ''))\n  })), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"active\",\n    style: {\n      width: `${percentHigh - percentLow}%`,\n      left: `${percentLow + 1}%`\n    }\n  })), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"value max\"\n  }, props.max));\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/RangeInput/RangeInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/SwitchInput/SwitchInput.css":
-/*!***************************************************!*\
-  !*** ./src/v1/Inputs/SwitchInput/SwitchInput.css ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./SwitchInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/SwitchInput/SwitchInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/SwitchInput/SwitchInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/SwitchInput/SwitchInput.jsx":
-/*!***************************************************!*\
-  !*** ./src/v1/Inputs/SwitchInput/SwitchInput.jsx ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return SwitchInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _SwitchInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SwitchInput.css */ \"./src/v1/Inputs/SwitchInput/SwitchInput.css\");\n/* harmony import */ var _SwitchInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_SwitchInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../BoxButton/BoxButton */ \"./src/v1/Inputs/BoxButton/BoxButton.jsx\");\n\n\n\nfunction SwitchInput(props) {\n  let classes = ['switch-input', props.value ? 'true' : 'false'];\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' ')\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"shell\",\n    onClick: () => props.setValue(!props.value)\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"ball\"\n  })));\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/SwitchInput/SwitchInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/TonicInput/TonicInput.css":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/TonicInput/TonicInput.css ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!./TonicInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Inputs/TonicInput/TonicInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Inputs/TonicInput/TonicInput.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/TonicInput/TonicInput.jsx":
-/*!*************************************************!*\
-  !*** ./src/v1/Inputs/TonicInput/TonicInput.jsx ***!
-  \*************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return TonicInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _TonicInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TonicInput.css */ \"./src/v1/Inputs/TonicInput/TonicInput.css\");\n/* harmony import */ var _TonicInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_TonicInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ButtonList/ButtonList */ \"./src/v1/Inputs/ButtonList/ButtonList.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nfunction TonicInput(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"input tonic\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    selected: props.value,\n    data: Object.values(play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Constants.TONIC),\n    setValue: props.setValue\n  }));\n}\n\n//# sourceURL=webpack:///./src/v1/Inputs/TonicInput/TonicInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Inputs/_module.js":
-/*!**********************************!*\
-  !*** ./src/v1/Inputs/_module.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BoxButton/BoxButton */ \"./src/v1/Inputs/BoxButton/BoxButton.jsx\");\n/* harmony import */ var _ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonList/ButtonList */ \"./src/v1/Inputs/ButtonList/ButtonList.jsx\");\n/* harmony import */ var _DropdownInput_DropdownInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DropdownInput/DropdownInput */ \"./src/v1/Inputs/DropdownInput/DropdownInput.jsx\");\n/* harmony import */ var _LabelInput_LabelInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./LabelInput/LabelInput */ \"./src/v1/Inputs/LabelInput/LabelInput.jsx\");\n/* harmony import */ var _NumericInput_NumericInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NumericInput/NumericInput */ \"./src/v1/Inputs/NumericInput/NumericInput.jsx\");\n/* harmony import */ var _SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SwitchInput/SwitchInput */ \"./src/v1/Inputs/SwitchInput/SwitchInput.jsx\");\n/* harmony import */ var _TonicInput_TonicInput__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./TonicInput/TonicInput */ \"./src/v1/Inputs/TonicInput/TonicInput.jsx\");\n/* harmony import */ var _AccidentalInput_AccidentalInput__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./AccidentalInput/AccidentalInput */ \"./src/v1/Inputs/AccidentalInput/AccidentalInput.jsx\");\n/* harmony import */ var _RangeInput_RangeInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./RangeInput/RangeInput */ \"./src/v1/Inputs/RangeInput/RangeInput.jsx\");\n\n\n\n\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  DropdownInput: _DropdownInput_DropdownInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  NumericInput: _NumericInput_NumericInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  SwitchInput: _SwitchInput_SwitchInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\n  TonicInput: _TonicInput_TonicInput__WEBPACK_IMPORTED_MODULE_6__[\"default\"],\n  AccidentalInput: _AccidentalInput_AccidentalInput__WEBPACK_IMPORTED_MODULE_7__[\"default\"],\n  BoxButton: _BoxButton_BoxButton__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  ButtonList: _ButtonList_ButtonList__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  LabelInput: _LabelInput_LabelInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  RangeInput: _RangeInput_RangeInput__WEBPACK_IMPORTED_MODULE_8__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/Inputs/_module.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/Keyboard.css":
-/*!**************************************!*\
-  !*** ./src/v1/Keyboard/Keyboard.css ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Keyboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Keyboard/Keyboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Keyboard/Keyboard.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/Keyboard.defaults.js":
-/*!**********************************************!*\
-  !*** ./src/v1/Keyboard/Keyboard.defaults.js ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _KeyboardKeyLabel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyboardKeyLabel */ \"./src/v1/Keyboard/KeyboardKeyLabel.jsx\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyLow: 0,\n  keyHigh: 24,\n  labelComponent: _KeyboardKeyLabel__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/Keyboard/Keyboard.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/Keyboard.jsx":
-/*!**************************************!*\
-  !*** ./src/v1/Keyboard/Keyboard.jsx ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Keyboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/v1/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KeyboardKey */ \"./src/v1/Keyboard/KeyboardKey.jsx\");\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/v1/Keyboard/Keyboard.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11]; // TODO Enforce code reuse\n\nconst modulo = (a, b) => {\n  return (a % b + b) % b;\n};\n\nconst getKeyboardKeys = (config, viewerWidth) => {\n  let keys = []; // Safe approximation for scale\n\n  let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;\n\n  for (let i = config.keyLow; i <= config.keyHigh; i++) {\n    let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].White : _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].Black;\n    keys.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKey\"], {\n      key: i,\n      noteIndex: i,\n      minIndex: config.keyLow,\n      maxIndex: config.keyHigh,\n      scale: viewerWidth / numWhiteKeys,\n      type: type,\n      labelComponent: config.labelComponent\n    }));\n  }\n\n  return keys;\n};\n\nclass Keyboard extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n  constructor(props) {\n    super(props);\n    this.domNode = null;\n    this.state = {\n      height: 0,\n      width: 0\n    };\n    this.domNode = react__WEBPACK_IMPORTED_MODULE_0__[\"createRef\"]();\n  }\n\n  componentDidMount() {\n    window.addEventListener('resize', this.resetDimensions);\n    this.resetDimensions();\n  }\n\n  componentWillUnmount() {\n    window.removeEventListener('resize', this.resetDimensions);\n  }\n\n  resetDimensions() {\n    this.setState({\n      width: this.domNode.current.clientWidth,\n      height: this.domNode.current.clientHeight\n    });\n  }\n\n  render() {\n    let config = Object.assign({}, _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], this.props);\n    return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n      className: \"keyboard\",\n      ref: this.domNode\n    }, getKeyboardKeys(config, this.state.width));\n  }\n\n}\n\n//# sourceURL=webpack:///./src/v1/Keyboard/Keyboard.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/KeyboardKey.jsx":
-/*!*****************************************!*\
-  !*** ./src/v1/Keyboard/KeyboardKey.jsx ***!
-  \*****************************************/
-/*! exports provided: KeyboardKeyType, KeyboardKey */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyboardKeyType\", function() { return KeyboardKeyType; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyboardKey\", function() { return KeyboardKey; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n // Key dimensions relative to white key width\n\nconst KEY__DIMS = {\n  WhW_WhH: 4.6875,\n  // White key width to white key height\n  WhW_BlW: 0.6250,\n  // White key width to black key width\n  WhW_BlH: 2.9688 // White key width to black hey height\n\n};\nconst KeyboardKeyType = {\n  Black: 'Black',\n  White: 'White'\n};\n\nconst getScaleStyles = (keyType, scale) => {\n  switch (keyType) {\n    case KeyboardKeyType.White:\n      return {\n        width: scale + 'px',\n        height: KEY__DIMS.WhW_WhH * scale + 'px'\n      };\n\n    case KeyboardKeyType.Black:\n      return {\n        width: KEY__DIMS.WhW_BlW * scale + 'px',\n        height: KEY__DIMS.WhW_BlH * scale + 'px',\n        right: .5 * KEY__DIMS.WhW_BlW * scale + 'px'\n      };\n\n    default:\n      return {\n        width: '0px',\n        height: '0px'\n      };\n  }\n};\n\nconst KeyboardKey = props => {\n  let keyColor = props.type === KeyboardKeyType.White ? 'white' : 'black';\n  let scaleStyles = getScaleStyles(props.type, props.scale);\n  let classes = ['keyboard-key', `${keyColor}-key`, keyColor];\n  let LabelComponent = props.labelComponent;\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: `${keyColor}-key-container`\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    style: Object.assign({}, scaleStyles, props.styles),\n    onClick: props.action\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](LabelComponent, props)));\n};\n\n//# sourceURL=webpack:///./src/v1/Keyboard/KeyboardKey.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/KeyboardKeyLabel.defaults.js":
-/*!******************************************************!*\
-  !*** ./src/v1/Keyboard/KeyboardKeyLabel.defaults.js ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyCenter: new play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].KeyCenter(play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Constants.TONIC.C, play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Constants.ACCIDENTAL.Natural, 4),\n  concept: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Presets.SCALE.Major,\n  mapStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].MapBy.noteIndex,\n  labelStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].LabelUtils.interval,\n  colorStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].ColorBy.degree,\n  actionStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].ActionBy.playSound\n});\n\n//# sourceURL=webpack:///./src/v1/Keyboard/KeyboardKeyLabel.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/KeyboardKeyLabel.jsx":
-/*!**********************************************!*\
-  !*** ./src/v1/Keyboard/KeyboardKeyLabel.jsx ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return KeyboardKeyLabel; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/v1/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyboardKeyLabel_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KeyboardKeyLabel.defaults */ \"./src/v1/Keyboard/KeyboardKeyLabel.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n // Temp\n\nfunction callConfigFunction(configFunction, ...args) {\n  return (typeof configFunction).toLowerCase() === 'function' ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);\n}\n\nfunction KeyboardKeyLabel(props) {\n  let config = Object.assign({}, _KeyboardKeyLabel_defaults__WEBPACK_IMPORTED_MODULE_2__[\"default\"], props);\n  let note = callConfigFunction(config.mapStrategy, config.noteIndex, config.keyCenter, config.concept);\n  note = note ? note : new Theory.NonfunctionalNote(config.noteIndex);\n  let styles = callConfigFunction(config.colorStrategy, note);\n  let label = callConfigFunction(config.labelStrategy, note);\n  let action = callConfigFunction(config.actionStrategy, note);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard-key-label\",\n    style: styles,\n    onClick: action\n  }, label);\n}\n\n//# sourceURL=webpack:///./src/v1/Keyboard/KeyboardKeyLabel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Keyboard/_module.js":
-/*!************************************!*\
-  !*** ./src/v1/Keyboard/_module.js ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Keyboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Keyboard */ \"./src/v1/Keyboard/Keyboard.jsx\");\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/v1/Keyboard/Keyboard.defaults.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Viewer: _Keyboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Defaults: _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/Keyboard/_module.js?");
-
-/***/ }),
-
-/***/ "./src/v1/NoteTable/NoteTable.css":
-/*!****************************************!*\
-  !*** ./src/v1/NoteTable/NoteTable.css ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./NoteTable.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/NoteTable/NoteTable.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/NoteTable/NoteTable.css?");
-
-/***/ }),
-
-/***/ "./src/v1/NoteTable/NoteTable.jsx":
-/*!****************************************!*\
-  !*** ./src/v1/NoteTable/NoteTable.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return NoteTable; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _NoteTable_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NoteTable.css */ \"./src/v1/NoteTable/NoteTable.css\");\n/* harmony import */ var _NoteTable_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_NoteTable_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction NoteTable(props) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"note-table\"\n  }, getTable(props.concept.getNotes(props.keyCenter)));\n}\n\nfunction getTable(notes) {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"table\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"thead\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"th\", null, \"Name\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"th\", null, \"Interval\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"th\", null, \"Note Index\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"th\", null, \"Pitch Class\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"th\", null, \"Octave\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"th\", null, \"Frequency\"))), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tbody\", null, notes.map(note => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"tr\", {\n    key: note.noteIndex\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, note.name), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, note.interval.id), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, note.noteIndex), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, note.pitchClass), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, note.octave), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"td\", null, Math.round(note.frequency) + ' Hz')))));\n}\n\n//# sourceURL=webpack:///./src/v1/NoteTable/NoteTable.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/Summary/Summary.css":
-/*!************************************!*\
-  !*** ./src/v1/Summary/Summary.css ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Summary.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v1/Summary/Summary.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v1/Summary/Summary.css?");
-
-/***/ }),
-
-/***/ "./src/v1/Summary/Summary.jsx":
-/*!************************************!*\
-  !*** ./src/v1/Summary/Summary.jsx ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Summary; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Summary_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Summary.css */ \"./src/v1/Summary/Summary.css\");\n/* harmony import */ var _Summary_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Summary_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nfunction NoteBlock(props) {\n  let note = new play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].FunctionalNote(props.keyCenter, props.interval);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"note-block\",\n    style: props.colorStrategy.fx(note, props.viewerData),\n    onClick: () => play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Sound.play(note.frequency, .5)\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"name\"\n  }, props.labelStrategy.fx(note, props.viewerData)));\n}\n\nfunction Summary(props) {\n  let viewerData = {\n    minNote: new play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].FunctionalNote(props.keyCenter, props.concept.intervals[0]),\n    maxNote: new play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].FunctionalNote(props.keyCenter, props.concept.intervals[props.concept.intervals.length - 1])\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"summary\"\n  }, props.concept.intervals.map(i => react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](NoteBlock, {\n    key: i.id,\n    keyCenter: props.keyCenter,\n    interval: i,\n    colorStrategy: props.colorStrategy,\n    labelStrategy: props.labelStrategy,\n    viewerData: viewerData\n  })));\n}\n\n//# sourceURL=webpack:///./src/v1/Summary/Summary.jsx?");
-
-/***/ }),
-
-/***/ "./src/v1/_module.js":
-/*!***************************!*\
-  !*** ./src/v1/_module.js ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/v1/Fretboard/_module.js\");\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/v1/Keyboard/_module.js\");\n/* harmony import */ var _ChordAnalysis_ChordAnalysis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ChordAnalysis/ChordAnalysis */ \"./src/v1/ChordAnalysis/ChordAnalysis.jsx\");\n/* harmony import */ var _Summary_Summary__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Summary/Summary */ \"./src/v1/Summary/Summary.jsx\");\n/* harmony import */ var _NoteTable_NoteTable__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./NoteTable/NoteTable */ \"./src/v1/NoteTable/NoteTable.jsx\");\n/* harmony import */ var _Inputs_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Inputs/_module */ \"./src/v1/Inputs/_module.js\");\n\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Fretboard: _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Keyboard: _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  ChordAnalysis: _ChordAnalysis_ChordAnalysis__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  Summary: _Summary_Summary__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  NoteTable: _NoteTable_NoteTable__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  Inputs: _Inputs_module__WEBPACK_IMPORTED_MODULE_5__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v1/_module.js?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/Fret.jsx":
-/*!***********************************!*\
-  !*** ./src/v2/Fretboard/Fret.jsx ***!
-  \***********************************/
-/*! exports provided: Fret */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Fret\", function() { return Fret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v2/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\nfunction _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }\n\n\n\nconst DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];\n\nconst getDotsForFret = fretNumber => {\n  let mod = fretNumber % 12;\n  if (mod === 0) return '• •';else if (DOTTED_FRET_INDICES[mod]) return '•';\n  return '';\n};\n\nconst Fret = props => {\n  let classes = ['fret'];\n  if (props.fretNumber === 0) classes.push('open');\n  let LabelComponent = props.labelComponent;\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' ')\n  }, props.showFretNumber && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-number\"\n  }, props.fretNumber), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-string\"\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](LabelComponent, _extends({}, props, props.labelProps)), props.showFretDots && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-dots\"\n  }, getDotsForFret(props.fretNumber)));\n};\n\n//# sourceURL=webpack:///./src/v2/Fretboard/Fret.jsx?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/FretLabel.defaults.js":
-/*!************************************************!*\
-  !*** ./src/v2/Fretboard/FretLabel.defaults.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyCenter: new play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].KeyCenter(play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Constants.TONIC.G, play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Constants.ACCIDENTAL.Natural, 4),\n  concept: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].Presets.SCALE.Major,\n  mapStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].MapBy.pitchClass,\n  labelStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].LabelUtils.interval,\n  colorStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].ColorBy.degree,\n  actionStrategy: play_what__WEBPACK_IMPORTED_MODULE_0__[\"default\"].ActionBy.playSound\n});\n\n//# sourceURL=webpack:///./src/v2/Fretboard/FretLabel.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/FretLabel.jsx":
-/*!****************************************!*\
-  !*** ./src/v2/Fretboard/FretLabel.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FretLabel; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v2/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _FretLabel_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FretLabel.defaults */ \"./src/v2/Fretboard/FretLabel.defaults.js\");\n\n\n // Temp\n\nfunction callConfigFunction(configFunction, ...args) {\n  return (typeof configFunction).toLowerCase() === 'function' ? configFunction.apply(null, args) : configFunction.fx.apply(null, args);\n}\n\nfunction FretLabel(props) {\n  let config = { ..._FretLabel_defaults__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n    ...props\n  };\n  let note = callConfigFunction(config.mapStrategy, config.noteIndex, config.keyCenter, config.concept);\n  note = note ? note : new Theory.NonfunctionalNote(config.noteIndex);\n  let viewerData = {\n    minNote: callConfigFunction(config.mapStrategy, config.minIndex, config.keyCenter, config.concept),\n    maxNote: callConfigFunction(config.mapStrategy, config.maxIndex, config.keyCenter, config.concept)\n  };\n  let styles = callConfigFunction(config.colorStrategy, note, viewerData);\n  let label = callConfigFunction(config.labelStrategy, note);\n  let action = callConfigFunction(config.actionStrategy, note);\n  /*let scaleTone = callConfigFunction(config.mapStrategy, config.noteIndex, new PlayWhat.KeyCenter(PlayWhat.Constants.TONIC.G, PlayWhat.Constants.ACCIDENTAL.Natural, 4), PlayWhat.Presets.SCALE.Major);\r\n    styles = {\r\n      color: 'white',\r\n      backgroundColor: getBG(note.interval && note.interval.degree, scaleTone.interval, isInVoicing(note.interval, props.stringNum, props.rootString))\r\n  };*/\n\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-label\",\n    style: styles,\n    onClick: action\n  }, label);\n}\n\nvar isInVoicing = (interval, stringNum, rootString = 6) => {\n  return interval && interval.degree === 1 && rootString - stringNum === 0 || interval && interval.degree === 7 && rootString - stringNum === 2 || interval && interval.degree === 3 && rootString - stringNum === 3 || interval && interval.degree === 9 && rootString - stringNum === 3;\n};\n\nvar getBG = (degree, scaleTone, isInVoicing) => {\n  const def = '#BBB';\n\n  switch (degree) {\n    case 1:\n      return isInVoicing ? 'red' : def;\n\n    case 2:\n      return def;\n\n    case 3:\n      return isInVoicing ? 'green' : def;\n\n    case 4:\n      return def;\n\n    case 5:\n      return def;\n\n    case 6:\n      return def;\n\n    case 7:\n      return isInVoicing ? 'blue' : def;\n\n    case 9:\n      return isInVoicing ? 'purple' : def;\n\n    default:\n      return scaleTone ? '#DDD' : '';\n  }\n};\n\n//# sourceURL=webpack:///./src/v2/Fretboard/FretLabel.jsx?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/Fretboard.api.jsx":
-/*!********************************************!*\
-  !*** ./src/v2/Fretboard/Fretboard.api.jsx ***!
-  \********************************************/
-/*! exports provided: fromConfig */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"fromConfig\", function() { return fromConfig; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard */ \"./src/v2/Fretboard/Fretboard.jsx\");\n\n\nconst fromConfig = config => {\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fretboard__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null);\n};\n\n//# sourceURL=webpack:///./src/v2/Fretboard/Fretboard.api.jsx?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/Fretboard.css":
-/*!****************************************!*\
-  !*** ./src/v2/Fretboard/Fretboard.css ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Fretboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/v2/Fretboard/Fretboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/v2/Fretboard/Fretboard.css?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/Fretboard.defaults.js":
-/*!************************************************!*\
-  !*** ./src/v2/Fretboard/Fretboard.defaults.js ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _FretLabel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FretLabel */ \"./src/v2/Fretboard/FretLabel.jsx\");\n/* harmony import */ var _FretLabel_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FretLabel.defaults */ \"./src/v2/Fretboard/FretLabel.defaults.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  fretLow: 0,\n  fretHigh: 12,\n  strings: [{\n    tuning: 16\n  }, // e\n  {\n    tuning: 11\n  }, // B\n  {\n    tuning: 7\n  }, // G\n  {\n    tuning: 2\n  }, // D\n  {\n    tuning: -3\n  }, // A\n  {\n    tuning: -8\n  } // E\n  ],\n  showFretNumbers: true,\n  showDots: true,\n  labelComponent: _FretLabel__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  labelProps: _FretLabel_defaults__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v2/Fretboard/Fretboard.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/Fretboard.jsx":
-/*!****************************************!*\
-  !*** ./src/v2/Fretboard/Fretboard.jsx ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Fretboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/v2/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Fret__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fret */ \"./src/v2/Fretboard/Fret.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/v2/Fretboard/Fretboard.defaults.js\");\n\n\n\n\nconst FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);\n\nconst getFrets = config => {\n  let min = config.strings.reduce((prev, current) => prev.tuning < current.tuning ? prev : current).tuning + config.fretLow;\n  let max = config.strings.reduce((prev, current) => prev.tuning > current.tuning ? prev : current).tuning + config.fretHigh;\n  let frets = []; // Get strings\n\n  for (let strNum = 1; strNum <= config.strings.length; strNum++) {\n    // Get frets for string\n    for (let fretNum = config.fretLow; fretNum <= config.fretHigh; fretNum++) {\n      let noteIndex = config.strings[strNum - 1].tuning + fretNum;\n      frets.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fret__WEBPACK_IMPORTED_MODULE_2__[\"Fret\"], {\n        key: `s${strNum}f${fretNum}`,\n        noteIndex: noteIndex,\n        minIndex: min,\n        maxIndex: max,\n        fretNumber: fretNum,\n        stringNum: strNum,\n        showFretNumber: config.showFretNumbers && strNum === 1,\n        showFretDots: config.showDots && strNum === config.strings.length,\n        labelComponent: config.labelComponent,\n        labelProps: config.labelProps\n      }));\n    }\n  }\n\n  return frets;\n};\n\nconst getFretRatios = numFrets => {\n  let ratios = [];\n\n  for (let i = 1; i <= numFrets; i++) {\n    ratios.push(i <= 1 ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);\n  }\n\n  return ratios;\n};\n\nfunction Fretboard(props) {\n  let config = Object.assign({}, _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props); // Calculate fretboard dimensions\n\n  let fretRatioStyle = getFretRatios(config.fretHigh - config.fretLow + 1).map(num => {\n    return num + 'fr';\n  }).join(' ');\n  let fretboardScaleStyles = {\n    gridTemplateColumns: fretRatioStyle,\n    gridTemplateRows: `repeat(${config.strings.length}, 1fr)`\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fretboard\",\n    style: fretboardScaleStyles\n  }, getFrets(config));\n}\n\n//# sourceURL=webpack:///./src/v2/Fretboard/Fretboard.jsx?");
-
-/***/ }),
-
-/***/ "./src/v2/Fretboard/_module.js":
-/*!*************************************!*\
-  !*** ./src/v2/Fretboard/_module.js ***!
-  \*************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard */ \"./src/v2/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/v2/Fretboard/Fretboard.defaults.js\");\n/* harmony import */ var _Fretboard_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.api */ \"./src/v2/Fretboard/Fretboard.api.jsx\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Viewer: _Fretboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Defaults: _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  Api: _Fretboard_api__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack:///./src/v2/Fretboard/_module.js?");
-
-/***/ }),
-
-/***/ "./src/v2/_module.js":
-/*!***************************!*\
-  !*** ./src/v2/_module.js ***!
-  \***************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/v2/Fretboard/_module.js\");\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Fretboard: _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/v2/_module.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Modules_Fretboard_Fretboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modules/Fretboard/Fretboard */ \"./src/Modules/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _Modules_Fretboard_FretboardCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modules/Fretboard/FretboardCard */ \"./src/Modules/Fretboard/FretboardCard.jsx\");\n/* harmony import */ var _Modules_Keyboard_Keyboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Modules/Keyboard/Keyboard */ \"./src/Modules/Keyboard/Keyboard.jsx\");\n/* harmony import */ var _Modules_Keyboard_KeyboardCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Modules/Keyboard/KeyboardCard */ \"./src/Modules/Keyboard/KeyboardCard.jsx\");\n/* harmony import */ var _Modules_Graph_Graph__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Modules/Graph/Graph */ \"./src/Modules/Graph/Graph.jsx\");\n/* harmony import */ var _Modules_Graph_GraphCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Modules/Graph/GraphCard */ \"./src/Modules/Graph/GraphCard.jsx\");\n/* harmony import */ var _Modules_TrueScale_TrueScale__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Modules/TrueScale/TrueScale */ \"./src/Modules/TrueScale/TrueScale.jsx\");\n/* harmony import */ var _Modules_TrueScale_TrueScaleCard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Modules/TrueScale/TrueScaleCard */ \"./src/Modules/TrueScale/TrueScaleCard.jsx\");\n/* harmony import */ var _Modules_HarmonicSeries_HarmonicSeries__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Modules/HarmonicSeries/HarmonicSeries */ \"./src/Modules/HarmonicSeries/HarmonicSeries.jsx\");\n/* harmony import */ var _Modules_HarmonicSeries_HarmonicSeriesCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Modules/HarmonicSeries/HarmonicSeriesCard */ \"./src/Modules/HarmonicSeries/HarmonicSeriesCard.jsx\");\n/* harmony import */ var _Modules_InputDocs_InputDocsCard__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Modules/InputDocs/InputDocsCard */ \"./src/Modules/InputDocs/InputDocsCard.jsx\");\n/* harmony import */ var _UI_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./UI/ErrorBoundary */ \"./src/UI/ErrorBoundary.jsx\");\n/* harmony import */ var _UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./UI/ButtonInput/ButtonInput */ \"./src/UI/ButtonInput/ButtonInput.jsx\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_13__);\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nconst Modules = {\n  Fretboard: _Modules_Fretboard_Fretboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  FretboardCard: _Modules_Fretboard_FretboardCard__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  Keyboard: _Modules_Keyboard_Keyboard__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  KeyboardCard: _Modules_Keyboard_KeyboardCard__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  Graph: _Modules_Graph_Graph__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  GraphCard: _Modules_Graph_GraphCard__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\n  TrueScale: _Modules_TrueScale_TrueScale__WEBPACK_IMPORTED_MODULE_6__[\"default\"],\n  TrueScaleCard: _Modules_TrueScale_TrueScaleCard__WEBPACK_IMPORTED_MODULE_7__[\"default\"],\n  HarmonicSeries: _Modules_HarmonicSeries_HarmonicSeries__WEBPACK_IMPORTED_MODULE_8__[\"default\"],\n  HarmonicSeriesCard: _Modules_HarmonicSeries_HarmonicSeriesCard__WEBPACK_IMPORTED_MODULE_9__[\"default\"],\n  InputDocsCard: _Modules_InputDocs_InputDocsCard__WEBPACK_IMPORTED_MODULE_10__[\"default\"]\n};\nconst UI = {\n  ErrorBoundary: _UI_ErrorBoundary__WEBPACK_IMPORTED_MODULE_11__[\"default\"],\n  ButtonInput: _UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_12__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Modules,\n  UI\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

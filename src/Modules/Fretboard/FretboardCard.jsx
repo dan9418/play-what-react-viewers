@@ -12,6 +12,7 @@ const FretboardCard = ({ defaultOpen }) => {
     const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
 
     const notes = PW.Theory.addVectorsBatch(keyCenter, intervals);
+    console.log(keyCenter, intervals, notes);
 
     const [fretLow, setFretLow] = useState(0);
     const [fretHigh, setFretHigh] = useState(12);
