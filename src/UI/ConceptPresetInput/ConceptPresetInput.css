@@ -1,3 +1,3 @@
-.concept-preset-input *:not(:last-child) {
-    margin-bottom: 4px;
+.concept-preset-input > *:not(label) {
+    margin: 0 0 8px 8px;
 }

@@ -33,8 +33,10 @@ const ConceptInput = props => {
 
     return (
         <div className="concept-input">
-            <label>Input Mode: </label>
-            <Dropdown value={inputMode} setValue={setInputMode} options={CONCEPT_INPUT_MODES_VALUES} />
+            <div className='input-mode-box'>
+                <label>Input Mode: </label>
+                <Dropdown value={inputMode} setValue={setInputMode} options={CONCEPT_INPUT_MODES_VALUES} />
+            </div>
             {inputMode.id === CONCEPT_INPUT_MODES.preset.id && <ConceptPresetInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
             {inputMode.id === CONCEPT_INPUT_MODES.intervals.id && <ConceptIntervalsInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
             {inputMode.id === CONCEPT_INPUT_MODES.math.id && <ConceptMathInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}

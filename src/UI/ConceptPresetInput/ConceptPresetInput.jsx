@@ -33,8 +33,10 @@ const ConceptPresetInput = props => {
     const setPreset = newIntervals => setIntervals(newIntervals);
 
     return (
-        <div className="concept-preset-input">
+        <div className="concept-preset-input pw-input-block-group">
+            <label>Key Center</label>
             <KeyCenterInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} />
+            <label>Preset</label>
             <PresetInput preset={preset} setPreset={setPreset} />
         </div>
     );
