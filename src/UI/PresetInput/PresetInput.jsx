@@ -41,8 +41,10 @@ const PresetInput = props => {
     const SpecificInput = presetType.component;
 
     return (
-        <div className='preset-input'>
+        <div className='preset-input pw-input-block'>
+            <label>Concept Type</label>
             <Dropdown value={presetType} setValue={setPresetType} options={PRESET_TYPES} />
+            <label>{presetType.name} Value</label>
             <Dropdown value={preset} setValue={v => setPreset(v.intervals)} options={presetType.options} />
         </div>
     );

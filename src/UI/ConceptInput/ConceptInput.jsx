@@ -29,7 +29,7 @@ const ConceptInput = props => {
     const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.preset);
 
     const notes = PW.Theory.addVectorsBatch(keyCenter, intervals);
-    const noteNames = notes.map(n => PW.Theory.getNoteName(n));
+    const noteNames = notes.map(n => <div className="note-name">{PW.Theory.getNoteName(n)}</div>);
 
     return (
         <div className="concept-input">
@@ -38,7 +38,7 @@ const ConceptInput = props => {
             {inputMode.id === CONCEPT_INPUT_MODES.preset.id && <ConceptPresetInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
             {inputMode.id === CONCEPT_INPUT_MODES.intervals.id && <ConceptIntervalsInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
             {inputMode.id === CONCEPT_INPUT_MODES.math.id && <ConceptMathInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
-            {noteNames.join(' ')}
+            <div className="pw-input-block-x">{noteNames}</div>
         </div>
     );
 }
