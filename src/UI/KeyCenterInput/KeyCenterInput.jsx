@@ -45,7 +45,7 @@ const AccidentalInput = ({ accidental, setAccidental }) => {
     );
 };
 
-const OctaveInput = ({ octave, setOctave }) => <ScalarInput value={octave} setValue={setOctave} />;
+const OctaveInput = ({ octave, setOctave }) => <ScalarInput value={octave} setValue={setOctave} className='octave-input' />;
 
 const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
 
@@ -77,12 +77,12 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
     };
 
     return (
-        <div className="key-center-input">
-            <label>Degree:</label>
+        <div className="key-center-input pw-input-block">
+            <label>Degree</label>
             <DegreeInput degree={degree} setDegree={setDegree} />
-            <label>Accidental:</label>
+            <label>Accidental</label>
             <AccidentalInput accidental={accidental} setAccidental={setAccidental} />
-            <label>Octave:</label>
+            <label>Octave</label>
             <OctaveInput octave={octave} setOctave={setOctave} />
         </div>
     );

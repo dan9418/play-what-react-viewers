@@ -48,6 +48,7 @@
 
 .pw-accent.link:hover {
     background-color: @accent-hover;
+    color: @accent-fg;
 }
 
 
@@ -80,8 +81,22 @@
     background-color: @dark-hover;
 }
 
-label {
-    display: inline-block;
+.pw-input-block {
+    background-color: #F9F9F9;
+    color: @light-fg;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 8px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.pw-input-block label {
+    display: block;
     font-weight: bold;
-    margin: 4px;
+    font-size: 90%;
+    color: #555;
 }

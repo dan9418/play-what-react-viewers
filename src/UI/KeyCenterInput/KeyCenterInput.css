@@ -1,5 +1,5 @@
 .degree-input, .accidental-input, .octave-input {
-    margin: 8px;
+    margin: 0 0 8px 8px;
 }
 
 .degree-input > .button-input {
