@@ -3,6 +3,7 @@ import './ConceptPresetInput.css';
 import KeyCenterInput from '../KeyCenterInput/KeyCenterInput';
 import PW from 'play-what';
 import PresetInput from '../PresetInput/PresetInput';
+import InputBlock from '../InputBlock/InputBlock';
 
 const CUSTOM_PRESET = {
     id: 'custom',
@@ -34,10 +35,12 @@ const ConceptPresetInput = props => {
 
     return (
         <div className="concept-preset-input pw-input-block-group">
-            <label>Key Center</label>
-            <KeyCenterInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} />
-            <label>Preset</label>
-            <PresetInput preset={preset} setPreset={setPreset} />
+            <InputBlock title="Key Center">
+                <KeyCenterInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} />
+            </InputBlock>
+            <InputBlock title="Preset">
+                <PresetInput preset={preset} setPreset={setPreset} />
+            </InputBlock>
         </div>
     );
 }

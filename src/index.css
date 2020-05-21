@@ -41,8 +41,7 @@
 .pw-dark.link:hover {
   background-color: #3d3d3d;
 }
-.pw-input-block,
-.pw-input-block-x {
+.pw-input-block > .content {
   background-color: #F9F9F9;
   color: #000;
   border-radius: 8px;
@@ -58,8 +57,10 @@
 .pw-input-block-x {
   flex-direction: row;
 }
-.pw-input-block > label {
-  display: block;
+.pw-input-block > .title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-weight: bold;
   font-size: 90%;
   color: #555;

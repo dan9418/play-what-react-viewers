@@ -1,3 +1,7 @@
+.key-center {
+    text-align: left;
+}
+
 .degree-input, .accidental-input, .octave-input {
     margin: 0 0 8px 8px;
 }

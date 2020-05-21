@@ -4,20 +4,19 @@ import './ConceptMathInput.css';
 import PW from 'play-what';
 import VectorInput from '../VectorInput/VectorInput';
 import MatrixInput from '../MatrixInput/MatrixInput';
+import InputBlock from '../InputBlock/InputBlock';
 
 const ConceptMathInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
     return (
         <div className="concept-math-input pw-input-block-group">
-            <label>a</label>
-            <div className="pw-input-block">
+            <InputBlock title="a">
                 <VectorInput value={keyCenter} setValue={setKeyCenter} />
-            </div>
-            <label>B</label>
-            <div className="pw-input-block">
+            </InputBlock>
+            <InputBlock title="B">
                 <MatrixInput value={intervals} setValue={setIntervals} />
-            </div>
+            </InputBlock>
         </div>
     );
 }

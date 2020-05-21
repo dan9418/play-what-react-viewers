@@ -77,7 +77,7 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
     };
 
     return (
-        <div className="key-center-input pw-input-block">
+        <div className="key-center-input">
             <label>Degree</label>
             <DegreeInput degree={degree} setDegree={setDegree} />
             <label>Accidental</label>

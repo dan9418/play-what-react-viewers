@@ -81,7 +81,7 @@
     background-color: @dark-hover;
 }
 
-.pw-input-block {
+.pw-input-block > .content {
     background-color: #F9F9F9;
     color: @light-fg;
     border-radius: 8px;
@@ -99,8 +99,10 @@
     flex-direction: row;
 }
 
-.pw-input-block > label {
-    display: block;
+.pw-input-block > .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-weight: bold;
     font-size: 90%;
     color: #555;
