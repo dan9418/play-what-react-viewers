@@ -26,7 +26,7 @@ const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 const ConceptInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
-    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.preset);
+    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.intervals);
 
     const notes = PW.Theory.addVectorsBatch(keyCenter, intervals);
     const noteNames = notes.map(n => <div className="note-name">{PW.Theory.getNoteName(n)}</div>);
