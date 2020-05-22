@@ -3,22 +3,21 @@
     min-width: 512px;
     max-width: 1024px;
     margin: auto;
+    border-radius: 16px;
 }
 
 .card > .title, .card > .content {
     text-align: center;
-    padding: 10px;
+    padding: 16px;
 }
 
 .card > .title {
     font-weight: bolder;
-    padding: 32px 32px 16px 32px;
-    border-bottom: 1px solid #aaa;
+    border-radius: 4px;
 }
 
 .card > .content {
     font-weight: bolder;
-    padding: 16px 32px 32px 32px;
 }
 
 .card.open > .title {
