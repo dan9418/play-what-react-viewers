@@ -40,7 +40,7 @@ const ConceptInput = props => {
             {inputMode.id === CONCEPT_INPUT_MODES.preset.id && <ConceptPresetInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
             {inputMode.id === CONCEPT_INPUT_MODES.intervals.id && <ConceptIntervalsInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
             {inputMode.id === CONCEPT_INPUT_MODES.math.id && <ConceptMathInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
-            <div className="pw-input-block-x">{noteNames}</div>
+            <div className="note-names pw-lighter">{noteNames}</div>
         </div>
     );
 }

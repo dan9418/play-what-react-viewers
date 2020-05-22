@@ -16,3 +16,11 @@
     text-align: right;
     margin: 8px;
 }
+
+.note-names {
+    font-size: 120%;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}

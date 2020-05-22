@@ -1,17 +1,11 @@
 .input-block {
-
+    width: 100%;
 }
 
 .input-block > .content {
     border-radius: 8px;
     padding: 8px;
     margin: 8px;
-    display: flex;
-    /* flex-wrap: wrap; */
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
 }
 
 .input-block > .title {
@@ -19,7 +13,10 @@
     align-items: center;
     justify-content: space-between;
     font-weight: bold;
-    font-size: 90%;
-    color: #555;
-    margin: 4px;
+    font-size: 110%;
+    padding: 8px 8px 8px 0;
+}
+
+.input-block label {
+    display: block;
 }

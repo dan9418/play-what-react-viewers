@@ -31,20 +31,20 @@
 }
 /* Neutral */
 .pw-light {
-  background-color: #EBEBEB;
+  background-color: #DDD;
   color: #333;
   border-color: #333;
 }
 .pw-light.pw-hov:hover {
-  background-color: #d2d2d2;
+  background-color: #c4c4c4;
 }
 .pw-lighter {
-  background-color: #ffffff;
+  background-color: #f7f7f7;
   color: #333;
   border-color: #333;
 }
 .pw-lighter.pw-hov:hover {
-  background-color: #e6e6e6;
+  background-color: #dddddd;
 }
 .pw-lightest {
   background-color: #ffffff;
@@ -69,17 +69,6 @@
 }
 .pw-dark.pw-hov:hover {
   background-color: #3d3d3d;
-}
-.pw-input-block-group {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column;
-}
-.pw-input-block-group > label {
-  font-size: 110%;
-  color: #F46036;
-  margin: 8px;
 }
 /* States */
 .pw-disabled {

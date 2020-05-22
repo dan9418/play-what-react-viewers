@@ -6,12 +6,12 @@ const InputBlock = props => {
     const [open, setOpen] = useState(true);
 
     return (
-        <div className="input-block pw-light">
-            <div className="title" onClick={() => setOpen(!open)}>
-                <label>{props.title}</label>
+        <div className="input-block">
+            <div className="title pw-hov" onClick={() => setOpen(!open)}>
+                {props.title}
                 <div>{open ? '-' : '+'}</div>
             </div>
-            <div className="content">
+            <div className="content pw-lighter">
                 {open && props.children}
             </div>
         </div>
