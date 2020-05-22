@@ -1,70 +1,74 @@
+/* Conditions */
+.pw-hov {
+  cursor: pointer;
+}
+/* Theme */
 .pw-primary {
   background-color: #414770;
   color: #FFF;
+  border-color: #FFF;
 }
-.pw-primary.link:hover {
+.pw-primary.pw-hov:hover {
   background-color: #2e3350;
 }
 .pw-secondary {
   background-color: #5B85AA;
   color: #FFF;
+  border-color: #FFF;
 }
-.pw-secondary.link:hover {
+.pw-secondary.pw-hov:hover {
   background-color: #486b8a;
 }
 .pw-accent {
   background-color: #F46036;
   color: #FFF;
+  border-color: #FFF;
 }
-.pw-accent.link:hover {
-  background-color: #ea3e0d;
-  color: #FFF;
+.pw-accent.pw-hov:hover {
+  background-color: #FFF;
+  color: #F46036;
+  border-color: #F46036;
 }
+/* Neutral */
 .pw-light {
   background-color: #EBEBEB;
   color: #000;
+  border-color: #000;
 }
-.pw-light.link:hover {
+.pw-light.pw-hov:hover {
   background-color: #d2d2d2;
+}
+.pw-lighter {
+  background-color: #ffffff;
+  color: #000;
+  border-color: #000;
+}
+.pw-lighter.pw-hov:hover {
+  background-color: #e6e6e6;
+}
+.pw-lightest {
+  background-color: #ffffff;
+  color: #000;
+  border-color: #000;
+}
+.pw-lightest.pw-hov:hover {
+  background-color: #e6e6e6;
 }
 .pw-medium {
   background-color: #C0C0C0;
   color: #000;
+  border-color: #000;
 }
-.pw-medium.link:hover {
+.pw-medium.pw-hov:hover {
   background-color: #a7a7a7;
 }
 .pw-dark {
   background-color: #232323;
   color: #FFF;
+  border-color: #FFF;
 }
-.pw-dark.link:hover {
+.pw-dark.pw-hov:hover {
   background-color: #3d3d3d;
-}
-.pw-input-block > .content {
-  background-color: #F9F9F9;
-  color: #000;
-  border-radius: 8px;
-  padding: 8px;
-  margin: 8px;
-  display: flex;
-  /* flex-wrap: wrap; */
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  width: 100%;
-}
-.pw-input-block-x {
-  flex-direction: row;
-}
-.pw-input-block > .title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-weight: bold;
-  font-size: 90%;
-  color: #555;
-  margin: 4px;
 }
 .pw-input-block-group {
   display: flex;
@@ -76,4 +80,9 @@
   font-size: 110%;
   color: #F46036;
   margin: 8px;
+}
+/* States */
+.pw-disabled {
+  background-color: #C0C0C0;
+  color: #808080;
 }

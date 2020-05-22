@@ -6,7 +6,7 @@ const InputBlock = props => {
     const [open, setOpen] = useState(true);
 
     return (
-        <div className="pw-input-block">
+        <div className="input-block pw-light">
             <div className="title" onClick={() => setOpen(!open)}>
                 <label>{props.title}</label>
                 <div>{open ? '-' : '+'}</div>

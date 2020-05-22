@@ -15,6 +15,12 @@
 @light-fg: #000;
 @light-hover: darken(@light, 10%);
 
+@lighter: lighten(@light, 10%);
+@lighter-hover: darken(@lighter, 10%);
+
+@lightest: lighten(@light, 20%);
+@lightest-hover: darken(@lightest, 10%);
+
 @medium: #C0C0C0;
 @medium-fg: #000;
 @medium-hover: darken(@medium, 10%);
@@ -23,51 +29,79 @@
 @dark-fg: #FFF;
 @dark-hover: lighten(@dark, 10%);
 
+
+/* Conditions */
+
+.pw-hov {
+    cursor: pointer;
+}
+
+/* Theme */
+
 .pw-primary {
     background-color: @primary;
     color: @primary-fg;
+    border-color: @primary-fg;
 }
-
-.pw-primary.link:hover {
+.pw-primary.pw-hov:hover {
     background-color: @primary-hover;
 }
 
 .pw-secondary {
     background-color: @secondary;
     color: @secondary-fg;
+    border-color: @secondary-fg
 }
-
-.pw-secondary.link:hover {
+.pw-secondary.pw-hov:hover {
     background-color: @secondary-hover;
 }
 
 .pw-accent {
     background-color: @accent;
     color: @accent-fg;
+    border-color: @accent-fg;
+}
+.pw-accent.pw-hov:hover {
+    background-color: @accent-fg;
+    color: @accent;
+    border-color: @accent;
 }
 
-.pw-accent.link:hover {
-    background-color: @accent-hover;
-    color: @accent-fg;
-}
-
+/* Neutral */
 
 .pw-light {
     background-color: @light;
     color: @light-fg;
+    border-color: @light-fg;
 }
-
-.pw-light.link:hover {
+.pw-light.pw-hov:hover {
     background-color: @light-hover;
 }
 
+.pw-lighter {
+    background-color: @lighter;
+    color: @light-fg;
+    border-color: @light-fg
+}
+.pw-lighter.pw-hov:hover {
+    background-color: @lighter-hover;
+}
+
+.pw-lightest {
+    background-color: @lightest;
+    color: @light-fg;
+    border-color: @light-fg
+}
+.pw-lightest.pw-hov:hover {
+    background-color: @lightest-hover;
+}
 
 .pw-medium {
     background-color: @medium;
     color: @medium-fg;
+    border-color: @medium-fg
 }
-
-.pw-medium.link:hover {
+.pw-medium.pw-hov:hover {
     background-color: @medium-hover;
 }
 
@@ -75,39 +109,13 @@
 .pw-dark {
     background-color: @dark;
     color: @dark-fg;
+    border-color: @dark-fg;
 }
-
-.pw-dark.link:hover {
+.pw-dark.pw-hov:hover {
     background-color: @dark-hover;
 }
 
-.pw-input-block > .content {
-    background-color: #F9F9F9;
-    color: @light-fg;
-    border-radius: 8px;
-    padding: 8px;
-    margin: 8px;
-    display: flex;
-    /* flex-wrap: wrap; */
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    width: 100%;
-}
 
-.pw-input-block-x:extend(.pw-input-block) {
-    flex-direction: row;
-}
-
-.pw-input-block > .title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 90%;
-    color: #555;
-    margin: 4px;
-}
 
 .pw-input-block-group {
     display: flex;
@@ -115,9 +123,15 @@
     justify-content: center;
     flex-direction: column;
 }
-
 .pw-input-block-group > label {
     font-size: 110%;
     color: @accent;
     margin: 8px;
+}
+
+/* States */
+
+.pw-disabled {
+    background-color: @medium;
+    color: darken(@medium, 25%);
 }
