@@ -32,32 +32,32 @@
 /* Neutral */
 .pw-light {
   background-color: #EBEBEB;
-  color: #000;
-  border-color: #000;
+  color: #333;
+  border-color: #333;
 }
 .pw-light.pw-hov:hover {
   background-color: #d2d2d2;
 }
 .pw-lighter {
   background-color: #ffffff;
-  color: #000;
-  border-color: #000;
+  color: #333;
+  border-color: #333;
 }
 .pw-lighter.pw-hov:hover {
   background-color: #e6e6e6;
 }
 .pw-lightest {
   background-color: #ffffff;
-  color: #000;
-  border-color: #000;
+  color: #333;
+  border-color: #C0C0C0;
 }
 .pw-lightest.pw-hov:hover {
   background-color: #e6e6e6;
 }
 .pw-medium {
   background-color: #C0C0C0;
-  color: #000;
-  border-color: #000;
+  color: #333;
+  border-color: #333;
 }
 .pw-medium.pw-hov:hover {
   background-color: #a7a7a7;

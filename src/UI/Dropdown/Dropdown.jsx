@@ -6,7 +6,7 @@ const Dropdown = props => {
 
     return (
         <select
-            className='dropdown-input'
+            className='dropdown-input pw-lightest'
             onChange={e => setValue(options[e.target.selectedIndex])}
             value={value ? value.id : ''}
         >
