@@ -5,9 +5,9 @@ import PW from 'play-what';
 import Dropdown from '../Dropdown/Dropdown';
 import LabeledInput from '../LabeledInput/LabeledInput';
 
-const CUSTOM_PRESET = {
-    id: 'custom',
-    name: 'Custom',
+const UKNOWN_PRESET = {
+    id: 'unknown',
+    name: 'Unknown',
     intervals: []
 };
 
@@ -15,22 +15,22 @@ const PRESET_TYPES = [
     {
         id: 'intervalPair',
         name: 'Interval Pair',
-        options: [...PW.Presets.INTERVAL_PAIR_VALUES, CUSTOM_PRESET]
+        options: [...PW.Presets.INTERVAL_PAIR_VALUES, UKNOWN_PRESET]
     },
     {
         id: 'chord',
         name: 'Chord',
-        options: [...PW.Presets.CHORD_VALUES, CUSTOM_PRESET]
+        options: [...PW.Presets.CHORD_VALUES, UKNOWN_PRESET]
     },
     {
         id: 'scale',
         name: 'Scale',
-        options: [...PW.Presets.SCALE_VALUES, CUSTOM_PRESET]
+        options: [...PW.Presets.SCALE_VALUES, UKNOWN_PRESET]
     },
     {
         id: 'mode',
         name: 'Mode',
-        options: [...PW.Presets.QUICK_MODE_VALUES, CUSTOM_PRESET]
+        options: [...PW.Presets.QUICK_MODE_VALUES, UKNOWN_PRESET]
     }
 ];
 

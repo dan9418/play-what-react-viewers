@@ -6,19 +6,28 @@ import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
 import ConceptIntervalsInput from '../ConceptIntervalsInput/ConceptIntervalsInput';
 import ConceptMathInput from '../ConceptMathInput/ConceptMathInput';
 import Dropdown from '../Dropdown/Dropdown';
+import ConceptChartInput from '../ConceptChartInput/ConceptChartInput';
 
 const CONCEPT_INPUT_MODES = {
     preset: {
         id: 'preset',
-        name: 'Preset'
+        name: 'Preset',
+        component: ConceptPresetInput
     },
     intervals: {
         id: 'intervals',
-        name: 'Intervals'
+        name: 'Intervals',
+        component: ConceptIntervalsInput
     },
     math: {
         id: 'math',
-        name: 'Math'
+        name: 'Math',
+        component: ConceptMathInput
+    },
+    chart: {
+        id: 'chart',
+        name: 'Chart',
+        component: ConceptChartInput
     }
 }
 const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
@@ -26,10 +35,12 @@ const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 const ConceptInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
-    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.preset);
+    const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.chart);
 
     const notes = PW.Theory.addVectorsBatch(keyCenter, intervals);
     const noteNames = notes.map((n, i) => <div key={i} className="note-name">{PW.Theory.getNoteName(n)}</div>);
+
+    const Component = inputMode.component;
 
     return (
         <div className="concept-input">
@@ -38,9 +49,7 @@ const ConceptInput = props => {
                 <Dropdown value={inputMode} setValue={setInputMode} options={CONCEPT_INPUT_MODES_VALUES} />
             </div>
             <div className="note-names pw-lighter">{noteNames}</div>
-            {inputMode.id === CONCEPT_INPUT_MODES.preset.id && <ConceptPresetInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
-            {inputMode.id === CONCEPT_INPUT_MODES.intervals.id && <ConceptIntervalsInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
-            {inputMode.id === CONCEPT_INPUT_MODES.math.id && <ConceptMathInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />}
+            <Component keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
         </div>
     );
 }

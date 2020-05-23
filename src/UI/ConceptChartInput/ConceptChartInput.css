@@ -1,0 +1,43 @@
+.concept-chart-input {
+    text-align: center;
+}
+
+.concept-chart-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+}
+
+.concept-chart-col {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: left;
+    grid-gap: 4px;
+    position: relative;
+}
+
+.concept-chart-col .name {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px
+}
+
+.concept-chart-col .edit, .concept-chart-col .remove {
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.concept-chart-col .edit-panel {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-height: 128px;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+}
