@@ -9,7 +9,7 @@ const MatrixInput = props => {
     const { value, setValue } = props;
 
     const vectors = value.map((v, i) => {
-        const setVectorValue = r => setValue([...value.slice(0, i), r, ...(value.slice(i + 1))]);
+        const setVectorValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
         return <VectorInput key={i} value={v} setValue={setVectorValue} />;
     });
 

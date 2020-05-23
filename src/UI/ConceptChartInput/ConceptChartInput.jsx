@@ -4,10 +4,15 @@ import PW from 'play-what';
 import ButtonInput from '../ButtonInput/ButtonInput';
 import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
 
-const ConceptChartCol = props => {
-    const { a, B } = props.col;
-    const name = PW.Theory.findPreset(B).name;
+const ConceptChartCol = ({ col, setCol }) => {
     const [editing, setEditing] = useState(false);
+    const { a, B } = col;
+    const keyCenter = PW.Theory.getNoteName(a);
+    const id = PW.Theory.findPreset(B).id;
+    const name = `${keyCenter} ${id}`;
+
+    const setKeyCenter = keyCenter => setCol({ a: keyCenter, B: B });
+    const setIntervals = intervals => setCol({ a: a, B: intervals });
 
     return (
         <div className="concept-chart-col">
@@ -26,7 +31,9 @@ const ConceptChartCol = props => {
                 <div className="edit-panel pw-secondary">
                     <ConceptPresetInput
                         keyCenter={a}
+                        setKeyCenter={setKeyCenter}
                         intervals={B}
+                        setIntervals={setIntervals}
                     />
                 </div>
             }
@@ -34,12 +41,14 @@ const ConceptChartCol = props => {
     );
 }
 
-const ConceptChartRow = props => {
+const ConceptChartRow = ({ row, setRow }) => {
+    const colComponents = row.map((c, i) => {
+        const setCol = col => setRow([...row.slice(0, i), col, ...row.slice(i + 1)]);
+        return <ConceptChartCol key={i} col={c} setCol={setCol} />;
+    });
     return (
         <div className="concept-chart-row pw-medium">
-            {props.row.map((c, i) => {
-                return <ConceptChartCol key={i} {...props} col={c} />;
-            })}
+            {colComponents}
             <ButtonInput onClick={() => null}>+</ButtonInput>
         </div>
     );
@@ -50,11 +59,14 @@ const ConceptChartInput = props => {
     const DEFAULT_ROW = [DEFAULT_COL]
     const [rows, setRows] = useState([DEFAULT_ROW]);
 
+    const rowComponents = rows.map((r, i) => {
+        const setRow = row => setRows([...rows.slice(0, i), row, ...rows.slice(i + 1)]);
+        return <ConceptChartRow key={i} row={r} setRow={setRow} />;
+    });
+
     return (
         <div className="concept-chart-input">
-            {rows.map((c, i) => {
-                return <ConceptChartRow key={i} {...props} row={rows[i]} />;
-            })}
+            {rowComponents}
             <ButtonInput onClick={() => setRows([...rows, DEFAULT_ROW])}>+</ButtonInput>
         </div>
     );
