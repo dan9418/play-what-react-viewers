@@ -1,6 +1,6 @@
 .scalar-input {
     height: 40px;
-    width: 50px;
+    min-width: 50px;
     line-height: 40px;
     font-size: 16px;
     outline: none;

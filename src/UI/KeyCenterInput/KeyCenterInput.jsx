@@ -4,7 +4,8 @@ import './KeyCenterInput.css';
 import PW from 'play-what';
 import ButtonInput from '../ButtonInput/ButtonInput';
 import ScalarInput from '../ScalarInput/ScalerInput';
-
+import LabeledInput from '../LabeledInput/LabeledInput'
+;
 const DegreeInput = ({ degree, setDegree }) => {
     const allDegrees = PW.Theory.getAllDegrees();
     return (
@@ -78,12 +79,15 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
 
     return (
         <div className="key-center-input">
-            <label>Degree</label>
-            <DegreeInput degree={degree} setDegree={setDegree} />
-            <label>Accidental</label>
-            <AccidentalInput accidental={accidental} setAccidental={setAccidental} />
-            <label>Octave</label>
-            <OctaveInput octave={octave} setOctave={setOctave} />
+            <LabeledInput label="Degree">
+                <DegreeInput degree={degree} setDegree={setDegree} />
+            </LabeledInput>
+            <LabeledInput label="Accidental">
+                <AccidentalInput accidental={accidental} setAccidental={setAccidental} />
+            </LabeledInput>
+            <LabeledInput label="Octave">
+                <OctaveInput octave={octave} setOctave={setOctave} />
+            </LabeledInput>
         </div>
     );
 };

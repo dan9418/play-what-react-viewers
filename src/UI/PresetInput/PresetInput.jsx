@@ -3,6 +3,7 @@ import './PresetInput.css';
 
 import PW from 'play-what';
 import Dropdown from '../Dropdown/Dropdown';
+import LabeledInput from '../LabeledInput/LabeledInput';
 
 const CUSTOM_PRESET = {
     id: 'custom',
@@ -42,10 +43,12 @@ const PresetInput = props => {
 
     return (
         <div className='preset-input pw-input-block'>
-            <label>Concept Type</label>
-            <Dropdown value={presetType} setValue={setPresetType} options={PRESET_TYPES} />
-            <label>{presetType.name} Value</label>
-            <Dropdown value={preset} setValue={v => setPreset(v.intervals)} options={presetType.options} />
+            <LabeledInput label="Preset Type">
+                <Dropdown value={presetType} setValue={setPresetType} options={PRESET_TYPES} />
+            </LabeledInput>
+            <LabeledInput label={presetType.name} >
+                <Dropdown value={preset} setValue={v => setPreset(v.intervals)} options={presetType.options} />
+            </LabeledInput>
         </div>
     );
 }

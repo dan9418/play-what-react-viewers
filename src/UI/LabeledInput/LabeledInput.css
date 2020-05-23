@@ -1,0 +1,12 @@
+.labeled-input {
+    width: 100%;
+}
+
+.labeled-input > .content {
+    margin-left: 8px;
+}
+
+.labeled-input > label {
+    display: block;
+    margin: 4px 0;
+}

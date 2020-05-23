@@ -7,6 +7,7 @@ import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import SwitchInput from '../../UI/SwitchInput/SwitchInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
+import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
 const FretboardCard = ({ defaultOpen }) => {
     const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
@@ -31,16 +32,20 @@ const FretboardCard = ({ defaultOpen }) => {
             <ConceptInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
 
             <InputBlock title="Fret Range">
-                <label>Low Fret:</label>
-                <ScalarInput value={fretLow} setValue={setFretLow} />
-                <label>High Fret:</label>
-                <ScalarInput value={fretHigh} setValue={setFretHigh} />
+                <LabeledInput label="Low Fret">
+                    <ScalarInput value={fretLow} setValue={setFretLow} />
+                </LabeledInput>
+                <LabeledInput label="High Fret">
+                    <ScalarInput value={fretHigh} setValue={setFretHigh} />
+                </LabeledInput>
             </InputBlock>
             <InputBlock title="Labels">
-                <label>Show Dots:</label>
-                <SwitchInput value={showDots} setValue={setShowDots} />
-                <label>Show Fret Numbers:</label>
-                <SwitchInput value={showFretNumbers} setValue={setShowFretNumbers} />
+                <LabeledInput label="Fret Dots">
+                    <SwitchInput value={showDots} setValue={setShowDots} />
+                </LabeledInput>
+                <LabeledInput label="Fret Numbers">
+                    <SwitchInput value={showFretNumbers} setValue={setShowFretNumbers} />
+                </LabeledInput>
             </InputBlock>
         </Card>
     )

@@ -17,6 +17,6 @@
     padding: 8px 8px 8px 0;
 }
 
-.input-block label {
+.input-block > label {
     display: block;
 }
