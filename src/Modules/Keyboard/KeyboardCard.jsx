@@ -4,6 +4,8 @@ import Card from '../../UI/Card/Card';
 import PW from 'play-what';
 import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
+import InputBlock from '../../UI/InputBlock/InputBlock';
+import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
 const KeyboardCard = ({ defaultOpen }) => {
     const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
@@ -16,7 +18,7 @@ const KeyboardCard = ({ defaultOpen }) => {
 
     return (
         <Card title="Keyboard" defaultOpen={defaultOpen}>
-            <Keyboard 
+            <Keyboard
                 notes={notes}
                 keyLow={keyLow}
                 keyHigh={keyHigh}
@@ -24,10 +26,14 @@ const KeyboardCard = ({ defaultOpen }) => {
 
             <ConceptInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
 
-            <label>Low Key:</label>
-            <ScalarInput value={keyLow} setValue={setKeyLow} />
-            <label>High Key:</label>
-            <ScalarInput value={keyHigh} setValue={setKeyHigh} />
+            <InputBlock title="Key Range">
+                <LabeledInput label="Low">
+                    <ScalarInput value={keyLow} setValue={setKeyLow} />
+                </LabeledInput>
+                <LabeledInput label="High">
+                    <ScalarInput value={keyHigh} setValue={setKeyHigh} />
+                </LabeledInput>
+            </InputBlock>
         </Card>
     )
 }

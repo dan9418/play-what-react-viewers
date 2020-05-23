@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import Card from '../../UI/Card/Card';
 import TrueScale from './TrueScale';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
+import InputBlock from '../../UI/InputBlock/InputBlock';
+import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
 const TrueScaleCard = ({ defaultOpen }) => {
     const [fundamental, setFundamental] = useState(100);
@@ -11,11 +13,15 @@ const TrueScaleCard = ({ defaultOpen }) => {
     return (
         <Card title="TrueScale" defaultOpen={defaultOpen}>
             <TrueScale fundamental={fundamental} n={n} />
-            
-            <label>Fundamental:</label>
-            <ScalarInput value={fundamental} setValue={setFundamental} />
-            <label>n:</label>
-            <ScalarInput value={n} setValue={setN} />
+
+            <InputBlock title="Configuration">
+                <LabeledInput label="Fundamental">
+                    <ScalarInput value={fundamental} setValue={setFundamental} />
+                </LabeledInput>
+                <LabeledInput label="n">
+                    <ScalarInput value={n} setValue={setN} />
+                </LabeledInput>
+            </InputBlock>
         </Card>
     )
 }
