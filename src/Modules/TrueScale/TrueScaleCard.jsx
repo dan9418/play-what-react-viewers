@@ -6,12 +6,12 @@ import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
-const TrueScaleCard = ({ defaultOpen }) => {
+const TrueScaleCard = ({ defaultOpen, back }) => {
     const [fundamental, setFundamental] = useState(100);
     const [n, setN] = useState(32);
 
     return (
-        <Card title="TrueScale" defaultOpen={defaultOpen}>
+        <Card title="TrueScale" defaultOpen={defaultOpen} back={back}>
             <TrueScale fundamental={fundamental} n={n} />
 
             <InputBlock title="Configuration">

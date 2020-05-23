@@ -14,13 +14,13 @@ const VECTORS = [
     { d: 6, p: 11 }
 ];
 
-const GraphCard = ({ defaultOpen }) => {
+const GraphCard = ({ defaultOpen, back }) => {
     const [max, setMax] = useState(MAX_VECTOR);
     const [origin, setOrigin] = useState(ORIGIN);
     const [vectors, setVectors] = useState(VECTORS);
 
     return (
-        <Card title="Graph" defaultOpen={defaultOpen}>
+        <Card title="Graph" defaultOpen={defaultOpen} back={back}>
             <div className="graph-card">
                 <div className='left'>
                     <ConceptInput keyCenter={origin} setKeyCenter={setOrigin} intervals={vectors} setIntervals={setVectors} />

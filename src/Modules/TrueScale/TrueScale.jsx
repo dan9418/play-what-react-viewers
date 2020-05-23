@@ -45,7 +45,7 @@ const getButtons = (fundamental, n) => {
 
 const DEFAULT_PROPS = {
     fundamental: 100,
-    n: 8
+    n: 16
 }
 const TrueScale = props => {
     const config = { ...DEFAULT_PROPS, ...props };

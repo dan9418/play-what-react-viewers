@@ -14,14 +14,14 @@ const DATA_B = { id: 'b', name: 'b', p: 1, d: 1 };
 
 const DATA = [DATA_A, DATA_B];
 
-const InputDocsCard = ({ defaultOpen }) => {
+const InputDocsCard = ({ defaultOpen, back }) => {
     const [dropdownValue, setDropdownValue] = useState(DATA_A);
     const [switchValue, setSwitchValue] = useState(true);
     const [scalarValue, setScalarValue] = useState(0);
     const [vectorValue, setVectorValue] = useState(DATA_A);
 
     return (
-        <Card title="Input Docs" defaultOpen={defaultOpen}>
+        <Card title="Input Docs" defaultOpen={defaultOpen} back={back}>
             <div className="row">
                 <DropdownInput options={DATA} value={dropdownValue} setValue={setDropdownValue} />
             </div>

@@ -6,12 +6,12 @@ import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
-const HarmonicSeriesCard = ({ defaultOpen }) => {
+const HarmonicSeriesCard = ({ defaultOpen, back }) => {
     const [fundamental, setFundamental] = useState(100);
     const [n, setN] = useState(16);
 
     return (
-        <Card title="HarmonicSeries" defaultOpen={defaultOpen}>
+        <Card title="HarmonicSeries" defaultOpen={defaultOpen} back={back}>
             <HarmonicSeries fundamental={fundamental} n={n} />
 
             <InputBlock title="Configuration">

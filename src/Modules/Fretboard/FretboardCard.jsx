@@ -9,7 +9,7 @@ import SwitchInput from '../../UI/SwitchInput/SwitchInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
-const FretboardCard = ({ defaultOpen }) => {
+const FretboardCard = ({ defaultOpen, back }) => {
     const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
     const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
 
@@ -19,7 +19,7 @@ const FretboardCard = ({ defaultOpen }) => {
     const [showFretNumbers, setShowFretNumbers] = useState(true);
 
     return (
-        <Card title="Fretboard" defaultOpen={defaultOpen}>
+        <Card title="Fretboard" defaultOpen={defaultOpen} back={back}>
             <Fretboard
                 keyCenter={keyCenter}
                 intervals={intervals}

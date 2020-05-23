@@ -7,7 +7,7 @@ import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
-const KeyboardCard = ({ defaultOpen }) => {
+const KeyboardCard = ({ defaultOpen, back }) => {
     const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
     const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
 
@@ -17,7 +17,7 @@ const KeyboardCard = ({ defaultOpen }) => {
     const notes = PW.Theory.addVectorsBatch(keyCenter, intervals)
 
     return (
-        <Card title="Keyboard" defaultOpen={defaultOpen}>
+        <Card title="Keyboard" defaultOpen={defaultOpen} back={back}>
             <Keyboard
                 notes={notes}
                 keyLow={keyLow}
