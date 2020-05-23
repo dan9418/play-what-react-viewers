@@ -18,9 +18,3 @@
 .key-center-input .button-input:last-child {
     border-radius: 0 4px 4px 0;
 }
-
-.degree-input, .accidental-input, .octave-input {
-    margin: 0 0 8px 8px;
-}
-
-
