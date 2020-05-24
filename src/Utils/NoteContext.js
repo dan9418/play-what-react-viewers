@@ -65,11 +65,9 @@ export const NoteContextProvider = props => {
         setTempo,
         play: () => setPlay(true),
         pause: () => setPlay(false)
-    }
+    };
 
-    return (
-        <NoteContext.Provider value={routeContextValue}>{props.children}</NoteContext.Provider>
-    );
+    return <NoteContext.Provider value={routeContextValue}>{props.children}</NoteContext.Provider>;
 };
 
 export const NoteContextConsumer = NoteContext.Consumer;
