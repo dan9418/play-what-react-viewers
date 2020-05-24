@@ -35,8 +35,6 @@ const FretboardCard = ({ defaultOpen, back }) => {
                     {noteContext =>
                         <>
                             <Fretboard
-                                keyCenter={noteContext.concept.a}
-                                intervals={noteContext.concept.B}
                                 fretLow={fretLow}
                                 fretHigh={fretHigh}
                                 showDots={showDots}

@@ -16,8 +16,6 @@ export const Fret = (props) => {
                 noteIndex={props.noteIndex}
                 minIndex={props.minIndex}
                 maxIndex={props.maxIndex}
-                keyCenter={props.keyCenter}
-                intervals={props.intervals}
             />
             {props.showFretDots && <div className='fret-dots'>{getDotsForFret(props.fretNumber)}</div>}
         </div>
