@@ -25,6 +25,8 @@ NoteContext.displayName = 'NoteContext';
 
 export const NoteContextProvider = props => {
     const [pulses, setPulses] = useState(props.initPulses || DEFAULT_PULSES);
+    const [beatIndex, setBeatIndex] = useState(0);
+    const [nextPulseBeat, setNextPulseBeat] = useState(0);
     const [pulseIndex, setPulseIndex] = useState(0);
     const [timeSignature, setTimeSignature] = useState(props.initTimeSignature || DEFAULT_TIME_SIGNATURE);
     const [tempo, setTempo] = useState(props.tempo || DEFAULT_TEMPO);
@@ -35,21 +37,28 @@ export const NoteContextProvider = props => {
     const concept = pulses[pulseIndex];
     const nextConcept = isLast ? pulses[0] : pulses[pulseIndex + 1];
 
+    const beatDuration = 60 / tempo * 1000;
+
     if (play) {
-        const beatDuration = 60 / tempo * 1000;
-        const pulseDuration = beatDuration * concept.beats;
-        const notes = PW.Theory.addVectorsBatch(concept.a, concept.B);
-        const freqs = PW.Theory.getFrequencies(notes);
-        PW.Sound.playNotes(freqs, pulseDuration / 2000);
         if (!isLast) {
+            const notes = PW.Theory.addVectorsBatch(concept.a, concept.B);
+            const freqs = PW.Theory.getFrequencies(notes);
+
+            if (beatIndex === nextPulseBeat) {
+                const pulseDuration = beatDuration * concept.beats / 2000;
+                PW.Sound.playNotes(freqs, pulseDuration);
+                setNextPulseBeat(beatIndex + concept.beats);
+                setPulseIndex(pulseIndex + 1)
+            }
             setTimeout(
-                () => setPulseIndex(pulseIndex + 1),
-                pulseDuration
+                () => setBeatIndex(beatIndex + 1),
+                beatDuration
             );
         }
     }
 
     const routeContextValue = {
+        beatIndex,
         concept,
         nextConcept,
         tempo,

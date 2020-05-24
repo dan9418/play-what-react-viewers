@@ -17,6 +17,7 @@ const PlaybackControls = ({ noteContext }) => {
             <ButtonInput className='pw-secondary' onClick={noteContext.play}>Play</ButtonInput>
             <ButtonInput className='pw-secondary' onClick={noteContext.pause}>Pause</ButtonInput>
             <ScalarInput value={noteContext.tempo} setValue={noteContext.setTempo} />
+            <div className={`blinker ${noteContext.beatIndex % 2 === 0 ? 'pulse' : ''}`} />
         </div>
     );
 }
