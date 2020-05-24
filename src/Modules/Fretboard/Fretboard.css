@@ -81,3 +81,13 @@
 	height: 100%;
 	cursor: pointer;
 }
+
+
+/* Playback Controls */
+
+.playback-controls {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	padding: 16px;
+}

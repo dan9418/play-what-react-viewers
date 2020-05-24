@@ -11,12 +11,13 @@ import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 import useNoteContext, { NoteContextProvider, NoteContextConsumer } from '../../Utils/NoteContext';
 import ButtonInput from '../../UI/ButtonInput/ButtonInput';
 
-const Controls = ({ noteContext }) => {
+const PlaybackControls = ({ noteContext }) => {
     return (
-        <>
-            <ButtonInput onClick={noteContext.play}>Play</ButtonInput>
-            <ButtonInput onClick={noteContext.pause}>Pause</ButtonInput>
-        </>
+        <div className='playback-controls'>
+            <ButtonInput className='pw-secondary' onClick={noteContext.play}>Play</ButtonInput>
+            <ButtonInput className='pw-secondary' onClick={noteContext.pause}>Pause</ButtonInput>
+            <ScalarInput value={noteContext.tempo} setValue={noteContext.setTempo} />
+        </div>
     );
 }
 
@@ -41,7 +42,7 @@ const FretboardCard = ({ defaultOpen, back }) => {
                                 showFretNumbers={showFretNumbers}
                             />
 
-                            <Controls noteContext={noteContext} />
+                            <PlaybackControls noteContext={noteContext} />
 
                             <ConceptInput
                                 keyCenter={noteContext.concept.a}

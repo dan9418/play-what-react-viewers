@@ -52,6 +52,8 @@ export const NoteContextProvider = props => {
     const routeContextValue = {
         concept,
         nextConcept,
+        tempo,
+        setTempo,
         play: () => setPlay(true),
         pause: () => setPlay(false)
     }
