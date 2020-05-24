@@ -7,144 +7,6 @@ import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.intervals };
 const DEFAULT_ROW = [DEFAULT_COL];
 
-const AUTUMN_LEAVES = [
-    // A
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.C,
-            B: PW.Presets.CHORD.Min7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.F,
-            B: PW.Presets.CHORD.Dom7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.Bb,
-            B: PW.Presets.CHORD.Maj7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.Eb,
-            B: PW.Presets.CHORD.Maj7.intervals
-        }
-    ],
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.A,
-            B: PW.Presets.CHORD.HalfDim7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.D,
-            B: PW.Presets.CHORD.Dom7b13.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.G,
-            B: PW.Presets.CHORD.Min6.intervals
-        }
-    ],
-    // A
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.C,
-            B: PW.Presets.CHORD.Min7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.F,
-            B: PW.Presets.CHORD.Dom7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.Bb,
-            B: PW.Presets.CHORD.Maj7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.Eb,
-            B: PW.Presets.CHORD.Maj7.intervals
-        }
-    ],
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.A,
-            B: PW.Presets.CHORD.HalfDim7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.D,
-            B: PW.Presets.CHORD.Dom7b13.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.G,
-            B: PW.Presets.CHORD.Maj7.intervals
-        }
-    ],
-    // B
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.A,
-            B: PW.Presets.CHORD.HalfDim7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.D,
-            B: PW.Presets.CHORD.Dom7b13.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.G,
-            B: PW.Presets.CHORD.Min6.intervals
-        }
-    ],
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.C,
-            B: PW.Presets.CHORD.Min7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.F,
-            B: PW.Presets.CHORD.Dom7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.Bb,
-            B: PW.Presets.CHORD.Maj7.intervals
-        }
-    ],
-    // C
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.A,
-            B: PW.Presets.CHORD.HalfDim7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.D,
-            B: PW.Presets.CHORD.Dom7b13.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.G,
-            B: PW.Presets.CHORD.Min7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.C,
-            B: PW.Presets.CHORD.Dom7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.F,
-            B: PW.Presets.CHORD.Min7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.Bb,
-            B: PW.Presets.CHORD.Dom7.intervals
-        }
-    ],
-    [
-        {
-            a: PW.Presets.KEY_CENTERS.A,
-            B: PW.Presets.CHORD.HalfDim7.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.D,
-            B: PW.Presets.CHORD.Dom7b13.intervals
-        },
-        {
-            a: PW.Presets.KEY_CENTERS.G,
-            B: PW.Presets.CHORD.Min7.intervals
-        }
-    ]
-]
 
 const ConceptChartCol = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
@@ -210,7 +72,7 @@ const ConceptChartRow = props => {
 }
 
 const ConceptChartInput = props => {
-    const [rows, setRows] = useState(AUTUMN_LEAVES);
+    const [rows, setRows] = useState([]);
 
     const rowComponents = rows.map((r, i) => {
         const setRow = row => setRows([...rows.slice(0, i), row, ...rows.slice(i + 1)]);
@@ -219,7 +81,7 @@ const ConceptChartInput = props => {
 
     return (
         <div className="concept-chart-input">
-            {rowComponents}
+            {/*rowComponents*/}
             <ButtonInput onClick={() => setRows([...rows, DEFAULT_ROW])}>+</ButtonInput>
         </div>
     );
