@@ -8,10 +8,19 @@ import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import SwitchInput from '../../UI/SwitchInput/SwitchInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
+import useNoteContext, { NoteContextProvider, NoteContextConsumer } from '../../Utils/NoteContext';
+import ButtonInput from '../../UI/ButtonInput/ButtonInput';
+
+const Controls = ({ noteContext }) => {
+    return (
+        <>
+            <ButtonInput onClick={noteContext.play}>Play</ButtonInput>
+            <ButtonInput onClick={noteContext.pause}>Pause</ButtonInput>
+        </>
+    );
+}
 
 const FretboardCard = ({ defaultOpen, back }) => {
-    const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
-    const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
 
     const [fretLow, setFretLow] = useState(0);
     const [fretHigh, setFretHigh] = useState(12);
@@ -20,16 +29,32 @@ const FretboardCard = ({ defaultOpen, back }) => {
 
     return (
         <Card title="Fretboard" defaultOpen={defaultOpen} back={back}>
-            <Fretboard
-                keyCenter={keyCenter}
-                intervals={intervals}
-                fretLow={fretLow}
-                fretHigh={fretHigh}
-                showDots={showDots}
-                showFretNumbers={showFretNumbers}
-            />
 
-            <ConceptInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
+            <NoteContextProvider>
+                <NoteContextConsumer>
+                    {noteContext =>
+                        <>
+                            <Fretboard
+                                keyCenter={noteContext.concept.a}
+                                intervals={noteContext.concept.B}
+                                fretLow={fretLow}
+                                fretHigh={fretHigh}
+                                showDots={showDots}
+                                showFretNumbers={showFretNumbers}
+                            />
+
+                            <Controls noteContext={noteContext} />
+
+                            <ConceptInput
+                                keyCenter={noteContext.concept.a}
+                                setKeyCenter={() => null}
+                                intervals={noteContext.concept.B}
+                                setIntervals={() => null}
+                            />
+                        </>
+                    }
+                </NoteContextConsumer>
+            </NoteContextProvider>
 
             <InputBlock title="Fret Range">
                 <LabeledInput label="Low Fret">

@@ -35,17 +35,6 @@ const CONCEPT_INPUT_MODES = {
 }
 const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 
-const Controls = ({ children }) => {
-    const noteContext = useNoteContext();
-    return (
-        <>
-            <ButtonInput onClick={noteContext.play}>Play</ButtonInput>
-            <ButtonInput onClick={noteContext.pause}>Pause</ButtonInput>
-            {children}
-        </>
-    );
-}
-
 const ConceptInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
@@ -63,12 +52,7 @@ const ConceptInput = props => {
                 <Dropdown value={inputMode} setValue={setInputMode} options={CONCEPT_INPUT_MODES_VALUES} />
             </div>
             <div className="note-names pw-lighter">{noteNames}</div>
-            <NoteContextProvider initPulses={AUTUMN_LEAVES}>
-                <Controls>
-                    <Component keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
-
-                </Controls>
-            </NoteContextProvider>
+            <Component keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
         </div>
     );
 }
