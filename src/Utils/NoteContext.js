@@ -35,6 +35,7 @@ export const NoteContextProvider = props => {
     const isLast = pulseIndex === pulses.length - 1;
 
     const concept = pulses[pulseIndex];
+    const setConcept =  x => setPulses([...pulses.slice(0, pulseIndex), x, ...pulses.slice(pulseIndex + 1)]);
     const nextConcept = isLast ? pulses[0] : pulses[pulseIndex + 1];
 
     const beatDuration = 60 / tempo * 1000;
@@ -58,8 +59,12 @@ export const NoteContextProvider = props => {
     }
 
     const routeContextValue = {
+        pulses,
+        pulseIndex,
+        setPulseIndex,
         beatIndex,
         concept,
+        setConcept,
         nextConcept,
         tempo,
         setTempo,

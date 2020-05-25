@@ -3,53 +3,50 @@ import './ConceptChartInput.css';
 import PW from 'play-what';
 import ButtonInput from '../ButtonInput/ButtonInput';
 import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
+import useNoteContext from '../../Utils/NoteContext';
 
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.intervals };
 const DEFAULT_ROW = [DEFAULT_COL];
 
 
-const ConceptChartCol = props => {
-    const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
-    const { col, setCol } = props;
-    const { a, B } = col;
+const ConceptBlock = props => {
     const [editing, setEditing] = useState(false);
-    const keyName = PW.Theory.getNoteName(a);
-    const id = PW.Theory.findPreset(B).id;
+
+    const { pulse, blockIndex } = props;
+
+    const noteContext = useNoteContext();
+    const { concept, setConcept } = noteContext;
+    const setKeyCenter = k => setConcept({ a: k, B: pulse.B });
+    const setIntervals = i => setConcept({ a: pulse.a, B: i });
+
+    const keyName = PW.Theory.getNoteName(pulse.a);
+    const id = PW.Theory.findPreset(pulse.B).id;
     const name = `${keyName} ${id}`;
 
-    const setKeyCenterLocal = k => setCol({ a: k, B: B });
-    const setIntervalsLocal = i => setCol({ a: a, B: i });
+    const isActive = noteContext.pulseIndex === blockIndex; //PW.Theory.areIntervalEqual(keyCenter, a) && PW.Theory.areIntervalsEqual(intervals, B);
 
-    const isActive = PW.Theory.areIntervalEqual(keyCenter, a) && PW.Theory.areIntervalsEqual(intervals, B);
-
-    const setConcept = () => {
-        setKeyCenter(a);
-        setIntervals(B);
+    const setThisAsCurrent = () => {
+        noteContext.setPulseIndex(blockIndex);
     };
 
-    const removeConcept = () => setCol(null);
-
     return (
-        <div className="concept-chart-col">
-            <div className={`name pw-hov ${isActive ? 'pw-accent' : 'pw-light'}`} onClick={() => setEditing(!editing)}>
+        <div className="concept-chart-block">
+            <div className={`name pw-hov ${isActive ? 'pw-accent' : 'pw-light'}`} onClick={setThisAsCurrent}>
                 {name}
             </div>
             <div>
-                <div className="edit pw-hov" onClick={setConcept}>
-                    Set
-                </div>
-                <div className="remove pw-hov" onClick={removeConcept}>
-                    Remove
+                <div className="edit pw-hov" onClick={() => setEditing(!editing)}>
+                    Edit
                 </div>
             </div>
             {
                 editing &&
                 <div className="edit-panel pw-secondary">
                     <ConceptPresetInput
-                        keyCenter={a}
-                        setKeyCenter={setKeyCenterLocal}
-                        intervals={B}
-                        setIntervals={setIntervalsLocal}
+                        keyCenter={pulse.a}
+                        setKeyCenter={setKeyCenter}
+                        intervals={pulse.b}
+                        setIntervals={setIntervals}
                     />
                 </div>
             }
@@ -57,32 +54,47 @@ const ConceptChartCol = props => {
     );
 }
 
-const ConceptChartRow = props => {
-    const { row, setRow } = props;
-    const colComponents = row.map((c, i) => {
-        const setCol = col => setRow([...row.slice(0, i), col, ...row.slice(i + 1)]);
-        return c ? <ConceptChartCol key={i} col={c} setCol={setCol} {...props} /> : null;
-    });
+const ConceptChartSection = props => {
     return (
-        <div className="concept-chart-row pw-medium">
-            {colComponents}
-            <ButtonInput onClick={() => setRow([...row, DEFAULT_COL])}>+</ButtonInput>
+        <div className="concept-chart-section pw-medium">
+            <div className='name'>{props.name}</div>
+            <div className='content'>{props.children}</div>
         </div>
     );
 }
 
 const ConceptChartInput = props => {
-    const [rows, setRows] = useState([]);
+    const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
-    const rowComponents = rows.map((r, i) => {
-        const setRow = row => setRows([...rows.slice(0, i), row, ...rows.slice(i + 1)]);
-        return <ConceptChartRow key={i} row={r} setRow={setRow} {...props} />;
-    });
+    const noteContext = useNoteContext();
+    const pulses = noteContext.pulses;
+
+    let i = 0;
+    const sections = [];
+    while (i < pulses.length) {
+        const p = pulses[i];
+        if (p.section) {
+            let sectionPulses = [<ConceptBlock
+                pulse={p}
+                blockIndex={i}
+            />];
+            i++;
+            let p2 = pulses[i];
+            while (i < pulses.length && !p2.section) {
+                sectionPulses.push(<ConceptBlock
+                    pulse={p2}
+                    blockIndex={i}
+                />);
+                i++;
+                p2 = pulses[i];
+            }
+            sections.push(<ConceptChartSection name={p.section}>{sectionPulses}</ConceptChartSection>)
+        }
+    }
 
     return (
         <div className="concept-chart-input">
-            {/*rowComponents*/}
-            <ButtonInput onClick={() => setRows([...rows, DEFAULT_ROW])}>+</ButtonInput>
+            {sections}
         </div>
     );
 }

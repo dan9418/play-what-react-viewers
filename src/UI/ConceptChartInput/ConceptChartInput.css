@@ -2,16 +2,25 @@
     text-align: center;
 }
 
-.concept-chart-row {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.concept-chart-section {
     padding: 8px;
+    padding-top: 16px;
     margin: 8px;
     border-radius: 8px;
 }
 
-.concept-chart-col {
+
+.concept-chart-section > .name {
+    font-weight: bold;
+}
+
+.concept-chart-section > .content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.concept-chart-block {
     display: grid;
     grid-template-columns: auto auto;
     text-align: left;
@@ -19,7 +28,7 @@
     position: relative;
 }
 
-.concept-chart-col .name {
+.concept-chart-block > .name {
     height: 100%;
     display: flex;
     justify-content: center;
@@ -29,12 +38,12 @@
     border-radius: 4px;
 }
 
-.concept-chart-col .edit, .concept-chart-col .remove {
+.concept-chart-block .edit, .concept-chart-block .remove {
     font-size: 90%;
     font-weight: bold;
 }
 
-.concept-chart-col .edit-panel {
+.concept-chart-block .edit-panel {
     position: absolute;
     top: 100%;
     left: 0;
@@ -42,4 +51,5 @@
     padding: 8px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+    z-index: 1000;
 }

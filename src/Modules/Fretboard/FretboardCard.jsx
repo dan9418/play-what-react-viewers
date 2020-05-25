@@ -47,9 +47,9 @@ const FretboardCard = ({ defaultOpen, back }) => {
 
                             <ConceptInput
                                 keyCenter={noteContext.concept.a}
-                                setKeyCenter={() => null}
+                                setKeyCenter={k => noteContext.setConcept({ a: k, B: noteContext.concept.B })}
                                 intervals={noteContext.concept.B}
-                                setIntervals={() => null}
+                                setIntervals={i => noteContext.setConcept({ a: noteContext.concept.a, B: i })}
                             />
                         </>
                     }
