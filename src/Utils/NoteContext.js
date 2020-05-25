@@ -9,15 +9,17 @@ const NOP = () => null;
 
 
 const DEFAULT_NOTE_CONTEXT = {
-    concept:
-    {
-        a: PW.Presets.KEY_CENTERS.A,
-        B: PW.Presets.SCALE.NaturalMinor.intervals
-    },
-    nextConcept: {
-        a: PW.Presets.KEY_CENTERS.A,
-        B: PW.Presets.SCALE.Major.intervals
-    }
+    pulses: [],
+    pulseIndex: 0,
+    setPulseIndex: NOP,
+    beatIndex: 0,
+    concept: { a: 0, B: [{ d: 0, p: 0 }] },
+    setConcept: NOP,
+    nextConcept: { a: 0, B: [{ d: 0, p: 0 }] },
+    tempo: 120,
+    setTempo: NOP,
+    play: NOP,
+    pause: NOP,
 };
 
 const NoteContext = createContext(DEFAULT_NOTE_CONTEXT);
@@ -35,7 +37,7 @@ export const NoteContextProvider = props => {
     const isLast = pulseIndex === pulses.length - 1;
 
     const concept = pulses[pulseIndex];
-    const setConcept =  x => setPulses([...pulses.slice(0, pulseIndex), x, ...pulses.slice(pulseIndex + 1)]);
+    const setConcept = x => setPulses([...pulses.slice(0, pulseIndex), x, ...pulses.slice(pulseIndex + 1)]);
     const nextConcept = isLast ? pulses[0] : pulses[pulseIndex + 1];
 
     const beatDuration = 60 / tempo * 1000;

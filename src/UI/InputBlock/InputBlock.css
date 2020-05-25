@@ -10,6 +10,14 @@
     margin: 8px;
 }
 
+.input-block.x > .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 .input-block > .title {
     display: flex;
     align-items: center;

@@ -4,6 +4,7 @@ import PW from 'play-what';
 import ButtonInput from '../ButtonInput/ButtonInput';
 import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
 import useNoteContext from '../../Utils/NoteContext';
+import InputBlock from '../InputBlock/InputBlock';
 
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.intervals };
 const DEFAULT_ROW = [DEFAULT_COL];
@@ -56,10 +57,9 @@ const ConceptBlock = props => {
 
 const ConceptChartSection = props => {
     return (
-        <div className="concept-chart-section pw-medium">
-            <div className='name'>{props.name}</div>
-            <div className='content'>{props.children}</div>
-        </div>
+        <InputBlock title={props.name} x>
+            {props.children}
+        </InputBlock>
     );
 }
 
@@ -93,7 +93,8 @@ const ConceptChartInput = props => {
     }
 
     return (
-        <div className="concept-chart-input">
+        <div className="concept-chart-input pw-medium">
+            <div className='heading'>Sections</div>
             {sections}
         </div>
     );

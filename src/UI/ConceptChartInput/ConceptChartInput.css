@@ -1,46 +1,30 @@
 .concept-chart-input {
     text-align: center;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 16px;
 }
 
-.concept-chart-section {
-    padding: 8px;
-    padding-top: 16px;
-    margin: 8px;
-    border-radius: 8px;
-}
-
-
-.concept-chart-section > .name {
+.concept-chart-input > .heading {
+    font-size: 120%;
     font-weight: bold;
-}
-
-.concept-chart-section > .content {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    padding: 4px;
 }
 
 .concept-chart-block {
-    display: grid;
-    grid-template-columns: auto auto;
-    text-align: left;
-    grid-gap: 4px;
     position: relative;
 }
 
 .concept-chart-block > .name {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 4px;
-    padding: 4px;
-    border-radius: 4px;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .concept-chart-block .edit, .concept-chart-block .remove {
     font-size: 90%;
     font-weight: bold;
+    padding: 4px;
 }
 
 .concept-chart-block .edit-panel {
