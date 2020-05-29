@@ -1,8 +1,8 @@
 .concept-chart-input {
     text-align: center;
-    padding: 16px;
-    margin: 16px;
-    border-radius: 16px;
+    padding: 8px;
+    border-radius: 8px;
+    margin: 8px 0;
 }
 
 .concept-chart-input > .heading {
@@ -13,12 +13,14 @@
 
 .concept-chart-block {
     position: relative;
+    flex-basis: 10px;
+    margin: 4px;
 }
 
 .concept-chart-block > .name {
     font-weight: bold;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 4px;
+    border-radius: 4px;
 }
 
 .concept-chart-block .edit, .concept-chart-block .remove {

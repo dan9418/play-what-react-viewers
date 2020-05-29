@@ -10,28 +10,28 @@ const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ioni
 const DEFAULT_ROW = [DEFAULT_COL];
 
 
-const ConceptBlock = props => {
+const ConceptChartPulse = props => {
     const [editing, setEditing] = useState(false);
-
-    const { pulse, blockIndex } = props;
-
     const noteContext = useNoteContext();
-    const { concept, setConcept } = noteContext;
-    const setKeyCenter = k => setConcept({ a: k, B: pulse.B });
-    const setIntervals = i => setConcept({ a: pulse.a, B: i });
+    const { sectionIndex, pulseIndex, pulse } = noteContext;
+    const thisPulse = props.pulse;
+    const currentPulse = pulse;
+    //const setKeyCenter = k => setConcept({ a: k, B: pulse.B });
+    //const setIntervals = i => setConcept({ a: pulse.a, B: i });
 
-    const keyName = PW.Theory.getNoteName(pulse.a);
-    const id = PW.Theory.findPreset(pulse.B).id;
+    const keyName = PW.Theory.getNoteName(thisPulse.a);
+    const id = PW.Theory.findPreset(thisPulse.B).id;
     const name = `${keyName} ${id}`;
 
-    const isActive = noteContext.pulseIndex === blockIndex; //PW.Theory.areIntervalEqual(keyCenter, a) && PW.Theory.areIntervalsEqual(intervals, B);
+    const isActive = props.pulseIndex === pulseIndex && props.sectionIndex === sectionIndex; //PW.Theory.areIntervalEqual(keyCenter, a) && PW.Theory.areIntervalsEqual(intervals, B);
 
     const setThisAsCurrent = () => {
-        noteContext.setPulseIndex(blockIndex);
+        noteContext.setSectionIndex(props.sectionIndex);
+        noteContext.setPulseIndex(props.pulseIndex);
     };
 
     return (
-        <div className="concept-chart-block">
+        <div className="concept-chart-block" style={{ flexGrow: thisPulse.beats }}>
             <div className={`name pw-hov ${isActive ? 'pw-accent' : 'pw-light'}`} onClick={setThisAsCurrent}>
                 {name}
             </div>
@@ -44,9 +44,9 @@ const ConceptBlock = props => {
                 editing &&
                 <div className="edit-panel pw-secondary">
                     <ConceptPresetInput
-                        keyCenter={pulse.a}
+                        keyCenter={thisPulse.a}
                         setKeyCenter={setKeyCenter}
-                        intervals={pulse.b}
+                        intervals={thisPulse.b}
                         setIntervals={setIntervals}
                     />
                 </div>
@@ -55,23 +55,27 @@ const ConceptBlock = props => {
     );
 }
 
-const ConceptChartSection = props => {
+const ConceptChartSection = ({ section, sectionIndex }) => {
     return (
-        <InputBlock title={props.name} x>
-            {props.children}
+        <InputBlock title={section.name} x>
+            {section.pulses.map((p, i) => (
+                <ConceptChartPulse key={i} sectionIndex={sectionIndex} pulse={p} pulseIndex={i} />
+            ))}
         </InputBlock>
     );
-}
+};
 
 const ConceptChartInput = props => {
     const { keyCenter, setKeyCenter, intervals, setIntervals } = props;
 
     const noteContext = useNoteContext();
-    const pulses = noteContext.pulses;
+    const { sections } = noteContext;
 
     return (
-        <div className="concept-chart-input pw-medium">
-
+        <div className="concept-chart-input pw-lighter">
+            {sections.map((s, i) => (
+                <ConceptChartSection key={i} section={s} sectionIndex={i} />
+            ))}
         </div>
     );
 }
