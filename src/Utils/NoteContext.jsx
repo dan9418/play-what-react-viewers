@@ -1,10 +1,9 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
+import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import PW from 'play-what';
 import AUTUMN_LEAVES from './AutumnLeaves';
 
-const DEFAULT_PULSES = AUTUMN_LEAVES;
+const DEFAULT_SONG = AUTUMN_LEAVES;
 const DEFAULT_TEMPO = 120;
-const DEFAULT_TIME_SIGNATURE = [4, 4];
 const NOP = () => null;
 
 
@@ -25,53 +24,85 @@ const DEFAULT_NOTE_CONTEXT = {
 const NoteContext = createContext(DEFAULT_NOTE_CONTEXT);
 NoteContext.displayName = 'NoteContext';
 
+const useToggle = (initValue = false) => {
+    const [value, setValue] = useState(initValue);
+    return [value, () => setValue(!value)];
+};
+
+const useInterval = (callback, delay) => {
+    const savedCallback = useRef();
+
+    useEffect(() => {
+        savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+        const tick = () => savedCallback.current();
+        if (delay !== null) {
+            let id = setInterval(tick, delay);
+            return () => clearInterval(id);
+        }
+    }, [delay]);
+};
+
+const getNextState = (pulses, pulseIndex, sections, sectionIndex) => {
+    const isLastPulse = pulseIndex === pulses.length - 1;
+    const isLastSection = sectionIndex === sections.length - 1;
+    if(isLastPulse) {
+        if(isLastSection) {
+            return [0, 0];
+        }
+        return [sectionIndex + 1, 0];
+    }
+    return [sectionIndex, pulseIndex + 1];
+};
+
 export const NoteContextProvider = props => {
-    const [pulses, setPulses] = useState(props.initPulses || DEFAULT_PULSES);
+    // Timeline
+    const song = DEFAULT_SONG;
+    const [sectionIndex, setSectionIndex] = useState(0);
+    const [pulseIndex, setPulseIndex] = useState(0);
     const [beatIndex, setBeatIndex] = useState(0);
     const [nextPulseBeat, setNextPulseBeat] = useState(0);
-    const [pulseIndex, setPulseIndex] = useState(0);
-    const [timeSignature, setTimeSignature] = useState(props.initTimeSignature || DEFAULT_TIME_SIGNATURE);
-    const [tempo, setTempo] = useState(props.tempo || DEFAULT_TEMPO);
-    const [play, setPlay] = useState(false);
-
-    const isLast = pulseIndex === pulses.length - 1;
-
-    const concept = pulses[pulseIndex];
-    const setConcept = x => setPulses([...pulses.slice(0, pulseIndex), x, ...pulses.slice(pulseIndex + 1)]);
-    const nextConcept = isLast ? pulses[0] : pulses[pulseIndex + 1];
-
+    // Playback
+    const [tempo, setTempo] = useState(DEFAULT_TEMPO);
+    const [play, togglePlay] = useToggle(false);
     const beatDuration = 60 / tempo * 1000;
+    useInterval(() => {
+        setBeatIndex(beatIndex + 1);
+    }, play ? beatDuration : null);
+    // Context
+    const section = song.sections[sectionIndex];
+    const pulse = section.pulses[pulseIndex];
+    const [nextSectionIndex, nextPulseIndex] = getNextState(section.pulses, pulseIndex, song.sections, sectionIndex);
+    const nextPulse = song.sections[nextSectionIndex].pulses[nextPulseIndex];
+    console.log(sectionIndex, pulseIndex, beatIndex);
 
-    if (play) {
-        if (!isLast) {
-            const notes = PW.Theory.addVectorsBatch(concept.a, concept.B);
-            const freqs = PW.Theory.getFrequencies(notes);
-
-            if (beatIndex === nextPulseBeat) {
-                const pulseDuration = beatDuration * concept.beats / 2000;
-                PW.Sound.playNotes(freqs, pulseDuration);
-                setNextPulseBeat(beatIndex + concept.beats);
-                setPulseIndex(pulseIndex + 1)
-            }
-            setTimeout(
-                () => setBeatIndex(beatIndex + 1),
-                beatDuration
-            );
-        }
+    if (play && beatIndex === nextPulseBeat) {
+        const notes = PW.Theory.addVectorsBatch(pulse.a, pulse.B);
+        const freqs = PW.Theory.getFrequencies(notes);
+        const pulseDuration = beatDuration * pulse.beats / 2000;
+        // console.log('sound', pulseIndex);
+        PW.Sound.playNotes(freqs, pulseDuration);
+        setNextPulseBeat(beatIndex + pulse.beats);
+        setSectionIndex(nextSectionIndex);
+        setPulseIndex(nextPulseIndex);
     }
 
     const routeContextValue = {
-        pulses,
+        pulse,
+        nextPulse,
+        sections: song.sections,
+        sectionIndex,
+        nextSectionIndex,
+        pulses: section[pulseIndex],
         pulseIndex,
-        setPulseIndex,
+        nextPulseIndex,
         beatIndex,
-        concept,
-        setConcept,
-        nextConcept,
         tempo,
         setTempo,
-        play: () => setPlay(true),
-        pause: () => setPlay(false)
+        play,
+        togglePlay
     };
 
     return <NoteContext.Provider value={routeContextValue}>{props.children}</NoteContext.Provider>;

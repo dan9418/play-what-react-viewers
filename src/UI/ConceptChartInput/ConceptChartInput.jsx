@@ -69,33 +69,9 @@ const ConceptChartInput = props => {
     const noteContext = useNoteContext();
     const pulses = noteContext.pulses;
 
-    let i = 0;
-    const sections = [];
-    while (i < pulses.length) {
-        const p = pulses[i];
-        if (p.section) {
-            let sectionPulses = [<ConceptBlock
-                pulse={p}
-                blockIndex={i}
-            />];
-            i++;
-            let p2 = pulses[i];
-            while (i < pulses.length && !p2.section) {
-                sectionPulses.push(<ConceptBlock
-                    pulse={p2}
-                    blockIndex={i}
-                />);
-                i++;
-                p2 = pulses[i];
-            }
-            sections.push(<ConceptChartSection name={p.section}>{sectionPulses}</ConceptChartSection>)
-        }
-    }
-
     return (
         <div className="concept-chart-input pw-medium">
-            <div className='heading'>Sections</div>
-            {sections}
+
         </div>
     );
 }

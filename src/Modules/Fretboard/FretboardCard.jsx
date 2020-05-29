@@ -11,13 +11,13 @@ import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 import useNoteContext, { NoteContextProvider, NoteContextConsumer } from '../../Utils/NoteContext';
 import ButtonInput from '../../UI/ButtonInput/ButtonInput';
 
-const PlaybackControls = ({ noteContext }) => {
+const PlaybackControls = () => {
+    const { play, togglePlay, tempo, setTempo, beatIndex } = useNoteContext();
     return (
         <div className='playback-controls'>
-            <ButtonInput className='pw-secondary' onClick={noteContext.play}>Play</ButtonInput>
-            <ButtonInput className='pw-secondary' onClick={noteContext.pause}>Pause</ButtonInput>
-            <ScalarInput value={noteContext.tempo} setValue={noteContext.setTempo} />
-            <div className={`blinker ${noteContext.beatIndex % 2 === 0 ? 'pulse' : ''}`} />
+            <ButtonInput className='pw-secondary' onClick={togglePlay}>{play ? 'Pause' : 'Play'}</ButtonInput>
+            <ScalarInput value={tempo} setValue={setTempo} />
+            <div className={`blinker ${beatIndex % 2 === 0 ? 'pulse' : ''}`} />
         </div>
     );
 }
@@ -43,13 +43,13 @@ const FretboardCard = ({ defaultOpen, back }) => {
                                 showFretNumbers={showFretNumbers}
                             />
 
-                            <PlaybackControls noteContext={noteContext} />
+                            <PlaybackControls />
 
                             <ConceptInput
-                                keyCenter={noteContext.concept.a}
-                                setKeyCenter={k => noteContext.setConcept({ a: k, B: noteContext.concept.B })}
-                                intervals={noteContext.concept.B}
-                                setIntervals={i => noteContext.setConcept({ a: noteContext.concept.a, B: i })}
+                                keyCenter={noteContext.pulse.a}
+                                setKeyCenter={null/*k => noteContext.setConcept({ a: k, B: noteContext.concept.B })*/}
+                                intervals={noteContext.pulse.B}
+                                setIntervals={null/*i => noteContext.setConcept({ a: noteContext.concept.a, B: i })*/}
                             />
                         </>
                     }
