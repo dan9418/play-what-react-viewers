@@ -1,0 +1,11 @@
+.rhythm {
+
+}
+
+.rhythm .bar {
+    display: flex;
+}
+
+.rhythm .beat {
+    padding: 4px;
+}

@@ -7,6 +7,9 @@ import KeyboardCard from './Modules/Keyboard/KeyboardCard';
 import Graph from './Modules/Graph/Graph';
 import GraphCard from './Modules/Graph/GraphCard';
 
+import Rhythm from './Modules/Rhythm/Rhythm';
+import RhythmCard from './Modules/Rhythm/RhythmCard';
+
 import TrueScale from './Modules/TrueScale/TrueScale';
 import TrueScaleCard from './Modules/TrueScale/TrueScaleCard';
 
@@ -31,7 +34,9 @@ const Modules = {
     TrueScaleCard,
     HarmonicSeries,
     HarmonicSeriesCard,
-    InputDocsCard
+    InputDocsCard,
+    Rhythm,
+    RhythmCard
 }
 
 const UI = {
