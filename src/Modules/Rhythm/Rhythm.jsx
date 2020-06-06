@@ -1,41 +1,58 @@
 import React from 'react';
 import './Rhythm.css';
 import PW from 'play-what';
+import { AUTUMN_LEAVES_2 } from '../../Utils/AutumnLeaves';
 
-const Beat = config => {
-    const { timeSignature, quantize, bars, pulses } = config;
+const Beat = props => {
+    const { a, B, i, x, y } = props.pulse;
     return (
-        <div className={`beat ${config.i}`}>
-            {config.i}
+        <div className={`beat ${i}`}>
+            {PW.Theory.getNoteName(a)}
         </div>
     );
 };
 
-const getBeats = config => {
-    const { timeSignature, quantize, bars, pulses } = config;
-    const beats = [];
-    for (let i = 0; i < quantize; i++) {
-        beats.push(<Beat i={i} />);
+const getBeats = beats => {
+    const beatComps = [];
+    for (let i = 0; i < beats.length; i++) {
+        beatComps.push(<Beat {...beats[i]} />);
     }
-    return beats;
+    return beatComps;
 };
 
-const Bar = config => {
-    const { timeSignature, quantize, bars, pulses } = config;
+const Bar = props => {
+    const { beats } = props;
     return (
-        <div className={`bar ${config.i}`}>
-            {getBeats(config)}
+        <div className={`bar ${props.i}`}>
+            {getBeats(beats)}
         </div>
     );
 };
 
-const getBars = config => {
-    const { timeSignature, quantize, bars, pulses } = config;
+const getBars = bars => {
     const barComps = [];
-    for (let i = 0; i < bars; i++) {
-        barComps.push(<Bar {...config} i={i}/>);
+    for (let i = 0; i < bars.length; i++) {
+        barComps.push(<Bar {...bars[i]} i={i} />);
     }
     return barComps;
+};
+
+const Section = props => {
+    const { name, bars } = props;
+    return (
+        <div className={`section ${props.i}`}>
+            {name}
+            {getBars(bars)}
+        </div>
+    );
+};
+
+const getSections = sections => {
+    const sectionComps = [];
+    for (let i = 0; i < sections.length; i++) {
+        sectionComps.push(<Section {...sections[i]} i={i} />);
+    }
+    return sectionComps;
 };
 
 const DEFAULT_PROPS = {
@@ -47,9 +64,11 @@ const DEFAULT_PROPS = {
 
 const Rhythm = props => {
     const config = { ...DEFAULT_PROPS, ...props };
+    const song = PW.RhythmBeta.parseSong(AUTUMN_LEAVES_2)
+    console.log(song);
     return (
         <div className="rhythm">
-            {getBars(config)}
+            {getSections(song.sections)}
         </div>
     );
 }

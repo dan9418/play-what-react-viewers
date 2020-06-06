@@ -195,167 +195,300 @@ const AUTUMN_LEAVES = {
     ]
 };
 
-const AUTUMN_LEAVES_2 = {
+export const AUTUMN_LEAVES_2 = {
     name: 'Autumn Leaves',
+    defaults: {
+        a: { p: 0, d: 0 },
+        b: [],
+        i: 0,
+        x: 4,
+        y: 4,
+        q: 2
+    },
     sections: [
         {
             name: 'A',
-            defaults: {
-                x: 4,
-                y: 4
-            },
-            pulses: [
+            bars: [
                 {
-                    a: PW.Presets.KEY_CENTERS.C,
-                    B: PW.Presets.CHORD.Min7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.C,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.F,
-                    B: PW.Presets.CHORD.Dom7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.F,
+                            B: PW.Presets.CHORD.Dom7.intervals
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Bb,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.Bb,
+                            B: PW.Presets.CHORD.Maj7.intervals
+
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Eb,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.Eb,
+                            B: PW.Presets.CHORD.Maj7.intervals
+
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.A,
-                    B: PW.Presets.CHORD.HalfDim7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.A,
+                            B: PW.Presets.CHORD.HalfDim7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.D,
-                    B: PW.Presets.CHORD.Dom7b9.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.D,
+                            B: PW.Presets.CHORD.Dom7b9.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min6.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min6.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Maj7.intervals,
+                        }
+                    ]
                 }
             ]
         },
         {
             name: 'A\'',
-            pulses: [
+            bars: [
                 {
-                    a: PW.Presets.KEY_CENTERS.C,
-                    B: PW.Presets.CHORD.Min7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.C,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.F,
-                    B: PW.Presets.CHORD.Dom7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.F,
+                            B: PW.Presets.CHORD.Dom7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Bb,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.Bb,
+                            B: PW.Presets.CHORD.Maj7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Eb,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.Eb,
+                            B: PW.Presets.CHORD.Maj7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.A,
-                    B: PW.Presets.CHORD.HalfDim7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.A,
+                            B: PW.Presets.CHORD.HalfDim7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.D,
-                    B: PW.Presets.CHORD.Dom7b9.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.D,
+                            B: PW.Presets.CHORD.Dom7b9.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min6.intervals,
-                    x: 8
-                }
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min6.intervals,
+                            x: 8
+                        }
+                    ]
+                },
+                null
             ]
         },
         {
             name: 'B',
-            pulses: [
+            bars: [
                 {
-                    a: PW.Presets.KEY_CENTERS.A,
-                    B: PW.Presets.CHORD.HalfDim7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.A,
+                            B: PW.Presets.CHORD.HalfDim7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.D,
-                    B: PW.Presets.CHORD.Dom7b9.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.D,
+                            B: PW.Presets.CHORD.Dom7b9.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min6.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min6.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min6.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min6.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.C,
-                    B: PW.Presets.CHORD.Min7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.C,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.F,
-                    B: PW.Presets.CHORD.Dom7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.F,
+                            B: PW.Presets.CHORD.Dom7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Bb,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.Bb,
+                            B: PW.Presets.CHORD.Maj7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Eb,
-                    B: PW.Presets.CHORD.Maj7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.Eb,
+                            B: PW.Presets.CHORD.Maj7.intervals,
+                        }
+                    ]
                 },
             ]
         },
         {
             name: 'C',
-            pulses: [
+            bars: [
                 {
-                    a: PW.Presets.KEY_CENTERS.A,
-                    B: PW.Presets.CHORD.HalfDim7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.A,
+                            B: PW.Presets.CHORD.HalfDim7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.D,
-                    B: PW.Presets.CHORD.Dom7b9.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.D,
+                            B: PW.Presets.CHORD.Dom7b9.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min7.intervals,
-                    x: 2
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                            x: 2
+                        },
+                        {
+                            a: PW.Presets.KEY_CENTERS.C,
+                            B: PW.Presets.CHORD.Dom7.intervals,
+                            i: 2,
+                            x: 2
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.C,
-                    B: PW.Presets.CHORD.Dom7.intervals,
-                    x: 2
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.F,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                            x: 2
+                        },
+                        {
+                            a: PW.Presets.KEY_CENTERS.Bb,
+                            B: PW.Presets.CHORD.Dom7.intervals,
+                            i: 2,
+                            x: 2
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.F,
-                    B: PW.Presets.CHORD.Min7.intervals,
-                    x: 2
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.A,
+                            B: PW.Presets.CHORD.HalfDim7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.Bb,
-                    B: PW.Presets.CHORD.Dom7.intervals,
-                    x: 2
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.D,
+                            B: PW.Presets.CHORD.Dom7b9.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.A,
-                    B: PW.Presets.CHORD.HalfDim7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                        }
+                    ]
                 },
                 {
-                    a: PW.Presets.KEY_CENTERS.D,
-                    B: PW.Presets.CHORD.Dom7b9.intervals,
-                },
-                {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min7.intervals,
-                },
-                {
-                    a: PW.Presets.KEY_CENTERS.G,
-                    B: PW.Presets.CHORD.Min7.intervals,
+                    pulses: [
+                        {
+                            a: PW.Presets.KEY_CENTERS.G,
+                            B: PW.Presets.CHORD.Min7.intervals,
+                        }
+                    ]
                 }
             ]
         }
