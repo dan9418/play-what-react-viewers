@@ -22,7 +22,7 @@ const RhythmCard = ({ defaultOpen, back }) => {
     return (
         <Card title="Rhythm" defaultOpen={defaultOpen} back={back}>
             <div className="rhythm-card">
-                    <Rhythm />
+                <Rhythm />
             </div>
         </Card>
     )

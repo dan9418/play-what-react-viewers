@@ -3,9 +3,15 @@
 }
 
 .rhythm .bar {
-    display: flex;
+    display: inline-flex;
+    flex-wrap: nowrap;
 }
 
 .rhythm .beat {
     padding: 4px;
+}
+
+.rhythm .section .title {
+    font-size: 120%;
+    font-weight: bold;
 }

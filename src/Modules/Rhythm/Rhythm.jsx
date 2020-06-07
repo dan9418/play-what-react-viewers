@@ -3,11 +3,25 @@ import './Rhythm.css';
 import PW from 'play-what';
 import { AUTUMN_LEAVES_2 } from '../../Utils/AutumnLeaves';
 
+const PitchStack = props => {
+    console.log(props.notes);
+    return (
+        <div className={`beat ${null}`}>
+            {props.notes.map((n, i) => (
+                <div className='pitch-cell'>
+                    {PW.Theory.getNoteName(n)}
+                </div>
+            ))}
+        </div>
+    );
+};
+
 const Beat = props => {
     const { a, B, i, x, y } = props.pulse;
+    const notes = PW.Theory.addVectorsBatch(a, B);
     return (
         <div className={`beat ${i}`}>
-            {PW.Theory.getNoteName(a)}
+            <PitchStack notes={notes} />
         </div>
     );
 };
@@ -22,6 +36,9 @@ const getBeats = beats => {
 
 const Bar = props => {
     const { beats } = props;
+    if (!beats) {
+        return '/'
+    }
     return (
         <div className={`bar ${props.i}`}>
             {getBeats(beats)}
@@ -41,7 +58,7 @@ const Section = props => {
     const { name, bars } = props;
     return (
         <div className={`section ${props.i}`}>
-            {name}
+            <div className="title">{name}</div>
             {getBars(bars)}
         </div>
     );
