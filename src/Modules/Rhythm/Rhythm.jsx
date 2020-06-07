@@ -3,25 +3,28 @@ import './Rhythm.css';
 import PW from 'play-what';
 import { AUTUMN_LEAVES_2 } from '../../Utils/AutumnLeaves';
 
-const PitchStack = props => {
-    console.log(props.notes);
-    return (
-        <div className={`beat ${null}`}>
-            {props.notes.map((n, i) => (
-                <div className='pitch-cell'>
-                    {PW.Theory.getNoteName(n)}
-                </div>
-            ))}
-        </div>
-    );
-};
+const WHITE_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
+
+const getPitchCells = notes => {
+    const pitchCells = [];
+    for (let i = 0; i < 12; i++) {
+        const note = notes.find(n => n.p === i);
+        const name = note ? PW.Theory.getNoteName(note) : null;
+        pitchCells.push(
+            <div className={`pitch-cell ${WHITE_KEY_INDICES.includes(i) ? 'white' : 'black'}`}>
+                {name}
+            </div>
+        );
+    }
+    return pitchCells;
+}
 
 const Beat = props => {
     const { a, B, i, x, y } = props.pulse;
     const notes = PW.Theory.addVectorsBatch(a, B);
     return (
         <div className={`beat ${i}`}>
-            <PitchStack notes={notes} />
+            {getPitchCells(notes)}
         </div>
     );
 };

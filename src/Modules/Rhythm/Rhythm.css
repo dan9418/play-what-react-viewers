@@ -8,10 +8,31 @@
 }
 
 .rhythm .beat {
-    padding: 4px;
+    display: inline-flex;
+    flex-direction: column;
+
 }
 
 .rhythm .section .title {
     font-size: 120%;
     font-weight: bold;
+}
+
+.pitch-cell {
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 2px;
+    margin: 2px;
+}
+
+.pitch-cell.black {
+    color: white;
+    background-color: black;
+}
+
+.pitch-cell.white {
+    color: black;
+    background-color: white;
 }
