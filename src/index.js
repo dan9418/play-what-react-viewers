@@ -16,6 +16,9 @@ import TrueScaleCard from './Modules/TrueScale/TrueScaleCard';
 import HarmonicSeries from './Modules/HarmonicSeries/HarmonicSeries';
 import HarmonicSeriesCard from './Modules/HarmonicSeries/HarmonicSeriesCard';
 
+import Chart from './Modules/Chart/Chart';
+import ChartCard from './Modules/Chart/ChartCard';
+
 import InputDocsCard from './Modules/InputDocs/InputDocsCard';
 
 import ErrorBoundary from './UI/ErrorBoundary';
@@ -34,6 +37,8 @@ const Modules = {
     TrueScaleCard,
     HarmonicSeries,
     HarmonicSeriesCard,
+    Chart,
+    ChartCard,
     InputDocsCard,
     Rhythm,
     RhythmCard
