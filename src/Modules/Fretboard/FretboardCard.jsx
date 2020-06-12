@@ -12,6 +12,7 @@ import useNoteContext, { NoteContextProvider, NoteContextConsumer } from '../../
 import ButtonInput from '../../UI/ButtonInput/ButtonInput';
 
 const PlaybackControls = () => {
+    return null;
     const { play, togglePlay, tempo, setTempo, beatIndex } = useNoteContext();
     return (
         <div className='playback-controls'>
@@ -46,9 +47,9 @@ const FretboardCard = ({ defaultOpen, back }) => {
                             <PlaybackControls />
 
                             <ConceptInput
-                                keyCenter={noteContext.pulse.a}
+                                keyCenter={{ a: [0, 0], B: [[0, 0]] }}
                                 setKeyCenter={null/*k => noteContext.setConcept({ a: k, B: noteContext.concept.B })*/}
-                                intervals={noteContext.pulse.B}
+                                intervals={[{ a: [0, 0], B: [[0, 0]] }]}
                                 setIntervals={null/*i => noteContext.setConcept({ a: noteContext.concept.a, B: i })*/}
                             />
                         </>

@@ -62,8 +62,9 @@ const getNextState = (pulses, pulseIndex, sections, sectionIndex) => {
 };
 
 export const NoteContextProvider = props => {
+
     // Timeline
-    const song = DEFAULT_SONG;
+    /*const song = DEFAULT_SONG;
     const [sectionIndex, setSectionIndex] = useState(0);
     const [pulseIndex, setPulseIndex] = useState(0);
     const [beatIndex, setBeatIndex] = useState(0);
@@ -109,9 +110,11 @@ export const NoteContextProvider = props => {
         setTempo,
         play,
         togglePlay
-    };
+    };*/
+    return <NoteContext.Provider value={null}>{props.children}</NoteContext.Provider>;
 
-    return <NoteContext.Provider value={routeContextValue}>{props.children}</NoteContext.Provider>;
+
+
 };
 
 export const NoteContextConsumer = NoteContext.Consumer;

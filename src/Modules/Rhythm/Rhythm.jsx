@@ -1,7 +1,7 @@
 import React from 'react';
 import './Rhythm.css';
 import PW from 'play-what';
-import { AUTUMN_LEAVES_2 } from '../../Utils/AutumnLeaves';
+import AUTUMN_LEAVES from '../../Utils/AutumnLeaves';
 
 const WHITE_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -84,7 +84,7 @@ const DEFAULT_PROPS = {
 
 const Rhythm = props => {
     const config = { ...DEFAULT_PROPS, ...props };
-    const song = PW.RhythmBeta.parseSong(AUTUMN_LEAVES_2)
+    const song = PW.RhythmBeta.parseSong(AUTUMN_LEAVES)
     console.log(song);
     return (
         <div className="rhythm">
