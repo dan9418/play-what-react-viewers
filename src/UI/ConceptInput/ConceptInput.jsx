@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import './ConceptInput.css';
 import PW from 'play-what';
-import KeyCenterInput from '../KeyCenterInput/KeyCenterInput';
 import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
 import ConceptIntervalsInput from '../ConceptIntervalsInput/ConceptIntervalsInput';
 import ConceptMathInput from '../ConceptMathInput/ConceptMathInput';
 import Dropdown from '../Dropdown/Dropdown';
 import ConceptChartInput from '../ConceptChartInput/ConceptChartInput';
-import useNoteContext, { NoteContextProvider } from '../../Utils/NoteContext';
-import AUTUMN_LEAVES from '../../Utils/AutumnLeaves';
-import ButtonInput from '../ButtonInput/ButtonInput';
 
 const CONCEPT_INPUT_MODES = {
     preset: {

@@ -2,7 +2,7 @@ import PW from 'play-what';
 
 
 
-const AUTUMN_LEAVES = {
+const AUTUMN_LEAVES_BETA = {
     name: 'Autumn Leaves',
     sections: [
         {
@@ -195,7 +195,7 @@ const AUTUMN_LEAVES = {
     ]
 };
 
-export const AUTUMN_LEAVES_2 = {
+export const AUTUMN_LEAVES = {
     name: 'Autumn Leaves',
     defaults: {
         a: { p: 0, d: 0 },

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, createContext, useContext, useRef } from 'react';
 import PW from 'play-what';
-import AUTUMN_LEAVES from './AutumnLeaves';
+import AUTUMN_LEAVES_BETA from './AutumnLeaves';
 
-const DEFAULT_SONG = AUTUMN_LEAVES;
+const DEFAULT_SONG = AUTUMN_LEAVES_BETA;
 const DEFAULT_TEMPO = 120;
 const NOP = () => null;
 
