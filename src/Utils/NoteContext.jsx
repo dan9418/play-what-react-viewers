@@ -8,17 +8,21 @@ const NOP = () => null;
 
 
 const DEFAULT_NOTE_CONTEXT = {
+    pulse: { a: [0, 0], B: [[0, 0]] },
+    nextPulse: { a: [0, 0], B: [[0, 0]] },
+    sections: [],
+    sectionIndex: 0,
+    setSectionIndex: () => null,
+    nextSectionIndex: 0,
     pulses: [],
     pulseIndex: 0,
-    setPulseIndex: NOP,
+    setPulseIndex: () => null,
+    nextPulseIndex: 0,
     beatIndex: 0,
-    concept: { a: 0, B: [{ d: 0, p: 0 }] },
-    setConcept: NOP,
-    nextConcept: { a: 0, B: [{ d: 0, p: 0 }] },
-    tempo: 120,
-    setTempo: NOP,
-    play: NOP,
-    pause: NOP,
+    tempo: 0,
+    setTempo: () => null,
+    play: () => null,
+    togglePlay: () => null
 };
 
 const NoteContext = createContext(DEFAULT_NOTE_CONTEXT);
@@ -48,8 +52,8 @@ const useInterval = (callback, delay) => {
 const getNextState = (pulses, pulseIndex, sections, sectionIndex) => {
     const isLastPulse = pulseIndex === pulses.length - 1;
     const isLastSection = sectionIndex === sections.length - 1;
-    if(isLastPulse) {
-        if(isLastSection) {
+    if (isLastPulse) {
+        if (isLastSection) {
             return [0, 0];
         }
         return [sectionIndex + 1, 0];
