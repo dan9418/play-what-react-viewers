@@ -99,9 +99,10 @@ export const NoteContextProvider = props => {
     const section = song.sections[sectionIndex];
     const row = section.rows[rowIndex];
     const note = row.cols[colIndex];
+    const state = [sectionIndex, rowIndex, colIndex];
     const nextState = getNextState(song.sections, sectionIndex, rowIndex, colIndex);
     const nextNote = song.sections[nextState[0]].rows[nextState[1]].cols[nextState[2]];
-    console.log(beatIndex, note, 100 / note.t, nextState);
+    console.log(beatIndex, state);
 
     if (!play) {
         PW.Sound.stopNotes();
@@ -110,7 +111,7 @@ export const NoteContextProvider = props => {
     if (play && beatIndex === nextPulseBeat) {
         const notes = PW.Theory.addVectorsBatch(note.a, note.B);
         const freqs = PW.Theory.getFrequencies(notes);
-        const pulseDuration = beatDuration * note.t;
+        const pulseDuration = beatDuration * note.t; // seconds
         PW.Sound.playNotes(freqs, pulseDuration / 2);
         setNextPulseBeat(beatIndex + note.t);
         setSectionIndex(nextState[0]);
@@ -149,6 +150,7 @@ export const NoteContextProvider = props => {
         note,
         a: note.a,
         B: note.B,
+        t: note.t,
         setA,
         setB,
         setT,
