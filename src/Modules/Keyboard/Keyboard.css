@@ -4,7 +4,6 @@
 	display: inline-block;
 	width: 100%;
 	min-width: 100px;
-	max-width: 400px;
 
     font-size: 12px;
 	text-align: center;
@@ -12,6 +11,10 @@
 	
 	margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.center {
+	text-align: center;
 }
 
 /* Key Container */
@@ -72,7 +75,13 @@
 
 .white-key .keyboard-key-label {
 	position: absolute;
-    bottom: 5%;
+	height: 100%;
+	width: 100%;
+	border-radius: 0 0 5% 5%;
+}
+
+.white-key .keyboard-key-label:hover {
+	box-shadow: 0 0 1px 2px black inset;
 }
 
 .black-key .keyboard-key-label {

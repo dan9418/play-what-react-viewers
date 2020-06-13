@@ -81,30 +81,3 @@
 	height: 100%;
 	cursor: pointer;
 }
-
-/* Playback Controls */
-
-.playback-controls {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	padding: 16px;
-}
-
-.blinker {
-	width: 40px;
-	height: 40px;
-	border-radius: 50%;
-	background-color: white;
-}
-
-.blinker.pulse {
-	animation-name: example;
-	animation-duration: .1s;
-}
-
-@keyframes example {
-	to {
-		background-color: red;
-	}
-}

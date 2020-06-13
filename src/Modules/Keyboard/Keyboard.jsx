@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./Keyboard.css";
-import { KeyboardKey, KeyboardKeyType } from "./KeyboardKey";
+import KeyboardKey, { KeyboardKeyType } from "./KeyboardKey";
 import DEFAULT_PROPS from "./Keyboard.defaults";
 import PlayWhat from 'play-what';
 
@@ -18,11 +18,10 @@ const getKeyboardKeys = (config, viewerWidth) => {
 
     for (let i = config.keyLow; i <= config.keyHigh; i++) {
         let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? KeyboardKeyType.White : KeyboardKeyType.Black;
-        
+
         keys.push(
             <KeyboardKey
                 key={i}
-                notes={config.notes}
                 noteIndex={i}
                 minIndex={config.keyLow}
                 maxIndex={config.keyHigh}
@@ -58,7 +57,7 @@ export default class Keyboard extends React.Component {
 
     render() {
         let config = Object.assign({}, DEFAULT_PROPS, this.props);
-        
+
         return (
             <div className='keyboard' ref={this.domNode}>
                 {getKeyboardKeys(config, this.state.width)}

@@ -8,23 +8,20 @@ import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
 
 const KeyboardCard = ({ defaultOpen, back }) => {
-    const [keyCenter, setKeyCenter] = useState(PW.Presets.KEY_CENTERS.A);
-    const [intervals, setIntervals] = useState(PW.Presets.SCALE.NaturalMinor.intervals);
-
     const [keyLow, setKeyLow] = useState(0);
     const [keyHigh, setKeyHigh] = useState(25);
 
-    const notes = PW.Theory.addVectorsBatch(keyCenter, intervals)
-
     return (
         <Card title="Keyboard" defaultOpen={defaultOpen} back={back}>
-            <Keyboard
-                notes={notes}
-                keyLow={keyLow}
-                keyHigh={keyHigh}
-            />
 
-            <ConceptInput keyCenter={keyCenter} setKeyCenter={setKeyCenter} intervals={intervals} setIntervals={setIntervals} />
+            <div className="center">
+                <Keyboard
+                    keyLow={keyLow}
+                    keyHigh={keyHigh}
+                />
+            </div>
+
+            <ConceptInput />
 
             <InputBlock title="Key Range">
                 <LabeledInput label="Low">

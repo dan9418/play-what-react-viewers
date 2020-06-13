@@ -1,5 +1,7 @@
 import * as React from 'react';
-import KeyboardKeyLabel from './KeyboardKeyLabel';
+import "./Keyboard.css";
+import PW from 'play-what';
+import useNoteContext from '../../Utils/NoteContext';
 
 // Key dimensions relative to white key width
 const KEY__DIMS = {
@@ -34,16 +36,37 @@ const getScaleStyles = (keyType, scale) => {
     }
 }
 
-export const KeyboardKey = (props) => {
-    let keyColor = (props.type === KeyboardKeyType.White) ? 'white' : 'black';
-    let scaleStyles = getScaleStyles(props.type, props.scale);
+const KeyboardKey = ({ noteIndex, type, scale, action }) => {
+    let keyColor = (type === KeyboardKeyType.White) ? 'white' : 'black';
+    let scaleStyles = getScaleStyles(type, scale);
     let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
+
+    const noteContext = useNoteContext();
+    const keyCenter = noteContext.note.a;
+    const intervals = noteContext.note.B;
+    const i = PW.Theory.findNoteIndex(keyCenter, intervals, noteIndex, true);
+    // const note = PW.Theory.findNoteWithPitch(intervals, noteIndex, true);
+    // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);
+    // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);
+    const nextKeyCenter = noteContext.nextNote.a;
+    const nextIntervals = noteContext.nextNote.B;
+    const j = PW.Theory.findNoteIndex(nextKeyCenter, nextIntervals, noteIndex, true);
+
+    const colorStyles = PW.Color.degreeForesight(intervals[i], nextIntervals[j]);
+    const label = PW.Label.degree(nextIntervals[j]);
+
+    const keyStyles = keyColor === 'white' ? scaleStyles : { ...scaleStyles, ...colorStyles };
+    const labelStyles = keyColor === 'white' ? colorStyles : {};
 
     return (
         <div className={`${keyColor}-key-container`}>
-            <div className={classes.join(' ')} style={Object.assign({}, scaleStyles, props.styles)} onClick={props.action}>
-                <KeyboardKeyLabel {...props}/>
+            <div className={classes.join(' ')} style={keyStyles} onClick={action}>
+                <div className='keyboard-key-label' style={labelStyles}>
+                    {label}
+                </div>
             </div>
         </div>
     );
 }
+
+export default KeyboardKey;

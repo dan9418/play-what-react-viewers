@@ -10,7 +10,5 @@ export default {
         { tuning: -8 }    // E
     ],
     showFretNumbers: true,
-    showDots: true,
-    keyCenter: { d: 2, p: 0 },
-    intervals: []
+    showDots: true
 };
