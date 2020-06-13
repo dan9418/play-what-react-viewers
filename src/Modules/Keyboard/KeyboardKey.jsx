@@ -48,12 +48,12 @@ const KeyboardKey = ({ noteIndex, type, scale, action }) => {
     // const note = PW.Theory.findNoteWithPitch(intervals, noteIndex, true);
     // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);
     // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);
-    const nextKeyCenter = noteContext.nextNote.a;
-    const nextIntervals = noteContext.nextNote.B;
-    const j = PW.Theory.findNoteIndex(nextKeyCenter, nextIntervals, noteIndex, true);
+    //const nextKeyCenter = noteContext.nextNote.a;
+    //const nextIntervals = noteContext.nextNote.B;
+    //const j = PW.Theory.findNoteIndex(nextKeyCenter, nextIntervals, noteIndex, true);
 
-    const colorStyles = PW.Color.degreeForesight(intervals[i], nextIntervals[j]);
-    const label = PW.Label.degree(nextIntervals[j]);
+    const colorStyles = PW.Color.degree(intervals[i]);
+    const label = PW.Label.degree(intervals[i]);
 
     const keyStyles = keyColor === 'white' ? scaleStyles : { ...scaleStyles, ...colorStyles };
     const labelStyles = keyColor === 'white' ? colorStyles : {};
