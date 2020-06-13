@@ -15,11 +15,13 @@ import './PlaybackControls.css';
 const PlaybackControls = () => {
     const { play, togglePlay, tempo, setTempo, beatIndex } = useNoteContext();
     return (
-        <div className='playback-controls'>
-            <ButtonInput className='pw-secondary' onClick={togglePlay}>{play ? 'Pause' : 'Play'}</ButtonInput>
-            <ScalarInput value={tempo} setValue={setTempo} />
-            <div className={`blinker ${beatIndex % 2 === 0 ? 'pulse' : ''}`} />
-        </div>
+        <InputBlock>
+            <div className='playback-controls'>
+                <ButtonInput className='pw-secondary' onClick={togglePlay}>{play ? 'Pause' : 'Play'}</ButtonInput>
+                <ScalarInput value={tempo} setValue={setTempo} />
+                <div className={`blinker ${beatIndex % 2 === 0 ? 'pulse' : ''}`} />
+            </div>
+        </InputBlock>
     );
 }
 
