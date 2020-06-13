@@ -118,6 +118,10 @@ export const NoteContextProvider = props => {
     const routeContextValue = {
         song,
         note,
+        a: note.a,
+        B: note.B,
+        setA: () => null,
+        setB: () => null,
         nextNote,
         beatIndex,
         setBeatIndex,

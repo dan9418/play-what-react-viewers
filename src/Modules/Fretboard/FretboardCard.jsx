@@ -8,7 +8,7 @@ import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import SwitchInput from '../../UI/SwitchInput/SwitchInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
-import useNoteContext, { NoteContextProvider, NoteContextConsumer } from '../../Utils/NoteContext';
+import useNoteContext from '../../Utils/NoteContext';
 import ButtonInput from '../../UI/ButtonInput/ButtonInput';
 
 const PlaybackControls = () => {
@@ -31,30 +31,19 @@ const FretboardCard = ({ defaultOpen, back }) => {
 
     return (
         <Card title="Fretboard" defaultOpen={defaultOpen} back={back}>
+            <Fretboard
+                fretLow={fretLow}
+                fretHigh={fretHigh}
+                showDots={showDots}
+                showFretNumbers={showFretNumbers}
+            />
 
-            <NoteContextProvider>
-                <NoteContextConsumer>
-                    {noteContext =>
-                        <>
-                            <Fretboard
-                                fretLow={fretLow}
-                                fretHigh={fretHigh}
-                                showDots={showDots}
-                                showFretNumbers={showFretNumbers}
-                            />
-
-                            <PlaybackControls />
-
-                            <ConceptInput
-                                keyCenter={noteContext.note.a}
-                                setKeyCenter={null/*k => noteContext.setConcept({ a: k, B: noteContext.concept.B })*/}
-                                intervals={noteContext.note.B}
-                                setIntervals={null/*i => noteContext.setConcept({ a: noteContext.concept.a, B: i })*/}
-                            />
-                        </>
-                    }
-                </NoteContextConsumer>
-            </NoteContextProvider>
+            <ConceptInput
+                keyCenter={null}
+                setKeyCenter={null}
+                intervals={null}
+                setIntervals={null}
+            />
 
             <InputBlock title="Fret Range">
                 <LabeledInput label="Low Fret">
