@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PW from 'play-what';
 
+import PlaybackControls from '../../Modules/PlaybackControls/PlaybackControls';
 import Card from '../../UI/Card/Card';
 import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
@@ -26,6 +27,8 @@ const FretboardCard = ({ defaultOpen, back }) => {
                 showDots={showDots}
                 showFretNumbers={showFretNumbers}
             />
+
+            <PlaybackControls />
 
             <ConceptInput />
 

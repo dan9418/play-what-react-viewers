@@ -6,6 +6,7 @@ import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import InputBlock from '../../UI/InputBlock/InputBlock';
 import LabeledInput from '../../UI/LabeledInput/LabeledInput';
+import PlaybackControls from '../PlaybackControls/PlaybackControls';
 
 const KeyboardCard = ({ defaultOpen, back }) => {
     const [keyLow, setKeyLow] = useState(0);
@@ -20,6 +21,8 @@ const KeyboardCard = ({ defaultOpen, back }) => {
                     keyHigh={keyHigh}
                 />
             </div>
+
+            <PlaybackControls />
 
             <ConceptInput />
 

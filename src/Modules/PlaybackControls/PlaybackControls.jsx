@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PW from 'play-what';
 
 import Card from '../../UI/Card/Card';
-import Fretboard from './Fretboard';
 import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import SwitchInput from '../../UI/SwitchInput/SwitchInput';
