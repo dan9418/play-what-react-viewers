@@ -24,6 +24,8 @@ import InputDocsCard from './Modules/InputDocs/InputDocsCard';
 import ErrorBoundary from './UI/ErrorBoundary';
 import ButtonInput from './UI/ButtonInput/ButtonInput';
 
+import useNoteContext, { NoteContextProvider, NoteContextConsumer } from './Utils/NoteContext';
+
 import './index.css';
 
 const Modules = {
@@ -42,14 +44,21 @@ const Modules = {
     InputDocsCard,
     Rhythm,
     RhythmCard
-}
+};
 
 const UI = {
     ErrorBoundary,
     ButtonInput
+};
+
+const Utils = {
+    useNoteContext,
+    NoteContextProvider,
+    NoteContextConsumer
 }
 
 export default {
     Modules,
-    UI
+    UI,
+    Utils
  };
