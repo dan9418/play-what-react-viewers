@@ -80,7 +80,7 @@ const getNextState = (sections, sectionIndex, rowIndex, colIndex) => {
 export const NoteContextProvider = props => {
 
     // Full data
-    const song = DEFAULT_SONG;
+    const [song, setSong] = useState(DEFAULT_SONG);
     // Pulse context
     const [sectionIndex, setSectionIndex] = useState(0);
     const [rowIndex, setRowIndex] = useState(0);
@@ -103,6 +103,10 @@ export const NoteContextProvider = props => {
     const nextNote = song.sections[nextState[0]].rows[nextState[1]].cols[nextState[2]];
     console.log(beatIndex, note, 100 / note.t, nextState);
 
+    if (!play) {
+        PW.Sound.stopNotes();
+    }
+
     if (play && beatIndex === nextPulseBeat) {
         const notes = PW.Theory.addVectorsBatch(note.a, note.B);
         const freqs = PW.Theory.getFrequencies(notes);
@@ -115,13 +119,40 @@ export const NoteContextProvider = props => {
         setColIndex(nextState[2]);
     }
 
+    const setA = a => {
+        const newSong = { ...song };
+        newSong.sections[sectionIndex].rows[rowIndex].cols[colIndex].a = a;
+        setSong(newSong);
+    }
+
+    const setB = B => {
+        const newSong = { ...song };
+        newSong.sections[sectionIndex].rows[rowIndex].cols[colIndex].B = B;
+        setSong(newSong);
+    }
+
+    const setT = t => {
+        const newSong = { ...song };
+        newSong.sections[sectionIndex].rows[rowIndex].cols[colIndex].t = t;
+        setSong(newSong);
+    }
+
+    const setPosition = (s, r, c) => {
+        setSectionIndex(s);
+        setRowIndex(r);
+        setColIndex(c);
+        setBeatIndex(0);
+    }
+
     const routeContextValue = {
         song,
         note,
         a: note.a,
         B: note.B,
-        setA: () => null,
-        setB: () => null,
+        setA,
+        setB,
+        setT,
+        setPosition,
         nextNote,
         beatIndex,
         setBeatIndex,

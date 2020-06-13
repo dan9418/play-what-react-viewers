@@ -1,7 +1,6 @@
 import React from 'react';
 import './Chart.css';
 import PW from 'play-what';
-import AUTUMN_LEAVES from '../../Utils/AutumnLeaves';
 import useNoteContext from '../../Utils/NoteContext';
 
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.intervals };
@@ -13,11 +12,12 @@ const Col = props => {
     const name = PW.Theory.getNoteName(notes[0]);
     const style = { flexGrow: t };
 
-    const { sectionIndex: s, rowIndex: r, colIndex: c } = useNoteContext();
+    const { sectionIndex: s, rowIndex: r, colIndex: c, setPosition } = useNoteContext();
     const isActive = sectionIndex === s && rowIndex === r && colIndex === c;
+    const setPositionToThis = () => setPosition(sectionIndex, rowIndex, colIndex);
 
     return (
-        <div className={`col ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style}>
+        <div className={`col ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style} onClick={setPositionToThis}>
             {name}
         </div>
     );
@@ -54,14 +54,11 @@ const getSections = sections => {
     return sections.map((s, i) => <Section key={i} sectionIndex={i} name={s.name} rows={s.rows} />);
 };
 
-const DEFAULT_PROPS = AUTUMN_LEAVES;
-
 const Chart = props => {
-    const config = { ...DEFAULT_PROPS, ...props };
-
+    const noteContext = useNoteContext();
     return (
         <div className="chart">
-            {getSections(config.sections)}
+            {getSections(noteContext.song.sections)}
         </div>
     );
 }

@@ -25,4 +25,5 @@
     align-items: center;
     justify-content: center;
     flex-basis: 1px;
+    cursor: pointer;
 }
