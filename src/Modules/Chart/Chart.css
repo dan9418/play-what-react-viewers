@@ -23,7 +23,28 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-basis: 1px;
+    justify-content: space-between;
     cursor: pointer;
+    height: 50px;
+    flex-basis: 10px;
+    box-sizing: border-box;
 }
+
+
+.chart .section .row .col .tonic {
+    font-weight: bold;
+}
+
+
+.chart .section .row .col .preset {
+   margin-left: 4px;
+}
+
+
+.chart .section .row .col .beats {
+    display: none;
+ }
+
+ .chart .section .row .col:hover .beats {
+    display: block;
+ }

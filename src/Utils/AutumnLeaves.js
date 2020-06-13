@@ -10,22 +10,22 @@ const AUTUMN_LEAVES = {
                         {
                             a: PW.Presets.KEY_CENTERS.C,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.F,
                             B: PW.Presets.CHORD.Dom7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Bb,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Eb,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         }
                     ]
                 },
@@ -34,22 +34,22 @@ const AUTUMN_LEAVES = {
                         {
                             a: PW.Presets.KEY_CENTERS.A,
                             B: PW.Presets.CHORD.HalfDim7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.D,
                             B: PW.Presets.CHORD.Dom7b9.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min6.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         }
                     ]
                 }
@@ -63,22 +63,22 @@ const AUTUMN_LEAVES = {
                         {
                             a: PW.Presets.KEY_CENTERS.C,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.F,
                             B: PW.Presets.CHORD.Dom7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Bb,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Eb,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         },
 
                     ]
@@ -88,17 +88,17 @@ const AUTUMN_LEAVES = {
                         {
                             a: PW.Presets.KEY_CENTERS.A,
                             B: PW.Presets.CHORD.HalfDim7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.D,
                             B: PW.Presets.CHORD.Dom7b9.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min6.intervals,
-                            t: 50
+                            t: 8
                         }
                     ]
                 }
@@ -113,22 +113,22 @@ const AUTUMN_LEAVES = {
                             section: 'B',
                             a: PW.Presets.KEY_CENTERS.A,
                             B: PW.Presets.CHORD.HalfDim7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.D,
                             B: PW.Presets.CHORD.Dom7b9.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min6.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min6.intervals,
-                            t: 25
+                            t: 4
                         },
 
                     ]
@@ -138,22 +138,22 @@ const AUTUMN_LEAVES = {
                         {
                             a: PW.Presets.KEY_CENTERS.C,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.F,
                             B: PW.Presets.CHORD.Dom7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Bb,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Eb,
                             B: PW.Presets.CHORD.Maj7.intervals,
-                            t: 25
+                            t: 4
                         }
                     ]
                 }
@@ -168,32 +168,32 @@ const AUTUMN_LEAVES = {
                             section: 'C',
                             a: PW.Presets.KEY_CENTERS.A,
                             B: PW.Presets.CHORD.HalfDim7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.D,
                             B: PW.Presets.CHORD.Dom7b9.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 12.5
+                            t: 2
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.C,
                             B: PW.Presets.CHORD.Dom7.intervals,
-                            t: 12.5
+                            t: 2
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.F,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 12.5
+                            t: 2
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.Bb,
                             B: PW.Presets.CHORD.Dom7.intervals,
-                            t: 12.5
+                            t: 2
                         },
 
                     ]
@@ -203,22 +203,22 @@ const AUTUMN_LEAVES = {
                         {
                             a: PW.Presets.KEY_CENTERS.A,
                             B: PW.Presets.CHORD.HalfDim7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.D,
                             B: PW.Presets.CHORD.Dom7b9.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 25
+                            t: 4
                         },
                         {
                             a: PW.Presets.KEY_CENTERS.G,
                             B: PW.Presets.CHORD.Min7.intervals,
-                            t: 25
+                            t: 4
                         }
                     ]
                 }

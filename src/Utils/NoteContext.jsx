@@ -91,10 +91,10 @@ export const NoteContextProvider = props => {
     // Playback
     const [tempo, setTempo] = useState(DEFAULT_TEMPO);
     const [play, togglePlay] = useToggle(false);
-    const beatDuration = 60 / tempo * 1000;
+    const beatDuration = 1 / (tempo / 60);
     useInterval(() => {
         setBeatIndex(beatIndex + 1);
-    }, play ? beatDuration : null);
+    }, play ? beatDuration * 1000 : null);
     // Context
     const section = song.sections[sectionIndex];
     const row = section.rows[rowIndex];
@@ -110,10 +110,9 @@ export const NoteContextProvider = props => {
     if (play && beatIndex === nextPulseBeat) {
         const notes = PW.Theory.addVectorsBatch(note.a, note.B);
         const freqs = PW.Theory.getFrequencies(notes);
-        const pulseDuration = beatDuration * (100 / 1000 / note.t);
-        // console.log('sound', pulseIndex);
-        PW.Sound.playNotes(freqs, pulseDuration);
-        setNextPulseBeat(beatIndex + 100 / note.t);
+        const pulseDuration = beatDuration * note.t;
+        PW.Sound.playNotes(freqs, pulseDuration / 2);
+        setNextPulseBeat(beatIndex + note.t);
         setSectionIndex(nextState[0]);
         setRowIndex(nextState[1]);
         setColIndex(nextState[2]);
@@ -142,6 +141,7 @@ export const NoteContextProvider = props => {
         setRowIndex(r);
         setColIndex(c);
         setBeatIndex(0);
+        setNextPulseBeat(0);
     }
 
     const routeContextValue = {
