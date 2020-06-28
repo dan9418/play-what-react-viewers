@@ -12,8 +12,9 @@ const ChartCard = ({ defaultOpen, back }) => {
     return (
         <Card title="Concept Chart" defaultOpen={defaultOpen} back={back}>
             <div className="chart-card">
-                <Chart />
                 <PlaybackControls />
+                <Chart />
+
                 <ConceptInput />
             </div>
         </Card>
