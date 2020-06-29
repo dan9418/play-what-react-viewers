@@ -18,11 +18,12 @@ const DEFAULT_NOTE_CONTEXT = {
     sectionIndex: 0,
     section: { rows: [] },
     rowIndex: 0,
-    row: { cols: []},
+    row: { cols: [] },
     colIndex: 0,
     col: DEFAULT_NOTE,
     note: DEFAULT_NOTE,
     setNote: NOP,
+    nextNote: DEFAULT_NOTE,
     // Playback
     tempo: DEFAULT_TEMPO,
     setTempo: NOP,
@@ -54,10 +55,10 @@ const useToggle = (initValue = false) => {
     }, [delay]);
 };*/
 
-const getNextPosition = (sections, [s, r, c]) => {
-    const isLastSection = s === sections.length - 1;
-    const isLastRow = r === sections[s].rows.length - 1;
-    const isLastCol = c === sections[s].rows[r].cols.length - 1;
+const getNextPosition = (song, [s, r, c]) => {
+    const isLastSection = s === song.sections.length - 1;
+    const isLastRow = r === song.sections[s].rows.length - 1;
+    const isLastCol = c === song.sections[s].rows[r].cols.length - 1;
     if (isLastCol) {
         if (isLastRow) {
             if (isLastSection) {
@@ -89,6 +90,8 @@ export const NoteContextProvider = props => {
     const section = song.sections[sectionIndex];
     const row = section.rows[rowIndex];
     const col = row.cols[colIndex];
+    const nextPosition = getNextPosition(song, position);
+    const nextCol = getCol(song, ...nextPosition)
     // Playback
     const [tempo, setTempo] = useState(DEFAULT_TEMPO);
     const [playing, togglePlay] = useToggle(false);
@@ -112,7 +115,7 @@ export const NoteContextProvider = props => {
             console.log(beatIndex, remBeats, '-', state);
         }
         else if (remBeats === 1) {
-            const nextPosition = getNextPosition(song.sections, state);
+            const nextPosition = getNextPosition(song, state);
             const nextCol = getCol(song, ...nextPosition);
             setTimeout(() => {
                 setState([...nextPosition, beatIndex + 1, nextCol.t]);
@@ -148,6 +151,7 @@ export const NoteContextProvider = props => {
         col,
         note: col,
         setNote,
+        nextNote: nextCol,
         beatIndex,
         remBeats,
         // Playback

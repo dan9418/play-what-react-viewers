@@ -5,16 +5,16 @@ import useNoteContext from '../../Utils/NoteContext';
 
 const FretLabel = props => {
     const { noteIndex, minIndex, maxIndex } = props;
-    const noteContext = useNoteContext();
-    const keyCenter = noteContext.note.a;
-    const intervals = noteContext.note.B;
+    const { note, nextNote } = useNoteContext();
+    const keyCenter = note.a;
+    const intervals = note.B;
     const i = PW.Theory.findNoteIndex(keyCenter, intervals, noteIndex, true);
     const f = PW.Theory.getFrequency(noteIndex);
     // const note = PW.Theory.findNoteWithPitch(intervals, noteIndex, true);
     // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);
     // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);
-    const nextKeyCenter = noteContext.nextNote.a;
-    const nextIntervals = noteContext.nextNote.B;
+    const nextKeyCenter = nextNote.a;
+    const nextIntervals = nextNote.B;
     const j = PW.Theory.findNoteIndex(nextKeyCenter, nextIntervals, noteIndex, true);
 
     const styles = PW.Color.degreeForesight(intervals[i], nextIntervals[j]);
