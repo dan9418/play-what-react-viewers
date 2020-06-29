@@ -7,35 +7,27 @@ const DEFAULT_SONG = AUTUMN_LEAVES;
 const DEFAULT_TEMPO = 120;
 const NOP = () => null;
 
-
 const DEFAULT_NOTE_CONTEXT = {
     // Full data
     song: { sections: [{ rows: [{ cols: [DEFAULT_NOTE] }] }] },
-    // Shortcut data
-    note: DEFAULT_NOTE,
-    nextNote: DEFAULT_NOTE,
-    // Beat
-    beatIndex: 0,
-    setBeatIndex: () => null,
-    // Positon
-    state: [0, 0, 0],
-    nextState: [0, 0, 0],
-    setState: () => null,
-    // Section
+    // State
+    state: [0, 0, 0, 0, 0],
+    // State helpers
+    position: [0, 0, 0],
+    setPosition: NOP,
     sectionIndex: 0,
-    nextSectionIndex: 0,
-    // Row
+    section: { rows: [] },
     rowIndex: 0,
-    nextRowIndex: 0,
-    // Col
+    row: { cols: []},
     colIndex: 0,
-    nextColIndex: 0,
-    // Tempo
-    tempo: 0,
-    setTempo: () => null,
+    col: DEFAULT_NOTE,
+    note: DEFAULT_NOTE,
+    setNote: NOP,
     // Playback
-    play: () => null,
-    togglePlay: () => null
+    tempo: DEFAULT_TEMPO,
+    setTempo: NOP,
+    playing: NOP,
+    togglePlay: NOP
 };
 
 const NoteContext = createContext(DEFAULT_NOTE_CONTEXT);
@@ -46,7 +38,7 @@ const useToggle = (initValue = false) => {
     return [value, () => setValue(!value)];
 };
 
-const useInterval = (callback, delay) => {
+/*const useInterval = (callback, delay) => {
     const savedCallback = useRef();
 
     useEffect(() => {
@@ -60,25 +52,25 @@ const useInterval = (callback, delay) => {
             return () => clearInterval(id);
         }
     }, [delay]);
-};
+};*/
 
-const getNextState = (sections, [sectionIndex, rowIndex, colIndex]) => {
-    const isLastSection = sectionIndex === sections.length - 1;
-    const isLastRow = rowIndex === sections[sectionIndex].rows.length - 1;
-    const isLastCol = colIndex === sections[sectionIndex].rows[rowIndex].cols.length - 1;
+const getNextPosition = (sections, [s, r, c]) => {
+    const isLastSection = s === sections.length - 1;
+    const isLastRow = r === sections[s].rows.length - 1;
+    const isLastCol = c === sections[s].rows[r].cols.length - 1;
     if (isLastCol) {
         if (isLastRow) {
             if (isLastSection) {
                 return [0, 0, 0];
             }
-            return [sectionIndex + 1, 0, 0];
+            return [s + 1, 0, 0];
         }
-        return [sectionIndex, rowIndex + 1, 0];
+        return [s, r + 1, 0];
     }
-    return [sectionIndex, rowIndex, colIndex + 1];
+    return [s, r, c + 1];
 };
 
-const getNoteAt = (song, s, r, c) => {
+const getCol = (song, s, r, c) => {
     const section = song.sections[s];
     const row = section.rows[r];
     const col = row.cols[c];
@@ -89,89 +81,77 @@ export const NoteContextProvider = props => {
 
     // Full data
     const [song, setSong] = useState(DEFAULT_SONG);
-    // Context
-    const [state, setState] = useState([0, 0, 0, 0, 4 /*temp*/]);
-    const section = song.sections[state[0]];
-    const row = section.rows[state[1]];
-    const note = row.cols[state[2]];
-    const beatIndex = state[3];
-    const remBeats = state[4];
+    // State (Compound)
+    const [state, setState] = useState([0, 0, 0, 0, getCol(song, 0, 0, 0).t]);
+    // State helpers
+    const [sectionIndex, rowIndex, colIndex, beatIndex, remBeats] = state;
+    const position = [sectionIndex, rowIndex, colIndex];
+    const section = song.sections[sectionIndex];
+    const row = section.rows[rowIndex];
+    const col = row.cols[colIndex];
     // Playback
     const [tempo, setTempo] = useState(DEFAULT_TEMPO);
-    const [play, togglePlay] = useToggle(false);
+    const [playing, togglePlay] = useToggle(false);
 
-    /*useInterval(() => {
-        setBeatIndex(beatIndex + 1);
-    }, play ? beatDuration * 1000 : null);*/
-
-    if (!play) {
+    if (!playing) {
         PW.Sound.stopNotes();
     }
     else {
         const beatDuration = 1 / (tempo / 60);
-        if (remBeats === note.t) {
-            const notes = PW.Theory.addVectorsBatch(note.a, note.B);
+        if (remBeats === col.t) {
+            const notes = PW.Theory.addVectorsBatch(col.a, col.B);
             const freqs = PW.Theory.getFrequencies(notes);
-            const pulseDuration = beatDuration * note.t; // seconds
+            const pulseDuration = beatDuration * col.t; // seconds
             PW.Sound.playNotes(freqs, pulseDuration / 2);
             console.log(beatIndex, 'P');
         }
         if (remBeats > 1) {
             setTimeout(() => {
-                setState([...state.slice(0, 3), beatIndex + 1, remBeats - 1]);
+                setState([...position, beatIndex + 1, remBeats - 1]);
             }, beatDuration * 1000);
             console.log(beatIndex, remBeats, '-', state);
         }
         else if (remBeats === 1) {
-            const nextState = getNextState(song.sections, state);
-            const nextNote = getNoteAt(song, ...nextState);
+            const nextPosition = getNextPosition(song.sections, state);
+            const nextCol = getCol(song, ...nextPosition);
             setTimeout(() => {
-                setState([...nextState, beatIndex + 1, nextNote.t]);
+                setState([...nextPosition, beatIndex + 1, nextCol.t]);
             }, beatDuration * 1000)
             console.log(beatIndex, remBeats, '>', state);
         }
     }
 
-    const setA = a => {
-        const newSong = { ...song };
-        newSong.sections[state[0]].rows[state[1]].cols[state[2]].a = a;
-        setSong(newSong);
+    const setNote = note => {
+        const songCopy = { ...song };
+        const col = getCol(songCopy, ...position);
+        col = note;
+        setSong(songCopy);
     }
-
-    const setB = B => {
-        const newSong = { ...song };
-        newSong.sections[state[0]].rows[state[1]].cols[state[2]].B = B;
-        setSong(newSong);
-    }
-
-    const setT = t => {
-        const newSong = { ...song };
-        newSong.sections[state[0]].rows[state[1]].cols[state[2]].t = t;
-        setSong(newSong);
-    }
-
     const setPosition = (s, r, c) => {
-        setState([s, r, c, 0, 4]);
+        const col = getCol(song, s, r, c);
+        setState([s, r, c, 0, col.t]);
     }
 
     const routeContextValue = {
+        // Full data
         song,
-        note,
-        a: note.a,
-        B: note.B,
-        t: note.t,
-        setA,
-        setB,
-        setT,
+        // State
+        state,
+        // State helpers
+        position,
         setPosition,
-        beatIndex,
-        setBeatIndex: () => null,
-        sectionIndex: state[0],
-        rowIndex: state[1],
-        colIndex: state[2],
+        sectionIndex,
+        section,
+        rowIndex,
+        row,
+        colIndex,
+        col,
+        note: col,
+        setNote,
+        // Playback
         tempo,
         setTempo,
-        play,
+        playing,
         togglePlay
     };
     return <NoteContext.Provider value={routeContextValue}>{props.children}</NoteContext.Provider>;

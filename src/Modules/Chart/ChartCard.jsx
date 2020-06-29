@@ -5,7 +5,6 @@ import Card from '../../UI/Card/Card';
 import Chart from './Chart';
 import PlaybackControls from '../PlaybackControls/PlaybackControls';
 import ConceptInput from '../../UI/ConceptInput/ConceptInput';
-import useNoteContext from '../../Utils/NoteContext';
 
 const ChartCard = ({ defaultOpen, back }) => {
 

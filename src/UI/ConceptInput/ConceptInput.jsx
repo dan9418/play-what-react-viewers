@@ -29,7 +29,10 @@ const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 const ConceptInput = () => {
 
     const noteContext = useNoteContext();
-    const { a: keyCenter, setA: setKeyCenter, B: intervals, setB: setIntervals } = noteContext; 
+    const { note, setNote } = noteContext;
+    const { a: keyCenter, B: intervals } = note;
+    const setKeyCenter = kc => setNote({ ...note, a: kc });
+    const setIntervals = ivls => setNote({ ...note, B: ivls });
 
     const [inputMode, setInputMode] = useState(CONCEPT_INPUT_MODES.preset);
 
