@@ -148,6 +148,8 @@ export const NoteContextProvider = props => {
         col,
         note: col,
         setNote,
+        beatIndex,
+        remBeats,
         // Playback
         tempo,
         setTempo,
