@@ -8,6 +8,7 @@ const Progression = ({ source }) => {
     return (
         <div className="progression">
             <ConceptInput note={source} setNote={() => null} />
+            <ConceptInput note={source} setNote={() => null} />
         </div>
     );
 }
