@@ -1,7 +1,6 @@
 import * as React from 'react';
 import "./Keyboard.css";
 import PW from 'play-what';
-import useNoteContext from '../../Utils/NoteContext';
 
 // Key dimensions relative to white key width
 const KEY__DIMS = {
@@ -41,7 +40,7 @@ const KeyboardKey = ({ noteIndex, type, scale }) => {
     let scaleStyles = getScaleStyles(type, scale);
     let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
 
-    const noteContext = useNoteContext();
+    const noteContext = null;
     const keyCenter = noteContext.note.a;
     const intervals = noteContext.note.B;
     const i = PW.Theory.findNoteIndex(keyCenter, intervals, noteIndex, true);

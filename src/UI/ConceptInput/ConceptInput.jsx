@@ -5,7 +5,6 @@ import ConceptPresetInput from '../ConceptPresetInput/ConceptPresetInput';
 import ConceptIntervalsInput from '../ConceptIntervalsInput/ConceptIntervalsInput';
 import ConceptMathInput from '../ConceptMathInput/ConceptMathInput';
 import Dropdown from '../Dropdown/Dropdown';
-import useNoteContext from '../../Utils/NoteContext';
 
 const CONCEPT_INPUT_MODES = {
     preset: {
@@ -26,10 +25,9 @@ const CONCEPT_INPUT_MODES = {
 }
 const CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);
 
-const ConceptInput = () => {
+const ConceptInput = props => {
 
-    const noteContext = useNoteContext();
-    const { note, setNote } = noteContext;
+    const { note, setNote } = props;
     const { a: keyCenter, B: intervals } = note;
     const setKeyCenter = kc => setNote({ ...note, a: kc });
     const setIntervals = ivls => setNote({ ...note, B: ivls });

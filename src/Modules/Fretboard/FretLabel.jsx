@@ -1,11 +1,11 @@
 import * as React from "react";
 import PW from 'play-what';
 import "./Fretboard.css";
-import useNoteContext from '../../Utils/NoteContext';
 
 const FretLabel = props => {
     const { noteIndex, minIndex, maxIndex } = props;
-    const { note, nextNote } = useNoteContext();
+    const noteContext = null;
+    const { note, nextNote } = noteContext;
     const keyCenter = note.a;
     const intervals = note.B;
     const i = PW.Theory.findNoteIndex(keyCenter, intervals, noteIndex, true);

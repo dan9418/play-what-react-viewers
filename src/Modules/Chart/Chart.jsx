@@ -1,7 +1,6 @@
 import React from 'react';
 import './Chart.css';
 import PW from 'play-what';
-import useNoteContext from '../../Utils/NoteContext';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.intervals };
@@ -17,7 +16,7 @@ const Col = props => {
 
     const style = { flexGrow: t };
 
-    const { sectionIndex: s, rowIndex: r, colIndex: c, setPosition, setT } = useNoteContext();
+    const { sectionIndex: s, rowIndex: r, colIndex: c, setPosition, setT } = { sectionIndex: 0, rowIndex: 0, colIndex: 0, setPosition: () => null, setT: () => null };
     const isActive = sectionIndex === s && rowIndex === r && colIndex === c;
     const setPositionToThis = () => setPosition(sectionIndex, rowIndex, colIndex);
 
@@ -65,11 +64,10 @@ const getSections = sections => {
     return sections.map((s, i) => <Section key={i} sectionIndex={i} name={s.name} rows={s.rows} />);
 };
 
-const Chart = props => {
-    const noteContext = useNoteContext();
+const Chart = ({ source }) => {
     return (
         <div className="chart">
-            {getSections(noteContext.song.sections)}
+            {getSections(source.sections)}
         </div>
     );
 }
