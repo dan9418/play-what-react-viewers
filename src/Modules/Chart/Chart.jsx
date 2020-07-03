@@ -1,7 +1,6 @@
 import React from 'react';
 import './Chart.css';
 import PW from 'play-what';
-import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.intervals };
 const DEFAULT_ROW = [DEFAULT_COL];
@@ -25,9 +24,6 @@ const Col = props => {
             <div>
                 <span className="tonic">{tonic}</span>
                 <span className="preset">{preset.id}</span>
-            </div>
-            <div className="beats">
-                <ScalarInput value={t} setValue={() => null} />
             </div>
         </div>
     );

@@ -1,3 +1,29 @@
 .progression {
-
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
 }
+
+.progression .col {
+    padding: 4px;
+    margin: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    height: 50px;
+    flex-basis: 10px;
+    box-sizing: border-box;
+}
+
+
+.progression .col .tonic {
+    font-weight: bold;
+}
+
+.progression .col .preset {
+   margin-left: 4px;
+}
+

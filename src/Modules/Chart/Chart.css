@@ -40,11 +40,3 @@
    margin-left: 4px;
 }
 
-
-.chart .section .row .col .beats {
-    display: none;
- }
-
- .chart .section .row .col:hover .beats {
-    display: block;
- }
