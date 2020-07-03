@@ -35,22 +35,18 @@ const getScaleStyles = (keyType, scale) => {
     }
 }
 
-const KeyboardKey = ({ noteIndex, type, scale }) => {
+const KeyboardKey = ({ noteIndex, type, scale, concept }) => {
     let keyColor = (type === KeyboardKeyType.White) ? 'white' : 'black';
     let scaleStyles = getScaleStyles(type, scale);
     let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
 
-    const noteContext = null;
-    const keyCenter = noteContext.note.a;
-    const intervals = noteContext.note.B;
-    const i = PW.Theory.findNoteIndex(keyCenter, intervals, noteIndex, true);
+    const { a: keyCenter, B: intervals } = concept;
+    const notes = PW.Theory.addVectorsBatch(keyCenter, intervals);
+
+    const i = PW.Theory.findIndexOfNoteWithPitch(notes, noteIndex, true);
+
     const f = PW.Theory.getFrequency(noteIndex);
-    // const note = PW.Theory.findNoteWithPitch(intervals, noteIndex, true);
-    // const minNote = Theory.getNoteByNoteIndex(fretMapping.notes, minIndex);
-    // const maxNote = Theory.getNoteByNoteIndex(fretMapping.notes, maxIndex);
-    //const nextKeyCenter = noteContext.nextNote.a;
-    //const nextIntervals = noteContext.nextNote.B;
-    //const j = PW.Theory.findNoteIndex(nextKeyCenter, nextIntervals, noteIndex, true);
+    const play = () => PW.Sound.playNote(f);
 
     const colorStyles = PW.Color.degree(intervals[i]);
     const label = PW.Label.degree(intervals[i]);
@@ -60,7 +56,7 @@ const KeyboardKey = ({ noteIndex, type, scale }) => {
 
     return (
         <div className={`${keyColor}-key-container`}>
-            <div className={classes.join(' ')} style={keyStyles} onClick={() => PW.Sound.playNote(f)}>
+            <div className={classes.join(' ')} style={keyStyles} onClick={play}>
                 <div className='keyboard-key-label' style={labelStyles}>
                     {label}
                 </div>
