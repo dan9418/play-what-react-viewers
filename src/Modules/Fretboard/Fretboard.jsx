@@ -24,6 +24,7 @@ const getFrets = (config) => {
                 maxIndex={max}
                 fretNumber={fretNum}
                 stringNum={strNum}
+                concept={config.concept}
                 showFretNumber={config.showFretNumbers && strNum === 1}
                 showFretDots={config.showDots && strNum === config.strings.length}
             />);

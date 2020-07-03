@@ -10,5 +10,6 @@ export default {
         { tuning: -8 }    // E
     ],
     showFretNumbers: true,
-    showDots: true
+    showDots: true,
+    concept: { a: { p: 0, d: 0 }, B: [] }
 };
