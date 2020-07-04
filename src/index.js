@@ -11,6 +11,7 @@ import Chart from './Modules/Chart/Chart';
 
 import ErrorBoundary from './UI/ErrorBoundary';
 import ButtonInput from './UI/ButtonInput/ButtonInput';
+import Dropdown from './UI/Dropdown/Dropdown';
 import ConceptInput from './UI/ConceptInput/ConceptInput';
 
 import './index.css';
@@ -30,6 +31,7 @@ const Modules = {
 const UI = {
     ErrorBoundary,
     ButtonInput,
+    Dropdown,
     ConceptInput
 };
 
