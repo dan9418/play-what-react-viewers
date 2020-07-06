@@ -23,13 +23,12 @@
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     cursor: pointer;
     height: 50px;
     flex-basis: 10px;
     box-sizing: border-box;
 }
-
 
 .chart .section .row .col .tonic {
     font-weight: bold;
