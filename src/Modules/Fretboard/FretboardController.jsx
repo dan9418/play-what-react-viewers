@@ -11,9 +11,9 @@ const FretboardController = (props) => {
     return (
         <div className='fretboard-controller'>
             <ControllerHeader title='Fretboard'>
-                Hello Wolrd
+                Inputs coming soon...
             </ControllerHeader>
-            <Fretboard {...state} />
+            <Fretboard {...props} />
         </div>
     );
 };

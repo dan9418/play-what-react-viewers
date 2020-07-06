@@ -11,9 +11,9 @@ const KeyboardController = (props) => {
     return (
         <div className='keyboard-controller'>
             <ControllerHeader title='Keyboard'>
-                Hello Wolrd
+                Inputs coming soon...
             </ControllerHeader>
-            <Keyboard {...state} />
+            <Keyboard {...props} />
         </div>
     );
 };
