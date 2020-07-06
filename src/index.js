@@ -1,5 +1,5 @@
-import Fretboard from './Modules/Fretboard/Fretboard';
-import Keyboard from './Modules/Keyboard/Keyboard';
+import Fretboard from './Modules/Fretboard/FretboardController';
+import Keyboard from './Modules/Keyboard/KeyboardController';
 import Graph from './Modules/Graph/Graph';
 import Rhythm from './Modules/Rhythm/Rhythm';
 import TrueScale from './Modules/TrueScale/TrueScale';

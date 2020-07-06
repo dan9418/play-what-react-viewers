@@ -3,13 +3,13 @@
 .fretboard {
 	display: inline-block;
 	display: inline-grid;
-	width: 100%;
+	width: 95%;
 	background-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);
 	font-size: 12px;
 	text-align: center;
 	font-family: sans-serif;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 24px 0;
+	box-sizing: border-box;
 }
 
 /* Fret */
