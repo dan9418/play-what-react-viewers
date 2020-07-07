@@ -47,7 +47,7 @@ const PresetInput = props => {
                 <Dropdown value={presetType} setValue={setPresetType} options={PRESET_TYPES} />
             </LabeledInput>
             <LabeledInput label={presetType.name} >
-                <Dropdown value={preset} setValue={v => setPreset(v.intervals)} options={presetType.options} />
+                <Dropdown value={preset} setValue={v => setPreset(v.B)} options={presetType.options} />
             </LabeledInput>
         </div>
     );
