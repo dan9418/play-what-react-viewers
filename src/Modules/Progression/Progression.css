@@ -5,7 +5,7 @@
     justify-content: space-around;
 }
 
-.progression .col {
+.progression .progression {
     padding: 4px;
     margin: 4px;
     border-radius: 4px;
@@ -19,11 +19,11 @@
 }
 
 
-.progression .col .tonic {
+.progression .progression .tonic {
     font-weight: bold;
 }
 
-.progression .col .preset {
+.progression .progression .preset {
    margin-left: 4px;
 }
 

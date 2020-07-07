@@ -19,7 +19,7 @@
     justify-content: space-between;
 }
 
-.chart .section .row .col {
+.chart .section .row .progression {
     padding: 4px;
     margin: 4px;
     border-radius: 4px;
@@ -32,12 +32,12 @@
     box-sizing: border-box;
 }
 
-.chart .section .row .col .tonic {
+.chart .section .row .progression .tonic {
     font-weight: bold;
 }
 
 
-.chart .section .row .col .preset {
+.chart .section .row .progression .preset {
    margin-left: 4px;
 }
 

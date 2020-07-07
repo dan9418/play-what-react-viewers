@@ -5,7 +5,7 @@ import PW from 'play-what';
 const DEFAULT_COL = { a: PW.Presets.KEY_CENTERS.C, B: PW.Presets.QUICK_MODE.Ionian.B };
 const DEFAULT_ROW = [DEFAULT_COL];
 
-const Col = props => {
+const Concept = props => {
     const { a, B, t, sectionIndex, rowIndex, colIndex, setPosition, position } = props;
     // const notes = PW.Theory.addVectorsBatch(a, B);
 
@@ -20,7 +20,7 @@ const Col = props => {
     const setPositionToThis = () => setPosition([sectionIndex, rowIndex, colIndex]);
 
     return (
-        <div className={`col ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style} onClick={setPositionToThis}>
+        <div className={`progression ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style} onClick={setPositionToThis}>
             <div>
                 <span className="tonic">{tonic}</span>
                 <span className="preset">{preset.id}</span>
@@ -30,10 +30,10 @@ const Col = props => {
 };
 
 const Row = props => {
-    const { cols, sectionIndex, rowIndex, setPosition, position } = props;
+    const { progression, sectionIndex, rowIndex, setPosition, position } = props;
     return (
         <div className={`row ${null}`}>
-            {cols.map((c, i) => <Col key={i} sectionIndex={sectionIndex} rowIndex={rowIndex} colIndex={i} a={c.a} B={c.B} t={c.t} setPosition={setPosition} position={position} />)}
+            {progression.map((c, i) => <Concept key={i} sectionIndex={sectionIndex} rowIndex={rowIndex} colIndex={i} a={c.a} B={c.B} t={c.t} setPosition={setPosition} position={position} />)}
         </div>
     );
 };
@@ -43,7 +43,7 @@ const Section = props => {
     return (
         <div className={`section ${null}`}>
             <div className="name">{name}</div>
-            {rows.map((r, i) => <Row key={i} sectionIndex={sectionIndex} rowIndex={i} cols={r.cols} setPosition={setPosition} position={position} />)}
+            {rows.map((r, i) => <Row key={i} sectionIndex={sectionIndex} rowIndex={i} progression={r.progression} setPosition={setPosition} position={position} />)}
         </div>
     );
 };

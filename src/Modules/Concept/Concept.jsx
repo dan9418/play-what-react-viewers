@@ -4,7 +4,7 @@ import PW from 'play-what';
 import ScalarInput from '../../UI/ScalarInput/ScalerInput';
 import ConceptInput from '../../UI/ConceptInput/ConceptInput';
 
-const Col = props => {
+const Concept2 = props => {
     const { a, B, t } = props;
 
     const tonic = PW.Theory.getNoteName(a);
@@ -15,7 +15,7 @@ const Col = props => {
     const setPositionToThis = () => setPosition(index);
 
     return (
-        <div className='col pw-lighter' style={style} onClick={setPositionToThis}>
+        <div className='progression pw-lighter' style={style} onClick={setPositionToThis}>
             <div>
                 <span className="tonic">{tonic}</span>
                 <span className="preset">{preset.id}</span>
@@ -27,7 +27,7 @@ const Col = props => {
 const Concept = ({ source }) => {
     return (
         <div className="concept">
-            <Col a={source.a} B={source.B} />
+            <Concept2 a={source.a} B={source.B} />
         </div>
     );
 }

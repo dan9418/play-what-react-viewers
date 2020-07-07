@@ -2,7 +2,7 @@ import React from 'react';
 import './Progression.css';
 import PW from 'play-what';
 
-const Col = props => {
+const Concept = props => {
     const { a, B, t, index, setPosition, position } = props;
 
     const tonic = PW.Theory.getNoteName(a);
@@ -14,7 +14,7 @@ const Col = props => {
     const setPositionToThis = () => setPosition(index);
 
     return (
-        <div className={`col ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style} onClick={setPositionToThis}>
+        <div className={`progression ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style} onClick={setPositionToThis}>
             <div>
                 <span className="tonic">{tonic}</span>
                 <span className="preset">{preset.id}</span>
@@ -26,8 +26,8 @@ const Col = props => {
 const Progression = ({ source, position, setPosition }) => {
     return (
         <div className="progression">
-            {source.cols.map((s, i) => {
-                return <Col a={s.a} B={s.B} index={i} position={position} setPosition={setPosition} />
+            {source.progression.map((s, i) => {
+                return <Concept a={s.a} B={s.B} index={i} position={position} setPosition={setPosition} />
             })}
         </div>
     );

@@ -5,7 +5,7 @@
     justify-content: center;
 }
 
-.concept .col {
+.concept .progression {
     padding: 4px;
     margin: 4px;
     border-radius: 4px;
@@ -19,11 +19,11 @@
 }
 
 
-.concept .col .tonic {
+.concept .progression .tonic {
     font-weight: bold;
 }
 
-.concept .col .preset {
+.concept .progression .preset {
    margin-left: 4px;
 }
 
