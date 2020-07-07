@@ -5,8 +5,6 @@ import Rhythm from './Modules/Rhythm/Rhythm';
 import TrueScale from './Modules/TrueScale/TrueScale';
 import HarmonicSeries from './Modules/HarmonicSeries/HarmonicSeries';
 
-import Concept from './Modules/Concept/Concept';
-import Progression from './Modules/Progression/Progression';
 import Chart from './Modules/Chart/Chart';
 
 import ErrorBoundary from './UI/ErrorBoundary';
@@ -22,8 +20,6 @@ const Modules = {
     Graph,
     TrueScale,
     HarmonicSeries,
-    Concept,
-    Progression,
     Chart,
     Rhythm,
 };
