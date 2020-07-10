@@ -34,35 +34,27 @@ const getKeyboardKeys = (config, viewerWidth) => {
     return keys;
 }
 
-export default class Keyboard extends React.Component {
+const Keyboard = props => {
 
-    constructor(props) {
-        super(props);
-        this.domNode = null;
-        this.state = { height: 0, width: 0 };
-        this.domNode = React.createRef();
-    }
+    const config = { ...DEFAULT_PROPS, ...props };
 
-    componentDidMount() {
-        window.addEventListener('resize', this.resetDimensions);
-        this.resetDimensions();
-    }
+    const [dims, setDims] = React.useState([512, 512]);
 
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.resetDimensions);
-    }
+    React.useEffect(() => {
+        const resetDimensions = (e) => {
+            const el = document.getElementById('keyboard');
+            setDims([el.clientWidth, el.clientHeight])
+        }
+        resetDimensions();
+        window.addEventListener('resize', resetDimensions);
+        return () => window.removeEventListener('resize', resetDimensions);
+    }, [])
 
-    resetDimensions() {
-        this.setState({ width: this.domNode.current.clientWidth, height: this.domNode.current.clientHeight });
-    }
-
-    render() {
-        let config = Object.assign({}, DEFAULT_PROPS, this.props);
-
-        return (
-            <div className='keyboard' ref={this.domNode}>
-                {getKeyboardKeys(config, this.state.width)}
-            </div>
-        );
-    }
+    return (
+        <div className='keyboard' id='keyboard'>
+            {getKeyboardKeys(config, dims[0])}
+        </div>
+    );
 }
+
+export default Keyboard;
