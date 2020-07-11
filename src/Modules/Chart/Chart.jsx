@@ -66,7 +66,7 @@ const Chart = ({ source, position, setPosition, inputModeId }) => {
             </>}
             {inputModeId === 'progression' && <>
                 <h2>Progression</h2>
-                <Progression sectionIndex={0} rowIndex={0} progression={source} setPosition={setPosition} position={position} />
+                <Progression sectionIndex={0} rowIndex={0} progression={source.sections[0].progressions[0]} setPosition={setPosition} position={position} />
             </>}
         </div>
     );
