@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Chart.css';
 import PW from 'play-what';
 
@@ -10,7 +10,7 @@ const Concept = props => {
     // const notes = PW.Theory.addVectorsBatch(a, B);
 
     const tonic = PW.Theory.getNoteName(a);
-    const preset = PW.Theory.findPreset(B);
+    const preset = PW.Theory.findPresetWithId(B);
     //const name = `${tonic} ${preset.id}`
 
     const style = { flexGrow: t };
@@ -20,7 +20,7 @@ const Concept = props => {
     const setPositionToThis = position != null ? (position.length ? () => setPosition([sectionIndex, rowIndex, conceptIndex]) : () => setPosition(conceptIndex)) : () => null;
 
     return (
-        <div className={`concept ${isActive ? 'pw-accent' : 'pw-lighter'}`} style={style} onClick={setPositionToThis}>
+        <div className={`concept pw-hov ${isActive ? 'pw-accent' : 'pw-secondary'}`} style={style} onClick={setPositionToThis}>
             <div>
                 <span className="tonic">{tonic}</span>
                 <span className="preset">{preset.id}</span>
@@ -32,18 +32,27 @@ const Concept = props => {
 const Progression = props => {
     const { progression, sectionIndex, rowIndex, setPosition, position } = props;
     return (
-        <div className={`progression ${null}`}>
-            {progression.map((c, i) => <Concept key={i} sectionIndex={sectionIndex} rowIndex={rowIndex} conceptIndex={i} a={c.a} B={c.B} t={c.t} setPosition={setPosition} position={position} />)}
+        <div className={`progression pw-light`}>
+            <h4 className='progression-name'>{progression.name || `${rowIndex + 1}`}</h4>
+            <div className={`progression-concepts`}>
+                {progression.concepts.map((c, i) => <Concept key={i} sectionIndex={sectionIndex} rowIndex={rowIndex} conceptIndex={i} a={c.a} B={c.B} t={c.t} setPosition={setPosition} position={position} />)}
+            </div>
         </div>
     );
 };
 
 const Section = props => {
-    const { name, rows, sectionIndex, setPosition, position } = props;
+    const { section, sectionIndex, setPosition, position } = props;
+    const [open, setOpen] = useState(true);
+    const toggleOpen = () => setOpen(!open);
     return (
-        <div className={`section ${null}`}>
-            <div className="name">{name}</div>
-            {rows.map((r, i) => <Progression key={i} sectionIndex={sectionIndex} rowIndex={i} progression={r.progression} setPosition={setPosition} position={position} />)}
+        <div className={`section`}>
+            <h3 className='section-name' onClick={toggleOpen}>{section.name}</h3>
+            <div>
+                {open && section.progressions.map((p, i) =>
+                    <Progression key={i} sectionIndex={sectionIndex} rowIndex={i} progression={p} setPosition={setPosition} position={position} />
+                )}
+            </div>
         </div>
     );
 };
@@ -51,9 +60,14 @@ const Section = props => {
 const Chart = ({ source, position, setPosition, inputModeId }) => {
     return (
         <div className="chart">
-            {inputModeId === 'chart' && source.sections.map((s, i) => <Section key={i} sectionIndex={i} name={s.name} rows={s.rows} setPosition={setPosition} position={position} />)}
-            {inputModeId === 'progression' && <Progression sectionIndex={0} rowIndex={0} progression={source.progression} setPosition={setPosition} position={position} />}
-            {inputModeId === 'concept' && false && <Concept sectionIndex={0} rowIndex={0} conceptIndex={0} a={source.a} B={source.B} t={source.t} setPosition={() => null} position={null} />}
+            {inputModeId === 'chart' && <>
+                <h2>Sections</h2>
+                {source.sections.map((s, i) => <Section key={i} sectionIndex={i} section={s} setPosition={setPosition} position={position} />)}
+            </>}
+            {inputModeId === 'progression' && <>
+                <h2>Progression</h2>
+                <Progression sectionIndex={0} rowIndex={0} progression={source} setPosition={setPosition} position={position} />
+            </>}
         </div>
     );
 }
