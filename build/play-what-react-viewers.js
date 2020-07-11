@@ -285,212 +285,25 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Con
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/Fretboard/Fretboard.css":
-/*!***********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/Fretboard/Fretboard.css ***!
-  \***********************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Fretboard/Fretboard.css":
+/*!***************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Fretboard/Fretboard.css ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Fretboard */\\r\\n\\r\\n.fretboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\tdisplay: inline-grid;\\r\\n\\twidth: 95%;\\r\\n\\tbackground-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);\\r\\n\\tfont-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\tmargin: 24px 0;\\r\\n\\tbox-sizing: border-box;\\r\\n}\\r\\n\\r\\n/* Fret */\\r\\n\\r\\n.fret {\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tposition: relative;\\r\\n\\tborder-right: 2px solid darkgrey;\\r\\n}\\r\\n\\r\\n.fret.open {\\r\\n\\tborder-right: 3px solid grey;\\r\\n}\\r\\n\\r\\n/* Used to maintain aspect ratio */\\r\\n\\r\\n.fret::before {\\r\\n\\tcontent: \\\"\\\";\\r\\n\\tdisplay: block;\\r\\n\\theight: 0;\\r\\n\\twidth: 0;\\r\\n\\tmargin-top: calc(1/2 * 100%);\\r\\n}\\r\\n\\r\\n/* Fret String */\\r\\n\\r\\n.fret-string {\\r\\n\\tbackground-color: grey;\\r\\n\\theight: 1px;\\r\\n\\twidth: 100%;\\r\\n}\\r\\n\\r\\n/* Fret Numbers */\\r\\n\\r\\n.fret-number {\\r\\n\\tposition: absolute;\\r\\n\\tbottom: 105%;\\r\\n}\\r\\n\\r\\n/* Fret Dots */\\r\\n\\r\\n.fret-dots {\\r\\n\\tposition: absolute;\\r\\n\\ttop: 100%;\\r\\n\\tfont-size: 16px;\\r\\n\\twhite-space: nowrap;\\r\\n}\\r\\n\\r\\n.fret-number, .fret-dots {\\r\\n\\tcolor: #555;\\r\\n}\\r\\n\\r\\n/* Fret Label */\\r\\n\\r\\n.fret-label {\\r\\n\\tposition: absolute;\\r\\n\\twidth: 90%;\\r\\n\\theight: 90%;\\r\\n\\tdisplay: flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tborder-radius: 100%;\\r\\n}\\r\\n\\r\\n.fret-label:hover {\\r\\n\\twidth: 100%;\\r\\n\\theight: 100%;\\r\\n\\tcursor: pointer;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Fretboard */\\r\\n\\r\\n.fretboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\tdisplay: inline-grid;\\r\\n\\twidth: 95%;\\r\\n\\tbackground-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);\\r\\n\\tfont-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\tmargin: 24px 0;\\r\\n\\tbox-sizing: border-box;\\r\\n}\\r\\n\\r\\n/* Fret */\\r\\n\\r\\n.fret {\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tposition: relative;\\r\\n\\tborder-right: 2px solid darkgrey;\\r\\n}\\r\\n\\r\\n.fret.open {\\r\\n\\tborder-right: 3px solid grey;\\r\\n}\\r\\n\\r\\n/* Used to maintain aspect ratio */\\r\\n\\r\\n.fret::before {\\r\\n\\tcontent: \\\"\\\";\\r\\n\\tdisplay: block;\\r\\n\\theight: 0;\\r\\n\\twidth: 0;\\r\\n\\tmargin-top: calc(1/2 * 100%);\\r\\n}\\r\\n\\r\\n/* Fret String */\\r\\n\\r\\n.fret-string {\\r\\n\\tbackground-color: grey;\\r\\n\\theight: 1px;\\r\\n\\twidth: 100%;\\r\\n}\\r\\n\\r\\n/* Fret Numbers */\\r\\n\\r\\n.fret-number {\\r\\n\\tposition: absolute;\\r\\n\\tbottom: 105%;\\r\\n}\\r\\n\\r\\n/* Fret Dots */\\r\\n\\r\\n.fret-dots {\\r\\n\\tposition: absolute;\\r\\n\\ttop: 100%;\\r\\n\\tfont-size: 16px;\\r\\n\\twhite-space: nowrap;\\r\\n}\\r\\n\\r\\n.fret-number, .fret-dots {\\r\\n\\tcolor: #555;\\r\\n}\\r\\n\\r\\n/* Fret Label */\\r\\n\\r\\n.fret-label {\\r\\n\\tposition: absolute;\\r\\n\\twidth: 90%;\\r\\n\\theight: 90%;\\r\\n\\tdisplay: flex;\\r\\n\\tjustify-content: center;\\r\\n\\talign-items: center;\\r\\n\\tborder-radius: 100%;\\r\\n}\\r\\n\\r\\n.fret-label:hover {\\r\\n\\twidth: 100%;\\r\\n\\theight: 100%;\\r\\n\\tcursor: pointer;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Fretboard/Fretboard.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/Modules/Keyboard/Keyboard.css":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/Modules/Keyboard/Keyboard.css ***!
-  \*********************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/Keyboard/Keyboard.css":
+/*!*************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/Keyboard/Keyboard.css ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Keyboard */\\r\\n\\r\\n.keyboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 100%;\\r\\n\\tmin-width: 100px;\\r\\n\\r\\n    font-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\t\\r\\n\\tmargin-top: 20px;\\r\\n    margin-bottom: 20px;\\r\\n}\\r\\n\\r\\n.center {\\r\\n\\ttext-align: center;\\r\\n}\\r\\n\\r\\n/* Key Container */\\r\\n\\r\\n.white-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n}\\r\\n\\r\\n.black-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 0px;\\r\\n}\\r\\n\\r\\n/* Key */\\r\\n\\r\\n.keyboard-key {\\r\\n\\tvertical-align: top;\\r\\n\\tposition: relative;\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n.white-key {\\r\\n\\tbox-shadow: 0 0 1px 1px black inset;\\r\\n    border-radius: 0 0 5% 5%;\\r\\n}\\r\\n\\r\\n.white-key:hover {\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n.black-key {\\r\\n\\tbox-shadow: 0 0 1px 2px #555 inset;\\r\\n\\tz-index: 10;\\r\\n    border-radius: 0 0 10% 10%;\\r\\n}\\r\\n\\r\\n.black-key:hover {\\r\\n\\tbackground-color: #333;\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n/* Colors (applied only in absence of degree class) */\\r\\n\\r\\n.white {\\r\\n\\tbackground-color: white;\\r\\n    color: black;\\r\\n}\\r\\n\\r\\n.black {\\r\\n\\tbackground-color: black;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n\\r\\n/* Label */\\r\\n\\r\\n.white-key .keyboard-key-label {\\r\\n\\tposition: absolute;\\r\\n\\theight: 100%;\\r\\n\\twidth: 100%;\\r\\n\\tborder-radius: 0 0 5% 5%;\\r\\n\\tbox-shadow: 0 0 1px 1px black inset;\\r\\n}\\r\\n\\r\\n.white-key .keyboard-key-label:hover {\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n.black-key .keyboard-key-label {\\r\\n\\tbottom: 105%;\\r\\n\\tposition: absolute;\\r\\n\\tcolor: black;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ButtonInput/ButtonInput.css":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ButtonInput/ButtonInput.css ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".button-input {\\r\\n    height: 40px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    min-width: 50px;\\r\\n    cursor: pointer;\\r\\n    border: none;\\r\\n    outline: none;\\r\\n    border-radius: 4px;\\r\\n    padding: 0 16px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ButtonInput/ButtonInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptInput/ConceptInput.css":
-/*!************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptInput/ConceptInput.css ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".note-name {\\r\\n    height: 20px;\\r\\n    width: 20px;\\r\\n    margin: 8px;\\r\\n    display: inline-flex;\\r\\n    justify-content: center;\\r\\n    align-items: center;\\r\\n    align-self: flex-start;\\r\\n}\\r\\n\\r\\n.concept-input {\\r\\n    position: relative;\\r\\n}\\r\\n\\r\\n.input-mode-box {\\r\\n    text-align: right;\\r\\n    margin: 8px;\\r\\n}\\r\\n\\r\\n.note-names {\\r\\n    font-size: 120%;\\r\\n    padding: 16px;\\r\\n    border-radius: 8px;\\r\\n    text-align: center;\\r\\n    font-weight: bold;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptInput/ConceptInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptMathInput/ConceptMathInput.css":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptMathInput/ConceptMathInput.css ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".inerval-math-input *:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptMathInput/ConceptMathInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptPresetInput/ConceptPresetInput.css":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptPresetInput/ConceptPresetInput.css ***!
-  \************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ConceptPresetInput/ConceptPresetInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ControllerHeader/ControllerHeader.css":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ControllerHeader/ControllerHeader.css ***!
-  \********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".controller-header {\\r\\n    text-align: left;\\r\\n}\\r\\n\\r\\n.controller-header > h1 {\\r\\n    width: 90%;\\r\\n    margin: auto;\\r\\n    display: flex;\\r\\n    align-items: flex-end;\\r\\n    justify-content: space-between;\\r\\n    user-select: none;\\r\\n}\\r\\n\\r\\n.controller-header .edit {\\r\\n    font-size: medium;\\r\\n    cursor: pointer;\\r\\n}\\r\\n\\r\\n.controller-header .content {\\r\\n    border: 1px solid black;\\r\\n    width: 95%;\\r\\n    margin: auto;\\r\\n    max-height: 0px;\\r\\n    box-sizing: border-box;\\r\\n    border-radius: 0 0 16px 16px;\\r\\n    overflow: hidden;\\r\\n}\\r\\n\\r\\n.controller-header.open .content {\\r\\n    padding: 16px;\\r\\n    max-height: 10000px;\\r\\n    transition: max-height 2s ease-in;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ControllerHeader/ControllerHeader.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/Dropdown/Dropdown.css":
-/*!****************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/Dropdown/Dropdown.css ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".dropdown-input {\\r\\n    height: 40px;\\r\\n    min-width: 50px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    outline: none;\\r\\n    cursor: pointer;\\r\\n    border: 1px solid #aaa;\\r\\n    border-radius: 4px;\\r\\n    padding: 0 8px;\\r\\n}\\r\\n\\r\\n.dropdown-input option {\\r\\n    outline: none;\\r\\n    border: none;\\r\\n    border-radius: 4px;\\r\\n    padding: 0 8px;\\r\\n    cursor: pointer;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/Dropdown/Dropdown.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/InputBlock/InputBlock.css":
-/*!********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/InputBlock/InputBlock.css ***!
-  \********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".input-block {\\r\\n    width: 100%;\\r\\n    max-width: 1024px;\\r\\n    margin: auto;\\r\\n}\\r\\n\\r\\n.input-block > .content {\\r\\n    border-radius: 8px;\\r\\n    padding: 8px;\\r\\n    margin: 8px;\\r\\n}\\r\\n\\r\\n.input-block.x > .content {\\r\\n    display: flex;\\r\\n    align-items: center;\\r\\n    justify-content: space-between;\\r\\n    width: 100%;\\r\\n    box-sizing: border-box;\\r\\n}\\r\\n\\r\\n.input-block > .title {\\r\\n    display: flex;\\r\\n    align-items: center;\\r\\n    justify-content: space-between;\\r\\n    font-weight: bold;\\r\\n    font-size: 110%;\\r\\n    padding: 8px 8px 8px 0;\\r\\n}\\r\\n\\r\\n.input-block > label {\\r\\n    display: block;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/InputBlock/InputBlock.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalInput/IntervalInput.css":
-/*!**************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalInput/IntervalInput.css ***!
-  \**************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".scalar-input {\\r\\n    height: 40px;\\r\\n    width: 50px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    outline: none;\\r\\n    cursor: pointer;\\r\\n    border: 1px solid #aaa;\\r\\n    border-radius: 4px;\\r\\n    padding-left: 8px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/IntervalInput/IntervalInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalListInput/IntervalListInput.css":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalListInput/IntervalListInput.css ***!
-  \**********************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".inerval-list-input *:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/IntervalListInput/IntervalListInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/KeyCenterInput/KeyCenterInput.css":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/KeyCenterInput/KeyCenterInput.css ***!
-  \****************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".key-center-input {\\r\\n    text-align: left;\\r\\n}\\r\\n\\r\\n.key-center-input .button-input {\\r\\n    border-radius: 0;\\r\\n    border: 1px solid #C0C0C0;\\r\\n}\\r\\n\\r\\n.key-center-input .button-input:first-child {\\r\\n    border-radius: 4px 0 0 4px;\\r\\n}\\r\\n\\r\\n.key-center-input .button-input:not(:last-child) {\\r\\n    border-right: 0;\\r\\n}\\r\\n\\r\\n.key-center-input .button-input:last-child {\\r\\n    border-radius: 0 4px 4px 0;\\r\\n}\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/KeyCenterInput/KeyCenterInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/LabeledInput/LabeledInput.css":
-/*!************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/LabeledInput/LabeledInput.css ***!
-  \************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".labeled-input {\\r\\n    width: 100%;\\r\\n}\\r\\n\\r\\n.labeled-input > .content {\\r\\n    margin-left: 8px;\\r\\n    white-space: nowrap;\\r\\n}\\r\\n\\r\\n.labeled-input > label {\\r\\n    display: block;\\r\\n    margin: 4px 0;\\r\\n}\\r\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/LabeledInput/LabeledInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/MatrixInput/MatrixInput.css":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/MatrixInput/MatrixInput.css ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".matrix-input .vector-input:not(:last-child) {\\r\\n    margin-bottom: 4px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/MatrixInput/MatrixInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/PresetInput/PresetInput.css":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/PresetInput/PresetInput.css ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/PresetInput/PresetInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/ScalarInput/ScalarInput.css":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/ScalarInput/ScalarInput.css ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".scalar-input {\\r\\n    height: 40px;\\r\\n    min-width: 60px;\\r\\n    line-height: 40px;\\r\\n    font-size: 16px;\\r\\n    outline: none;\\r\\n    cursor: pointer;\\r\\n    border: 1px solid #aaa;\\r\\n    border-radius: 4px;\\r\\n    padding-left: 8px;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/ScalarInput/ScalarInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/UI/VectorInput/VectorInput.css":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/UI/VectorInput/VectorInput.css ***!
-  \**********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \".vector-input :first-child {\\r\\n    border-radius: 4px 0 0 4px;\\r\\n}\\r\\n\\r\\n.vector-input :last-child {\\r\\n    position: relative;\\r\\n    left: -1;\\r\\n    border-radius: 0 4px 4px 0;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/UI/VectorInput/VectorInput.css?./node_modules/css-loader/dist/cjs.js");
-
-/***/ }),
-
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/index.css":
-/*!*************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/index.css ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Conditions */\\n.pw-hov {\\n  cursor: pointer;\\n}\\n.pw-no-select {\\n  -webkit-touch-callout: none;\\n  -webkit-user-select: none;\\n  -khtml-user-select: none;\\n  -moz-user-select: none;\\n  -ms-user-select: none;\\n  user-select: none;\\n}\\n/* Theme */\\n.pw-primary {\\n  background-color: #414770;\\n  color: #FFF;\\n  border-color: #FFF;\\n}\\n.pw-primary.pw-hov:hover {\\n  background-color: #2e3350;\\n}\\n.pw-secondary {\\n  background-color: #5B85AA;\\n  color: #FFF;\\n  border-color: #FFF;\\n}\\n.pw-secondary.pw-hov:hover {\\n  background-color: #486b8a;\\n}\\n.pw-accent {\\n  background-color: #F46036;\\n  color: #FFF;\\n  border-color: #FFF;\\n}\\n.pw-accent.pw-hov:hover {\\n  background-color: #FFF;\\n  color: #F46036;\\n  border-color: #F46036;\\n}\\n/* Neutral */\\n.pw-light {\\n  background-color: #DDD;\\n  color: #333;\\n  border-color: #333;\\n}\\n.pw-light.pw-hov:hover {\\n  background-color: #c4c4c4;\\n}\\n.pw-lighter {\\n  background-color: #f7f7f7;\\n  color: #333;\\n  border-color: #333;\\n}\\n.pw-lighter.pw-hov:hover {\\n  background-color: #dddddd;\\n}\\n.pw-lightest {\\n  background-color: #ffffff;\\n  color: #333;\\n  border-color: #C0C0C0;\\n}\\n.pw-lightest.pw-hov:hover {\\n  background-color: #e6e6e6;\\n}\\n.pw-medium {\\n  background-color: #C0C0C0;\\n  color: #333;\\n  border-color: #333;\\n}\\n.pw-medium.pw-hov:hover {\\n  background-color: #a7a7a7;\\n}\\n.pw-dark {\\n  background-color: #232323;\\n  color: #FFF;\\n  border-color: #FFF;\\n}\\n.pw-dark.pw-hov:hover {\\n  background-color: #3d3d3d;\\n}\\n/* States */\\n.pw-disabled {\\n  background-color: #C0C0C0;\\n  color: #808080;\\n}\\n\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/index.css?./node_modules/css-loader/dist/cjs.js");
+eval("// Imports\nvar ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\nexports = ___CSS_LOADER_API_IMPORT___(false);\n// Module\nexports.push([module.i, \"/* Keyboard */\\r\\n\\r\\n.keyboard {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 100%;\\r\\n\\tmin-width: 100px;\\r\\n\\r\\n    font-size: 12px;\\r\\n\\ttext-align: center;\\r\\n\\tfont-family: sans-serif;\\r\\n\\t\\r\\n\\tmargin-top: 20px;\\r\\n    margin-bottom: 20px;\\r\\n}\\r\\n\\r\\n.center {\\r\\n\\ttext-align: center;\\r\\n}\\r\\n\\r\\n/* Key Container */\\r\\n\\r\\n.white-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n}\\r\\n\\r\\n.black-key-container {\\r\\n\\tdisplay: inline-block;\\r\\n\\twidth: 0px;\\r\\n}\\r\\n\\r\\n/* Key */\\r\\n\\r\\n.keyboard-key {\\r\\n\\tvertical-align: top;\\r\\n\\tposition: relative;\\r\\n\\tdisplay: inline-flex;\\r\\n\\tjustify-content: center;\\r\\n\\tcursor: pointer;\\r\\n}\\r\\n\\r\\n.white-key {\\r\\n\\tbox-shadow: 0 0 1px 1px black inset;\\r\\n    border-radius: 0 0 5% 5%;\\r\\n}\\r\\n\\r\\n.white-key:hover {\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n.black-key {\\r\\n\\tbox-shadow: 0 0 1px 2px #555 inset;\\r\\n\\tz-index: 10;\\r\\n    border-radius: 0 0 10% 10%;\\r\\n}\\r\\n\\r\\n.black-key:hover {\\r\\n\\tbackground-color: #333;\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n/* Colors (applied only in absence of degree class) */\\r\\n\\r\\n.white {\\r\\n\\tbackground-color: white;\\r\\n    color: black;\\r\\n}\\r\\n\\r\\n.black {\\r\\n\\tbackground-color: black;\\r\\n\\tcolor: white;\\r\\n}\\r\\n\\r\\n\\r\\n/* Label */\\r\\n\\r\\n.white-key .keyboard-key-label {\\r\\n\\tposition: absolute;\\r\\n\\theight: 100%;\\r\\n\\twidth: 100%;\\r\\n\\tborder-radius: 0 0 5% 5%;\\r\\n\\tbox-shadow: 0 0 1px 1px black inset;\\r\\n}\\r\\n\\r\\n.white-key .keyboard-key-label:hover {\\r\\n\\tbox-shadow: 0 0 1px 2px black inset;\\r\\n}\\r\\n\\r\\n.black-key .keyboard-key-label {\\r\\n\\tbottom: 105%;\\r\\n\\tposition: absolute;\\r\\n\\tcolor: black;\\r\\n}\", \"\"]);\n// Exports\nmodule.exports = exports;\n\n\n//# sourceURL=webpack:///./src/Keyboard/Keyboard.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -518,536 +331,145 @@ eval("\n\nvar stylesInDom = {};\n\nvar isOldIE = function isOldIE() {\n  var mem
 
 /***/ }),
 
-/***/ "./src/Modules/Fretboard/Fret.jsx":
-/*!****************************************!*\
-  !*** ./src/Modules/Fretboard/Fret.jsx ***!
-  \****************************************/
+/***/ "./src/Fretboard/Fret.jsx":
+/*!********************************!*\
+  !*** ./src/Fretboard/Fret.jsx ***!
+  \********************************/
 /*! exports provided: Fret */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Fret\", function() { return Fret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _FretLabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FretLabel */ \"./src/Modules/Fretboard/FretLabel.jsx\");\n/* harmony import */ var _Fretboard_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.api */ \"./src/Modules/Fretboard/Fretboard.api.jsx\");\n\n\n\n\nconst Fret = props => {\n  let classes = ['fret'];\n  if (props.fretNumber === 0) classes.push('open');\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' ')\n  }, props.showFretNumber && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-number\"\n  }, props.fretNumber), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-string\"\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_FretLabel__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    noteIndex: props.noteIndex,\n    minIndex: props.minIndex,\n    maxIndex: props.maxIndex,\n    concept: props.concept\n  }), props.showFretDots && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-dots\"\n  }, Object(_Fretboard_api__WEBPACK_IMPORTED_MODULE_3__[\"getDotsForFret\"])(props.fretNumber)));\n};\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fret.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Fret\", function() { return Fret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _FretLabel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FretLabel */ \"./src/Fretboard/FretLabel.jsx\");\n/* harmony import */ var _Fretboard_api__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.api */ \"./src/Fretboard/Fretboard.api.jsx\");\n\n\n\n\nconst Fret = props => {\n  let classes = ['fret'];\n  if (props.fretNumber === 0) classes.push('open');\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' ')\n  }, props.showFretNumber && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-number\"\n  }, props.fretNumber), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-string\"\n  }), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_FretLabel__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    noteIndex: props.noteIndex,\n    minIndex: props.minIndex,\n    maxIndex: props.maxIndex,\n    concept: props.concept\n  }), props.showFretDots && react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-dots\"\n  }, Object(_Fretboard_api__WEBPACK_IMPORTED_MODULE_3__[\"getDotsForFret\"])(props.fretNumber)));\n};\n\n//# sourceURL=webpack:///./src/Fretboard/Fret.jsx?");
 
 /***/ }),
 
-/***/ "./src/Modules/Fretboard/FretLabel.jsx":
-/*!*********************************************!*\
-  !*** ./src/Modules/Fretboard/FretLabel.jsx ***!
-  \*********************************************/
+/***/ "./src/Fretboard/FretLabel.jsx":
+/*!*************************************!*\
+  !*** ./src/Fretboard/FretLabel.jsx ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nconst FretLabel = props => {\n  const {\n    concept,\n    noteIndex,\n    minIndex,\n    maxIndex\n  } = props;\n  const {\n    a: keyCenter,\n    B: intervals\n  } = concept;\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  const i = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.findIndexOfNoteWithPitch(notes, noteIndex, true);\n  const f = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.getFrequency(noteIndex);\n\n  const play = () => play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Sound.playNote(f);\n\n  const styles = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Color.degree(intervals[i]);\n  const label = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Label.degree(intervals[i]);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-label\",\n    style: styles,\n    onClick: play\n  }, label);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (FretLabel);\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/FretLabel.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nconst FretLabel = props => {\n  const {\n    concept,\n    noteIndex,\n    minIndex,\n    maxIndex\n  } = props;\n  const {\n    a: keyCenter,\n    B: intervals\n  } = concept;\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  const i = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.findIndexOfNoteWithPitch(notes, noteIndex, true);\n  const f = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Theory.getFrequency(noteIndex);\n\n  const play = () => play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Sound.playNote(f);\n\n  const styles = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Color.degree(intervals[i]);\n  const label = play_what__WEBPACK_IMPORTED_MODULE_1__[\"default\"].Label.degree(intervals[i]);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fret-label\",\n    style: styles,\n    onClick: play\n  }, label);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (FretLabel);\n\n//# sourceURL=webpack:///./src/Fretboard/FretLabel.jsx?");
 
 /***/ }),
 
-/***/ "./src/Modules/Fretboard/Fretboard.api.jsx":
-/*!*************************************************!*\
-  !*** ./src/Modules/Fretboard/Fretboard.api.jsx ***!
-  \*************************************************/
+/***/ "./src/Fretboard/Fretboard.api.jsx":
+/*!*****************************************!*\
+  !*** ./src/Fretboard/Fretboard.api.jsx ***!
+  \*****************************************/
 /*! exports provided: DOTTED_FRET_INDICES, getDotsForFret */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DOTTED_FRET_INDICES\", function() { return DOTTED_FRET_INDICES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDotsForFret\", function() { return getDotsForFret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard */ \"./src/Modules/Fretboard/Fretboard.jsx\");\n\n\n\nconst DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];\nconst getDotsForFret = fretNumber => {\n  let mod = fretNumber % 12;\n  if (mod === 0) return '• •';else if (DOTTED_FRET_INDICES[mod]) return '•';\n  return '';\n};\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.api.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DOTTED_FRET_INDICES\", function() { return DOTTED_FRET_INDICES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDotsForFret\", function() { return getDotsForFret; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard */ \"./src/Fretboard/Fretboard.jsx\");\n\n\n\nconst DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];\nconst getDotsForFret = fretNumber => {\n  let mod = fretNumber % 12;\n  if (mod === 0) return '• •';else if (DOTTED_FRET_INDICES[mod]) return '•';\n  return '';\n};\n\n//# sourceURL=webpack:///./src/Fretboard/Fretboard.api.jsx?");
 
 /***/ }),
 
-/***/ "./src/Modules/Fretboard/Fretboard.css":
-/*!*********************************************!*\
-  !*** ./src/Modules/Fretboard/Fretboard.css ***!
-  \*********************************************/
+/***/ "./src/Fretboard/Fretboard.css":
+/*!*************************************!*\
+  !*** ./src/Fretboard/Fretboard.css ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Fretboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/Fretboard/Fretboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.css?");
+eval("var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Fretboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Fretboard/Fretboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Fretboard/Fretboard.css?");
 
 /***/ }),
 
-/***/ "./src/Modules/Fretboard/Fretboard.defaults.js":
-/*!*****************************************************!*\
-  !*** ./src/Modules/Fretboard/Fretboard.defaults.js ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  fretLow: 0,\n  fretHigh: 12,\n  strings: [{\n    tuning: 16\n  }, // e\n  {\n    tuning: 11\n  }, // B\n  {\n    tuning: 7\n  }, // G\n  {\n    tuning: 2\n  }, // D\n  {\n    tuning: -3\n  }, // A\n  {\n    tuning: -8\n  } // E\n  ],\n  showFretNumbers: true,\n  showDots: true,\n  concept: {\n    a: {\n      p: 0,\n      d: 0\n    },\n    B: []\n  }\n});\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/Modules/Fretboard/Fretboard.jsx":
+/***/ "./src/Fretboard/Fretboard.defaults.js":
 /*!*********************************************!*\
-  !*** ./src/Modules/Fretboard/Fretboard.jsx ***!
+  !*** ./src/Fretboard/Fretboard.defaults.js ***!
   \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Fretboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Fret__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fret */ \"./src/Modules/Fretboard/Fret.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/Modules/Fretboard/Fretboard.defaults.js\");\n\n\n\n\nconst FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);\n\nconst getFrets = config => {\n  let min = config.strings.reduce((prev, current) => prev.tuning < current.tuning ? prev : current).tuning + config.fretLow;\n  let max = config.strings.reduce((prev, current) => prev.tuning > current.tuning ? prev : current).tuning + config.fretHigh;\n  let frets = []; // Get strings\n\n  for (let strNum = 1; strNum <= config.strings.length; strNum++) {\n    // Get frets for string\n    for (let fretNum = config.fretLow; fretNum <= config.fretHigh; fretNum++) {\n      let noteIndex = config.strings[strNum - 1].tuning + fretNum;\n      frets.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fret__WEBPACK_IMPORTED_MODULE_2__[\"Fret\"], {\n        key: `s${strNum}f${fretNum}`,\n        noteIndex: noteIndex,\n        minIndex: min,\n        maxIndex: max,\n        fretNumber: fretNum,\n        stringNum: strNum,\n        concept: config.concept,\n        showFretNumber: config.showFretNumbers && strNum === 1,\n        showFretDots: config.showDots && strNum === config.strings.length\n      }));\n    }\n  }\n\n  return frets;\n};\n\nconst getFretRatios = numFrets => {\n  let ratios = [];\n\n  for (let i = 1; i <= numFrets; i++) {\n    ratios.push(i <= 1 ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);\n  }\n\n  return ratios;\n};\n\nfunction Fretboard(props) {\n  let config = Object.assign({}, _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props); // Calculate fretboard dimensions\n\n  let fretRatioStyle = getFretRatios(config.fretHigh - config.fretLow + 1).map(num => {\n    return num + 'fr';\n  }).join(' ');\n  let fretboardScaleStyles = {\n    gridTemplateColumns: fretRatioStyle,\n    gridTemplateRows: `repeat(${config.strings.length}, 1fr)`\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fretboard\",\n    style: fretboardScaleStyles\n  }, getFrets(config));\n}\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/Fretboard.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  fretLow: 0,\n  fretHigh: 12,\n  strings: [{\n    tuning: 16\n  }, // e\n  {\n    tuning: 11\n  }, // B\n  {\n    tuning: 7\n  }, // G\n  {\n    tuning: 2\n  }, // D\n  {\n    tuning: -3\n  }, // A\n  {\n    tuning: -8\n  } // E\n  ],\n  showFretNumbers: true,\n  showDots: true,\n  concept: {\n    a: {\n      p: 0,\n      d: 0\n    },\n    B: []\n  }\n});\n\n//# sourceURL=webpack:///./src/Fretboard/Fretboard.defaults.js?");
 
 /***/ }),
 
-/***/ "./src/Modules/Fretboard/FretboardController.jsx":
-/*!*******************************************************!*\
-  !*** ./src/Modules/Fretboard/FretboardController.jsx ***!
-  \*******************************************************/
+/***/ "./src/Fretboard/Fretboard.jsx":
+/*!*************************************!*\
+  !*** ./src/Fretboard/Fretboard.jsx ***!
+  \*************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Modules/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/Modules/Fretboard/Fretboard.defaults.js\");\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard */ \"./src/Modules/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _UI_ControllerHeader_ControllerHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/ControllerHeader/ControllerHeader */ \"./src/UI/ControllerHeader/ControllerHeader.jsx\");\n\n\n\n\n\n\nconst FretboardController = props => {\n  const state = {};\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fretboard-controller\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_UI_ControllerHeader_ControllerHeader__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    title: \"Fretboard\"\n  }, \"Inputs coming soon...\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fretboard__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (FretboardController);\n\n//# sourceURL=webpack:///./src/Modules/Fretboard/FretboardController.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Fretboard; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.css */ \"./src/Fretboard/Fretboard.css\");\n/* harmony import */ var _Fretboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Fretboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Fret__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fret */ \"./src/Fretboard/Fret.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/Fretboard/Fretboard.defaults.js\");\n\n\n\n\nconst FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);\n\nconst getFrets = config => {\n  let min = config.strings.reduce((prev, current) => prev.tuning < current.tuning ? prev : current).tuning + config.fretLow;\n  let max = config.strings.reduce((prev, current) => prev.tuning > current.tuning ? prev : current).tuning + config.fretHigh;\n  let frets = []; // Get strings\n\n  for (let strNum = 1; strNum <= config.strings.length; strNum++) {\n    // Get frets for string\n    for (let fretNum = config.fretLow; fretNum <= config.fretHigh; fretNum++) {\n      let noteIndex = config.strings[strNum - 1].tuning + fretNum;\n      frets.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Fret__WEBPACK_IMPORTED_MODULE_2__[\"Fret\"], {\n        key: `s${strNum}f${fretNum}`,\n        noteIndex: noteIndex,\n        minIndex: min,\n        maxIndex: max,\n        fretNumber: fretNum,\n        stringNum: strNum,\n        concept: config.concept,\n        showFretNumber: config.showFretNumbers && strNum === 1,\n        showFretDots: config.showDots && strNum === config.strings.length\n      }));\n    }\n  }\n\n  return frets;\n};\n\nconst getFretRatios = numFrets => {\n  let ratios = [];\n\n  for (let i = 1; i <= numFrets; i++) {\n    ratios.push(i <= 1 ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);\n  }\n\n  return ratios;\n};\n\nfunction Fretboard(props) {\n  let config = Object.assign({}, _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props); // Calculate fretboard dimensions\n\n  let fretRatioStyle = getFretRatios(config.fretHigh - config.fretLow + 1).map(num => {\n    return num + 'fr';\n  }).join(' ');\n  let fretboardScaleStyles = {\n    gridTemplateColumns: fretRatioStyle,\n    gridTemplateRows: `repeat(${config.strings.length}, 1fr)`\n  };\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"fretboard\",\n    style: fretboardScaleStyles\n  }, getFrets(config));\n}\n\n//# sourceURL=webpack:///./src/Fretboard/Fretboard.jsx?");
 
 /***/ }),
 
-/***/ "./src/Modules/Keyboard/Keyboard.css":
-/*!*******************************************!*\
-  !*** ./src/Modules/Keyboard/Keyboard.css ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Keyboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Modules/Keyboard/Keyboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.css?");
-
-/***/ }),
-
-/***/ "./src/Modules/Keyboard/Keyboard.defaults.js":
-/*!***************************************************!*\
-  !*** ./src/Modules/Keyboard/Keyboard.defaults.js ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyLow: 0,\n  keyHigh: 24,\n  concept: {\n    a: {\n      p: 0,\n      d: 0\n    },\n    B: []\n  }\n});\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.defaults.js?");
-
-/***/ }),
-
-/***/ "./src/Modules/Keyboard/Keyboard.jsx":
-/*!*******************************************!*\
-  !*** ./src/Modules/Keyboard/Keyboard.jsx ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Modules/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KeyboardKey */ \"./src/Modules/Keyboard/KeyboardKey.jsx\");\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/Modules/Keyboard/Keyboard.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11]; // TODO Enforce code reuse\n\nconst modulo = (a, b) => {\n  return (a % b + b) % b;\n};\n\nconst getKeyboardKeys = (config, viewerWidth) => {\n  let keys = []; // Safe approximation for scale\n\n  let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;\n\n  for (let i = config.keyLow; i <= config.keyHigh; i++) {\n    let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].White : _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].Black;\n    keys.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      key: i,\n      noteIndex: i,\n      minIndex: config.keyLow,\n      maxIndex: config.keyHigh,\n      scale: viewerWidth / numWhiteKeys,\n      type: type,\n      concept: config.concept\n    }));\n  }\n\n  return keys;\n};\n\nconst Keyboard = props => {\n  const config = { ..._Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n    ...props\n  };\n  const [dims, setDims] = react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"]([512, 512]);\n  react__WEBPACK_IMPORTED_MODULE_0__[\"useEffect\"](() => {\n    const resetDimensions = e => {\n      const el = document.getElementById('keyboard');\n      setDims([el.clientWidth, el.clientHeight]);\n    };\n\n    resetDimensions();\n    window.addEventListener('resize', resetDimensions);\n    return () => window.removeEventListener('resize', resetDimensions);\n  }, []);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard\",\n    id: \"keyboard\"\n  }, getKeyboardKeys(config, dims[0]));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Keyboard);\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/Keyboard.jsx?");
-
-/***/ }),
-
-/***/ "./src/Modules/Keyboard/KeyboardController.jsx":
-/*!*****************************************************!*\
-  !*** ./src/Modules/Keyboard/KeyboardController.jsx ***!
-  \*****************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Modules/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/Modules/Keyboard/Keyboard.defaults.js\");\n/* harmony import */ var _Keyboard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Keyboard */ \"./src/Modules/Keyboard/Keyboard.jsx\");\n/* harmony import */ var _UI_ControllerHeader_ControllerHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../UI/ControllerHeader/ControllerHeader */ \"./src/UI/ControllerHeader/ControllerHeader.jsx\");\n\n\n\n\n\n\nconst KeyboardController = props => {\n  const state = {};\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard-controller\"\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_UI_ControllerHeader_ControllerHeader__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    title: \"Keyboard\"\n  }, \"Inputs coming soon...\"), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_Keyboard__WEBPACK_IMPORTED_MODULE_3__[\"default\"], props));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyboardController);\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/KeyboardController.jsx?");
-
-/***/ }),
-
-/***/ "./src/Modules/Keyboard/KeyboardKey.jsx":
-/*!**********************************************!*\
-  !*** ./src/Modules/Keyboard/KeyboardKey.jsx ***!
-  \**********************************************/
-/*! exports provided: KeyboardKeyType, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyboardKeyType\", function() { return KeyboardKeyType; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Modules/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n // Key dimensions relative to white key width\n\nconst KEY__DIMS = {\n  WhW_WhH: 4.6875,\n  // White key width to white key height\n  WhW_BlW: 0.6250,\n  // White key width to black key width\n  WhW_BlH: 2.9688 // White key width to black hey height\n\n};\nconst KeyboardKeyType = {\n  Black: 'Black',\n  White: 'White'\n};\n\nconst getScaleStyles = (keyType, scale) => {\n  switch (keyType) {\n    case KeyboardKeyType.White:\n      return {\n        width: scale + 'px',\n        height: KEY__DIMS.WhW_WhH * scale + 'px'\n      };\n\n    case KeyboardKeyType.Black:\n      return {\n        width: KEY__DIMS.WhW_BlW * scale + 'px',\n        height: KEY__DIMS.WhW_BlH * scale + 'px',\n        right: .5 * KEY__DIMS.WhW_BlW * scale + 'px'\n      };\n\n    default:\n      return {\n        width: '0px',\n        height: '0px'\n      };\n  }\n};\n\nconst KeyboardKey = ({\n  noteIndex,\n  type,\n  scale,\n  concept\n}) => {\n  let keyColor = type === KeyboardKeyType.White ? 'white' : 'black';\n  let scaleStyles = getScaleStyles(type, scale);\n  let classes = ['keyboard-key', `${keyColor}-key`, keyColor];\n  const {\n    a: keyCenter,\n    B: intervals\n  } = concept;\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  const i = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.findIndexOfNoteWithPitch(notes, noteIndex, true);\n  const f = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getFrequency(noteIndex);\n\n  const play = () => play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Sound.playNote(f);\n\n  const colorStyles = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Color.degree(intervals[i]);\n  const label = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Label.degree(intervals[i]);\n  const keyStyles = keyColor === 'white' ? scaleStyles : { ...scaleStyles,\n    ...colorStyles\n  };\n  const labelStyles = keyColor === 'white' ? colorStyles : {};\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: `${keyColor}-key-container`\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    style: keyStyles,\n    onClick: play\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard-key-label\",\n    style: labelStyles\n  }, label)));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyboardKey);\n\n//# sourceURL=webpack:///./src/Modules/Keyboard/KeyboardKey.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ButtonInput/ButtonInput.css":
-/*!********************************************!*\
-  !*** ./src/UI/ButtonInput/ButtonInput.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ButtonInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ButtonInput/ButtonInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ButtonInput/ButtonInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ButtonInput/ButtonInput.jsx":
-/*!********************************************!*\
-  !*** ./src/UI/ButtonInput/ButtonInput.jsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ButtonInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonInput.css */ \"./src/UI/ButtonInput/ButtonInput.css\");\n/* harmony import */ var _ButtonInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ButtonInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst ButtonInput = props => {\n  const {\n    disabled,\n    onClick,\n    children,\n    className,\n    highlight,\n    hoverable\n  } = props;\n  const hov = onClick || hoverable;\n  const isDisabled = disabled || false;\n\n  const clickHander = onClick || (() => null);\n\n  const cn = `button-input ${hov ? 'pw-hov' : ''} ${className ? className : 'pw-lightest'}`;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", {\n    className: cn,\n    type: \"button\",\n    disabled: isDisabled,\n    onClick: clickHander\n  }, children);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ButtonInput);\n\n//# sourceURL=webpack:///./src/UI/ButtonInput/ButtonInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptInput/ConceptInput.css":
-/*!**********************************************!*\
-  !*** ./src/UI/ConceptInput/ConceptInput.css ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptInput/ConceptInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptInput/ConceptInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptInput/ConceptInput.jsx":
-/*!**********************************************!*\
-  !*** ./src/UI/ConceptInput/ConceptInput.jsx ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptInput.css */ \"./src/UI/ConceptInput/ConceptInput.css\");\n/* harmony import */ var _ConceptInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _ConceptPresetInput_ConceptPresetInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ConceptPresetInput/ConceptPresetInput */ \"./src/UI/ConceptPresetInput/ConceptPresetInput.jsx\");\n/* harmony import */ var _ConceptIntervalsInput_ConceptIntervalsInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ConceptIntervalsInput/ConceptIntervalsInput */ \"./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx\");\n/* harmony import */ var _ConceptMathInput_ConceptMathInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../ConceptMathInput/ConceptMathInput */ \"./src/UI/ConceptMathInput/ConceptMathInput.jsx\");\n/* harmony import */ var _Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n\n\n\n\n\n\n\nconst CONCEPT_INPUT_MODES = {\n  preset: {\n    id: 'preset',\n    name: 'Preset',\n    component: _ConceptPresetInput_ConceptPresetInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n  },\n  intervals: {\n    id: 'intervals',\n    name: 'Intervals',\n    component: _ConceptIntervalsInput_ConceptIntervalsInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"]\n  },\n  math: {\n    id: 'math',\n    name: 'Math',\n    component: _ConceptMathInput_ConceptMathInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"]\n  }\n};\nconst CONCEPT_INPUT_MODES_VALUES = Object.values(CONCEPT_INPUT_MODES);\n\nconst ConceptInput = props => {\n  const {\n    note,\n    setNote\n  } = props;\n  const {\n    a: keyCenter,\n    B: intervals\n  } = note;\n\n  const setKeyCenter = kc => setNote({ ...note,\n    a: kc\n  });\n\n  const setIntervals = ivls => setNote({ ...note,\n    B: ivls\n  });\n\n  const [inputMode, setInputMode] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(CONCEPT_INPUT_MODES.preset);\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  const noteNames = notes.map((n, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    key: i,\n    className: \"note-name\"\n  }, play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getNoteName(n)));\n  const Component = inputMode.component;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"input-mode-box\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, \"Input Mode: \"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_6__[\"default\"], {\n    value: inputMode,\n    setValue: setInputMode,\n    options: CONCEPT_INPUT_MODES_VALUES\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"note-names pw-lighter\"\n  }, noteNames), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Component, {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter,\n    intervals: intervals,\n    setIntervals: setIntervals\n  }));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptInput/ConceptInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css":
-/*!****************************************************************!*\
-  !*** ./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css ***!
-  \****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptIntervalsInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx":
-/*!****************************************************************!*\
-  !*** ./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptIntervalsInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptIntervalsInput.css */ \"./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.css\");\n/* harmony import */ var _ConceptIntervalsInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptIntervalsInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../KeyCenterInput/KeyCenterInput */ \"./src/UI/KeyCenterInput/KeyCenterInput.jsx\");\n/* harmony import */ var _IntervalListInput_IntervalListInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../IntervalListInput/IntervalListInput */ \"./src/UI/IntervalListInput/IntervalListInput.jsx\");\n/* harmony import */ var _InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../InputBlock/InputBlock */ \"./src/UI/InputBlock/InputBlock.jsx\");\n\n\n\n\n\n\n\nconst ConceptIntervalsInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-intervals-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    title: \"Key Center\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    title: \"Intervals\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_IntervalListInput_IntervalListInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    intervals: intervals,\n    setIntervals: setIntervals\n  })));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptIntervalsInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptIntervalsInput/ConceptIntervalsInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptMathInput/ConceptMathInput.css":
-/*!******************************************************!*\
-  !*** ./src/UI/ConceptMathInput/ConceptMathInput.css ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptMathInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptMathInput/ConceptMathInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptMathInput/ConceptMathInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptMathInput/ConceptMathInput.jsx":
-/*!******************************************************!*\
-  !*** ./src/UI/ConceptMathInput/ConceptMathInput.jsx ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptMathInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptMathInput.css */ \"./src/UI/ConceptMathInput/ConceptMathInput.css\");\n/* harmony import */ var _ConceptMathInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptMathInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../VectorInput/VectorInput */ \"./src/UI/VectorInput/VectorInput.jsx\");\n/* harmony import */ var _MatrixInput_MatrixInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MatrixInput/MatrixInput */ \"./src/UI/MatrixInput/MatrixInput.jsx\");\n/* harmony import */ var _InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../InputBlock/InputBlock */ \"./src/UI/InputBlock/InputBlock.jsx\");\n\n\n\n\n\n\n\nconst ConceptMathInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-math-input pw-input-block-group\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    title: \"a\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: keyCenter,\n    setValue: setKeyCenter\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    title: \"B\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_MatrixInput_MatrixInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    value: intervals,\n    setValue: setIntervals\n  })));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptMathInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptMathInput/ConceptMathInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptPresetInput/ConceptPresetInput.css":
-/*!**********************************************************!*\
-  !*** ./src/UI/ConceptPresetInput/ConceptPresetInput.css ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ConceptPresetInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ConceptPresetInput/ConceptPresetInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ConceptPresetInput/ConceptPresetInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ConceptPresetInput/ConceptPresetInput.jsx":
-/*!**********************************************************!*\
-  !*** ./src/UI/ConceptPresetInput/ConceptPresetInput.jsx ***!
-  \**********************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ConceptPresetInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConceptPresetInput.css */ \"./src/UI/ConceptPresetInput/ConceptPresetInput.css\");\n/* harmony import */ var _ConceptPresetInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ConceptPresetInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../KeyCenterInput/KeyCenterInput */ \"./src/UI/KeyCenterInput/KeyCenterInput.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _PresetInput_PresetInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../PresetInput/PresetInput */ \"./src/UI/PresetInput/PresetInput.jsx\");\n/* harmony import */ var _InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../InputBlock/InputBlock */ \"./src/UI/InputBlock/InputBlock.jsx\");\n\n\n\n\n\n\n\nconst ConceptPresetInput = props => {\n  const {\n    keyCenter,\n    setKeyCenter,\n    intervals,\n    setIntervals\n  } = props;\n  const preset = play_what__WEBPACK_IMPORTED_MODULE_3__[\"default\"].Theory.findPreset(intervals);\n\n  const setPreset = newIntervals => setIntervals(newIntervals);\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"concept-preset-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    title: \"Key Center\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_KeyCenterInput_KeyCenterInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    keyCenter: keyCenter,\n    setKeyCenter: setKeyCenter\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputBlock_InputBlock__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    title: \"Preset\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PresetInput_PresetInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    preset: preset,\n    setPreset: setPreset\n  })));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ConceptPresetInput);\n\n//# sourceURL=webpack:///./src/UI/ConceptPresetInput/ConceptPresetInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ControllerHeader/ControllerHeader.css":
-/*!******************************************************!*\
-  !*** ./src/UI/ControllerHeader/ControllerHeader.css ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ControllerHeader.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ControllerHeader/ControllerHeader.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ControllerHeader/ControllerHeader.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ControllerHeader/ControllerHeader.jsx":
-/*!******************************************************!*\
-  !*** ./src/UI/ControllerHeader/ControllerHeader.jsx ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ControllerHeader_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ControllerHeader.css */ \"./src/UI/ControllerHeader/ControllerHeader.css\");\n/* harmony import */ var _ControllerHeader_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ControllerHeader_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst ControllerHeader = props => {\n  const [open, setOpen] = react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"](false);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: `controller-header ${open ? 'open' : ''}`\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"h1\", null, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"span\", {\n    className: \"title\"\n  }, props.title), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"span\", {\n    className: \"edit\",\n    onClick: () => setOpen(!open)\n  }, \"Edit\")), react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"content\"\n  }, props.children));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ControllerHeader);\n\n//# sourceURL=webpack:///./src/UI/ControllerHeader/ControllerHeader.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/Dropdown/Dropdown.css":
-/*!**************************************!*\
-  !*** ./src/UI/Dropdown/Dropdown.css ***!
-  \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./Dropdown.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/Dropdown/Dropdown.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/Dropdown/Dropdown.css?");
-
-/***/ }),
-
-/***/ "./src/UI/Dropdown/Dropdown.jsx":
-/*!**************************************!*\
-  !*** ./src/UI/Dropdown/Dropdown.jsx ***!
-  \**************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Dropdown_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Dropdown.css */ \"./src/UI/Dropdown/Dropdown.css\");\n/* harmony import */ var _Dropdown_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Dropdown_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst Dropdown = props => {\n  const {\n    value,\n    setValue,\n    options,\n    displayProperty\n  } = props;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"select\", {\n    className: \"dropdown-input pw-lightest\",\n    onChange: e => setValue(options[e.target.selectedIndex]),\n    value: value ? value.id : ''\n  }, options.map((v, i) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"option\", {\n    key: i,\n    value: v.id\n  }, displayProperty ? v[displayProperty] : v.name)));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Dropdown);\n\n//# sourceURL=webpack:///./src/UI/Dropdown/Dropdown.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ErrorBoundary.jsx":
+/***/ "./src/Fretboard/_module.js":
 /*!**********************************!*\
-  !*** ./src/UI/ErrorBoundary.jsx ***!
+  !*** ./src/Fretboard/_module.js ***!
   \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ErrorBoundary; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nclass ErrorBoundary extends react__WEBPACK_IMPORTED_MODULE_0__[\"Component\"] {\n  constructor(props) {\n    super(props);\n    this.state = {\n      error: null,\n      errorInfo: null\n    };\n  }\n\n  componentDidCatch(error, errorInfo) {\n    console.error(error, errorInfo);\n    this.setState({\n      error: error,\n      errorInfo: errorInfo\n    });\n  }\n\n  render() {\n    if (this.state.errorInfo) {\n      return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n        className: \"error-boundary\",\n        style: {\n          color: 'red'\n        }\n      }, \"Sorry, something went wrong.\");\n    }\n\n    return this.props.children;\n  }\n\n}\n\n//# sourceURL=webpack:///./src/UI/ErrorBoundary.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard */ \"./src/Fretboard/Fretboard.jsx\");\n/* harmony import */ var _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fretboard.defaults */ \"./src/Fretboard/Fretboard.defaults.js\");\n/* harmony import */ var _Fretboard_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Fretboard.api */ \"./src/Fretboard/Fretboard.api.jsx\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Viewer: _Fretboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Defaults: _Fretboard_defaults__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  Api: _Fretboard_api__WEBPACK_IMPORTED_MODULE_2__\n});\n\n//# sourceURL=webpack:///./src/Fretboard/_module.js?");
 
 /***/ }),
 
-/***/ "./src/UI/InputBlock/InputBlock.css":
-/*!******************************************!*\
-  !*** ./src/UI/InputBlock/InputBlock.css ***!
-  \******************************************/
+/***/ "./src/Keyboard/Keyboard.css":
+/*!***********************************!*\
+  !*** ./src/Keyboard/Keyboard.css ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./InputBlock.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/InputBlock/InputBlock.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/InputBlock/InputBlock.css?");
+eval("var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Keyboard.css */ \"./node_modules/css-loader/dist/cjs.js!./src/Keyboard/Keyboard.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/Keyboard/Keyboard.css?");
 
 /***/ }),
 
-/***/ "./src/UI/InputBlock/InputBlock.jsx":
-/*!******************************************!*\
-  !*** ./src/UI/InputBlock/InputBlock.jsx ***!
-  \******************************************/
+/***/ "./src/Keyboard/Keyboard.defaults.js":
+/*!*******************************************!*\
+  !*** ./src/Keyboard/Keyboard.defaults.js ***!
+  \*******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _InputBlock_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InputBlock.css */ \"./src/UI/InputBlock/InputBlock.css\");\n/* harmony import */ var _InputBlock_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_InputBlock_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nconst InputBlock = props => {\n  const [open, setOpen] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(true);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: `input-block ${props.x ? 'x' : ''}`\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"title pw-hov\",\n    onClick: () => setOpen(!open)\n  }, props.title, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, open ? '-' : '+')), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"content pw-lighter\"\n  }, open && props.children));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (InputBlock);\n\n//# sourceURL=webpack:///./src/UI/InputBlock/InputBlock.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  keyLow: 0,\n  keyHigh: 24,\n  concept: {\n    a: {\n      p: 0,\n      d: 0\n    },\n    B: []\n  }\n});\n\n//# sourceURL=webpack:///./src/Keyboard/Keyboard.defaults.js?");
 
 /***/ }),
 
-/***/ "./src/UI/IntervalInput/IntervalInput.css":
-/*!************************************************!*\
-  !*** ./src/UI/IntervalInput/IntervalInput.css ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./IntervalInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalInput/IntervalInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/IntervalInput/IntervalInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/IntervalInput/IntervalInput.jsx":
-/*!************************************************!*\
-  !*** ./src/UI/IntervalInput/IntervalInput.jsx ***!
-  \************************************************/
+/***/ "./src/Keyboard/Keyboard.jsx":
+/*!***********************************!*\
+  !*** ./src/Keyboard/Keyboard.jsx ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _IntervalInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IntervalInput.css */ \"./src/UI/IntervalInput/IntervalInput.css\");\n/* harmony import */ var _IntervalInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_IntervalInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n\n\n\n\nconst CUSTOM_INTERVAL = {\n  id: 'custom',\n  name: 'Custom',\n  p: 0,\n  d: 0\n};\nconst DATA = [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.INTERVALS_VALUES, CUSTOM_INTERVAL];\n\nconst areIntervalsEqual = (a, b) => a.p === b.p && a.d === b.d;\n\nconst findPreset = interval => {\n  const preset = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));\n  return preset ? preset : { ...CUSTOM_INTERVAL,\n    p: preset.p,\n    d: preset.d\n  };\n};\n\nconst IntervalInput = props => {\n  const namedInterval = findPreset(props.interval);\n  const disabled = typeof value === 'undefined' || typeof value === null;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    options: DATA,\n    disabled: disabled,\n    value: namedInterval,\n    setValue: props.setInterval,\n    displayProperty: \"id\"\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (IntervalInput);\n\n//# sourceURL=webpack:///./src/UI/IntervalInput/IntervalInput.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./KeyboardKey */ \"./src/Keyboard/KeyboardKey.jsx\");\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/Keyboard/Keyboard.defaults.js\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11]; // TODO Enforce code reuse\n\nconst modulo = (a, b) => {\n  return (a % b + b) % b;\n};\n\nconst getKeyboardKeys = (config, viewerWidth) => {\n  let keys = []; // Safe approximation for scale\n\n  let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;\n\n  for (let i = config.keyLow; i <= config.keyHigh; i++) {\n    let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].White : _KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"KeyboardKeyType\"].Black;\n    keys.push(react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](_KeyboardKey__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      key: i,\n      noteIndex: i,\n      minIndex: config.keyLow,\n      maxIndex: config.keyHigh,\n      scale: viewerWidth / numWhiteKeys,\n      type: type,\n      concept: config.concept\n    }));\n  }\n\n  return keys;\n};\n\nconst Keyboard = props => {\n  const config = { ..._Keyboard_defaults__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n    ...props\n  };\n  const [dims, setDims] = react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"]([512, 512]);\n  react__WEBPACK_IMPORTED_MODULE_0__[\"useEffect\"](() => {\n    const resetDimensions = e => {\n      const el = document.getElementById('keyboard');\n      setDims([el.clientWidth, el.clientHeight]);\n    };\n\n    resetDimensions();\n    window.addEventListener('resize', resetDimensions);\n    return () => window.removeEventListener('resize', resetDimensions);\n  }, []);\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard\",\n    id: \"keyboard\"\n  }, getKeyboardKeys(config, dims[0]));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (Keyboard);\n\n//# sourceURL=webpack:///./src/Keyboard/Keyboard.jsx?");
 
 /***/ }),
 
-/***/ "./src/UI/IntervalListInput/IntervalListInput.css":
-/*!********************************************************!*\
-  !*** ./src/UI/IntervalListInput/IntervalListInput.css ***!
-  \********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ "./src/Keyboard/KeyboardKey.jsx":
+/*!**************************************!*\
+  !*** ./src/Keyboard/KeyboardKey.jsx ***!
+  \**************************************/
+/*! exports provided: KeyboardKeyType, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./IntervalListInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/IntervalListInput/IntervalListInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/IntervalListInput/IntervalListInput.css?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"KeyboardKeyType\", function() { return KeyboardKeyType; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.css */ \"./src/Keyboard/Keyboard.css\");\n/* harmony import */ var _Keyboard_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Keyboard_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n // Key dimensions relative to white key width\n\nconst KEY__DIMS = {\n  WhW_WhH: 4.6875,\n  // White key width to white key height\n  WhW_BlW: 0.6250,\n  // White key width to black key width\n  WhW_BlH: 2.9688 // White key width to black hey height\n\n};\nconst KeyboardKeyType = {\n  Black: 'Black',\n  White: 'White'\n};\n\nconst getScaleStyles = (keyType, scale) => {\n  switch (keyType) {\n    case KeyboardKeyType.White:\n      return {\n        width: scale + 'px',\n        height: KEY__DIMS.WhW_WhH * scale + 'px'\n      };\n\n    case KeyboardKeyType.Black:\n      return {\n        width: KEY__DIMS.WhW_BlW * scale + 'px',\n        height: KEY__DIMS.WhW_BlH * scale + 'px',\n        right: .5 * KEY__DIMS.WhW_BlW * scale + 'px'\n      };\n\n    default:\n      return {\n        width: '0px',\n        height: '0px'\n      };\n  }\n};\n\nconst KeyboardKey = ({\n  noteIndex,\n  type,\n  scale,\n  concept\n}) => {\n  let keyColor = type === KeyboardKeyType.White ? 'white' : 'black';\n  let scaleStyles = getScaleStyles(type, scale);\n  let classes = ['keyboard-key', `${keyColor}-key`, keyColor];\n  const {\n    a: keyCenter,\n    B: intervals\n  } = concept;\n  const notes = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.addVectorsBatch(keyCenter, intervals);\n  const i = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.findIndexOfNoteWithPitch(notes, noteIndex, true);\n  const f = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getFrequency(noteIndex);\n\n  const play = () => play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Sound.playNote(f);\n\n  const colorStyles = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Color.degree(intervals[i]);\n  const label = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Label.degree(intervals[i]);\n  const keyStyles = keyColor === 'white' ? scaleStyles : { ...scaleStyles,\n    ...colorStyles\n  };\n  const labelStyles = keyColor === 'white' ? colorStyles : {};\n  return react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: `${keyColor}-key-container`\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: classes.join(' '),\n    style: keyStyles,\n    onClick: play\n  }, react__WEBPACK_IMPORTED_MODULE_0__[\"createElement\"](\"div\", {\n    className: \"keyboard-key-label\",\n    style: labelStyles\n  }, label)));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyboardKey);\n\n//# sourceURL=webpack:///./src/Keyboard/KeyboardKey.jsx?");
 
 /***/ }),
 
-/***/ "./src/UI/IntervalListInput/IntervalListInput.jsx":
-/*!********************************************************!*\
-  !*** ./src/UI/IntervalListInput/IntervalListInput.jsx ***!
-  \********************************************************/
+/***/ "./src/Keyboard/_module.js":
+/*!*********************************!*\
+  !*** ./src/Keyboard/_module.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _IntervalListInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./IntervalListInput.css */ \"./src/UI/IntervalListInput/IntervalListInput.css\");\n/* harmony import */ var _IntervalListInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_IntervalListInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _IntervalInput_IntervalInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../IntervalInput/IntervalInput */ \"./src/UI/IntervalInput/IntervalInput.jsx\");\n\n\n\n\nconst getIntervalRows = (intervals, setIntervals) => {\n  return intervals.map((v, i) => {\n    const setIntervalValue = ivl => setIntervals([...intervals.slice(0, i), ivl, ...intervals.slice(i + 1)]);\n\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"tr\", {\n      key: i\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"td\", null, i + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"td\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_IntervalInput_IntervalInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      interval: v,\n      setInterval: setIntervalValue\n    })));\n  });\n};\n\nconst IntervalListInput = props => {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"pw-input-block\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"table\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"tbody\", null, getIntervalRows(props.B, props.setIntervals))));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (IntervalListInput);\n\n//# sourceURL=webpack:///./src/UI/IntervalListInput/IntervalListInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/KeyCenterInput/KeyCenterInput.css":
-/*!**************************************************!*\
-  !*** ./src/UI/KeyCenterInput/KeyCenterInput.css ***!
-  \**************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./KeyCenterInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/KeyCenterInput/KeyCenterInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/KeyCenterInput/KeyCenterInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/KeyCenterInput/KeyCenterInput.jsx":
-/*!**************************************************!*\
-  !*** ./src/UI/KeyCenterInput/KeyCenterInput.jsx ***!
-  \**************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./KeyCenterInput.css */ \"./src/UI/KeyCenterInput/KeyCenterInput.css\");\n/* harmony import */ var _KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_KeyCenterInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ButtonInput/ButtonInput */ \"./src/UI/ButtonInput/ButtonInput.jsx\");\n/* harmony import */ var _ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n/* harmony import */ var _LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../LabeledInput/LabeledInput */ \"./src/UI/LabeledInput/LabeledInput.jsx\");\n\n\n\n\n\n\n\nconst DegreeInput = ({\n  degree,\n  setDegree\n}) => {\n  const allDegrees = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getAllDegrees();\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"degree-input\"\n  }, allDegrees.map((d, i) => {\n    const isActive = degree && degree.d === i && degree.p === d.p;\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n      key: i,\n      onClick: () => setDegree({\n        p: d.p,\n        d: i\n      }),\n      className: isActive ? 'pw-light' : null\n    }, play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getDegreeMapping(d.d).name);\n  }));\n};\n\nconst AccidentalInput = ({\n  accidental,\n  setAccidental\n}) => {\n  const allAccidentals = Object.values(play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Constants.ACCIDENTAL);\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"accidental-input\"\n  }, allAccidentals.map((a, i) => {\n    const isActive = accidental && accidental.offset === a.offset;\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n      key: i,\n      onClick: () => setAccidental(a),\n      className: isActive ? 'pw-light' : null\n    }, a.name);\n  }));\n};\n\nconst OctaveInput = ({\n  octave,\n  setOctave\n}) => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n  value: octave,\n  setValue: setOctave,\n  className: \"octave-input\"\n});\n\nconst KeyCenterInput = ({\n  keyCenter,\n  setKeyCenter\n}) => {\n  const degree = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Theory.getDegree(keyCenter.d);\n  const octave = Math.floor(keyCenter.p / 12) + 4;\n  const offset = keyCenter.p - degree.p;\n  const accidental = play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;\n\n  const setDegree = d => {\n    const newKeyCenter = {\n      p: Math.floor(keyCenter.p / 12) * 12 + d.p,\n      d: d.d\n    };\n    setKeyCenter(newKeyCenter);\n  };\n\n  const setAccidental = a => {\n    const newKeyCenter = {\n      p: keyCenter.p + a.offset,\n      d: keyCenter.d\n    };\n    setKeyCenter(newKeyCenter);\n  };\n\n  const setOctave = o => {\n    const newKeyCenter = {\n      p: (o - 4) * 12 + play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Utils.modulo(keyCenter.p, 12),\n      d: keyCenter.d\n    };\n    setKeyCenter(newKeyCenter);\n  };\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"key-center-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    label: \"Degree\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DegreeInput, {\n    degree: degree,\n    setDegree: setDegree\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    label: \"Accidental\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AccidentalInput, {\n    accidental: accidental,\n    setAccidental: setAccidental\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"], {\n    label: \"Octave\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OctaveInput, {\n    octave: octave,\n    setOctave: setOctave\n  })));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (KeyCenterInput);\n\n//# sourceURL=webpack:///./src/UI/KeyCenterInput/KeyCenterInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/LabeledInput/LabeledInput.css":
-/*!**********************************************!*\
-  !*** ./src/UI/LabeledInput/LabeledInput.css ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./LabeledInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/LabeledInput/LabeledInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/LabeledInput/LabeledInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/LabeledInput/LabeledInput.jsx":
-/*!**********************************************!*\
-  !*** ./src/UI/LabeledInput/LabeledInput.jsx ***!
-  \**********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _LabeledInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LabeledInput.css */ \"./src/UI/LabeledInput/LabeledInput.css\");\n/* harmony import */ var _LabeledInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_LabeledInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\nconst LabeledInput = props => {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"labeled-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", null, props.label), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"content\"\n  }, props.children));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (LabeledInput);\n\n//# sourceURL=webpack:///./src/UI/LabeledInput/LabeledInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/MatrixInput/MatrixInput.css":
-/*!********************************************!*\
-  !*** ./src/UI/MatrixInput/MatrixInput.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./MatrixInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/MatrixInput/MatrixInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/MatrixInput/MatrixInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/MatrixInput/MatrixInput.jsx":
-/*!********************************************!*\
-  !*** ./src/UI/MatrixInput/MatrixInput.jsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _MatrixInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MatrixInput.css */ \"./src/UI/MatrixInput/MatrixInput.css\");\n/* harmony import */ var _MatrixInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MatrixInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../VectorInput/VectorInput */ \"./src/UI/VectorInput/VectorInput.jsx\");\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n\n\n\n\n\nconst MatrixInput = props => {\n  const {\n    value,\n    setValue\n  } = props;\n  const vectors = value.map((v, i) => {\n    const setVectorValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);\n\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_VectorInput_VectorInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n      key: i,\n      value: v,\n      setValue: setVectorValue\n    });\n  });\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"matrix-input\"\n  }, vectors);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (MatrixInput);\n\n//# sourceURL=webpack:///./src/UI/MatrixInput/MatrixInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/PresetInput/PresetInput.css":
-/*!********************************************!*\
-  !*** ./src/UI/PresetInput/PresetInput.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./PresetInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/PresetInput/PresetInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/PresetInput/PresetInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/PresetInput/PresetInput.jsx":
-/*!********************************************!*\
-  !*** ./src/UI/PresetInput/PresetInput.jsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _PresetInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PresetInput.css */ \"./src/UI/PresetInput/PresetInput.css\");\n/* harmony import */ var _PresetInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PresetInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var play_what__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! play-what */ \"../play-what/src/index.js\");\n/* harmony import */ var _Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n/* harmony import */ var _LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../LabeledInput/LabeledInput */ \"./src/UI/LabeledInput/LabeledInput.jsx\");\n\n\n\n\n\nconst UKNOWN_PRESET = {\n  id: 'unknown',\n  name: 'Unknown',\n  intervals: []\n};\nconst PRESET_TYPES = [{\n  id: 'intervalPair',\n  name: 'Interval Pair',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.INTERVAL_PAIR_VALUES, UKNOWN_PRESET]\n}, {\n  id: 'chord',\n  name: 'Chord',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.CHORD_VALUES, UKNOWN_PRESET]\n}, {\n  id: 'scale',\n  name: 'Scale',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.SCALE_VALUES, UKNOWN_PRESET]\n}, {\n  id: 'mode',\n  name: 'Mode',\n  options: [...play_what__WEBPACK_IMPORTED_MODULE_2__[\"default\"].Presets.QUICK_MODE_VALUES, UKNOWN_PRESET]\n}];\n\nconst PresetInput = props => {\n  const {\n    preset,\n    setPreset\n  } = props;\n  const [presetType, setPresetType] = Object(react__WEBPACK_IMPORTED_MODULE_0__[\"useState\"])(PRESET_TYPES[1]);\n  const SpecificInput = presetType.component;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"preset-input pw-input-block\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    label: \"Preset Type\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: presetType,\n    setValue: setPresetType,\n    options: PRESET_TYPES\n  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LabeledInput_LabeledInput__WEBPACK_IMPORTED_MODULE_4__[\"default\"], {\n    label: presetType.name\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_3__[\"default\"], {\n    value: preset,\n    setValue: v => setPreset(v.B),\n    options: presetType.options\n  })));\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (PresetInput);\n\n//# sourceURL=webpack:///./src/UI/PresetInput/PresetInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/ScalarInput/ScalarInput.css":
-/*!********************************************!*\
-  !*** ./src/UI/ScalarInput/ScalarInput.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./ScalarInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/ScalarInput/ScalarInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/ScalarInput/ScalarInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/ScalarInput/ScalerInput.jsx":
-/*!********************************************!*\
-  !*** ./src/UI/ScalarInput/ScalerInput.jsx ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _ScalarInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ScalarInput.css */ \"./src/UI/ScalarInput/ScalarInput.css\");\n/* harmony import */ var _ScalarInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ScalarInput_css__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\nconst ScalarInput = props => {\n  const {\n    value,\n    setValue,\n    className\n  } = props;\n  const disabled = typeof value === 'undefined' || typeof value === null;\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n    className: `scalar-input pw-lightest ${className}`,\n    type: \"number\",\n    disabled: disabled,\n    value: value,\n    onChange: e => setValue(parseInt(e.target.value))\n  });\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (ScalarInput);\n\n//# sourceURL=webpack:///./src/UI/ScalarInput/ScalerInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/UI/VectorInput/VectorInput.css":
-/*!********************************************!*\
-  !*** ./src/UI/VectorInput/VectorInput.css ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!./VectorInput.css */ \"./node_modules/css-loader/dist/cjs.js!./src/UI/VectorInput/VectorInput.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/UI/VectorInput/VectorInput.css?");
-
-/***/ }),
-
-/***/ "./src/UI/VectorInput/VectorInput.jsx":
-/*!********************************************!*\
-  !*** ./src/UI/VectorInput/VectorInput.jsx ***!
-  \********************************************/
-/*! exports provided: VectorInput, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"VectorInput\", function() { return VectorInput; });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _VectorInput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VectorInput.css */ \"./src/UI/VectorInput/VectorInput.css\");\n/* harmony import */ var _VectorInput_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_VectorInput_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ScalarInput/ScalerInput */ \"./src/UI/ScalarInput/ScalerInput.jsx\");\n\n\n\nconst VectorInput = ({\n  value,\n  setValue\n}) => {\n  const {\n    p,\n    d\n  } = value;\n\n  const setP = v => setValue({\n    d: d,\n    p: v\n  });\n\n  const setD = v => setValue({\n    d: v,\n    p: p\n  });\n\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n    className: \"vector-input\"\n  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    value: d,\n    setValue: setD\n  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ScalarInput_ScalerInput__WEBPACK_IMPORTED_MODULE_2__[\"default\"], {\n    value: p,\n    setValue: setP\n  }));\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = (VectorInput);\n\n//# sourceURL=webpack:///./src/UI/VectorInput/VectorInput.jsx?");
-
-/***/ }),
-
-/***/ "./src/index.css":
-/*!***********************!*\
-  !*** ./src/index.css ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!./index.css */ \"./node_modules/css-loader/dist/cjs.js!./src/index.css\");\ncontent = content.__esModule ? content.default : content;\n\nif (typeof content === 'string') {\n  content = [[module.i, content, '']];\n}\n\nvar options = {}\n\noptions.insert = \"head\";\noptions.singleton = false;\n\nvar update = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ \"./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js\")(content, options);\n\nif (content.locals) {\n  module.exports = content.locals;\n}\n\n\n//# sourceURL=webpack:///./src/index.css?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Keyboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Keyboard */ \"./src/Keyboard/Keyboard.jsx\");\n/* harmony import */ var _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard.defaults */ \"./src/Keyboard/Keyboard.defaults.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Viewer: _Keyboard__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Defaults: _Keyboard_defaults__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/Keyboard/_module.js?");
 
 /***/ }),
 
@@ -1059,7 +481,7 @@ eval("var content = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Modules_Fretboard_FretboardController__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Modules/Fretboard/FretboardController */ \"./src/Modules/Fretboard/FretboardController.jsx\");\n/* harmony import */ var _Modules_Keyboard_KeyboardController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modules/Keyboard/KeyboardController */ \"./src/Modules/Keyboard/KeyboardController.jsx\");\n/* harmony import */ var _UI_ErrorBoundary__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UI/ErrorBoundary */ \"./src/UI/ErrorBoundary.jsx\");\n/* harmony import */ var _UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UI/ButtonInput/ButtonInput */ \"./src/UI/ButtonInput/ButtonInput.jsx\");\n/* harmony import */ var _UI_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./UI/Dropdown/Dropdown */ \"./src/UI/Dropdown/Dropdown.jsx\");\n/* harmony import */ var _UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./UI/ConceptInput/ConceptInput */ \"./src/UI/ConceptInput/ConceptInput.jsx\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_css__WEBPACK_IMPORTED_MODULE_6__);\n\n\n\n\n\n\n\nconst Modules = {\n  Fretboard: _Modules_Fretboard_FretboardController__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Keyboard: _Modules_Keyboard_KeyboardController__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n};\nconst UI = {\n  ErrorBoundary: _UI_ErrorBoundary__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  ButtonInput: _UI_ButtonInput_ButtonInput__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  Dropdown: _UI_Dropdown_Dropdown__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  ConceptInput: _UI_ConceptInput_ConceptInput__WEBPACK_IMPORTED_MODULE_5__[\"default\"]\n};\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Modules,\n  UI\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fretboard/_module */ \"./src/Fretboard/_module.js\");\n/* harmony import */ var _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Keyboard/_module */ \"./src/Keyboard/_module.js\");\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Fretboard: _Fretboard_module__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Keyboard: _Keyboard_module__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
