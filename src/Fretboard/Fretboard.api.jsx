@@ -1,7 +1,3 @@
-import * as React from "react";
-import PW from 'play-what';
-import Fretboard from "./Fretboard"
-
 export const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];
 
 export const getDotsForFret = (fretNumber) => {

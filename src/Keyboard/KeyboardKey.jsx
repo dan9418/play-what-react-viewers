@@ -1,6 +1,5 @@
 import * as React from 'react';
 import "./Keyboard.css";
-import PW from 'play-what';
 
 // Key dimensions relative to white key width
 const KEY__DIMS = {
@@ -36,20 +35,14 @@ const getScaleStyles = (keyType, scale) => {
 }
 
 const KeyboardKey = ({ noteIndex, type, scale, concept }) => {
+    if(!concept) return null;
+
     let keyColor = (type === KeyboardKeyType.White) ? 'white' : 'black';
     let scaleStyles = getScaleStyles(type, scale);
     let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
 
-    const { a: keyCenter, B: intervals } = concept;
-    const notes = PW.Theory.addVectorsBatch(keyCenter, intervals);
-
-    const i = PW.Theory.findIndexOfNoteWithPitch(notes, noteIndex, true);
-
-    const f = PW.Theory.getFrequency(noteIndex);
-    const play = () => PW.Sound.playNote(f);
-
-    const colorStyles = PW.Color.degree(intervals[i]);
-    const label = PW.Label.degree(intervals[i]);
+    const colorStyles = {};
+    const label = '';
 
     const keyStyles = keyColor === 'white' ? scaleStyles : { ...scaleStyles, ...colorStyles };
     const labelStyles = keyColor === 'white' ? colorStyles : {};

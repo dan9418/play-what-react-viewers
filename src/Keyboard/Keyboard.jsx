@@ -2,7 +2,6 @@ import * as React from "react";
 import "./Keyboard.css";
 import KeyboardKey, { KeyboardKeyType } from "./KeyboardKey";
 import DEFAULT_PROPS from "./Keyboard.defaults";
-import PlayWhat from 'play-what';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Graph.css';
-import PW from 'play-what';
 
 const Cell = props => {
     const { x, y, color } = props;
@@ -20,7 +19,7 @@ const Label = ({ axis, children }) => {
 };
 
 const areEqual = (v1, v2, x, y, max) => {
-    const mod = PW.Utils.modulo;
+    const mod = (a, b) => ((a % b) + b) % b; //PW.Utils.modulo;
     const xEqual = mod(v1[x], max[x]) === mod(v2[x], max[x]);
     const yEqual = mod(v1[y], max[y]) === mod(v2[y], max[y]);
     return xEqual && yEqual;

@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './HarmonicSeries.css';
-import PW from 'play-what';
 
 const PRIMES = {
     ['1']: 'black',
@@ -45,7 +44,7 @@ const Overtone = ({ f, n }) => {
                 <div className="n" key={i} >
                     <div className="overtone-line"
                     style={{ backgroundColor: i === 1 && PRIMES[n] ? color : '#ddd' }}
-                    onClick={() => PW.Sound.play(f * n)}
+                    onClick={}
                     />
                     <div className="overtone-info">
                         {n}
