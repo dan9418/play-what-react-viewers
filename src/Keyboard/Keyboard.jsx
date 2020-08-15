@@ -33,7 +33,7 @@ const getKeyboardKeys = (config, viewerWidth) => {
     return keys;
 }
 
-const Keyboard = props => {
+const Keyboard = ({ style, ...props }) => {
 
     const config = { ...DEFAULT_PROPS, ...props };
 
@@ -50,7 +50,7 @@ const Keyboard = props => {
     }, [])
 
     return (
-        <div className='keyboard' id='keyboard'>
+        <div className='keyboard' id='keyboard' style={style}>
             {getKeyboardKeys(config, dims[0])}
         </div>
     );
