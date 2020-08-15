@@ -49,7 +49,7 @@ const KeyboardKey = ({ noteIndex, type, scale, concept }) => {
 
     return (
         <div className={`${keyColor}-key-container`}>
-            <div className={classes.join(' ')} style={keyStyles} onClick={play}>
+            <div className={classes.join(' ')} style={keyStyles} onClick={() => null}>
                 <div className='keyboard-key-label' style={labelStyles}>
                     {label}
                 </div>
