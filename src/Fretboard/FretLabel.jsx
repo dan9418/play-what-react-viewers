@@ -1,12 +1,11 @@
 import * as React from "react";
 import "./Fretboard.css";
 
-const FretLabel = props => {
-    const { concept, noteIndex, minIndex, maxIndex } = props;
-    return null;
+const FretLabel = ({ config }) => {
+    const { label, ...props } = config;
 
     return (
-        <div className='fret-label' style={styles} onClick={play}>
+        <div className='fret-label' {...config}>
             {label}
         </div>
     );

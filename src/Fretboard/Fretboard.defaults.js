@@ -1,15 +1,18 @@
 export default {
+    fretMap: [
+        [null, { label: 'test', style: { color: 'red' } }, null, null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        [null, null, null, null, null, null, null, null, null, null, null, null, null]
+    ]
+};
+
+/*
+showFretNumbers: true,
+    showDots: true,
     fretLow: 0,
     fretHigh: 12,
-    strings: [
-        { tuning: 16 },   // e
-        { tuning: 11 },   // B
-        { tuning: 7 },    // G
-        { tuning: 2 },    // D
-        { tuning: -3 },   // A
-        { tuning: -8 }    // E
-    ],
-    showFretNumbers: true,
-    showDots: true,
-    concept: { a: { p: 0, d: 0 }, B: [] }
-};
+    tuning: [16, 11, 7, 2, -3, 8], // e B G D A E
+*/
