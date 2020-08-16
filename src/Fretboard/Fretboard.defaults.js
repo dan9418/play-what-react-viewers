@@ -1,6 +1,6 @@
 export default {
     fretMap: [
-        [null, { label: 'test', style: { color: 'red' } }, null, null, null, null, null, null, null, null, null, null, null],
+        [null, { children: 'test', style: { color: 'red' } }, null, null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null, null, null, null],
         [null, null, null, null, null, null, null, null, null, null, null, null, null],
