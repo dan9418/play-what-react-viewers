@@ -1,11 +1,7 @@
-import Fretboard from './Fretboard/_module';
-import Keyboard from './Keyboard/_module';
-import Grid from './Grid/_module';
-import Summary from './Summary/_module';
+import * as api from './api';
 
 export default {
-    Fretboard,
-    Keyboard,
-    Summary,
-    ...Grid
+    PW_React: {
+        ...api
+    }
 };

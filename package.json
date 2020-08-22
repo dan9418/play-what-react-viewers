@@ -13,6 +13,9 @@
   ],
   "author": "Dan Bednarczyk",
   "license": "ISC",
+  "dependencies": {
+    "play-what": "file:C:/_dev/play-what"
+  },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
