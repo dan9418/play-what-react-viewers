@@ -1,9 +1,9 @@
 import * as React from "react";
 //import "./Keyboard.css";
 
-const Label = ({ style, pod, label, ...props }) => {
+const Label = ({ style, text, ...props }) => {
 
-    const style = {
+    const styles = {
         position: 'absolute',
         width: '90%',
         height: '90%',
@@ -14,8 +14,8 @@ const Label = ({ style, pod, label, ...props }) => {
     };
 
     return (
-        <div className='label' style={rowStyles}>
-            {notes.map(n => <pre>{JSON.stringify(n, null, 2)}</pre>)}
+        <div className='label' style={styles}>
+            {text}
         </div>
     );
 }

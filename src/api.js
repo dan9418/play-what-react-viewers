@@ -2,41 +2,7 @@ import _Fretboard from './Fretboard/_module';
 import _Grid from './Grid/_module';
 import _Summary from './Summary/_module';
 
-export const Fretboard = {
-    component: _Fretboard.Viewer,
-    from: (args) => {
-        const config = { ..._Fretboard.Defaults, ...args };
-        const {
-            fretRange, tuning, labelFn, styleFn
-        } = config;
-        const [l, h] = fretRange || [0, 24];
-
-        const strings = [];
-        for (let s = 0; s < tuning.length; s++) {
-            const frets = [];
-            for (let f = l; f <= h; f++) {
-                const context = {
-                    strNum: s,
-                    fretNum: f,
-                    fretRange,
-                    tuning,
-                    noteIndex: tuning[s] + f
-                };
-                frets.push({
-                    children: labelFn ? labelFn(context) : null,
-                    style: styleFn ? styleFn(context) : {}
-                });
-            }
-            strings.push(frets);
-        }
-        return {
-            component: _Fretboard.Viewer,
-            props: {
-                fretMap: strings
-            }
-        };
-    }
-};
+export const Fretboard = _Fretboard;
 
 export const Row = {
     component: _Grid.Row.Viewer,

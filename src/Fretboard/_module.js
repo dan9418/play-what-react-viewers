@@ -1,5 +1,19 @@
-import Viewer from './Fretboard';
+import Component from './Fretboard';
 import Defaults from './Fretboard.defaults';
-import * as Api from './Fretboard.api';
+import * as api from './Fretboard.api';
 
-export default { Viewer, Defaults, Api };
+const Fretboard = {
+    component: Component,
+    mapBy: props => {
+
+        return ctx => {
+            const { stringIndex, fretIndex } = ctx;
+            const noteIndex = api.STANDARD_TUNING[stringIndex] + fretIndex;
+            return {
+                text: noteIndex
+            }
+        };
+    }
+};
+
+export default Fretboard;
