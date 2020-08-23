@@ -1,20 +1,57 @@
 import * as React from "react";
+import PW from 'play-what';
 //import "./Keyboard.css";
 
-const Summary = ({ style, notes, ...props }) => {
+const DEFAULT_PROPS = {
+    colorFn: () => { },
+    textFn: () => { },
+    notes: []
+}
 
-    const rowStyles = {
+const Summary = userProps => {
+    const props = { ...DEFAULT_PROPS, ...userProps };
+
+    const { colorFn, textFn, notes } = props;
+
+    const arr = notes.map(n => {
+
+        const ctx = {
+            note: n
+        };
+
+        const text = textFn(ctx);
+
+        const bg = colorFn(ctx)
+        const fg = PW.api.PW.Color.getFgColor(bg);
+
+        const styles = {
+            backgroundColor: bg,
+            color: fg,
+            width: '64px',
+            height: '96px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: '8px',
+            margin: '8px'
+        };
+
+        return (
+            <div className='summary' style={styles}>
+                {text}
+            </div>
+        );
+    })
+
+    const styles = {
         display: 'flex',
-        width: '100%',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'space-between'
     };
 
-    console.log(rowStyles)
-
     return (
-        <div className='summary' style={rowStyles}>
-            {notes.map(n => <pre>{JSON.stringify(n, null, 2)}</pre>)}
+        <div className='summary' style={styles}>
+            {arr}
         </div>
     );
 }
