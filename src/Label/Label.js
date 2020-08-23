@@ -1,9 +1,15 @@
 import * as React from "react";
+import PW from 'play-what';
 //import "./Keyboard.css";
 
-const Label = ({ style, text, ...props }) => {
+const Label = ({ color, text, ...props }) => {
+
+    const bg = color ? color : null;
+    const fg = color ? PW.api.PW.Color.getFgColor(bg) : null;
 
     const styles = {
+        backgroundColor: bg,
+        color: fg,
         position: 'absolute',
         width: '90%',
         height: '90%',
