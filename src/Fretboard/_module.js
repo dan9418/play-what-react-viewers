@@ -3,10 +3,8 @@ import Defaults from './Fretboard.defaults';
 import * as api from './Fretboard.api';
 import PW from 'play-what';
 
-const parseColorProp = (color, note) => {
-    if (!color) return null;
-
-    switch (color.type) {
+const parseColorProp = (type, note) => {
+    switch (type) {
         case 'binary':
             return note ? PW.api.PW.Color.Scheme.Binary.active : PW.api.PW.Color.Scheme.Binary.inacitve;
         case 'degree':
@@ -18,10 +16,8 @@ const parseColorProp = (color, note) => {
     }
 };
 
-const parseTextProp = (text, note) => {
-    if (!text) return '';
-
-    switch (text.type) {
+const parseTextProp = (type, note) => {
+    switch (type) {
         case 'degree':
             return note ? note.d : '';
         case 'pitchClass':
@@ -33,27 +29,18 @@ const parseTextProp = (text, note) => {
 
 const Fretboard = {
     component: Component,
-    mapBy: props => {
+    colorBy: props => {
         return ctx => {
-            const { stringIndex, fretIndex } = ctx;
-            const noteIndex = api.STANDARD_TUNING[stringIndex] + fretIndex;
-
-            // get note
-            const note = PW.api.PW.Matrix.findVectorWithPitch({
-                matrix: props.notes,
-                pitch: noteIndex
-            })
-
-            // get color
-            const color = parseColorProp(props.color, note);
-
-            // get text
-            const text = parseTextProp(props.text, note);
-
-            return {
-                text,
-                color
-            }
+            const { tuning, stringIndex, fretRange, fretIndex, noteIndex, note } = ctx;
+            const color = parseColorProp(props.type, note);
+            return color;
+        };
+    },
+    textBy: props => {
+        return ctx => {
+            const { tuning, stringIndex, fretRange, fretIndex, noteIndex, note } = ctx;
+            const text = parseTextProp(props.type, note);
+            return text;
         };
     }
 };

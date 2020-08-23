@@ -1,15 +1,17 @@
+import PW from 'play-what';
 import * as React from "react";
 import Label from '../Label/Label';
-import { getDotsForFret } from './Fretboard.api';
+import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
-export const Fret = ({ context, mapFn }) => {
-    const { fretIndex, stringIndex } = context;
-
-    const labelProps = mapFn(context);
+export const Fret = ({ context, colorFn, textFn }) => {
+    const labelProps = {
+        color: colorFn(context),
+        text: textFn(context)
+    };
 
     let classes = ['fret'];
     /*if (props.fretNumber === 0)
@@ -17,33 +19,45 @@ export const Fret = ({ context, mapFn }) => {
 
     return (
         <div className={classes.join(' ')}>
-            {false && <div className='fret-number'>{fretIndex + 1}</div>}
+            {false && <div className='fret-number'>{context.fretIndex + 1}</div>}
             <div className='fret-string' />
             <Label {...labelProps} />
-            {false && <div className='fret-dots'>{getDotsForFret(fretIndex + 1)}</div>}
+            {false && <div className='fret-dots'>{api.getDotsForFret(fretIndex + 1)}</div>}
         </div>
     );
 }
 
 const getFrets = (props) => {
-    const { numFrets, numStrings, mapFn } = props;
+    const { fretRange, tuning, notes, colorFn, textFn } = props;
     //let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
     //let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
 
     const allFrets = [];
 
-    for (let s = 0; s < numStrings; s++) {
-        for (let f = 0; f < numFrets; f++) {
+    for (let s = 0; s < tuning.length; s++) {
+        for (let f = fretRange[0]; f <= fretRange[1]; f++) {
+
+            const noteIndex = tuning[s] + f;
+            const note = PW.api.PW.Matrix.findVectorWithPitch({
+                matrix: notes,
+                pitch: noteIndex
+            })
+
             const ctx = {
+                tuning,
                 stringIndex: s,
-                fretIndex: f
+                fretRange,
+                fretIndex: f,
+                noteIndex,
+                note
             };
 
             allFrets.push(
                 <Fret
                     key={`s${s}-f${f}`}
                     context={ctx}
-                    mapFn={mapFn}
+                    colorFn={colorFn}
+                    textFn={textFn}
                 />
             );
         }
@@ -63,8 +77,10 @@ const Fretboard = ({ style, ...userProps }) => {
     const props = Object.assign({}, DEFAULT_PROPS, userProps);
     // Calculate fretboard dimensions
 
-    const gridTemplateColumns = getFretRatios(props.numFrets).map(n => n + 'fr').join(' ');
-    const gridTemplateRows = `repeat(${props.numStrings}, 1fr)`;
+    const numFrets = props.fretRange[1] - props.fretRange[0];
+    const numStrings = props.tuning.length;
+    const gridTemplateColumns = getFretRatios(numFrets).map(n => n + 'fr').join(' ');
+    const gridTemplateRows = `repeat(${numStrings}, 1fr)`;
     const fretboardStyles = {
         gridTemplateColumns,
         gridTemplateRows,
