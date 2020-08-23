@@ -7,12 +7,29 @@ const parseColorProp = (color, note) => {
     if (!color) return null;
 
     switch (color.type) {
+        case 'binary':
+            return note ? PW.api.PW.Color.Scheme.Binary.active : PW.api.PW.Color.Scheme.Binary.inacitve;
         case 'degree':
             return note ? PW.api.PW.Color.Scheme.Degree[`d${note.d + 1}`] : null;
+        case 'pitchClass':
+            return note ? PW.api.PW.Color.Scheme.PitchClass[`pc${note.p + 1}`] : null;
         default:
             return null;
     }
-}
+};
+
+const parseTextProp = (text, note) => {
+    if (!text) return '';
+
+    switch (text.type) {
+        case 'degree':
+            return note ? note.d : '';
+        case 'pitchClass':
+            return note ? note.p : '';
+        default:
+            return '';
+    }
+};
 
 const Fretboard = {
     component: Component,
@@ -30,8 +47,11 @@ const Fretboard = {
             // get color
             const color = parseColorProp(props.color, note);
 
+            // get text
+            const text = parseTextProp(props.text, note);
+
             return {
-                text: note ? note.d : '',
+                text,
                 color
             }
         };
