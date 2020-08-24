@@ -3,5 +3,6 @@ export default {
     tuning: [16, 11, 7, 2, -3, 8],
     colorFn: () => { },
     textFn: () => { },
-    notes: []
+    notes: [],
+    referenceNote: null
 };

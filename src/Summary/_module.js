@@ -9,12 +9,5 @@ export default {
             const color = PW.api.PW.Color.parseColorProp(props.type, note);
             return color;
         };
-    },
-    textBy: props => {
-        return ctx => {
-            const { note } = ctx;
-            const text = PW.api.PW.Color.parseColorProp(props.type, note);
-            return text;
-        };
     }
 };
