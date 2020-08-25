@@ -7,12 +7,12 @@ const Chart = ({ children, list, viewer, ...props }) => {
         width: '100%'
     };
 
-    const concepts = list.map(c => {
+    const concepts = list.map((c, i) => {
         const Comp = viewer.component;
         const { a: keyCenter, B: intervals } = c;
         return (
             <div className="concept">
-                <h4>Concept</h4>
+                <h4>{`Concept ${i}`}</h4>
                 <Comp {...viewer.props} keyCenter={keyCenter} intervals={intervals} />
             </div>
         );

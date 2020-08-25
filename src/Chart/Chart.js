@@ -8,13 +8,11 @@ const Chart = ({ children, chart, viewer, ...props }) => {
         width: '100%'
     };
 
-    const sections = chart.sections.map(s => {
+    const sections = chart.sections.map((s, i) => {
         return (
             <div className="section">
-                <h3>Section</h3>
-                <div className="concept-list">
-                    <List list={s.concepts} viewer={viewer} />
-                </div>
+                <h3>{`Section ${i}`}</h3>
+                <List list={s.concepts} viewer={viewer} />
             </div>
         );
     })
