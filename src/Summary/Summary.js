@@ -68,20 +68,19 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
     );
 };
 
-const P = ({ intervals, colorFn }) => {
+const P = ({ type, intervals }) => {
+    let count = type === 'degree' ? 7 : 12;
+    let colorFn = PW.api.PW.Color.parseColorProp;
+
     const ps = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < count; i++) {
 
         const interval = intervals.find(ivl => ivl.p === i);
 
         const styles = {};
 
         if (interval) {
-            const ctx = {
-                note: interval
-            };
-
-            const bg = colorFn(ctx);
+            const bg = colorFn(type, interval);
             const fg = PW.api.PW.Color.getFgColor(bg);
 
             styles.backgroundColor = bg;
@@ -109,7 +108,8 @@ const Summary = userProps => {
             <div className='interval-arr'>
                 {arr}
             </div>
-            <P intervals={intervals} colorFn={colorFn} />
+            <P intervals={intervals} type="degree" />
+            <P intervals={intervals} type="pitchClass" />
             <KeyCenter keyCenter={keyCenter} colorFn={colorFn} />
         </div>
     );
