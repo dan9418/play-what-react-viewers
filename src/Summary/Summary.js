@@ -18,19 +18,13 @@ const Note = ({ note, colorFn }) => {
         note
     };
 
-    const bg = colorFn(ctx)
-    const fg = PW.api.PW.Color.getFgColor(bg);
-
-    const styles = {
-        backgroundColor: bg,
-        color: fg
-    };
+    const colorStyles = colorFn(ctx)
 
     return (
-        <div className='interval' style={styles}>
+        <div className='interval' style={colorStyles}>
             <div className='name'>{name}</div>
             <div className='pod'>{`[${note.p}, ${note.d}]`}</div>
-            <div className='noteIndex'>{`(${note.p})`}</div>
+            <div className='noteIndex'>{`(${noteIndex})`}</div>
             <div className='frequency'>{`${f}Hz`}</div>
         </div>
     );
@@ -43,13 +37,7 @@ const Interval = ({ note, colorFn }) => {
         note
     };
 
-    const bg = colorFn(ctx);
-    const fg = PW.api.PW.Color.getFgColor(bg);
-
-    const styles = {
-        backgroundColor: bg,
-        color: fg
-    };
+    const styles = colorFn(ctx);
 
     return (
         <div className='interval' style={styles}>
@@ -69,14 +57,7 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
         note: keyCenter
     };
 
-    const bg = colorFn(ctx);
-    const fg = PW.api.PW.Color.getFgColor(bg);
-
-    const styles = {
-        backgroundColor: bg,
-        color: fg
-    };
-
+    const styles = colorFn(ctx);
     return (
         <div className='key-center' style={styles}>
             <div className='name'>{name}</div>
@@ -96,13 +77,9 @@ const Meter = ({ type, intervals }) => {
     for (let i = 0; i < count; i++) {
         const interval = intervals.find(ivl => PW.api.PW.Utils.modulo(ivl[prop], count) === i);
 
-        const styles = {};
+        let styles = {};
         if (interval) {
-            const bg = colorFn({ note: interval });
-            const fg = PW.api.PW.Color.getFgColor(bg);
-
-            styles.backgroundColor = bg;
-            styles.color = fg;
+            styles = colorFn({ note: interval });
         };
 
         cells.push(<div className="cell" style={styles} >{i}</div>)
