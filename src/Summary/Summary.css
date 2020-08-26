@@ -3,7 +3,10 @@
 }
 
 .summary {
-    border-bottom: 1px solid #555;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+    background-color: #EEE;
 }
 
 .summary .interval-arr {
@@ -26,25 +29,25 @@
 }
 
 .summary .interval div {
-    margin: 8px;
+    margin-bottom: 4px;
 }
 
-.summary .interval .name {
+.summary .interval .name, .summary .key-center .name {
     font-weight: bold;
+    font-size: 200%;
 }
 
 .summary .key-center {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    height: 32px;
+    height: 64px;
     border-radius: 8px;
     padding: 4px;
     margin: 8px;
     box-sizing: border-box;
     border: 1px solid #555;
-
 }
 
 .summary .ps {
@@ -54,10 +57,14 @@
 }
 
 .summary .p {
-    height: 32px;
     width: 100%;
-    margin: 2px;
-    border-radius: 4px;
+    padding: 4px;
     background-color: white;
     border: 1px solid #555;
+}
+
+.mid {
+    padding: 16px;
+    background-color: #DDD;
+    border-radius: 8px;
 }

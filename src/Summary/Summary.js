@@ -53,7 +53,7 @@ const Interval = ({ note, colorFn }) => {
 
     return (
         <div className='interval' style={styles}>
-            <div className='interval-name'>{interval}</div>
+            <div className='name'>{interval}</div>
             <div className='pod'>{`[${note.p}, ${note.d}]`}</div>
             <div className='noteIndex'>{`(${note.p})`}</div>
         </div>
@@ -63,7 +63,6 @@ const Interval = ({ note, colorFn }) => {
 const KeyCenter = ({ keyCenter, colorFn }) => {
     const noteIndex = keyCenter.p;
     const name = PW.api.PW.Vector.Note.getName({ pod: keyCenter });
-    const interval = PW.api.PW.Vector.Interval.getName({ pod: keyCenter });
     const f = Math.round(PW.api.PW.Tuning.getFrequency(keyCenter.p));
 
     const ctx = {
@@ -81,10 +80,9 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
     return (
         <div className='key-center' style={styles}>
             <div className='name'>{name}</div>
-            <div className='name'>{interval}</div>
             <div className='pod'>{`[${keyCenter.p}, ${keyCenter.d}]`}</div>
-            <div className='noteIndex'>{`i: ${keyCenter.p}`}</div>
-            <div className='frequency'>{`f: ${f}Hz`}</div>
+            <div className='noteIndex'>{`(${keyCenter.p})`}</div>
+            <div className='frequency'>{`${f}Hz`}</div>
         </div>
     );
 };
@@ -99,7 +97,10 @@ const P = ({ type, intervals }) => {
 
         const interval = intervals.find(ivl => PW.api.PW.Utils.modulo(ivl[prop], count) === i);
 
-        const styles = {};
+        const styles = {
+            textAlign: 'center',
+            color: '#555'
+        };
 
         if (interval) {
             const bg = colorFn(type, interval);
@@ -109,7 +110,7 @@ const P = ({ type, intervals }) => {
             styles.color = fg;
         };
 
-        ps.push(<div className="p" style={styles} />)
+        ps.push(<div className="p" style={styles} >{i}</div>)
     }
 
     return (
@@ -122,24 +123,33 @@ const P = ({ type, intervals }) => {
 const Summary = userProps => {
     const props = { ...DEFAULT_PROPS, ...userProps };
 
-    const { colorFn, intervals, keyCenter } = props;
+    const { colorFn, intervals, keyCenter, name } = props;
     const notes = PW.api.PW.Vector.addMatrix({ a: keyCenter, B: intervals });
     const arr = intervals.map(n => <Interval note={n} colorFn={colorFn} />);
     const arr2 = notes.map(n => <Note note={n} colorFn={colorFn} />);
 
-    console.log('summary', intervals, keyCenter)
+    //console.log('summary', intervals, keyCenter)
 
     return (
         <div className='summary'>
+            <h3>{name}</h3>
+            <label>Key Center</label>
+            <KeyCenter keyCenter={keyCenter} colorFn={colorFn} />
+            <div className="mid">
+                <label>Intervals</label>
+                <div className='interval-arr'>
+                    {arr}
+                </div>
+                <label>d</label>
+                <P intervals={intervals} type="degree" />
+                <label>p</label>
+                <P intervals={intervals} type="pitchClass" />
+
+            </div>
+            <label>Notes</label>
             <div className='interval-arr'>
                 {arr2}
             </div>
-            <P intervals={intervals} type="degree" />
-            <P intervals={intervals} type="pitchClass" />
-            <div className='interval-arr'>
-                {arr}
-            </div>
-            <KeyCenter keyCenter={keyCenter} colorFn={colorFn} />
         </div>
     );
 }

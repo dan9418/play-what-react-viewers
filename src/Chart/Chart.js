@@ -11,14 +11,14 @@ const Chart = ({ children, chart, viewer, ...props }) => {
     const sections = chart.sections.map((s, i) => {
         return (
             <div className="section">
-                <h3>{`Section ${i}`}</h3>
-                <List list={s.concepts} viewer={viewer} />
+                <List list={s.concepts} viewer={viewer} name={`Section ${i}`}/>
             </div>
         );
     })
 
     return (
         <div className='chart' style={rowStyles}>
+            <h2>Chart</h2>
             {sections}
         </div>
     );
