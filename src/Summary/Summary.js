@@ -3,7 +3,7 @@ import PW from 'play-what';
 import "./Summary.css";
 
 const DEFAULT_PROPS = {
-    colorFn: () => { },
+    colorFn: PW.api.PW.Vector.colorBy({ type: 'degree' }),
     intervals: [],
     keyCenter: null
 }
