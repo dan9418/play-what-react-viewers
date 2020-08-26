@@ -14,8 +14,8 @@ export const Fret = ({ context, colorFn, textFn }) => {
     };
 
     let classes = ['fret'];
-    /*if (props.fretNumber === 0)
-        classes.push('open');*/
+    if (context.fretIndex === 0)
+        classes.push('open');
 
     return (
         <div className={classes.join(' ')}>

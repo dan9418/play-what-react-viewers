@@ -1,5 +1,5 @@
 .concept {
-    margin-bottom: 32px;
+    margin: 16px;
 }
 
 .summary {
@@ -16,25 +16,20 @@
     width: 100%;
 }
 
+.summary .interval, .summary .note, .summary .key-center {
+    border-radius: 8px;
+    margin: 8px;
+    padding: 4px;
+    border: 1px solid #555;
+    white-space: nowrap;
+}
+
 .summary .interval, .summary .note {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
-    margin: 8px;
-    border: 1px solid #555;
-    white-space: nowrap;
-}
-
-.summary .interval div {
-    margin-bottom: 4px;
-}
-
-.summary .interval .name, .summary .key-center .name {
-    font-weight: bold;
-    font-size: 200%;
 }
 
 .summary .key-center {
@@ -43,11 +38,14 @@
     justify-content: space-around;
     align-items: center;
     height: 64px;
-    border-radius: 8px;
-    padding: 4px;
     margin: 8px;
     box-sizing: border-box;
     border: 1px solid #555;
+}
+
+.summary .name {
+    font-weight: bold;
+    font-size: 200%;
 }
 
 .summary .meter {

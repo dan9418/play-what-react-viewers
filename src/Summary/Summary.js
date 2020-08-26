@@ -57,7 +57,6 @@ const Summary = userProps => {
                 <Meter pods={intervals} type="degree" />
                 <label>p</label>
                 <Meter pods={intervals} type="pitchClass" />
-
             </div>
             <label>Notes</label>
             <div className='interval-arr'>

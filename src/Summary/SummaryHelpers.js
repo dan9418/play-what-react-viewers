@@ -5,7 +5,7 @@ import "./Summary.css";
 export const Frequency = ({ f }) => <div className="frequency">{`${f} Hz`}</div>;
 export const Name = ({ name }) => <div className="name">{`${name}`}</div>;
 export const Pod = ({ p, d }) => <div className="pod">{`[${p}, ${d}]`}</div>;
-export const PitchIndex = ({ pitchIndex }) => <div className="pitchIndex">{`${pitchIndex} Hz`}</div>;
+export const PitchIndex = ({ pitchIndex }) => <div className="pitchIndex">{`(${pitchIndex})`}</div>;
 
 export const Note = ({ pod, ctx, colorFn }) => {
     const pitchIndex = pod.p;
