@@ -90,7 +90,7 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
 const P = ({ type, intervals }) => {
     let count = type === 'degree' ? 7 : 12;
     let prop = type === 'degree' ? 'd' : 'p';
-    let colorFn = PW.api.PW.Color.parseColorProp;
+    let colorFn = PW.api.PW.Vector.colorBy({ type: 'degree' });
 
     const ps = [];
     for (let i = 0; i < count; i++) {
@@ -103,7 +103,7 @@ const P = ({ type, intervals }) => {
         };
 
         if (interval) {
-            const bg = colorFn(type, interval);
+            const bg = colorFn({ note: interval });
             const fg = PW.api.PW.Color.getFgColor(bg);
 
             styles.backgroundColor = bg;
