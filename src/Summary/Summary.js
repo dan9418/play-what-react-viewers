@@ -30,10 +30,9 @@ const Note = ({ note, colorFn }) => {
         <div className='interval' style={styles}>
             <div className='name'>{name}</div>
             <div className='interval-name'>{interval}</div>
-            <div className='pitch'>{`p: ${note.p}`}</div>
-            <div className='degree'>{`d: ${note.d}`}</div>
-            <div className='noteIndex'>{`i: ${note.p}`}</div>
-            <div className='frequency'>{`f: ${f}Hz`}</div>
+            <div className='pod'>{`[${note.p}, ${note.d}]`}</div>
+            <div className='noteIndex'>{`(${note.p})`}</div>
+            <div className='frequency'>{`${f}Hz`}</div>
         </div>
     );
 };
@@ -59,9 +58,8 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
     return (
         <div className='key-center' style={styles}>
             <div className='name'>{name}</div>
-            <div className='interval-name'>{interval}</div>
-            <div className='pitch'>{`p: ${keyCenter.p}`}</div>
-            <div className='degree'>{`d: ${keyCenter.d}`}</div>
+            <div className='name'>{interval}</div>
+            <div className='pod'>{`[${keyCenter.p}, ${keyCenter.d}]`}</div>
             <div className='noteIndex'>{`i: ${keyCenter.p}`}</div>
             <div className='frequency'>{`f: ${f}Hz`}</div>
         </div>
@@ -70,12 +68,13 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
 
 const P = ({ type, intervals }) => {
     let count = type === 'degree' ? 7 : 12;
+    let prop = type === 'degree' ? 'd' : 'p';
     let colorFn = PW.api.PW.Color.parseColorProp;
 
     const ps = [];
     for (let i = 0; i < count; i++) {
 
-        const interval = intervals.find(ivl => ivl.p === i);
+        const interval = intervals.find(ivl => PW.api.PW.Utils.modulo(ivl[prop], count) === i);
 
         const styles = {};
 

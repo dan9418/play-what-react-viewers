@@ -1,3 +1,7 @@
+.concept {
+    margin-bottom: 32px;
+}
+
 .summary .interval-arr {
     display: flex;
     align-items: center;
@@ -6,14 +10,23 @@
 }
 
 .summary .interval {
-    width: 128px;
-    height: 256px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    margin: 8px
+    margin: 8px;
+    border: 1px solid #555;
+
+}
+
+.summary .interval div {
+    margin: 8px;
+}
+
+.summary .interval .name {
+    font-weight: bold;
 }
 
 .summary .key-center {
@@ -21,8 +34,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 32px;
     border-radius: 8px;
-    margin: 8px
+    padding: 4px;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 1px solid #555;
+
 }
 
 .summary .ps {
