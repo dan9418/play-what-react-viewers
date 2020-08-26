@@ -8,8 +8,6 @@ import DEFAULT_PROPS from "./Fretboard.defaults";
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
 export const Fret = ({ context, colorFn, textFn }) => {
-
-
     const labelProps = {
         userStyles: colorFn(context),
         text: textFn(context)
@@ -52,7 +50,7 @@ const getFrets = (props) => {
                 fretRange,
                 fretIndex: f,
                 noteIndex,
-                note
+                pod: note
             };
 
             allFrets.push(
