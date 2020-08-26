@@ -7,8 +7,8 @@ const List = ({ children, list, viewer, name, ...props }) => {
         const Comp = viewer.component;
         const { a: keyCenter, B: intervals, name } = c;
         return (
-            <div className="concept">
-                <Comp {...viewer.props} keyCenter={keyCenter} intervals={intervals} name={name}/>
+            <div className="concept" key={i}>
+                <Comp {...viewer.props} keyCenter={keyCenter} intervals={intervals} name={name} />
             </div>
         );
     });

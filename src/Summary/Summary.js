@@ -82,7 +82,7 @@ const Meter = ({ type, intervals }) => {
             styles = colorFn({ note: interval });
         };
 
-        cells.push(<div className="cell" style={styles} >{i}</div>)
+        cells.push(<div className="cell" style={styles} key={i}>{i}</div>)
     }
 
     return (
@@ -97,8 +97,8 @@ const Summary = userProps => {
 
     const { colorFn, intervals, keyCenter, name } = props;
     const notes = PW.api.PW.Vector.addMatrix({ a: keyCenter, B: intervals });
-    const arr = intervals.map(n => <Interval note={n} colorFn={colorFn} />);
-    const arr2 = notes.map(n => <Note note={n} colorFn={colorFn} />);
+    const arr = intervals.map((n, i) => <Interval note={n} colorFn={colorFn} key={i} />);
+    const arr2 = notes.map((n, i) => <Note note={n} colorFn={colorFn} key={i} />);
 
     //console.log('summary', intervals, keyCenter)
 
