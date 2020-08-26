@@ -2,6 +2,10 @@
     margin-bottom: 32px;
 }
 
+.summary {
+    border-bottom: 1px solid #555;
+}
+
 .summary .interval-arr {
     display: flex;
     align-items: center;
@@ -18,7 +22,7 @@
     border-radius: 8px;
     margin: 8px;
     border: 1px solid #555;
-
+    white-space: nowrap;
 }
 
 .summary .interval div {
