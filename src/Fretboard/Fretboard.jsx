@@ -28,7 +28,7 @@ export const Fret = ({ context, colorFn, textFn }) => {
 }
 
 const getFrets = (props) => {
-    const { fretRange, tuning, intervals, colorFn, textFn } = props;
+    const { fretRange, tuning, intervals, colorFn, textFn, reduced } = props;
     //let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
     //let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
 
@@ -40,7 +40,8 @@ const getFrets = (props) => {
             const noteIndex = tuning[s] + f;
             const note = PW.api.PW.Matrix.findVectorWithPitch({
                 matrix: intervals,
-                pitch: noteIndex
+                pitch: noteIndex,
+                pitchClass: reduced
             })
 
             const ctx = {

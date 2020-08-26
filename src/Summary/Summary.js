@@ -87,21 +87,16 @@ const KeyCenter = ({ keyCenter, colorFn }) => {
     );
 };
 
-const P = ({ type, intervals }) => {
+const Meter = ({ type, intervals }) => {
     let count = type === 'degree' ? 7 : 12;
     let prop = type === 'degree' ? 'd' : 'p';
     let colorFn = PW.api.PW.Vector.colorBy({ type: 'degree' });
 
-    const ps = [];
+    const cells = [];
     for (let i = 0; i < count; i++) {
-
         const interval = intervals.find(ivl => PW.api.PW.Utils.modulo(ivl[prop], count) === i);
 
-        const styles = {
-            textAlign: 'center',
-            color: '#555'
-        };
-
+        const styles = {};
         if (interval) {
             const bg = colorFn({ note: interval });
             const fg = PW.api.PW.Color.getFgColor(bg);
@@ -110,12 +105,12 @@ const P = ({ type, intervals }) => {
             styles.color = fg;
         };
 
-        ps.push(<div className="p" style={styles} >{i}</div>)
+        cells.push(<div className="cell" style={styles} >{i}</div>)
     }
 
     return (
-        <div className='ps' style={{}}>
-            {ps}
+        <div className='meter'>
+            {cells}
         </div>
     );
 };
@@ -141,9 +136,9 @@ const Summary = userProps => {
                     {arr}
                 </div>
                 <label>d</label>
-                <P intervals={intervals} type="degree" />
+                <Meter intervals={intervals} type="degree" />
                 <label>p</label>
-                <P intervals={intervals} type="pitchClass" />
+                <Meter intervals={intervals} type="pitchClass" />
 
             </div>
             <label>Notes</label>
