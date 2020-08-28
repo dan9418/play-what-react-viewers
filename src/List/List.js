@@ -1,16 +1,12 @@
 import * as React from "react";
-//import "./Keyboard.css";
+import "./List.css";
 
 const List = ({ children, list, viewer, name, ...props }) => {
 
     const concepts = list.map((c, i) => {
         const Comp = viewer.component;
         const { a: keyCenter, B: intervals, name } = c;
-        return (
-            <div className="concept" key={i}>
-                <Comp {...viewer.props} keyCenter={keyCenter} intervals={intervals} name={name} />
-            </div>
-        );
+        return <Comp {...viewer.props} keyCenter={keyCenter} intervals={intervals} name={name} key={i} />;
     });
 
     return (
