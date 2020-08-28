@@ -9,7 +9,7 @@ const Concept = ({ name, keyCenter, intervals, notes, colorFn }) => {
             <div className='card'>
                 <h4>Key Center</h4>
                 <div className='subcard'>
-                    <KeyCenter pod={keyCenter} colorFn={colorFn} ctx={{ pod: keyCenter }} />
+                    <KeyCenter keyCenter={keyCenter} colorFn={colorFn} ctx={{ pod: keyCenter }} />
                 </div>
 
                 <h4>Intervals</h4>

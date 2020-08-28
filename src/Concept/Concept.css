@@ -1,6 +1,6 @@
 .interval, .note, .key-center {
     border-radius: 8px;
-    margin: 8px;
+    box-sizing: border-box;
     padding: 4px;
     white-space: nowrap;
 }
@@ -14,13 +14,18 @@
 }
 
 .key-center {
+    display: grid;
+    grid-template-columns: 128px auto;
+}
+
+.key-center .meter-container {
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 64px;
-    margin: 8px;
+    padding: 8px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .name {
@@ -38,6 +43,10 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+
+.flex-row > * {
+    margin: 8px;
 }
 
 .card {

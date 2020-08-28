@@ -66,18 +66,13 @@ export const IntervalList = ({ intervals, colorFn }) => {
     );
 };
 
-export const KeyCenter = ({ pod, ctx, colorFn }) => {
-    const pitchIndex = pod.p;
-    const name = PW.api.PW.Vector.Note.getName(ctx);
-    const f = Math.round(PW.api.PW.Tuning.getFrequency(pod.p));
-    const styles = colorFn(ctx);
-
+export const KeyCenter = ({ keyCenter, ctx, colorFn }) => {
     return (
-        <div className='key-center' style={styles}>
-            <Name name={name} />
-            <Pod {...pod} />
-            <PitchIndex pitchIndex={pitchIndex} />
-            <Frequency f={f} />
+        <div className='key-center'>
+            <Note pod={keyCenter} ctx={{ pod: keyCenter }} colorFn={colorFn} />
+            <div className='meter-container'>
+                <PodMeter pods={[keyCenter]} />
+            </div>
         </div>
     );
 };
