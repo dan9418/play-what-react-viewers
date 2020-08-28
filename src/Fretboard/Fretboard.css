@@ -3,7 +3,7 @@
 .fretboard {
 	display: inline-block;
 	display: inline-grid;
-	width: 95%;
+	width: 100%;
 	background-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);
 	font-size: 12px;
 	text-align: center;

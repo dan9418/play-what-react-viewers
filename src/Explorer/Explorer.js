@@ -18,6 +18,8 @@ const Explorer = userProps => {
 
     const modes = PW.api.PW.Matrix.Scale.getAllModes({ keyCenter, scale: notes });
 
+    const numerals = PW.api.PW.Matrix.Scale.getAllNumerals({ keyCenter, scale: notes });
+
     const explorerContext = {
         keyCenter,
         intervals,
@@ -28,6 +30,7 @@ const Explorer = userProps => {
         <div className='explorer'>
             <Concept name={`Concept: ${name}`} keyCenter={keyCenter} intervals={intervals} notes={notes} colorFn={colorFn} />
             <List name={`Modes`} viewer={viewer} list={modes} colorFn={colorFn} />
+            <List name={`Roman Numerals`} viewer={viewer} list={numerals} colorFn={colorFn} />
         </div>
     );
 }
