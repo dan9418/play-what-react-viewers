@@ -56,7 +56,8 @@
 
 .summary .meter .cell {
     width: 100%;
-    padding: 4px;
+    padding: 2px;
+    font-size: 80%;
     background-color: white;
     border: 1px solid #555;
     color: #555;
@@ -64,7 +65,8 @@
 }
 
 .mid {
-    padding: 16px;
+    margin: 16px;
+    padding: 8px;
     background-color: #DDD;
     border-radius: 8px;
 }
