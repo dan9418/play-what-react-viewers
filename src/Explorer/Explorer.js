@@ -5,7 +5,7 @@ import Concept from '../Concept/Concept';
 import List from '../List/List';
 
 const DEFAULT_PROPS = {
-    colorFn: PW.api.PW.Vector.colorBy({ type: 'degree' }),
+    colorFn: PW.api.Vector.colorBy({ type: 'degree' }),
     intervals: [],
     keyCenter: null
 }
@@ -14,11 +14,11 @@ const Explorer = userProps => {
     const props = { ...DEFAULT_PROPS, ...userProps };
     const { keyCenter, intervals, name, colorFn, viewer } = props;
 
-    const notes = PW.api.PW.Vector.addMatrix({ a: keyCenter, B: intervals });
+    const notes = PW.api.Vector.addMatrix({ a: keyCenter, B: intervals });
 
-    const modes = PW.api.PW.Matrix.Scale.getAllModes({ keyCenter, scale: notes });
+    const modes = PW.api.Matrix.Scale.getAllModes({ keyCenter, scale: notes });
 
-    const numerals = PW.api.PW.Matrix.Scale.getAllNumerals({ keyCenter, scale: notes });
+    const numerals = PW.api.Matrix.Scale.getAllNumerals({ keyCenter, scale: notes });
 
     const explorerContext = {
         keyCenter,
