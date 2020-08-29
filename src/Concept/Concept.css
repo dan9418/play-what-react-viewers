@@ -73,3 +73,15 @@
     border: 1px solid #555;
     background-color: #CCC;
 }
+
+.math {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background-color: #CCC;
+    font-weight: bold;
+    border-radius: 100%;
+}

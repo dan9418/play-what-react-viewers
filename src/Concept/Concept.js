@@ -17,6 +17,8 @@ const Concept = ({ name, keyCenterData, setKeyCenterData, intervalsData, setInte
                     <KeyCenter keyCenter={keyCenterData.value} colorFn={colorFn} ctx={{ pod: keyCenterData.value }} />
                 </div>
 
+                <div className='math'>+</div>
+
                 <div className='subcard-header'>
                     <h4>Intervals</h4>
                     <PresetInput presetData={PW.api.Matrix.presets} preset={intervalsData} setPreset={setIntervalsData} />
@@ -24,6 +26,8 @@ const Concept = ({ name, keyCenterData, setKeyCenterData, intervalsData, setInte
                 <div className='subcard'>
                     <IntervalList intervals={intervalsData.value} colorFn={colorFn} />
                 </div>
+
+                <div className='math'>=</div>
 
                 <h4>Notes</h4>
                 <div className='subcard'>

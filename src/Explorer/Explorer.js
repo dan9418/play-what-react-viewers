@@ -25,8 +25,10 @@ const Out = ({ keyCenterData, setKeyCenterData, intervalsData, setIntervalsData 
     const viewer = Fretboard;
 
     const notes = PW.api.Vector.addMatrix({ a: keyCenter, B: intervals });
-    const modes = PW.api.Matrix.Scale.getAllModes({ keyCenter, scale: notes });
-    const numerals = PW.api.Matrix.Scale.getAllNumerals({ keyCenter, scale: notes });
+    const modes = PW.api.Matrix.Scale.getAllModes({ keyCenter, scale: intervals });
+    const numerals = PW.api.Matrix.Scale.getAllNumerals({ keyCenter, scale: intervals });
+
+    console.log(keyCenter, intervals, notes, modes, numerals);
 
     return (
         <div className='out'>

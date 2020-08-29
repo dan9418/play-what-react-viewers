@@ -44,14 +44,15 @@ const getFrets = (props) => {
                 pitchClass: reduced
             });
 
+            const interval = intervals[podIndex];
+
             const ctx = {
                 tuning,
                 stringIndex: s,
                 fretRange,
                 fretIndex: f,
                 noteIndex,
-                homePod: keyCenter,
-                pod: note,
+                pod: interval,
                 podIndex
             };
 
