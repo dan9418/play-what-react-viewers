@@ -1,25 +1,33 @@
 import React from 'react';
+import PW from 'play-what';
 import './Concept.css';
 import { IntervalList, KeyCenter, NoteList } from './ConceptHelpers';
+import PresetInput from '../UI/PresetInput/PresetInput';
 
-const Concept = ({ name, keyCenter, intervals, notes, colorFn }) => {
+const Concept = ({ name, keyCenterData, setKeyCenterData, intervalsData, setIntervalsData, notes, colorFn }) => {
     return (
         <>
-            <h3>{name}</h3>
+            <h3>{`Concept - ${name}`}</h3>
             <div className='card'>
-                <h4>Key Center</h4>
+                <div className='subcard-header'>
+                    <h4>Key Center</h4>
+                    <PresetInput presetData={PW.api.Vector.Note.preset} preset={keyCenterData} setPreset={setKeyCenterData} />
+                </div>
                 <div className='subcard'>
-                    <KeyCenter keyCenter={keyCenter} colorFn={colorFn} ctx={{ pod: keyCenter }} />
+                    <KeyCenter keyCenter={keyCenterData.value} colorFn={colorFn} ctx={{ pod: keyCenterData.value }} />
                 </div>
 
-                <h4>Intervals</h4>
+                <div className='subcard-header'>
+                    <h4>Intervals</h4>
+                    <PresetInput presetData={PW.api.Matrix.presets} preset={intervalsData} setPreset={setIntervalsData} />
+                </div>
                 <div className='subcard'>
-                   <IntervalList intervals={intervals} colorFn={colorFn} />
+                    <IntervalList intervals={intervalsData.value} colorFn={colorFn} />
                 </div>
 
                 <h4>Notes</h4>
                 <div className='subcard'>
-                   <NoteList notes={notes} colorFn={colorFn} keyCenter={keyCenter} />
+                    <NoteList notes={notes} colorFn={colorFn} keyCenter={keyCenterData.value} />
                 </div>
             </div>
         </>

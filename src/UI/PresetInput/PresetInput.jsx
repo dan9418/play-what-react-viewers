@@ -1,53 +1,27 @@
-import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import PRESETS from '../../Common/Presets/Presets';
+import PW from 'play-what';
+import React from 'react';
 import DropdownInput from '../../UI/DropdownInput/DropdownInput';
-import ButtonInput from '../ButtonInput/ButtonInput';
 import './PresetInput.css';
 
-const PresetInput = () => {
-    // Source
+const formatArray = arr => {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        const type = arr[i];
+        result.push({
+            id: type.type,
+            name: `=== ${type.type} ===`,
+            value: []
+        });
+        result = [...result, ...Object.values(type.value)];
+    }
+    return result;
+}
 
-    // Scope
-    const [scopeIndex, setScopeIndex] = useState(0);
-    const scopeOptions = PRESETS.map(({ name, id }) => ({ name, id }));
-    const scope = PRESETS[scopeIndex];
-    const setScope = (v, i) => {
-        setScopeIndex(i);
-        setCategoryIndex(0);
-        setPresetIndex(0)
-    };
-
-    // Category
-    const [categoryIndex, setCategoryIndex] = useState(0);
-    const categoryOptions = scope.categories;
-    const category = categoryOptions[categoryIndex];
-    const setCategory = (v, i) => {
-        setCategoryIndex(i);
-        setPresetIndex(0)
-    };
-
-    // Preset
-    const [presetIndex, setPresetIndex] = useState(0);
-    const presetOptions = category.presets;
-    const preset = presetOptions[presetIndex];
-    const setPreset = (v, i) => setPresetIndex(i);
-
+const PresetInput = ({ presetData, preset, setPreset }) => {
+    const options = Array.isArray(presetData) ? formatArray(presetData) : Object.values(presetData);
     return (
         <div className="preset-input">
-            <div className="input-row">
-                <label>Scope</label>
-                <DropdownInput options={scopeOptions} value={scope.id} setValue={setScope} />
-            </div>
-            <div className="input-row">
-                <label>Category</label>
-                <DropdownInput options={categoryOptions} value={category.id} setValue={setCategory} />
-            </div>
-            <div className="input-row">
-                <label>Preset</label>
-                <DropdownInput options={presetOptions} value={preset.id} setValue={setPreset} />
-            </div>
-            <ButtonInput className="pw-accent" onClick={() => setSource(preset)}>Go!</ButtonInput>
+            <DropdownInput options={options} value={preset.id} setValue={setPreset} />
         </div>
     );
 };

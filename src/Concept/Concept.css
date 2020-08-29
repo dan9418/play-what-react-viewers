@@ -56,9 +56,20 @@
     background-color: #EEE;
 }
 
+.subcard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .subcard {
     margin: 8px;
     padding: 8px;
     background-color: #DDD;
     border-radius: 8px;
+}
+
+.subcard:last-child {
+    border: 1px solid #555;
+    background-color: #CCC;
 }
